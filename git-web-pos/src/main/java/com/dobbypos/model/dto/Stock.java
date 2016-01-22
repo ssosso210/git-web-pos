@@ -6,9 +6,9 @@ import java.sql.Date;
 public class Stock implements Serializable {
 	
 	private int stockNo;
-	private Date s_regDate;
-	private int s_number;
-	private int s_price;
+	private Date stockRegDate;
+	private int stockNumber;
+	private int stockPrice;
 	private String storeCode;
 	private int stockCodeNo;
 	
@@ -18,23 +18,23 @@ public class Stock implements Serializable {
 	public void setStockNo(int stockNo) {
 		this.stockNo = stockNo;
 	}
-	public Date getS_regDate() {
-		return s_regDate;
+	public Date getStockRegDate() {
+		return stockRegDate;
 	}
-	public void setS_regDate(Date s_regDate) {
-		this.s_regDate = s_regDate;
+	public void setStockRegDate(Date stockRegDate) {
+		this.stockRegDate = stockRegDate;
 	}
-	public int getS_number() {
-		return s_number;
+	public int getStockNumber() {
+		return stockNumber;
 	}
-	public void setS_number(int s_number) {
-		this.s_number = s_number;
+	public void setStockNumber(int stockNumber) {
+		this.stockNumber = stockNumber;
 	}
-	public int getS_price() {
-		return s_price;
+	public int getStockPrice() {
+		return stockPrice;
 	}
-	public void setS_price(int s_price) {
-		this.s_price = s_price;
+	public void setStockPrice(int stockPrice) {
+		this.stockPrice = stockPrice;
 	}
 	public String getStoreCode() {
 		return storeCode;
@@ -48,5 +48,7 @@ public class Stock implements Serializable {
 	public void setStockCodeNo(int stockCodeNo) {
 		this.stockCodeNo = stockCodeNo;
 	}
+	
+	
 
 }
