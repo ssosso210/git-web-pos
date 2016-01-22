@@ -1,7 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+
 <html>
 <head>
+	<meta charset="utf-8" />
 	<title>Home</title>
 </head>
 <body>
@@ -9,6 +14,5 @@
 	Hello web pos~~!!
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
