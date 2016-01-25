@@ -1,26 +1,6 @@
 package com.dobbypos.model.service;
 
-<<<<<<< HEAD
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
-import com.dobbypos.model.dao.EmployeeDao;
-import com.dobbypos.model.dto.Employee;
-
-@Service("employeeService")
-public class EmployeeServiceImpl implements EmployeeService {
-	@Autowired
-	@Qualifier("employeeDao")
-	private EmployeeDao employeeDao;
-
-	@Override
-	public void registerMember(Employee employee) {
-		employeeDao.insertEmployee(employee);
-		
-	}
-}
-=======
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -62,6 +42,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employee;
 	}
 	
+	@Override
+	public void registerMember(Employee employee) {
+		employeeDao.insertEmployee(employee);
+		
+	}
+	
 	
 }
 
@@ -77,4 +63,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
+

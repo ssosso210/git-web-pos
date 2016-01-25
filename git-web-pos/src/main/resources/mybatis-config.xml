@@ -48,7 +48,7 @@
 	<mappers>
 	<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 장보가 정의되는 파일들  -->
 		<!-- <mapper resource="com/mvcdemoweb/model/mapper/mysqlmapper/MemberMapper.xml" /> -->
-			<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
 		<!-- <mapper resource="com/mvcdemoweb/model/mapper/UploadMapper.xml" /> -->
 		<!-- <mapper resource="com/demoweb/model/mapper/BoardMapper.xml" /> -->

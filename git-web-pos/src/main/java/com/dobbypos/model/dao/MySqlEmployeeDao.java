@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-﻿package com.dobbypos.model.dao;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-
-import com.dobbypos.mapper.EmployeeMapper;
-import com.dobbypos.model.dto.Employee;
-
-@Repository("employeeDao")
-public class MySqlEmployeeDao implements EmployeeDao {
-
-	@Autowired
-	@Qualifier("employeeMapper")
-	private EmployeeMapper employeeMapper;
-
-
-	@Override
-	public void insertEmployee(Employee employee) {
-		employeeMapper.insertEmployee(employee);
-		
-	}
-=======
 package com.dobbypos.model.dao;
 
 import java.util.HashMap;
@@ -61,6 +37,14 @@ public class MySqlEmployeeDao implements EmployeeDao {
 		
 		return employee;
 	}
+	
+	@Override
+	public void insertEmployee(Employee employee) {
+		employeeMapper.insertEmployee(employee);
+		
+		
+	}
+		
 
 	
 
@@ -68,7 +52,6 @@ public class MySqlEmployeeDao implements EmployeeDao {
 
 
 	
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 
 }
 
