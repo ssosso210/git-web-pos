@@ -10,6 +10,8 @@ public class Employee implements Serializable {
 	private String passwd;
 	private String storeCode;
 	private int wage;
+	private String employeeType;
+	private String employeeId;
 	
 	public int getEmployeeNo() {
 		return employeeNo;
@@ -47,5 +49,13 @@ public class Employee implements Serializable {
 	public void setWage(int wage) {
 		this.wage = wage;
 	}
+	@Override
+	public String toString() {
+		return "Employee [employeeNo=" + employeeNo + ", employeeName=" + employeeName + ", phoneNo=" + phoneNo
+				+ ", passwd=" + passwd + ", storeCode=" + storeCode + ", wage=" + wage + ", employeeType="
+				+ employeeType + ", employeeId=" + employeeId + "]";
+	}
+	
+	
 
 }
