@@ -18,7 +18,12 @@
 		        <div class="inputsubtitle">직원기본정보</div>
 		        <form action="employeeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table>
-		            
+		            <tr>
+		                <th>번호</th>
+		                <td>
+		                    <input type="number" name="employeeNo" style="width:280px" />
+		                </td>
+		            </tr> 
 		             <tr>
 		                <th>이름</th>
 		                <td>
@@ -52,14 +57,25 @@
 		             <tr>
 		                <th>임금</th>
 		                <td>
-		                	<input type="text" name="wage" style="width:280px" />
+		                	<input type="number" name="wage" style="width:280px" />
+		                </td>
+		            </tr>
+		            <tr>
+		                <th>employeeType</th>
+		                <td>
+		                	<input type="text" name="employeeType" style="width:280px" />
+		                </td>
+		            </tr>
+		            <tr>
+		                <th>employeeId</th>
+		                <td>
+		                	<input type="text" name="employeeId" style="width:280px" />
 		                </td>
 		            </tr>
 		        </table>
 		        <div class="buttons">
 		        	<input type="submit" value="등록" style="height:25px" />
-		        	<input type="button" value="취소" style="height:25px"
-		        		onclick="location.href='list.action';" />
+		        	
 		        </div>
 		        </form>
 		    </div>

@@ -14,9 +14,6 @@ import com.dobbypos.model.service.EmployeeService;
 @RequestMapping("/settings")
 public class SettingsController {
 	
-//	@Autowired
-//	@Qualifier("employeeDao")
-//	private EmployeeDao employeeDao; 
 
 	@Autowired
 	@Qualifier("employeeService")
@@ -38,8 +35,8 @@ public class SettingsController {
 	public String EmployeeRegister(Employee employee) {
 	//	employee.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-1"));
 		employeeService.registerMember(employee);
+		System.out.println("register됨 ");
 		return "redirect:/settings/settinghome.action";
-		
 	}
 	
 	/*//employeer 등록 취소시

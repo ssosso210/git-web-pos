@@ -28,13 +28,10 @@ public class MySqlEmployeeDao implements EmployeeDao {
 		HashMap<String, String> params = new HashMap<>();
 		params.put("storeCode", storeCode);
 		params.put("employeeId", employeeId);
-		params.put("passwd", passwd);
-		
+		params.put("passwd", passwd);		
 		
 		Employee employee = employeeMapper.selectEmployeeByCodeAndIdAndPw(params);
-		
-		
-		
+	
 		return employee;
 	}
 	
