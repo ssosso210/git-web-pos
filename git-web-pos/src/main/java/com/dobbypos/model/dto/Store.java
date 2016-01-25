@@ -5,8 +5,6 @@ import java.io.Serializable;
 public class Store implements Serializable {
 	
 	private String storeCode;
-	private String id;
-	private String passwd;
 	private String address;
 	private String storeName;
 	private String managerName;
@@ -20,18 +18,7 @@ public class Store implements Serializable {
 	public void setStoreCode(String storeCode) {
 		this.storeCode = storeCode;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getPasswd() {
-		return passwd;
-	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -68,5 +55,13 @@ public class Store implements Serializable {
 	public void setHqCode(String hqCode) {
 		this.hqCode = hqCode;
 	}
+	@Override
+	public String toString() {
+		return "Store [storeCode=" + storeCode + ", address=" + address
+				+ ", storeName=" + storeName + ", managerName=" + managerName + ", email=" + email + ", phoneNo="
+				+ phoneNo + ", hqCode=" + hqCode + "]";
+	}
 
+	
+	
 }
