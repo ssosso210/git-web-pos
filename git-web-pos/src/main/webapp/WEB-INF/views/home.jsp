@@ -12,6 +12,10 @@
 </head>
 
 <body>
+
+<c:url var="writeform" value="/upload/write.action" />
+			[ <a>설정</a> ]
+			<br /><br />
 <a>근태</a><br/>
 <a>판매</a><br/>
 <a>조회</a><br/>
