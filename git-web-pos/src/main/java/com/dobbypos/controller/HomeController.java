@@ -12,7 +12,7 @@ public class HomeController {
 	@RequestMapping(value = { "/", "/home.action" }, method = RequestMethod.GET)
 	public String home() {
 				
-		return "home";//원래 totallogin 화면으로 가야됨 
+		return "home";//원래 totallogin 화면으로 가야됨 //
 	}
 	
 }
