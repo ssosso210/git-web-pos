@@ -3,34 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee"
-<<<<<<< HEAD
-	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbypos" />
-		
-	<!--  JDBC Template Bean Configuration -->
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	
-	<!-- new SqlSessionFactoryBean().getObject()을 호출해서 SqlSessionFactory 객체 만들기 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
-	</bean>
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory" />
-	</bean>
-	
-	<!-- MapperFactoryBean은 FactoryBean 인터페이스 구현한 클래스 -->
-	<!-- 그러므로 MemberMapper memberMapper = new MapperFactoryBean().getObject() -->
-	<bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.dobbypos.model.mapper.MemberMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-=======
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
@@ -39,13 +11,8 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-<<<<<<< HEAD
-	<context:component-scan base-package="com.dobbypos.model" />
-	<context:component-scan base-package="com.dobbypos.mapper" />
-=======
 	
 	<aop:aspectj-autoproxy /><!-- Annotation을 이용한 AOP 구현 설정 -->
 	
@@ -104,7 +71,6 @@
 	<context:component-scan base-package="com.dobbypos.model" />
 	<!-- <context:component-scan base-package="com.mvcdemoweb.aop" /> -->
 	
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 	
 </beans>
 

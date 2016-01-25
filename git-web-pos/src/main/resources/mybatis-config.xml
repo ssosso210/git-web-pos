@@ -7,32 +7,25 @@
 <configuration>
 
 	<properties>
-<<<<<<< HEAD
+
 	 <!-- 아래의 부분은 오라클 버전. -->
-      <property name="driverClass" value="oracle.jdbc.OracleDriver" />
+      <!--<property name="driverClass" value="oracle.jdbc.OracleDriver" />
       <property name="url" value="jdbc:oracle:thin:@210.16.214.202:1521:xe" />
       <property name="username" value="dobbypos" />
       <property name="password" value="dobby" />
-		<!-- <property name="driver" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/dobbypos" />
-		<property name="username" value="devadmin" />
-		<property name="password" value="mysql" /> -->
-=======
+-->
 		<property name="driver" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://192.168.13.9:3306/dobbypos" />
 		<property name="username" value="dobbypos" />
 		<property name="password" value="dobby" />
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
+
 	</properties>
 	
 	<typeAliases>
-<<<<<<< HEAD
-=======
 	<!-- 	<typeAlias type="com.mvcdemoweb.model.dto.Member" alias="Member"/>
 		<typeAlias type="com.mvcdemoweb.model.dto.Upload" alias="Upload"/>
 		<typeAlias type="com.mvcdemoweb.model.dto.UploadFile" alias="UploadFile"/> -->
 		<typeAlias type="com.dobbypos.model.dto.Hq" alias="Hq"/>
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 		<typeAlias type="com.dobbypos.model.dto.Employee" alias="Employee"/>
 		
 	</typeAliases>
@@ -54,13 +47,9 @@
 
 	<mappers>
 	<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 장보가 정의되는 파일들  -->
-<<<<<<< HEAD
-		<mapper resource="com/webpos/model/mapper/EmployeeMapper.xml" />
-=======
 		<!-- <mapper resource="com/mvcdemoweb/model/mapper/mysqlmapper/MemberMapper.xml" /> -->
 			<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 		<!-- <mapper resource="com/mvcdemoweb/model/mapper/UploadMapper.xml" /> -->
 		<!-- <mapper resource="com/demoweb/model/mapper/BoardMapper.xml" /> -->
 	</mappers>
