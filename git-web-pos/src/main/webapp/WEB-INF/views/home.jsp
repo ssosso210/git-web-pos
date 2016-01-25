@@ -7,17 +7,16 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Home</title>
-<style type="text/css">
-    html, body { height:100%; overflow:hidden }
-</style>
-</head>
-<body>
-<div style="width: 99.6%; height: 98%;border: solid;background-image:url('/dobbypos/resources/images/background3.jpg');background-repeat: no-repeat;">
-	<div style="margin: 100px auto;width: 600px;height: 500px;background-color: white;">
-		
-	</div>
+	<title>Home/pos main(지점)</title>
 	
-</div>
+</head>
+
+<body>
+<a>근태</a><br/>
+<a>판매</a><br/>
+<a>조회</a><br/>
+<a>관리</a><br/>
+<a>설정</a><br/>
+<a></a>
 </body>
 </html>
