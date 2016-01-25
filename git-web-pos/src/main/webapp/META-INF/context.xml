@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context path="/dobbywebpos" reloadable="true">
+
+	<Resource 
+		name="jdbc/mvc-demoweb" 
+		auth="Container" type="javax.sql.DataSource"
+		maxTotal="100" maxIdle="30" maxWaitMillis="10000" 
+		username="dobbypos" password="dobby" 
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://192.168.13.9:3306/dobbypos" />
+
+</Context>
