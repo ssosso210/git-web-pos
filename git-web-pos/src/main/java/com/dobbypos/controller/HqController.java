@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/hq")
+public class HqController {
 	
-	@RequestMapping(value = { "/", "/home.action" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home() {
 				
-		return "home";//원래 totallogin 화면으로 가야됨 //
+		return "home";
 	}
 	
 }
