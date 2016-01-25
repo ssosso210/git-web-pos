@@ -13,14 +13,16 @@
 
 <body>
 
-<c:url var="writeform" value="/upload/write.action" />
-			[ <a>설정</a> ]
+<%-- <c:url var="writeform" value="/settings/employeeregister.action" />
+			[ <a>설정</a> ] --%>
+			
+
 			<br /><br />
 <a>근태</a><br/>
 <a>판매</a><br/>
 <a>조회</a><br/>
 <a>관리</a><br/>
-<a>설정</a><br/>
+<a href="settings/settinghome.action">설정</a>
 <a></a>
 </body>
 </html>
