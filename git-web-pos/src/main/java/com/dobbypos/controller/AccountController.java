@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.service.EmployeeService;
 
@@ -33,17 +34,29 @@ public class AccountController {
 	public String login(
 		HttpSession session, HttpServletRequest req,
 		String hqCode,String storeCode, String employeeId, String passwd, @RequestParam("returnurl") String returnUrl) {
-		System.out.println("login.action controller");
 		
-//		passwd = Util.getHashedString(passwd, "SHA-1");
+		
+		boolean resultValue= false;
+		
+		passwd = Util.getHashedString(passwd, "SHA-1");
+		
 		
 		//요청 데이터 (아이디, 열쇠글)으로 데이터베이스에서 조회
 
 		Employee employee = employeeService.searchEmployeeByLogin(hqCode,storeCode, employeeId, passwd);
+
+		//조회 결과에 따라 이동 처리
+		if (employee != null) {
+			if(employee.getPasswd().equals(passwd)){
+				resultValue = true;
+			}
+		}
+		
+		
 		
 		
 		//조회 결과에 따라 이동 처리
-		if (employee != null) {
+		if (resultValue) {
 			System.out.println(employee.toString());
 			session.setAttribute("loginuser", employee);//로그인 처리
 			if (returnUrl != null && returnUrl.length() > 0) {
