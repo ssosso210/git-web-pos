@@ -37,6 +37,7 @@
 							<!-- 자료실 --><spring:message code="menu.library"/></a></li>
 					<li><a href="#">
 							<!-- 게시판 --><spring:message code="menu.board"/></a></li>
+
                 </ul>
             </div>
         </div>

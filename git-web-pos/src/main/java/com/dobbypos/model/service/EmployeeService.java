@@ -4,6 +4,10 @@ import com.dobbypos.model.dto.Employee;
 
 public interface EmployeeService {
 
+
+	void registerMember(Employee employee);
+
+
 	Employee searchEmployeeByLogin(String hqCode, String storeCode, String employeeId, String passwd);
 
 	

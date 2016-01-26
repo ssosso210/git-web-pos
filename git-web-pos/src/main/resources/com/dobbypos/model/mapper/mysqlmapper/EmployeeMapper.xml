@@ -39,7 +39,10 @@
 		where storeCode = #{storeCode} and employeeId = #{employeeId} and passwd = #{passwd}
 	</select>
 
-
+	<insert id="insertEmployee" parameterType="Employee">
+		INSERT INTO Employee (employeeNo,employeeName,phoneNo,passwd, storeCode,wage, employeeType, employeeId)
+		VALUES (#{employeeNo}, #{employeeName}, #{phoneNo}, #{passwd}, #{storeCode}, #{wage}, #{employeeType}, #{employeeId})
+	</insert>
 	
 	
 	
