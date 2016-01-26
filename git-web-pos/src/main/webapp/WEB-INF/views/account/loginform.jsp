@@ -39,19 +39,19 @@
 		            <tr>
 		                <th>본사 코드</th>
 		                <td>
-		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="onehal001"/>
+		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="outback"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>매장 코드</th>
 		                <td>
-		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="onehalbo001"/>
+		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="outback001"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>아이디</th>
 		                <td>
-		                    <input type="text" id="employeeId" name="employeeId" style="width:280px" value="oneboadmin"/>
+		                    <input type="text" id="employeeId" name="employeeId" style="width:280px" value="ob001hany"/>
 		                </td>
 		            </tr>
 		            <tr>

@@ -26,6 +26,7 @@ public class MySqlEmployeeDao implements EmployeeDao {
 	@Override
 	public Employee selectEmployeeByCodeAndIdAndPw(String hqCode, String storeCode, String employeeId, String passwd) {
 		HashMap<String, String> params = new HashMap<>();
+		params.put("hqCode", hqCode);
 		params.put("storeCode", storeCode);
 		params.put("employeeId", employeeId);
 		params.put("passwd", passwd);		
