@@ -39,6 +39,7 @@
 							<!-- 관리 --><spring:message code="menu.management"/></a></li>
 					<li><a href="#">
 							<!-- 게시판 --><spring:message code="menu.board"/></a></li>
+
                 </ul>
             </div>
         </div>

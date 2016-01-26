@@ -8,6 +8,8 @@ public interface EmployeeMapper {
 
 	Employee selectEmployeeByCodeAndIdAndPw(HashMap<String, String> params);
 
+	void insertEmployee(Employee employee);
+
 	
 	
 	
