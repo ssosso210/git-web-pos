@@ -7,6 +7,7 @@
 	<meta charset="utf-8" />
 	<title>로그인</title>
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" />
+	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/input.css" />	
 	<script type="text/javascript">
 		window.onload = function() {
@@ -22,11 +23,14 @@
 	</script>
 </head>
 <body>	
-	<div id="pageContainer">
+	<div id="wrap">
 	
 		<c:import url="/WEB-INF/views/include/header.jsp" />
-		
-		<div id="inputcontent">
+		<div id="container">
+			<div id="mainimg"> 
+			<h1>Dobby pos</h1>
+			</div>
+			 <!-- <div id="inputcontent">  -->
 			<br /><br />
 		    <div id="inputmain">
 		        <div class="inputsubtitle">로그인정보</div>
@@ -39,19 +43,19 @@
 		            <tr>
 		                <th>본사 코드</th>
 		                <td>
-		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="outback"/>
+		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="onehal001"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>매장 코드</th>
 		                <td>
-		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="outback001"/>
+		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="onehalbo001"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>아이디</th>
 		                <td>
-		                    <input type="text" id="employeeId" name="employeeId" style="width:280px" value="ob001hany"/>
+		                    <input type="text" id="employeeId" name="employeeId" style="width:280px" value="oneboadmin"/>
 		                </td>
 		            </tr>
 		            <tr>
@@ -68,8 +72,8 @@
 		        </form>
 		        
 		    </div>
-		</div>   	
-	
+			 <!-- </div>  -->	
+		</div>
 	</div>
 
 </body>
