@@ -12,10 +12,7 @@ import com.dobbypos.model.dto.Employee;
 
 @Repository("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
-	
-	
-	/////////////////////////
-	
+
 	public void init() {
 		System.out.println("init method is called");
 	}
@@ -38,29 +35,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		 employee = employeeDao.selectEmployeeByCodeAndIdAndPw( hqCode,  storeCode,  employeeId,  passwd);
 		
-		
 		return employee;
 	}
 	
 	@Override
 	public void registerMember(Employee employee) {
-		employeeDao.insertEmployee(employee);
-		
+		employeeDao.insertEmployee(employee);	
 	}
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

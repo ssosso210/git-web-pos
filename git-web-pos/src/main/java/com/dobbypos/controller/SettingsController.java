@@ -35,9 +35,20 @@ public class SettingsController {
 	public String EmployeeRegister(Employee employee) {
 	//	employee.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-1"));
 		employeeService.registerMember(employee);
-		System.out.println("register됨 ");
+		System.out.println("register 성공  ");
 		return "redirect:/settings/settinghome.action";
 	}
+	
+	@RequestMapping(value="/tableregisterform.action", method=RequestMethod.GET)
+	public String TableRegisterForm(){
+		return "settings/tableregisterform";
+	}
+	@RequestMapping(value="/tableregister.action", method=RequestMethod.POST)
+	public String TableRegister(){
+		return "redirect:/settings/settinghome.action";
+	}
+	
+	
 	
 	/*//employeer 등록 취소시
 	@RequestMapping(value = "/list.action", method = RequestMethod.GET)

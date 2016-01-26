@@ -61,21 +61,17 @@
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.EmployeeMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<bean id="storetableMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dobbypos.model.mapper.TableMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	<!-- <bean id="uploadMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.UploadMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean> -->
-	
-	
-	
+
 	<context:component-scan base-package="com.dobbypos.model" />
 	<!-- <context:component-scan base-package="com.mvcdemoweb.aop" /> -->
 	
-	
 </beans>
-
-
-
-
-
-

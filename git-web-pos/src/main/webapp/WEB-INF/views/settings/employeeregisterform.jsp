@@ -18,12 +18,6 @@
 		        <div class="inputsubtitle">직원기본정보</div>
 		        <form action="employeeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table>
-		            <tr>
-		                <th>번호</th>
-		                <td>
-		                    <input type="number" name="employeeNo" style="width:280px" />
-		                </td>
-		            </tr> 
 		             <tr>
 		                <th>이름</th>
 		                <td>
