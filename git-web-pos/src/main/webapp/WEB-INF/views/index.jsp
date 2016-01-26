@@ -24,11 +24,11 @@
 			<br />
 			<h2 style='text-aling: center'>
 				Hello dobby web pos Site Main Page !!!
-				<p>근태/판매/조회/관리/설정 어디에 넣죠?</p>
+				<p>근태/판매/조회/관리/설정 어디에 넣죠?몰랑~ 데헷~ ^0^</p>
 				<a>근태</a><br /> 
 				<a>판매</a><br /> 
 				<a>조회</a><br /> 
-				<a>관리</a><br /> 
+				<a href="management/managementhome.action">관리</a><br /> 
 				<a href="settings/settinghome.action">설정</a>
 
 			</h2>

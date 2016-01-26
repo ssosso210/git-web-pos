@@ -1,28 +1,27 @@
 package com.dobbypos.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dobbypos.model.service.EmployeeService;
+
 @Controller
 @RequestMapping("/management")
 public class ManagementController {
-
-	@RequestMapping("/management")
-	public String manageMain() {		
-		
 	
-		return "management/management"; // /WEB-INF/views/ + index + .jsp
+	@RequestMapping(value = "/managementhome.action", method = RequestMethod.GET)
+	public String menu() {
+		
+		return "management/managementhome"; 
 	}
 	
-	@RequestMapping("/managementAdmin")
-	public String manageAdmin() {		
+	@RequestMapping(value = "/salarymanagement.action", method = RequestMethod.GET)
+	public String SettingMenu() {
 		
-		String type = "admin";
-	//7단계
-		
-		
-		return "management/managementAdmin"; // /WEB-INF/views/ + index + .jsp
+		return "management/salarylist"; 
 	}
 	
 }
