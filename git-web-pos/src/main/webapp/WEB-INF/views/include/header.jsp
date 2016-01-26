@@ -48,15 +48,3 @@
         	[ TOTAL : ${ total } 명 ]
         	[ CURRENT : ${ current } 명 ]
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        

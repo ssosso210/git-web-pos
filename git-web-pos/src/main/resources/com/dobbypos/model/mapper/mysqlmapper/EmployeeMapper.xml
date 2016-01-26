@@ -43,14 +43,4 @@
 		INSERT INTO Employee (employeeName,phoneNo,passwd, storeCode,wage, employeeType, employeeId)
 		VALUES ( #{employeeName}, #{phoneNo}, #{passwd}, #{storeCode}, #{wage}, #{employeeType}, #{employeeId})
 	</insert>
-	
-	
-	
-	
 </mapper>
-
-
-
-
-
-

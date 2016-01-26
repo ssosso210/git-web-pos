@@ -39,27 +39,6 @@ public class MySqlEmployeeDao implements EmployeeDao {
 	@Override
 	public void insertEmployee(Employee employee) {
 		employeeMapper.insertEmployee(employee);
-		
-		
 	}
 		
-
-	
-
-	
-
-
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
