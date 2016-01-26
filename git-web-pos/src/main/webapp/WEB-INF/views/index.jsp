@@ -23,8 +23,8 @@
 			<br />
 			<br />
 			<h2 style='text-aling: center'>
-				<!-- Hello dobby web pos Site Main Page !!!
-				<p>근태/판매/조회/관리/설정 어디에 넣죠?</p>
+			 Hello dobby web pos Site Main Page !!!
+				<!--	<p>근태/판매/조회/관리/설정 어디에 넣죠?</p>
 				<a>근태</a><br /> 
 				<a>판매</a><br /> 
 				<a>조회</a><br /> 

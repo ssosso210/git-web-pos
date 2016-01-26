@@ -21,7 +21,7 @@
 	-->
 	
 	<!-- DataSource (Connection Pool) Bean Configuration -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/mvc-demoweb" />
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbypos" />
 	<!--  
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -62,7 +62,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	<bean id="storetableMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="tableMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.TableMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>

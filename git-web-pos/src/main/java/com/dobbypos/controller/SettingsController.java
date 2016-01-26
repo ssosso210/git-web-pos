@@ -34,8 +34,8 @@ public class SettingsController {
 	@RequestMapping(value = "/employeeregister.action", method = RequestMethod.POST)
 	public String EmployeeRegister(Employee employee) {
 	//	employee.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-1"));
-		employeeService.registerMember(employee);
-		System.out.println("register 성공  ");
+		employeeService.insertEmployee(employee);
+		System.out.println("employee register 성공  ");
 		return "redirect:/settings/settinghome.action";
 	}
 	
@@ -45,6 +45,7 @@ public class SettingsController {
 	}
 	@RequestMapping(value="/tableregister.action", method=RequestMethod.POST)
 	public String TableRegister(){
+		System.out.println("table register 성공 ");
 		return "redirect:/settings/settinghome.action";
 	}
 	

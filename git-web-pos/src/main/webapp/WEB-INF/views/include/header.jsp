@@ -37,7 +37,7 @@
 							<spring:message code="menu.sales"/></a></li>
 					<li><a href="#">
 							<spring:message code="menu.select"/></a></li>
-					<li><a href="#">
+					<li><a href="settings/settinghome.action">
 							<spring:message code="menu.settings"/></a></li>
 					
                 </ul>
