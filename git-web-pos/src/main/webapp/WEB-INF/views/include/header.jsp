@@ -35,6 +35,8 @@
 							<!-- 메일보내기 --><spring:message code="menu.email"/></a></li>
 					<li><a href="#">
 							<!-- 자료실 --><spring:message code="menu.library"/></a></li>
+				    <li><a href="/dobbypos/management">
+							<!-- 관리 --><spring:message code="menu.management"/></a></li>
 					<li><a href="#">
 							<!-- 게시판 --><spring:message code="menu.board"/></a></li>
                 </ul>
