@@ -30,6 +30,9 @@
 		<typeAlias type="com.dobbypos.model.dto.StoreTable" alias="StoreTable"/>
 		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>
 		
+		<!-- 윤수가추가 -->
+		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>
+		
 	</typeAliases>
 
 	<environments default="development">
@@ -52,7 +55,13 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/TableMapper.xml" />
+
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/MenuMapper.xml" />
+
+		
+		<!-- 윤수가추가 -->
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/SaleMapper.xml" />
+
 	
 	</mappers>
 
