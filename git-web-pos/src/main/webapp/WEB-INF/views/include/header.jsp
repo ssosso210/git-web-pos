@@ -34,7 +34,9 @@
 					<li><a href="#">
 							<spring:message code="menu.attendence"/></a></li>
 					<li><a href="#">
+
 							<spring:message code="menu.sales"/></a></li>
+
 					<li><a href="#">
 							<spring:message code="menu.select"/></a></li>
 					<li><a href="settings/settinghome.action">

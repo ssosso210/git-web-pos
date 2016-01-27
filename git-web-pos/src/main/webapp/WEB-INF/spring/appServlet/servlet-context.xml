@@ -81,8 +81,8 @@
 	
 	<beans:bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<beans:property name="defaultLocale" value="en" />
-		<!-- <beans:property name="defaultLocale" value="ko" /> -->
+		<!-- <beans:property name="defaultLocale" value="en" /> -->
+		<beans:property name="defaultLocale" value="ko" />
 	</beans:bean>
 	
 	<beans:bean id="authInterceptor" class="com.dobbypos.interceptor.AutherInterceptor"></beans:bean>
