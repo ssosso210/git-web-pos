@@ -18,7 +18,6 @@
 
 	 -->
 
-
 	<resultMap type="Employee" id="employeeMap">
 		<id property="employeeNo" column="employeeNo" />
 		<result property="employeeName" column="employeeName" />
