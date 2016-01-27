@@ -12,7 +12,8 @@ public class HqController {
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home() {
 				
-		return "home";
+		return "hq/home";
+		
 	}
 	
 }

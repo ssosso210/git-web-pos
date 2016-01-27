@@ -30,27 +30,19 @@
 			<div id="mainimg"> 
 			<h1>Dobby hq pos</h1>
 			</div>
-			 <!-- <div id="inputcontent">  -->
 			<br /><br />
 		    <div id="inputmain">
-		        <div class="inputsubtitle">로그인정보</div>
+		        <div class="inputsubtitle">본사 로그인</div>
 		        
-		        <form action="/dobbywebpos/account/login.action" method="post">
+		        <form action="/dobbywebpos/account/hqlogin.action" method="post">
 		        
 		        <!-- input type="hidden" : 사용자에게 보이지 않지만 서버로 전송되는 입력 요소 -->
 		        <input type="hidden" name="returnurl" value='${ empty requestScope.returnurl ? "" : requestScope.returnurl }' />
 		        <table>
 		            <tr>
-		                <th>본사 코드</th>
-		                <td>
-		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="onehal001"/>
-		                </td>
-		            </tr>
-
-		            <tr>
 		                <th>아이디</th>
 		                <td>
-		                    <input type="text" id="hqId" name="hqId" style="width:280px" value="oneboadmin"/>
+		                    <input type="text" id="hqId" name="hqId" style="width:280px" value="superadmin"/>
 		                </td>
 		            </tr>
 		            <tr>
@@ -67,7 +59,7 @@
 		        </form>
 		        
 		    </div>
-			 <!-- </div>  -->	
+			
 		</div>
 	</div>
 

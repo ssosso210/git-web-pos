@@ -6,7 +6,8 @@ public interface HqMapper {
 	
 
 	
-	Hq selectHqByCode(String code);
+
+	Hq selectHqByHqId(String hqId);
 	
 
 }

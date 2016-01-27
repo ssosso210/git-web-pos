@@ -2,9 +2,10 @@ package com.dobbypos.model.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.EmployeeDao;
@@ -44,6 +45,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.insertEmployee(employee);
 		
 	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		
+		return employeeDao.getList();
+	}
+
+	@Override
+	public Employee searchEmployeeByNo(String no) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
 	
 	
 }
