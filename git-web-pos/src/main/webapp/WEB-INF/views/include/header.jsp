@@ -45,10 +45,10 @@
 					<li><a href="#">
 							<!-- 게시판 --><spring:message code="menu.board"/></a></li> --%>
 
-
+<%-- 
 							<spring:message code="menu.select"/></a></li>
 					<li><a href="settings/settinghome.action">
-							<spring:message code="menu.settings"/></a></li>
+							<spring:message code="menu.settings"/></a></li> --%>
 					
 
                 </ul>
@@ -60,20 +60,5 @@
         	<%-- [ TOTAL : ${ total } 명 ]
         	[ CURRENT : ${ current } 명 ] --%>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-=======
-        	[ TOTAL : ${ total } 명 ]
-        	[ CURRENT : ${ current } 명 ]
-        </div>
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
+
+   
