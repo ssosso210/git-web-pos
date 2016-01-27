@@ -7,16 +7,15 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Settings Home</title>
+	<title>Sale Home</title>
 	
 </head>
 
 <body>
 
-<a href="employeeregisterform.action">직원등록</a><br/>
-<a href="tableregisterform.action">테이블등록</a><br/>
-<a>고객등록</a><br/>
-<a>메뉴등록</a><br/>
+<a href="orderform.action">주문하기</a><br/>
+<a href="paymentform.action">결제하기</a><br/>
+
 
 
 <a></a>
