@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<properties>
+		<property name="driver" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@210.16.214.202:1521:xe" />
+		<property name="username" value="dobbypos" />
+		<property name="password" value="dobby" />
+	</properties>
+	
+	<typeAliases><!-- 순서를 지켜서 써줘야 함 -->
+		<typeAlias type="com.dobbypos.model.dto.Store" alias="Store" />
+		<typeAlias type="com.dobbypos.model.dto.Customer" alias="Customer" />
+		<typeAlias type="com.dobbypos.model.dto.Client" alias="Client" />
+		<!-- <typeAlias type="com.mvcdemoweb.model.dto.Upload" alias="Upload" />
+		<typeAlias type="com.mvcdemoweb.model.dto.UploadFile" alias="UploadFile" /> -->
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			
+			<transactionManager type="JDBC" /><!-- JDBC의 트랜잭션을 사용하겠다 -->
+			<!-- DataSourceTransactionManager -->
+			
+			<dataSource type="POOLED"><!-- 커넥션 풀 된 데이터소스 사용 -->
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="devadmin" /><!-- <property name="username" value="${username} " /> -->
+				<property name="password" value="${password}" /><!-- <property name="password" value="mysql" /> -->
+			</dataSource>
+			
+		</environment>
+	</environments>	
+
+	<mappers>
+		<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 정보가 정의되는 파일들 -->
+		<mapper resource="com/dobbypos/model/mapper/HqMapper.xml" />
+		<!-- <mapper resource="com/mvcdemoweb/model/mapper/UploadMapper.xml" /> -->
+		<!--
+		<mapper resource="com/mvcdemoweb/model/mapper/BoardMapper.xml" />
+		 -->
+	</mappers>
+
+</configuration>
