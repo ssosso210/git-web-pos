@@ -1,9 +1,14 @@
 package com.dobbypos.model.service;
 
+import java.util.List;
+
 import com.dobbypos.model.dto.Employee;
 
 public interface EmployeeService {
+	
+	List<Employee> getAllEmployees();
 
+	Employee searchEmployeeByNo(String no);
 
 	void insertEmployee(Employee employee);
 
