@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/message/tags.properties=UTF-8
+<<<<<<< HEAD
+encoding//src/main/resources/message/tags_en.properties=UTF-8
+=======
+>>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 encoding//src/main/resources/message/tags_ko.properties=UTF-8
 encoding/<project>=UTF-8

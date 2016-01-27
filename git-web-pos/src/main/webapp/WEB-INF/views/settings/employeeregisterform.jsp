@@ -18,12 +18,6 @@
 		        <div class="inputsubtitle">직원기본정보</div>
 		        <form action="employeeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table>
-		            <tr>
-		                <th>번호</th>
-		                <td>
-		                    <input type="number" name="employeeNo" style="width:280px" />
-		                </td>
-		            </tr> 
 		             <tr>
 		                <th>이름</th>
 		                <td>
@@ -42,12 +36,12 @@
 		                	<input type="password" name="passwd" style="width:280px" />
 		                </td>
 		            </tr>
-		            <tr>
+		           <!--  <tr>
 		                <th>비밀번호 확인</th>
 		                <td>
 		                    <input type="password" name="confirm" style="width:280px" />
 		                </td>
-		            </tr>
+		            </tr> -->
 		            <tr>
 		                <th>지점코드(storeCode)</th>
 		                <td>
@@ -61,7 +55,7 @@
 		                </td>
 		            </tr>
 		            <tr>
-		                <th>employeeType</th>
+		                <th>employeeType(admin/user)</th>
 		                <td>
 		                	<input type="text" name="employeeType" style="width:280px" />
 		                </td>

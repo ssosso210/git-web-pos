@@ -40,17 +40,7 @@
 	</select>
 
 	<insert id="insertEmployee" parameterType="Employee">
-		INSERT INTO Employee (employeeNo,employeeName,phoneNo,passwd, storeCode,wage, employeeType, employeeId)
-		VALUES (#{employeeNo}, #{employeeName}, #{phoneNo}, #{passwd}, #{storeCode}, #{wage}, #{employeeType}, #{employeeId})
+		INSERT INTO Employee (employeeName,phoneNo,passwd, storeCode,wage, employeeType, employeeId)
+		VALUES ( #{employeeName}, #{phoneNo}, #{passwd}, #{storeCode}, #{wage}, #{employeeType}, #{employeeId})
 	</insert>
-	
-	
-	
-	
 </mapper>
-
-
-
-
-
-

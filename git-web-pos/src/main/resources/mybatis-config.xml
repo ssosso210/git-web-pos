@@ -27,6 +27,7 @@
 		<typeAlias type="com.mvcdemoweb.model.dto.UploadFile" alias="UploadFile"/> -->
 		<typeAlias type="com.dobbypos.model.dto.Hq" alias="Hq"/>
 		<typeAlias type="com.dobbypos.model.dto.Employee" alias="Employee"/>
+		<typeAlias type="com.dobbypos.model.dto.StoreTable" alias="StoreTable"/>
 		
 	</typeAliases>
 
@@ -46,12 +47,11 @@
 	
 
 	<mappers>
-	<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 장보가 정의되는 파일들  -->
-		<!-- <mapper resource="com/mvcdemoweb/model/mapper/mysqlmapper/MemberMapper.xml" /> -->
+	<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 장보가 정1의되는 파일들  -->
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
-		<!-- <mapper resource="com/mvcdemoweb/model/mapper/UploadMapper.xml" /> -->
-		<!-- <mapper resource="com/demoweb/model/mapper/BoardMapper.xml" /> -->
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/TableMapper.xml" />
+	
 	</mappers>
 
 </configuration>
