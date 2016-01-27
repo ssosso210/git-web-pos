@@ -50,15 +50,15 @@ public class SettingsController {
 		return "redirect:/settings/settinghome.action";
 	}
 	
-	
-	
-	/*//employeer 등록 취소시
-	@RequestMapping(value = "/list.action", method = RequestMethod.GET)
-	public String EmployeeList() {
-		return "settings/employeelist"; 
-	}*/
-	
-	
+	@RequestMapping(value="/menuregisterform.action", method=RequestMethod.GET)
+	public String MenuRegisterForm(){
+		return "settings/menuregisterform";
+	}
+	@RequestMapping(value="/tableregister.action", method=RequestMethod.POST)
+	public String MenuRegister(){
+		System.out.println("menu register 성공 ");
+		return "redirect:/settings/settinghome.action";
+	}
 	
 }
 
