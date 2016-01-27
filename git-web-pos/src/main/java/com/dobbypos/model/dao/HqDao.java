@@ -4,8 +4,10 @@ import com.dobbypos.model.dto.Hq;
 
 public interface HqDao {
 
+	Hq selectHqByHqId(String hqId);
 
-	Hq getHqByCode(String id);
+
+	
 
 
 }

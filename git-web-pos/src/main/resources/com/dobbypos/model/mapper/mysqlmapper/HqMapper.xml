@@ -26,10 +26,11 @@
 		<result property="hqPasswd" column="hqPasswd" />
 	</resultMap>
 	
-	
-	
-	
-	
+	<select id="selectHqByHqId" parameterType="String" resultType="Hq">
+		SELECT <include refid="HqColumns" /> 
+		FROM hq
+		WHERE hqId = #{id}
+	</select>
 </mapper>
 
 

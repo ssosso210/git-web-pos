@@ -25,7 +25,7 @@
 		                </td>
 		            </tr> 
 		              <tr>
-		                <th>storeCode</th>
+		                <th>storeCode(outback001로 테스트함)</th>
 		                <td>
 		                    <input type="text" name="storeCode" style="width:280px" />
 		                </td>
