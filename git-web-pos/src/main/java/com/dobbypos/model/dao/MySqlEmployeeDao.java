@@ -15,9 +15,9 @@ public class MySqlEmployeeDao implements EmployeeDao {
 	
 
 	
-	@Autowired
-	@Qualifier("sqlSessionTemplate")
-	private SqlSessionTemplate sqlSessionTemplate;
+//	@Autowired
+//	@Qualifier("sqlSessionTemplate")
+//	private SqlSessionTemplate sqlSessionTemplate;
 	
 	@Autowired
 	@Qualifier("employeeMapper")
