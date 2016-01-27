@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.dobbypos.model.dao.EmployeeDao;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.service.EmployeeService;
 
@@ -34,6 +33,8 @@ public class SettingsController {
 	@RequestMapping(value = "/employeeregister.action", method = RequestMethod.POST)
 	public String EmployeeRegister(Employee employee) {
 	//	employee.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-1"));
+		
+		
 		System.out.println(employee.toString());
 		employeeService.insertEmployee(employee);
 		System.out.println("employee register 성공  ");
