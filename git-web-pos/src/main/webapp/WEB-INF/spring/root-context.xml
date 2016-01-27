@@ -66,7 +66,6 @@
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.TableMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-<<<<<<< HEAD
 	
 
 	<bean id="menuMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
@@ -76,10 +75,6 @@
 	
 	<bean id="saleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.SaleMapper" />
-=======
-	<bean id="checkMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.dobbypos.model.mapper.CheckMapper" />
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<!-- <bean id="uploadMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">

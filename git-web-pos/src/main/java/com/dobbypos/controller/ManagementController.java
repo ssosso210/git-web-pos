@@ -32,7 +32,7 @@ public class ManagementController {
 	public String menu() {	
 		
 		List<Employee> employees = employeeService.getAllEmployees();
-		Model.addAttribute("employees", employees);//HttpServletRequest.setAttribute("members", members);		
+//		Model.addAttribute("employees", employees);//HttpServletRequest.setAttribute("members", members);		
 		
 		return "management/managementhome"; 
 	}
