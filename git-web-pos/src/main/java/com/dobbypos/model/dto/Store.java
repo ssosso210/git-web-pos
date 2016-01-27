@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class Store implements Serializable {
 	
-	private String storeCode;	
+		
+	private String storeCode;
 	private String address;
 	private String storeName;
 	private String managerName;
@@ -19,6 +20,7 @@ public class Store implements Serializable {
 		this.storeCode = storeCode;
 	}
 	
+
 	public String getAddress() {
 		return address;
 	}
@@ -54,6 +56,12 @@ public class Store implements Serializable {
 	}
 	public void setHqCode(String hqCode) {
 		this.hqCode = hqCode;
+	}
+	@Override
+	public String toString() {
+		return "Store [storeCode=" + storeCode + ", address=" + address
+				+ ", storeName=" + storeName + ", managerName=" + managerName + ", email=" + email + ", phoneNo="
+				+ phoneNo + ", hqCode=" + hqCode + "]";
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.dobbypos.model.dao.HqDao;
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 @Service("hqService")
@@ -35,5 +36,13 @@ public class HqServiceImpl implements HqService {
 		
 		return hqDao.getClientList();
 	}
+	@Override
+	public Hq searchHqByHqId(String hqId) {
+		
+
+		return hqDao.selectHqByHqId(hqId);
+	}
+
+	
 
 }

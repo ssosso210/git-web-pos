@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 public interface HqService {
@@ -12,6 +13,8 @@ public interface HqService {
 	
 	List<Customer> getAllCustomer();
 
-	List<Client> getAllClient();	
+	List<Client> getAllClient();
+	
+	Hq searchHqByHqId(String hqId);
 
 }

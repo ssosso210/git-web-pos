@@ -7,43 +7,53 @@
 <configuration>
 
 	<properties>
-		<property name="driver" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@210.16.214.202:1521:xe" />
+
+	 <!-- 아래의 부분은 오라클 버전. -->
+      <!--<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@210.16.214.202:1521:xe" />
+      <property name="username" value="dobbypos" />
+      <property name="password" value="dobby" />
+-->
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://210.16.214.202:3306/dobbypos" />
 		<property name="username" value="dobbypos" />
 		<property name="password" value="dobby" />
+
 	</properties>
 	
-	<typeAliases><!-- 순서를 지켜서 써줘야 함 -->
-		<typeAlias type="com.dobbypos.model.dto.Store" alias="Store" />
-		<typeAlias type="com.dobbypos.model.dto.Customer" alias="Customer" />
-		<typeAlias type="com.dobbypos.model.dto.Client" alias="Client" />
-		<!-- <typeAlias type="com.mvcdemoweb.model.dto.Upload" alias="Upload" />
-		<typeAlias type="com.mvcdemoweb.model.dto.UploadFile" alias="UploadFile" /> -->
+	<typeAliases>
+	<!-- 	<typeAlias type="com.mvcdemoweb.model.dto.Member" alias="Member"/>
+		<typeAlias type="com.mvcdemoweb.model.dto.Upload" alias="Upload"/>
+		<typeAlias type="com.mvcdemoweb.model.dto.UploadFile" alias="UploadFile"/> -->
+		<typeAlias type="com.dobbypos.model.dto.Hq" alias="Hq"/>
+		<typeAlias type="com.dobbypos.model.dto.Employee" alias="Employee"/>
+		<typeAlias type="com.dobbypos.model.dto.StoreTable" alias="StoreTable"/>
+		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>
+		
 	</typeAliases>
 
 	<environments default="development">
 		<environment id="development">
+			<transactionManager type="JDBC" />
 			
-			<transactionManager type="JDBC" /><!-- JDBC의 트랜잭션을 사용하겠다 -->
-			<!-- DataSourceTransactionManager -->
-			
-			<dataSource type="POOLED"><!-- 커넥션 풀 된 데이터소스 사용 -->
+			<dataSource type="POOLED">
 				<property name="driver" value="${driver}" />
 				<property name="url" value="${url}" />
-				<property name="username" value="devadmin" /><!-- <property name="username" value="${username} " /> -->
-				<property name="password" value="${password}" /><!-- <property name="password" value="mysql" /> -->
+				<property name="username" value="dobbypos" />
+				<property name="password" value="dobby" />
 			</dataSource>
 			
 		</environment>
-	</environments>	
+	</environments>
+	
 
 	<mappers>
-		<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 정보가 정의되는 파일들 -->
-		<mapper resource="com/dobbypos/model/mapper/HqMapper.xml" />
-		<!-- <mapper resource="com/mvcdemoweb/model/mapper/UploadMapper.xml" /> -->
-		<!--
-		<mapper resource="com/mvcdemoweb/model/mapper/BoardMapper.xml" />
-		 -->
+	<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 장보가 정1의되는 파일들  -->
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/TableMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/MenuMapper.xml" />
+	
 	</mappers>
 
 </configuration>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.mapper.HqMapper;
 
@@ -47,6 +48,12 @@ public class TheHqDao implements HqDao {
 		List<Client> clients = hqMapper.selectClientList();
 		
 		return clients;
+	}
+
+	@Override
+	public Hq selectHqByHqId(String hqId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
