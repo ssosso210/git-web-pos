@@ -34,6 +34,7 @@ public class SettingsController {
 	@RequestMapping(value = "/employeeregister.action", method = RequestMethod.POST)
 	public String EmployeeRegister(Employee employee) {
 	//	employee.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-1"));
+		System.out.println(employee.toString());
 		employeeService.insertEmployee(employee);
 		System.out.println("employee register 성공  ");
 		return "redirect:/settings/settinghome.action";
