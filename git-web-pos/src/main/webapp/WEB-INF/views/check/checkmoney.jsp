@@ -1,5 +1,10 @@
+<%@page import="com.dobbypos.model.dto.Balance"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dobbypos.model.dao.CheckDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,14 +13,13 @@
 </head>
 <body>
 <div style="text-align:left;margin-top:1px;padding:5px">
-        	[ 날짜 : ${ total } 일 ]
-        	[ 지점코드 : ${ current }  ]
+        	[ 날짜 : ${ balance.regData } 일 ]
+        	[ 지점코드 : ${ balance.storeCode }  ]
         </div>
 
 	<div id="pageContainer">
 
-		<!-- <c:import url="/WEB-INF/views/include/header.jsp" />
- -->
+		<!-- <c:import url="/WEB-INF/views/include/header.jsp" /> --> 
 		<div id="content">
 			<br />
 			<br />
@@ -27,7 +31,7 @@
 			<br />
 			<br />
 			<table border="1" align="center" width="700px">
-				<tr style="height: 30px; background-color: orange">
+				<tr style="height: 30px; background-color: yellow">
 					<td>시간</td>
 					<td>구분</td>
 					<td>고객번호</td>
@@ -35,10 +39,10 @@
 					<td>금액</td>
 					<td>내역</td>
 				</tr>
-				<c:forEach var="member" items="${ members }">
+				<c:forEach var="balance" items="${ balances }">
 					<tr style="height: 30px">
-						<td><c:url value="view.action" var="viewUrl">
-								<c:param name="memberid" value="${ member.memberId }" />
+						<td><c:url value="checkmoney.action" var="viewUrl">
+								<c:param name="memberid" value="${ balance.balanceN }" />
 							</c:url> <a href="${ viewUrl }">${ member.memberId }</a></td>
 						<td>${ member.email }</td>
 						<td>${ member.userType }</td>
