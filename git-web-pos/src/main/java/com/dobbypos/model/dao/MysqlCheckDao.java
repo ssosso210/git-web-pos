@@ -1,6 +1,7 @@
 package com.dobbypos.model.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class MysqlCheckDao implements CheckDao {
 	@Autowired
 	@Qualifier("checkMapper")
 	private CheckMapper checkMapper;
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	@Override
 	public Balance selectBalanceByCode(String storeCode) {
@@ -29,6 +32,16 @@ public class MysqlCheckDao implements CheckDao {
 		Balance balance = checkMapper.selectBalanceByCode(params);
 		
 		return balance;
+	}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
+	@Override
+	public List<Balance> getList() {
+		
+	List<Balance> balances = checkMapper.balances();	
+		
+	return balances;
 	}
 
 }
