@@ -1,12 +1,17 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Client implements Serializable {
 	
 	private String clientName;
 	private String hqCode;
-	private int clientPhoneNo;
+	private String clientPhoneNo;
+	private String businessRegistrationNumber;
+	private String email;
+	private String address;
+	private Date regDate;
 	
 	public String getClientName() {
 		return clientName;
@@ -20,11 +25,37 @@ public class Client implements Serializable {
 	public void setHqCode(String hqCode) {
 		this.hqCode = hqCode;
 	}
-	public int getClientPhoneNo() {
+	public String getClientPhoneNo() {
 		return clientPhoneNo;
 	}
-	public void setClientPhoneNo(int clientPhoneNo) {
+	public void setClientPhoneNo(String clientPhoneNo) {
 		this.clientPhoneNo = clientPhoneNo;
 	}
+	public String getBusinessRegistrationNumber() {
+		return businessRegistrationNumber;
+	}
+	public void setBusinessRegistrationNumber(String businessRegistrationNumber) {
+		this.businessRegistrationNumber = businessRegistrationNumber;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+	
+	
 
 }
