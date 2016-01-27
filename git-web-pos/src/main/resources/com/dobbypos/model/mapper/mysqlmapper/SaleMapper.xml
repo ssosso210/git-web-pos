@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dobbypos.model.mapper.SaleMapper"><!-- 클래스 또는 인터페이스 역할 -->
+
+
+
+
+<!-- 	<resultMap type="Employee" id="employeeMap">
+		<id property="employeeNo" column="employeeNo" />
+		<result property="employeeName" column="employeeName" />
+		<result property="phoneNo" column="phoneNo" />
+		<result property="passwd" column="passwd" />
+		<result property="storeCode" column="storeCode" />
+		<result property="wage" column="wage" />
+		<result property="employeeType" column="employeeType" />
+		<result property="employeeId" column="employeeId" />		
+	</resultMap>
+	
+	<select id="selectEmployeeByCodeAndIdAndPw" 
+		parameterType="hashMap" resultType="Employee">
+		SELECT em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode,
+    		em.wage, em.employeeType, em.employeeId
+		FROM store st JOIN employee em
+		where em.storeCode = #{storeCode} and em.employeeId = #{employeeId} 
+		and st.storeCode = em.storeCode and st.hqCode = #{hqCode}
+	</select>
+
+	<insert id="insertEmployee" parameterType="Employee">
+		INSERT INTO Employee (employeeName,phoneNo,passwd, storeCode,wage, employeeType, employeeId)
+		VALUES ( #{employeeName}, #{phoneNo}, #{passwd}, #{storeCode}, #{wage}, #{employeeType}, #{employeeId})
+	</insert> -->
+	
+</mapper>
