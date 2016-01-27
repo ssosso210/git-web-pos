@@ -26,12 +26,7 @@
 		<result property="hqPasswd" column="hqPasswd" />
 	</resultMap>
 	
-	<select id="selectHqByCode" 
-		parameterType="String" resultType="Hq">
-		SELECT hqCode, hqName, phoneNo, address, hqId, hqPasswd 
-		FROM hq
-		WHERE hqCode = #{id}
-	</select>
+	
 	
 	
 	

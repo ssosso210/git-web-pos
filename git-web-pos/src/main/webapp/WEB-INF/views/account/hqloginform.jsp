@@ -28,7 +28,7 @@
 		<c:import url="/WEB-INF/views/include/header.jsp" />
 		<div id="container">
 			<div id="mainimg"> 
-			<h1>Dobby pos</h1>
+			<h1>Dobby hq pos</h1>
 			</div>
 			 <!-- <div id="inputcontent">  -->
 			<br /><br />
@@ -46,22 +46,17 @@
 		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="onehal001"/>
 		                </td>
 		            </tr>
-		            <tr>
-		                <th>매장 코드</th>
-		                <td>
-		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="onehalbo001"/>
-		                </td>
-		            </tr>
+
 		            <tr>
 		                <th>아이디</th>
 		                <td>
-		                    <input type="text" id="employeeId" name="employeeId" style="width:280px" value="oneboadmin"/>
+		                    <input type="text" id="hqId" name="hqId" style="width:280px" value="oneboadmin"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>비밀번호</th>
 		                <td>
-		                	<input type="password" name="passwd" style="width:280px" value="123" />
+		                	<input type="password" name="hqpasswd" style="width:280px" value="123" />
 		                </td>
 		            </tr>
 		        </table>

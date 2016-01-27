@@ -18,8 +18,6 @@ import com.dobbypos.model.service.EmployeeService;
 @RequestMapping("/account")
 public class AccountController {
 	
-
-	
 	@Autowired
 	@Qualifier("employeeService")
 	private EmployeeService employeeService;
