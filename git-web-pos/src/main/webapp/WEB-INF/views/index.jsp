@@ -14,18 +14,7 @@
 </head>
 <body>
 
-   <%--  <div id="wrap">
-    
-    	<c:import url="/WEB-INF/views/include/header.jsp" />
-        <div id="container">
-	        <div id="content">
-	        	<br /><br /><br /><br /><br />
-	        	<h2 style='text-aling:center'>
-					Hello dobby web pos Site Main Page !!!
-				</h2>
-	        </div>
-        </div>
-    </div> --%>
+
     <div id="wrap">
 	
 		<c:import url="/WEB-INF/views/include/header.jsp" />
@@ -77,8 +66,12 @@
 		        
 		        
 		    </div>
+		    
 		   	<div class="buttons">
-	        	<input type="button" value="본사" style="height:25px" />
+			   	<a href="/dobbywebpos/account/hqlogin.action">
+			   		본사
+			   	</a>
+	        	<!-- <input type="button" value="본사" style="height:25px" /> -->
 	        </div>
 			 
 

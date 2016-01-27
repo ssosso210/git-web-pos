@@ -21,15 +21,13 @@ public class MySqlHqDao implements HqDao {
 	@Qualifier("hqMapper")
 	private HqMapper hqMapper;
 
-	
-
-	public Hq getHqByCode(String code) {
+	@Override
+	public Hq selectHqByHqId(String hqId) {
 		
-
-		Hq hq = hqMapper.selectHqByCode(code);
-			
-		return hq;
+		return hqMapper.selectHqByHqId(hqId);
 	}
+
+	
 
 	
 
