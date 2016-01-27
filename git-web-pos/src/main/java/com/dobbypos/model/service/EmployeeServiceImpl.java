@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.EmployeeDao;
 import com.dobbypos.model.dto.Employee;
+import com.dobbypos.model.dto.Hq;
 
 
 @Service("employeeService")
@@ -44,6 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDao.insertEmployee(employee);
 		
 	}
+
+	
 	
 	
 }

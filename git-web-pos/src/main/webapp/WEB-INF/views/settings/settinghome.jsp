@@ -16,7 +16,8 @@
 <a href="employeeregisterform.action">직원등록</a><br/>
 <a href="tableregisterform.action">테이블등록</a><br/>
 <a>고객등록</a><br/>
-<a>메뉴등록</a><br/>
+<a href="menuregisterform.action">메뉴등록</a><br/>
+
 
 
 <a></a>
