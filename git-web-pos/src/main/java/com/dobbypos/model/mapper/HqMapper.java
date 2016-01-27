@@ -1,15 +1,5 @@
 package com.dobbypos.model.mapper;
 
-<<<<<<< HEAD
-import com.dobbypos.model.dto.Hq;
-
-public interface HqMapper {
-	
-
-	
-	Hq selectHqByCode(String code);
-	
-=======
 import java.util.List;
 
 import com.dobbypos.model.dto.Client;
@@ -25,6 +15,4 @@ public interface HqMapper {
 
 	List<Client> selectClientList();
 	Hq selectHqByHqId(String hqId);
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
-
 }
