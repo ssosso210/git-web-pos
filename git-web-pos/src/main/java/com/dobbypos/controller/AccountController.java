@@ -61,7 +61,7 @@ public class AccountController {
 				//spring mvc에서 redirect 경로는 application이름을 포함할 수 없습니다.
 				return "redirect:" + returnUrl.replace("/dobbywebpos", "");
 			} else {
-				return "redirect:/home.action";
+				return "redirect:/main.action";
 			}
 		} else {
 			

@@ -13,6 +13,15 @@ public class HomeController {
 		
 	
 		return "index"; // /WEB-INF/views/ + index + .jsp
+		
+	}
+	
+	@RequestMapping(value = {"/main.action" }, method = RequestMethod.GET)
+	public String main() {		
+		
+	
+		//return "index"; // /WEB-INF/views/ + index + .jsp
+		return "mainpage/main"; // /WEB-INF/views/ + mainpage/main + .jsp
 	}
 	
 }
