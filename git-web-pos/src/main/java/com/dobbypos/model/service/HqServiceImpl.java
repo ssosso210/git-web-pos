@@ -2,25 +2,21 @@ package com.dobbypos.model.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.HqDao;
+import com.dobbypos.model.dto.Client;
+import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Hq;
+import com.dobbypos.model.dto.Store;
 
 
 @Service("hqService")
 public class HqServiceImpl implements HqService {
-
-	public void init() {
-		System.out.println("init method is called");
-	}
-	
-	public void destroy() {
-		System.out.println("destroy method is called");
-	}
-	
 
 	@Autowired
 	@Qualifier("hqDao")
@@ -34,7 +30,23 @@ public class HqServiceImpl implements HqService {
 		return hqDao.selectHqByHqId(hqId);
 	}
 
-	
+	@Override
+	public List<Store> getAllStore() {
+		
+		return hqDao.getStoreList();
+	}
+
+	@Override
+	public List<Customer> getAllCustomer() {
+		
+		return hqDao.getCustomerList();
+	}
+
+	@Override
+	public List<Client> getAllClient() {
+		
+		return hqDao.getClientList();
+	}
 
 	
 	

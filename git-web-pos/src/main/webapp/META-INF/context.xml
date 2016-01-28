@@ -3,10 +3,17 @@
 <Context path="/dobbywebpos" reloadable="true">
 
 	<Resource 
-		name="jdbc/dobbypos" 
+		name="jdbc/dobbyposMysql" 
 		auth="Container" type="javax.sql.DataSource"
 		maxTotal="100" maxIdle="30" maxWaitMillis="10000" 
 		username="dobbypos" password="dobby" 
 		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://210.16.214.202:3306/dobbypos" />
+	
+	<Resource 
+		name="jdbc/dobbyposOracle" 
+		auth="Container" type="javax.sql.DataSource"
+		maxTotal="100" maxIdle="30" maxWaitMillis="10000" 
+		username="dobbypos" password="dobby" 
+		driverClassName="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@210.16.214.202:1521:xe" />
 
 </Context>

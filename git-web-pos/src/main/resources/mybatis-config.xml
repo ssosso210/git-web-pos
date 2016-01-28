@@ -29,6 +29,9 @@
 		<typeAlias type="com.dobbypos.model.dto.Employee" alias="Employee"/>
 		<typeAlias type="com.dobbypos.model.dto.StoreTable" alias="StoreTable"/>
 		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>
+		<typeAlias type="com.dobbypos.model.dto.Store" alias="Store" />
+		<typeAlias type="com.dobbypos.model.dto.Customer" alias="Customer" />
+		<typeAlias type="com.dobbypos.model.dto.Client" alias="Client" />
 		
 		<!-- 윤수가추가 -->
 		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>

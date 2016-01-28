@@ -16,29 +16,29 @@
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
     <!-- bootstrap 3.0.2 -->
-    <link href="/dobbypos/resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
-    <link href="/dobbypos/resources/styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
-    <link href="/dobbypos/resources/styles/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Morris chart -->
-    <link href="/dobbypos/resources/styles/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
-    <link href="/dobbypos/resources/styles/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
     <!-- Date Picker -->
-    <link href="/dobbypos/resources/styles/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
     <!-- fullCalendar -->
-    <link href="/dobbypos/resources/styles/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
     <!-- Daterange picker -->
-    <link href="/dobbypos/resources/styles/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- iCheck for checkboxes and radio inputs -->
-    <link href="/dobbypos/resources/styles/iCheck/all.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/iCheck/all.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <!-- <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" /> -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- Theme style -->
-    <link href="/dobbypos/resources/styles/style.css" rel="stylesheet" type="text/css" />
-    <link href="/dobbypos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -54,31 +54,31 @@
           </style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="/dobbypos/resources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->
-        <script src="/dobbypos/resources/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
         <!-- Bootstrap -->
-        <script src="/dobbypos/resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- daterangepicker -->
-        <script src="/dobbypos/resources/js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 
-        <script src="/dobbypos/resources/js/plugins/chart.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/plugins/chart.js" type="text/javascript"></script>
 
         <!-- datepicker
         <script src="js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>-->
         <!-- Bootstrap WYSIHTML5
         <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>-->
         <!-- iCheck -->
-        <script src="/dobbypos/resources/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
         <!-- calendar -->
-        <script src="/dobbypos/resources/js/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
 
         <!-- Director App -->
-        <script src="/dobbypos/resources/js/Director/app.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/Director/app.js" type="text/javascript"></script>
 
         <!-- Director dashboard demo (This is only for demo purposes) -->
-        <script src="/dobbypos/resources/js/Director/dashboard.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
 
         <!-- Director for demo purposes -->
         <script type="text/javascript">
@@ -164,7 +164,7 @@
       </head>
       <body class="skin-black">
 
-      <c:import url="/WEB-INF/views/include/header.jsp" />
+      <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
       <div id="pageContainer">	
 			
 		
