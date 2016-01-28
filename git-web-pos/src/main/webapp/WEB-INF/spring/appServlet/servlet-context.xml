@@ -5,21 +5,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-<<<<<<< HEAD
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-=======
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-<<<<<<< HEAD
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-=======
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
+
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -39,7 +31,7 @@
 	</beans:bean>
 	
 	<!-- file upload controller -->
-<<<<<<< HEAD
+
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760" />
@@ -56,14 +48,6 @@
 		<beans:property name="transactionManager" ref="txManager"></beans:property>
 	</beans:bean>
 	
-=======
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="10485760" />
-		<beans:property name="maxInMemorySize" value="1048576" />
-		<beans:property name="uploadTempDir" value="/WEB-INF/temp" />
-		<beans:property name="defaultEncoding" value="utf-8" />
-	</beans:bean>
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 	
 	
 	<context:component-scan base-package="com.dobbypos.controller" />
@@ -113,18 +97,7 @@
 		</interceptor>
 	</interceptors>
 	
-	<!-- .properties 파일에서 관히되는 메시지 사용 설정 -->
-	<!-- .jsp의 <spring:message 태그에서 사용할 message 내용을 관리할 빈 등록 -->
-	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<beans:property name="basenames">
-			<beans:list>
-				<beans:value>message.hq_message</beans:value>
-				<!-- <beans:value>message.error</beans:value> -->
-			</beans:list>
-		</beans:property>
-		<beans:property name="defaultEncoding" value="utf-8" />
-	</beans:bean>
-	
+
 	
 	
 </beans:beans>
