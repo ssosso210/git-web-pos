@@ -7,7 +7,7 @@ import com.dobbypos.model.dto.Balance;
 
 public interface CheckMapper {
 	
-	List<Balance> balances();
+	List<Balance> getBalances();
 	
 	Balance selectBalanceByCode(HashMap<String, String> params);
 

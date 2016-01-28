@@ -64,6 +64,7 @@
 	</bean> -->
 	
 
+
 	<bean id="employeeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.EmployeeMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

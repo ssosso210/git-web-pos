@@ -12,49 +12,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="text-align:left;margin-top:1px;padding:5px">
-        	[ 날짜 : ${ balance.regData } 일 ]
+		<div style="text-align:left;margin-top:1px;padding:5px">
+        	[ 날짜 : ${ balance.regDate } 일 ]
         	[ 지점코드 : ${ balance.storeCode }  ]
         </div>
 
-	<div id="pageContainer">
-
-		<!-- <c:import url="/WEB-INF/views/include/header.jsp" /> --> 
-		<div id="content">
-			<br />
-			<br />
-			<div style='text-align: right'>
-				<button>삽입</button>
-				<button>수정</button>
-				<button>삭제</button>
-			</div>
-			<br />
-			<br />
-			<table border="1" align="center" width="700px">
-				<tr style="height: 30px; background-color: yellow">
-					<td>시간</td>
+	        	
+        	<table border="1" align="center" width="700px">
+        		<tr style="height:30px;background-color:orange">
+        			<td>시간</td>
 					<td>구분</td>
 					<td>고객번호</td>
 					<td>고객명</td>
 					<td>금액</td>
 					<td>내역</td>
-				</tr>
-				<c:forEach var="balance" items="${ balances }">
-					<tr style="height: 30px">
-						<td><c:url value="checkmoney.action" var="viewUrl">
-								<c:param name="memberid" value="${ balance.balanceN }" />
-							</c:url> <a href="${ viewUrl }">${ member.memberId }</a></td>
-						<td>${ member.email }</td>
-						<td>${ member.userType }</td>
-						<td>${ member.active }</td>
-						<td>${ member.regDate }</td>
-						<td>${ member.regDate }</td>
-					</tr>
-				</c:forEach>
-			</table>
-
-		</div>
-	</div>
+        		</tr>        	
+        	<c:forEach var="valance" items="${ valances }">
+        		<tr style="height:30px">
+        			<td>${ valance.regDate }</td>
+        			<td>${ valance.regDate }</td>
+        			<td>${ valance.regDate }</td>
+        			<td>${ valance.regDate }</td>
+        			<td>${ valance.regDate }</td>
+        		</tr>
+        	</c:forEach>
+        	</table>
+        	
+        
 
 </body>
 </html>

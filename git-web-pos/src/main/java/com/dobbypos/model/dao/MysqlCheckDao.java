@@ -36,12 +36,14 @@ public class MysqlCheckDao implements CheckDao {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	
+
+
+
 	@Override
-	public List<Balance> getList() {
-		
-	List<Balance> balances = checkMapper.balances();	
-		
-	return balances;
+	public List<Balance> getBalances() {
+		List<Balance> balances = checkMapper.getBalances();    ////////여기가 이상함!!!
+		System.out.println("DaoImpl");	
+		return balances;
 	}
 
 }
