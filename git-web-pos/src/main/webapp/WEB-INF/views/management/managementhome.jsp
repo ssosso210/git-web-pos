@@ -16,10 +16,10 @@
         <div>
         	<br /><br />
         	<div style='text-align:center'>
-        		[&nbsp;<a href="salarymanagement.action">인건비 관리</a>&nbsp;]
+        		[&nbsp;<a href="salarylist">인건비 관리</a>&nbsp;]
         	</div>
         	<div style='text-align:center'>
-        		[&nbsp;<a href="stock.action">재고 관리</a>&nbsp;]
+        		[&nbsp;<a href="stock">재고 관리</a>&nbsp;]
         	</div>
         	<br /><br />             	
         </div>

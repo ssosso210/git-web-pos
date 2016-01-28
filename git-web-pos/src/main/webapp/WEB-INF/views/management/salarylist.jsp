@@ -22,8 +22,8 @@
         			<td>직원번호</td>
         			<td>직원이름</td>
         			<td>시급</td>
-        			<td>축적시간</td>
-        			<td>급여</td>       			
+        			<!-- <td>축적시간</td>
+        			<td>급여</td> -->       			
         		</tr>        	
 <%-- <c:forEach var="member" items="${ member }">
         		<tr style="height:30px">
@@ -40,18 +40,19 @@
         		</tr>
  			</c:forEach> --%>
         	
-        	<c:forEach var="employee" items="${ employee }">
+        	<c:forEach var="employee" items="${ employees }">
         		<tr style="height:30px">
         			<td>
-        				<c:url value="view.action" var="viewUrl">
+        			${ employee.employeeNo }
+        				<%-- <c:url value="view.action" var="viewUrl">
         					<c:param name="employeeNo" value="${ employee.employeeNo }" />
         				</c:url>
-        				<a href="${ viewUrl }">${ employee.employeeNo }</a>
+        				<a href="${ viewUrl }">${ employee.employeeNo }</a> --%>
         			</td>
         			<td>${ employee.employeeName }</td>
         			<td>${ employee.wage }</td>
-        			<td><%-- ${ employee.workHours } --%></td>
-        			<td><%-- ${ employee.pay } --%></td>
+        			<%--<td> ${ employee.workHours } </td>
+        			<td>${ employee.pay } </td>--%>
         		</tr>
         	</c:forEach>
         	</table>       	

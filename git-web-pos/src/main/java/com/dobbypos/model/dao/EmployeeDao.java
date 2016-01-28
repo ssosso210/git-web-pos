@@ -1,10 +1,10 @@
 package com.dobbypos.model.dao;
 
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 import com.dobbypos.model.dto.Employee;
+import com.mysql.fabric.xmlrpc.base.Member;
 
 public interface EmployeeDao {
 
@@ -12,7 +12,9 @@ public interface EmployeeDao {
 
 	void insertEmployee(Employee employee);
 
+	List<Employee> getList();
 	
+
 
 
 

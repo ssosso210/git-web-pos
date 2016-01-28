@@ -36,7 +36,7 @@
 				<a>근태</a><br /> 
 				<a>판매</a><br /> 
 				<a>조회</a><br /> 
-				<a href="management/managementhome.action">관리</a><br /> 
+				<a href="management/managementhome">관리</a><br /> 
 				<a href="settings/settinghome.action">설정</a><br /> 
 
 				<!-- 윤수 테스트중 -->
