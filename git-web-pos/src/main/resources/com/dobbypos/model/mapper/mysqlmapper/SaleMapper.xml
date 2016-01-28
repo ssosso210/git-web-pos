@@ -9,6 +9,7 @@
 
 
 
+
 <!-- 	<resultMap type="Employee" id="employeeMap">
 		<id property="employeeNo" column="employeeNo" />
 		<result property="employeeName" column="employeeName" />
@@ -34,4 +35,12 @@
 		VALUES ( #{employeeName}, #{phoneNo}, #{passwd}, #{storeCode}, #{wage}, #{employeeType}, #{employeeId})
 	</insert> -->
 	
+
+   <resultMap type="com.dobbypos.model.dto.Menu" id="menuMap" />
+
+   <select id="selectMenus" resultMap="menuMap">
+      SELECT foodCode, foodName, foodPrice, regDate, hqCode from menu
+    </select>
+    
+
 </mapper>

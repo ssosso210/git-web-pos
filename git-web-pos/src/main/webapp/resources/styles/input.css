@@ -6,6 +6,9 @@
 }
 #inputmain
 {
+	position:relative;
+	float: right;
+	width:380px;
     padding-top: 25px;
     padding-left: 29px;
     padding-right: 29px;
@@ -16,7 +19,8 @@
 }
 #inputmain table
 {
-    width: 488px;
+   /*  width: 488px; */
+     width: 400px;
     margin-top: 5px;
     border-top: #b0cde9 2px solid;
     border-collapse: collapse;
@@ -47,7 +51,8 @@
 }
 #inputmain .inputsubtitle
 {
-	width: 486px;
+	/* width: 486px; */
+	width: 400px;
     font-size: 10pt;
     font-weight: bold;
     color: #1f6cba;

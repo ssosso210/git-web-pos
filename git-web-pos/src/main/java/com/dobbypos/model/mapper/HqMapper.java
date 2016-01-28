@@ -11,8 +11,14 @@ public interface HqMapper {
 	
 	List<Store> selectStoreList();
 	
+
 	List<Customer> selectCustomerList();
 
-	List<Client> selectClientList();
+
 	Hq selectHqByHqId(String hqId);
+	
+
+
+	List<Client> selectClientList();
+	
 }

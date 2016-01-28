@@ -7,6 +7,7 @@
 	<meta charset="utf-8" />
 	<title>로그인</title>
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" />
+	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/input.css" />	
 	<script type="text/javascript">
 		window.onload = function() {
@@ -22,42 +23,32 @@
 	</script>
 </head>
 <body>	
-	<div id="pageContainer">
+	<div id="wrap">
 	
 		<c:import url="/WEB-INF/views/include/header.jsp" />
-		
-		<div id="inputcontent">
+		<div id="container">
+			<div id="mainimg"> 
+			<h1>Dobby hq pos</h1>
+			</div>
 			<br /><br />
 		    <div id="inputmain">
-		        <div class="inputsubtitle">로그인정보</div>
+		        <div class="inputsubtitle">본사 로그인</div>
 		        
-		        <form action="/dobbywebpos/account/login.action" method="post">
+		        <form action="/dobbywebpos/account/hqlogin.action" method="post">
 		        
 		        <!-- input type="hidden" : 사용자에게 보이지 않지만 서버로 전송되는 입력 요소 -->
 		        <input type="hidden" name="returnurl" value='${ empty requestScope.returnurl ? "" : requestScope.returnurl }' />
 		        <table>
 		            <tr>
-		                <th>본사 코드</th>
-		                <td>
-		                    <input type="text" id="hqCode" name="hqCode" style="width:280px" value="outback"/>
-		                </td>
-		            </tr>
-		            <tr>
-		                <th>매장 코드</th>
-		                <td>
-		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="outback001"/>
-		                </td>
-		            </tr>
-		            <tr>
 		                <th>아이디</th>
 		                <td>
-		                    <input type="text" id="employeeId" name="employeeId" style="width:280px" value="ob001hany"/>
+		                    <input type="text" id="hqId" name="hqId" style="width:280px" value="superadmin"/>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>비밀번호</th>
 		                <td>
-		                	<input type="password" name="passwd" style="width:280px" value="123" />
+		                	<input type="password" name="hqpasswd" style="width:280px" value="123" />
 		                </td>
 		            </tr>
 		        </table>
@@ -68,8 +59,8 @@
 		        </form>
 		        
 		    </div>
-		</div>   	
-	
+			
+		</div>
 	</div>
 
 </body>
