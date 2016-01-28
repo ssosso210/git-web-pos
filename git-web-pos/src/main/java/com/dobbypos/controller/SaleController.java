@@ -16,6 +16,7 @@ import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.SaleService;
+import com.dobbypos.model.service.TableService;
 
 @Controller
 @RequestMapping("/sale")
@@ -25,6 +26,10 @@ public class SaleController {
 	@Autowired
 	@Qualifier("saleService")
 	private SaleService saleService;
+	
+	@Autowired
+	@Qualifier("tableService")
+	private TableService tableService;
 	
 	@RequestMapping(value = "/salehome.action", method = RequestMethod.GET)
 	public String SettingMenu() {
