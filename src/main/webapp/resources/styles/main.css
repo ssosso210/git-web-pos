@@ -1,0 +1,17 @@
+﻿#container
+{
+	width: 800px;
+    margin: 20px auto;
+    position: relative;
+}
+
+
+
+#mainimg
+{
+    width: 350px;/*550*/
+    height: 400px;
+    position: relative;
+    float: left;
+    background-color: #fec5ed;
+}
