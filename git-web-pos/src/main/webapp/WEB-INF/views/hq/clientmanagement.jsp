@@ -16,6 +16,7 @@
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
     <!-- bootstrap 3.0.2 -->
+
     <link href="/dobbywebpos/resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
     <link href="/dobbywebpos/resources/styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -126,6 +127,7 @@
       <body class="skin-black">
 
       <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
+
       <div id="pageContainer">   
          
       

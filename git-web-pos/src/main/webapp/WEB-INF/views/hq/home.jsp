@@ -13,8 +13,10 @@
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
     <!-- bootstrap 3.0.2 -->
+
     <link href="/dobbywebpos/resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
+
     <link href="/dobbywebpos/resources/styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="/dobbywebpos/resources/styles/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -36,8 +38,6 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,6 +76,7 @@
 
         <!-- Director dashboard demo (This is only for demo purposes) -->
         <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
+
 
         <!-- Director for demo purposes -->
         <script type="text/javascript">
@@ -148,8 +149,8 @@
       </head>
       <body class="skin-black">
 
-                <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
 
+                <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
                     <aside class="right-side">
 
                 <!-- Main content -->

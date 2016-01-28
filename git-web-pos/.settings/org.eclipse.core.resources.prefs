@@ -2,7 +2,18 @@
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/ssosso210/git-web-pos.git
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/resources/message/hq_message.properties=UTF-8
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 encoding//src/main/resources/message/tags.properties=UTF-8
 encoding//src/main/resources/message/tags_en.properties=UTF-8
 encoding//src/main/resources/message/tags_ko.properties=UTF-8
+<<<<<<< HEAD
+=======
+encoding/<project>=UTF-8
+=======
+encoding//src/main/resources/message/hq_message.properties=UTF-8
+>>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
+>>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
