@@ -13,6 +13,8 @@ public class Customer implements Serializable {
 	private String customerLevel;
 	private String storeCode;
 	
+	private Store store;
+	
 	public int getCustomerNo() {
 		return customerNo;
 	}
@@ -58,9 +60,17 @@ public class Customer implements Serializable {
 	public String getStoreCode() {
 		return storeCode;
 	}
+	
 	public void setStoreCode(String storeCode) {
 		this.storeCode = storeCode;
 	}
+	public Store getStore() {
+		return store;
+	}
+	public void setStore(Store store) {
+		this.store = store;
+	}
+	
 	
 	
 }
