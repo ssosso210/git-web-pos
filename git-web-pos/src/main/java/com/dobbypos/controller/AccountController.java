@@ -41,8 +41,10 @@ public class AccountController {
 	@RequestMapping(value = "login.action", method = RequestMethod.POST)
 	public String login(
 		HttpSession session, HttpServletRequest req,
-		String hqCode,String storeCode, String employeeId, String passwd, @RequestParam("returnurl") String returnUrl) {
+		String hqCode,String storeCode, String employeeId, String passwd, @RequestParam("returnurl") String returnUrl, 
+		@RequestParam("storeCode1")String storeCode1) {
 		
+		System.out.println("login.action에서 storecode1받음:"+storeCode1);
 		
 		boolean resultValue= false;
 		
