@@ -2,24 +2,12 @@ package com.dobbypos.model.service;
 
 
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import com.dobbypos.model.dao.CheckDao;
-import com.dobbypos.model.dto.Balance;
-import com.dobbypos.model.dto.Employee;
 
 
 @Service("checkService")
 public class CheckServiceImpl implements CheckService {
 
-	@Autowired
-	@Qualifier("checkDao")
-	private CheckDao checkDao;
-	
 	public void init() {
 		System.out.println("init method is called");
 	}
@@ -28,12 +16,6 @@ public class CheckServiceImpl implements CheckService {
 		System.out.println("destroy method is called");
 	}
 	
-	public List<Balance> getBalances() {
-		System.out.println("ServiceImpl");
-		return checkDao.getBalances();
-	}
-
-}
 
 	/*@Autowired
 	@Qualifier("employeeDao")
@@ -51,4 +33,4 @@ public class CheckServiceImpl implements CheckService {
 //		return employee;
 //	}
 
-
+}

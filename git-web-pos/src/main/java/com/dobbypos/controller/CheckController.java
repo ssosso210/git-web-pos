@@ -36,11 +36,8 @@ public class CheckController {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	@RequestMapping(value = "/checkmoney.action", method = RequestMethod.GET)
 	public String Checkmoney(Model model) {
-		System.out.println("check money 들어옴 ");
 		
-		List<Balance> balances = checkDao.getBalances();
-		System.out.println(balances.get(0).getBalanceNo());
-		
+		List<Balance> balances = checkDao.getList();
 		model.addAttribute("balances", balances);		
 		
 		return "check/checkmoney"; 

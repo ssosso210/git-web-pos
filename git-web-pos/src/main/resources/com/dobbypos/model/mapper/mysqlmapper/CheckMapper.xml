@@ -28,8 +28,8 @@
 		<result property="itemCode" column="itemCode" />
 	</resultMap>
 	
-	<select id="selectBalances" resultType="BalanceMap">
-		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
+	<select id="selectBalances" resultType="Balance">
+		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode
 		FROM balance   
 	</select>
 	

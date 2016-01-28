@@ -6,7 +6,7 @@ import com.dobbypos.model.dto.Balance;
 
 public interface CheckDao {
 
-	List<Balance> getBalances();
+	List<Balance> getList();
 	
 	Balance selectBalanceByCode(String storeCode);
 	

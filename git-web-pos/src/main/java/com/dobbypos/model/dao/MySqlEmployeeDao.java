@@ -49,5 +49,12 @@ public class MySqlEmployeeDao implements EmployeeDao {
 		System.out.println("DaoImpl");
 		return employees;
 	}
+	
+	public Employee getEmployeeByNo(int employeeNo) {
+		
+		Employee employee = employeeMapper.selectEmployeeByNo(employeeNo);
+			
+		return employee;
+	}
 		
 }
