@@ -3,6 +3,7 @@
     width: 550px;
     margin: 0 auto;
     position: relative;
+    
 }
 #inputmain
 {
@@ -21,9 +22,10 @@
 {
    /*  width: 488px; */
      width: 400px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     border-top: #b0cde9 2px solid;
     border-collapse: collapse;
+    margin: 0 50px 0 50px;
 }
 #inputmain th
 {
@@ -65,4 +67,9 @@
     margin-top: 25px;
     margin-bottom: 25px;
     text-align: center;
+}
+
+.th 
+{
+	background-color: black!important;
 }

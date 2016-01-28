@@ -163,7 +163,7 @@
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
                                 <div class="sm-st-info">
-                                    <span>3200<spring:message code="hq.person" /></span>
+                                    <span>${ requestScope.totalCustomers }<spring:message code="hq.person" /></span>
                                     <spring:message code="hq.totalCustomer" />
                                 </div>
                             </div>

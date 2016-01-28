@@ -15,6 +15,6 @@ public interface HqMapper {
 	
 	List<Customer> selectCustomerList();
 
-	List<Client> selectClientList();	
+	List<Client> selectClientList();
 
 }
