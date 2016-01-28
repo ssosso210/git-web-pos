@@ -12,7 +12,9 @@ public interface EmployeeDao {
 
 	void insertEmployee(Employee employee);
 
-	List<Employee> getList();
+	List<Employee> getList();	
+
+	Employee getEmployeeByNo(int employeeNo);
 	
 
 

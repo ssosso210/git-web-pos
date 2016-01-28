@@ -29,7 +29,7 @@
 		        <div class="inputsubtitle">로그인정보</div>
 		        
 		        <form action="/dobbywebpos/account/login.action" method="post">
-		        
+		   
 		        <!-- input type="hidden" : 사용자에게 보이지 않지만 서버로 전송되는 입력 요소 -->
 		        <input type="hidden" name="returnurl" value='${ empty requestScope.returnurl ? "" : requestScope.returnurl }' />
 		        <table>
@@ -42,7 +42,9 @@
 		            <tr>
 		                <th>매장 코드</th>
 		                <td>
+		               
 		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" value="outback001"/>
+		                     <input type="hidden" id="storeCode1" name="storeCode1" value="outback001"/> 
 		                </td>
 		            </tr>
 		            <tr>

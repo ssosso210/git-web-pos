@@ -50,9 +50,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee searchEmployeeByNo(String no) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee searchEmployeeByNo(int employeeNo) {
+		
+		return employeeDao.getEmployeeByNo(employeeNo);
 	}
+
+	
 
 }
