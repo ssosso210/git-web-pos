@@ -18,8 +18,13 @@
 
 	<aop:aspectj-autoproxy />
 	
-	<!-- DataSource (Connection Pool) Bean Configuration -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbyposOracle" />
+	<!-- DataSource (Connection Pool) Bean Configuration -오라클용 -->
+	<!-- <jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbyposOracle" /> -->
+	
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbypos" />
+	
+	
+	
 	
 	<!--  JDBC Template Bean Configuration -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
