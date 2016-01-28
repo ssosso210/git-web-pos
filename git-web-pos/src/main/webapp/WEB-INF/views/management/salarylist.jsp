@@ -42,13 +42,13 @@
         	
         	<c:forEach var="employee" items="${ employees }">
         		<tr style="height:30px">
-        			<td>${ employee.employeeNo }</td>
         			<td>
         				<c:url value="view.action" var="viewUrl">
-        					<c:param name="employeeName" value="${ employee.employeeName }" />
+        					<c:param name="employeeNo" value="${ employee.employeeNo }" />
         				</c:url>
-        				<a href="${ viewUrl }">${ employee.employeeName }</a>
+        			<a href="${ viewUrl }">${ employee.employeeNo }</a>
         			</td>
+        			<td>${ employee.employeeName }</td>
         			<td>${ employee.wage }</td>
         			<%--<td> ${ employee.workHours } </td>
         			<td>${ employee.pay } </td>--%>

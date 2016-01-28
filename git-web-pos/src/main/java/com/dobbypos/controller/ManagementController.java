@@ -47,20 +47,21 @@ public class ManagementController {
 	}
 	
 	@RequestMapping(value = "view.action", method = RequestMethod.GET)
-	public String findById(
-		@RequestParam("employeename") String employeeName, @ModelAttribute("employee") Employee employee) {
+	public String findByName(
+		@RequestParam("employeeNo") int employeeNo, @ModelAttribute("employee") Employee employee) {
 		
 		//Member member2 = memberDao.getMemberById(memberId);
-		Employee employee2 = employeeService.searchByEmployeeName(employeeName);
+		Employee employee2 = employeeService.searchEmployeeByNo(employeeNo);
 		if (employee2 != null) {
-			employee.setEmployeeNo(employee2.getMemberId());
-			employee.setEmployeeName(employee2.getEmail());
-			employee.setEmployeeId(employee2.getUserType());
-			employee.setPasswd(employee2.isActive());
-			employee.setPhoneNo(employee2.getUserType());			
-			employee.setWage(employee2.getRegDate());
-			employee.setEmployeeType(employee2.getRegDate());
-			return "salarylist/employeeinfo";
+			employee.setEmployeeNo(employee2.getEmployeeNo());
+			employee.setEmployeeName(employee2.getEmployeeName());
+			employee.setEmployeeId(employee2.getEmployeeId());
+			employee.setPasswd(employee2.getPasswd());
+			employee.setPhoneNo(employee2.getPhoneNo());
+			employee.setStoreCode(employee2.getStoreCode());			
+			employee.setWage(employee2.getWage());
+			employee.setEmployeeType(employee2.getEmployeeType());
+			return "management/employeeinfo";
 		} else {
 			return "redirect:/management/salarylist";
 		}
