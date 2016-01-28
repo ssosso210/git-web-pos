@@ -46,13 +46,4 @@ public class SaleController {
 		return "sale/orderform";
 	}
 	
-
-
-	
-	
 }
-
-
-
-
-
