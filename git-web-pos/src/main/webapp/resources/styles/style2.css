@@ -1,0 +1,71 @@
+#customMenu1 {
+    background: black;
+    padding: 0 0 0 0!important;
+  	margin: 0!important;
+  	top: 100%;
+    
+}
+/* #menu a {
+	display: inline-block;
+} */
+
+#customMenu2 {
+    margin: 0 auto;
+    width: 500px;
+    height: 100px;
+    padding: 11px 80px 36px 11px;
+    background: #FFFFFF;
+}
+
+#customMenu1 ul {
+    /* list-style: none; */
+    display: inline;
+}
+
+#customMenu1 ul li {
+    display: inline-block;
+    float: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    
+}
+#customMenu1 ul li:HOVER {background: #999999;}
+#customMenu1 ul li a:HOVER, #menu ul li a:ACTIVE {color: black;}
+
+#customMenu1 ul li:HOVER ul {display: block;}
+
+#customMenu1 ul li a {
+    font: /* 40px/60px 'Nanum Pen Script', */ cursive;
+    text-decoration: none;
+    /* text-shadow: 0px -1px 0px #9BBE54; */
+    color: black;
+}
+
+#customMenu1 ul li ul {
+	float: left;
+	position: absolute;
+	width: 121px;
+	display: none;
+	background: #8FB63F;
+}
+#customMenu1 ul li ul li { 
+	background: #b8ffbe;
+	display: block;
+	}
+#customMenu1 ul li ul li {
+	font-family: 'Nanum Pen Script', cursive;
+	width: 121px;
+	text-align: center;
+	color: black;
+	font-size: 20pt;
+	cursor: pointer;
+}
+/* #menu ul li ul li a {display:block !important;}  */
+#customMenu1 ul li ul li:HOVER {
+	background: #8FB63F;
+	color: white;
+}
+#menu3 {
+	height: 100px;
+}
