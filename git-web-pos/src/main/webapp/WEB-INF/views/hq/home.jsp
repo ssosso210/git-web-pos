@@ -29,7 +29,7 @@
     <!-- fullCalendar -->
     <link href="/dobbywebpos/resources/styles/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
     <!-- Daterange picker -->
-    <link href="/dobbypos/resources/styles/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- iCheck for checkboxes and radio inputs -->
     <link href="/dobbywebpos/resources/styles/iCheck/all.css" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
@@ -69,7 +69,7 @@
         <!-- iCheck -->
         <script src="/dobbywebpos/resources/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
         <!-- calendar -->
-        <script src="/dobbypos/resources/js/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+        <script src="/dobbywebpos/resources/js/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
 
         <!-- Director App -->
         <script src="/dobbywebpos/resources/js/Director/app.js" type="text/javascript"></script>
@@ -408,7 +408,7 @@
                     <ul class="media-list">
                         <li class="media">
                             <a href="#" class="pull-left">
-                                <img src="img/26115.jpg" alt="Avatar" class="img-circle" width="64" height="64">
+                                <img src="/dobbywebpos/resources/images/26115.jpg" alt="Avatar" class="img-circle" width="64" height="64">
                             </a>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
@@ -427,7 +427,7 @@
                         </li>
                         <li class="media">
                             <a href="#" class="pull-left">
-                                <img src="img/26115.jpg" alt="Avatar" class="img-circle" width="64" height="64">
+                                <img src="/dobbywebpos/resources/images/26115.jpg" alt="Avatar" class="img-circle" width="64" height="64">
                             </a>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
@@ -459,27 +459,27 @@
 
                                 <ul class="list-group teammates">
                                     <li class="list-group-item">
-                                        <a href=""><img src="/dobbypos/resources/images/26115.jpg" width="50" height="50"></a>
+                                        <a href=""><img src="/dobbywebpos/resources/images/26115.jpg" width="50" height="50"></a>
                                         <span class="pull-right label label-danger inline m-t-15">Admin</span>
                                         <a href="">Damon Parker</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href=""><img src="/dobbypos/resources/images/26115.jpg"  width="50" height="50"></a>
+                                        <a href=""><img src="/dobbywebpos/resources/images/26115.jpg"  width="50" height="50"></a>
                                         <span class="pull-right label label-info inline m-t-15">Member</span>
                                         <a href="">Joe Waston</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href=""><img src="/dobbypos/resources/images/26115.jpg"  width="50" height="50"></a>
+                                        <a href=""><img src="/dobbywebpos/resources/images/26115.jpg"  width="50" height="50"></a>
                                         <span class="pull-right label label-warning inline m-t-15">Editor</span>
                                         <a href="">Jannie Dvis</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href=""><img src="/dobbypos/resources/images/26115.jpg"  width="50" height="50"></a>
+                                        <a href=""><img src="/dobbywebpos/resources/images/26115.jpg"  width="50" height="50"></a>
                                         <span class="pull-right label label-warning inline m-t-15">Editor</span>
                                         <a href="">Emma Welson</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href=""><img src="/dobbypos/resources/images/26115.jpg"  width="50" height="50"></a>
+                                        <a href=""><img src="/dobbywebpos/resources/images/26115.jpg"  width="50" height="50"></a>
                                         <span class="pull-right label label-success inline m-t-15">Subscriber</span>
                                         <a href="">Emma Welson</a>
                                     </li>
