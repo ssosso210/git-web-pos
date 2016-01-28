@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dobbypos.model.dao.EmployeeDao;
 import com.dobbypos.model.dto.Employee;
@@ -45,5 +46,16 @@ public class SaleController {
 		System.out.println(" [ 메뉴가져왔어 ]  ");
 		return "sale/orderform";
 	}
+	
+	//테이블디비에추가(박은영)
+	@RequestMapping(value="/newTable.action", method=RequestMethod.GET)
+	public String newTable(@RequestParam("storeCode")String storeCode){
+		System.out.println(" storeCode 는 :"+storeCode);
+		return null;
+	}
+	
+	
+	
+	
 	
 }
