@@ -24,10 +24,18 @@ public class MySqlSaleDao implements SaleDao {
 	private SaleMapper saleMapper;
 	
 	@Override
-	public List<Menu> getList() {
+	public List<Menu> getAllList() {
 
-		List<Menu> menus = saleMapper.selectMenus();
+		List<Menu> menus = saleMapper.allMenus();
 
+		return menus;
+	}
+
+	@Override
+	public List<Menu> getSelectMenu(String foodCode) {
+
+		List<Menu> menus = saleMapper.selectMenus(foodCode);
+		
 		return menus;
 	}
 
