@@ -13,35 +13,35 @@ import com.dobbypos.model.mapper.CheckMapper;
 
 @Repository("checkDao")
 public class MysqlCheckDao implements CheckDao {
+//
+//	@Autowired
+//	@Qualifier("sqlSession")
+//	private SqlSessionTemplate sqlSessionTemplate;
 
-	
-	
 	@Autowired
 	@Qualifier("checkMapper")
-	private CheckMapper checkMapper;
-	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+	private CheckMapper checkMapper;	
 
-	@Override
-	public Balance selectBalanceByCode(String storeCode) {
-		HashMap<String, String> params = new HashMap<>();
-		params.put("storeCode", storeCode);
-		
-		Balance balance = checkMapper.selectBalanceByCode(params);
-		
-		return balance;
-	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	// @Override
+	// public Balance selectBalanceByCode(String storeCode) {
+	// HashMap<String, String> params = new HashMap<>();
+	// params.put("storeCode", storeCode);
+	//
+	// Balance balance = checkMapper.selectBalanceByCode(params);
+	//
+	// return balance;
+	// }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public List<Balance> getBalances() {
-		
-		List<Balance> balances = checkMapper.getBalances();    ////////여기가 이상함!!!
-		System.out.println("DaoImpl");	
-		
+
+		List<Balance> balances = checkMapper.getBalances(); //////// 여기가 이상함!!!
+		System.out.println("DaoImpl");
+
 		return balances;
 	}
 
 }
-

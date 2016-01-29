@@ -34,36 +34,33 @@ public class CheckController {
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	@RequestMapping(value = "/checkmoney.action", method = RequestMethod.GET)
-	public String Checkmoney(Model model) {
-		System.out.println("/checkmoney.action GET 들어옴 ");
+	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
+	public String Checksales(Model model) {
+		System.out.println("Controller");
 		
 		List<Balance> balances = checkService.getBalances();
-		System.out.println(balances.get(0).getBalanceNo());
 		
 		model.addAttribute("balances", balances);		
 		
-		return "check/checkmoney"; 
+		return "checksales"; 
 	}
 	
-	@RequestMapping(value = "/checkmoney.action", method = RequestMethod.POST)
-	public String CheckmoneyPost(Model model) {
-		System.out.println("/checkmoney.action POST 들어옴");
-		
-		List<Balance> balances = checkService.getBalances();
-		System.out.println(balances.get(0).getBalanceNo());
-		
-		model.addAttribute("balances", balances);		
-		
-		return "check/checkmoney"; 
-	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+//	@RequestMapping(value = "/checksales.action", method = RequestMethod.POST)
+//	public String ChecksalesPost(Model model) {
+//		System.out.println("/checksales.action POST 들어옴");
+//		
+//		List<Balance> balances = checkService.getBalances();
+//		System.out.println(balances.get(0).getBalanceNo());
+//		
+//		model.addAttribute("balances", balances);		
+//		
+//		return "check/checksales"; 
+//	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
-	public String Checksales() {
-		System.out.println("check sales 들어옴 ");
-		return "check/checksales"; 
-	}
+
 	@RequestMapping(value = "/checksell.action", method = RequestMethod.GET)
 	public String Checksell() {
 		

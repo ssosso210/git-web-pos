@@ -8,12 +8,11 @@ public interface CheckDao {
 
 	
 	
-	Balance selectBalanceByCode(String storeCode);
+//	Balance selectBalanceByCode(String storeCode);
 
 	List<Balance> getBalances();
 	
-	
-//	
+
 //	void insert(Member member);
 //
 //	List<Member> getList();

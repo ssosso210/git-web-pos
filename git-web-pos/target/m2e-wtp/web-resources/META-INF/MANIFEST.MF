@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: STU15
-=======
-Built-By: STU9
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
 Build-Jdk: 1.8.0_60
 Created-By: Maven Integration for Eclipse
 

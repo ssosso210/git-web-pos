@@ -26,11 +26,17 @@ public class CheckServiceImpl implements CheckService {
 	public void destroy() {
 		System.out.println("destroy method is called");
 	}
-	
+
+	@Override
 	public List<Balance> getBalances() {
 		System.out.println("ServiceImpl");
 		return checkDao.getBalances();
 	}
+	
+//	public List<Balance> getBalances() {
+//		System.out.println("getBalances");
+//		return checkDao.getBalances();
+//	}
 	
 
 	/*@Autowired
