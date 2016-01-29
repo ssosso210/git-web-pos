@@ -32,29 +32,14 @@ public class SaleServiceImpl implements SaleService {
 	@Override
 	public List<Menu> getAllMenus() {
 		
-		return saleDao.getList();
+		return saleDao.getAllList();
 	}
 
+	@Override
+	public List<Menu> getSelectMenus(String foodCode) {
+		
+		return saleDao.getSelectMenu(foodCode);
+	}
 
-	
-
-//	@Override
-//	public Employee searchEmployeeByLogin(String hqCode, String storeCode, String employeeId, String passwd) {
-//		Employee employee = null;
-//		// store table에서 hqCode, storeCode를 조회  -> 없으면  null return 
-//		
-//		// employee table에서 storeCode, employeeId, passwd를  조회 
-//
-//		 employee = employeeDao.selectEmployeeByCodeAndIdAndPw( hqCode,  storeCode,  employeeId,  passwd);
-//		
-//		return employee;
-//	}
-
-//	@Override
-//	public void insertEmployee(Employee employee) {
-//		employeeDao.insertEmployee(employee);
-//		
-//	}
-	
 	
 }
