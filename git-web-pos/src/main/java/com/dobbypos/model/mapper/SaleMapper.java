@@ -6,7 +6,8 @@ import com.dobbypos.model.dto.Menu;
 
 public interface SaleMapper {
 	
-	List<Menu> selectMenus();
+	List<Menu> allMenus();
 	
+	List<Menu> selectMenus(String foodCode);
 
 }

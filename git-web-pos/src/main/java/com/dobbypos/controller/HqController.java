@@ -27,36 +27,36 @@ public class HqController {
 	private HqService hqService;
 	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
-	public String home() {
-				
+	public String home(HttpServletRequest req, Model model) {
+		String path = req.getRequestURI();
+		model.addAttribute("path", path);
 		return "hq/home";
 	}
 	
 	@RequestMapping(value = "/storemanagement.action", method = RequestMethod.GET)
 	public String storeManagementHome(HttpServletRequest req, Model model) {
-		String path = req.getRequestURI();
-		System.out.println(path);
+		String path = req.getRequestURI();		
 		List<Store> stores = hqService.getAllStore();
 		model.addAttribute("stores", stores);
-		
+		model.addAttribute("path", path);
 		return "hq/storemanagement";
 	}
 	
 	@RequestMapping(value = "/customermanagement.action", method = RequestMethod.GET)
-	public String customerManagementHome(Model model) {
-		
+	public String customerManagementHome(HttpServletRequest req, Model model) {
+		String path = req.getRequestURI();		
 		List<Customer> customers = hqService.getAllCustomer();
 		model.addAttribute("customers", customers);
-		
+		model.addAttribute("path", path);
 		return "hq/customermanagement";
 	}
 	
 	@RequestMapping(value = "/clientmanagement.action", method = RequestMethod.GET)
-	public String clientManagementHome(Model model) { 
-		
+	public String clientManagementHome(HttpServletRequest req, Model model) { 
+		String path = req.getRequestURI();		
 		List<Client> clients = hqService.getAllClient();		
 		model.addAttribute("clients", clients);
-		
+		model.addAttribute("path", path);
 		return "hq/clientmanagement";		
 	}
 	
