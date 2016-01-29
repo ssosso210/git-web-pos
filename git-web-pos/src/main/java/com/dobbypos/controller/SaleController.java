@@ -13,15 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dobbypos.model.dao.EmployeeDao;
-import com.dobbypos.model.dao.SaleDao;
-import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
-import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.SaleService;
-import com.dobbypos.model.service.SaleServiceImpl;
 
 @Controller
 @RequestMapping("/sale")

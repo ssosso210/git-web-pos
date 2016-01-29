@@ -23,6 +23,7 @@
 					Hello dobby web pos Site Main Page !!!
 				</h2>
 	        </div> -->
+
 			<div id="content">
 				<br /> <br /> <br /> <br /> <br />
 				<h2 style='text-aling: center'>

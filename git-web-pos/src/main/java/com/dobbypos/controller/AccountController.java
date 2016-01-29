@@ -47,10 +47,12 @@ public class AccountController {
 		String hqCode,String storeCode, String employeeId, String passwd, @RequestParam("returnurl") String returnUrl, 
 		@RequestParam("storeCode1")String storeCode1,  Model model) {
 		
+
 	//	model.addAttribute("storeCode1", storeCode1);//main.jsp로 보냄 
-		System.out.println("index.jsp 에서 storecode1받음:"+storeCode1);
+		//System.out.println("index.jsp 에서 storecode1받음:"+storeCode1);
 		
 		
+
 		boolean resultValue= false;
 		
 		passwd = Util.getHashedString(passwd, "SHA-1");
@@ -81,7 +83,6 @@ public class AccountController {
 			
 			//request객체에 데이터 저장
 			req.setAttribute("loginid", employeeId);
-//			return "account/loginform"; 
 			return "index";
 		}
 		
@@ -116,7 +117,6 @@ public class AccountController {
 		
 		
 		//요청 데이터 (아이디, 열쇠글)으로 데이터베이스에서 조회
-
 		Hq hq = hqService.searchHqByHqId(hqId);
 
 		//조회 결과에 따라 이동 처리
@@ -126,12 +126,10 @@ public class AccountController {
 			}
 		}
 		
-		
-		
 		//조회 결과에 따라 이동 처리
 		if (resultValue) {
 			System.out.println(hq.toString());
-			session.setAttribute("loginuser", hq);//로그인 처리
+			session.setAttribute("hqloginuser", hq);//로그인 처리
 			if (returnUrl != null && returnUrl.length() > 0) {
 				//spring mvc에서 redirect 경로는 application이름을 포함할 수 없습니다.
 				return "redirect:" + returnUrl.replace("/dobbywebpos", "");
@@ -142,15 +140,14 @@ public class AccountController {
 			
 			//request객체에 데이터 저장
 			req.setAttribute("hqloginid", hq);
-//			return "account/loginform"; 
-			return "index";
+			return "account/hqloginform";
 		}
 		
 	}	
 	@RequestMapping(value = "hqlogout.action", method = RequestMethod.GET)
 	public String hqlogout(HttpSession session) {
 		
-		session.removeAttribute("loginuser");
+		session.removeAttribute("hqloginuser");
 		
 		return "redirect:/account/hqlogin.action";
 	}
