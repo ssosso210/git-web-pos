@@ -10,8 +10,8 @@
 <body>
 	
 	
-	<a href="checkmoney.action">시재확인</a><br/>
-	<a href="checksales.action">매출현황</a><br/>
+	<a href="checkmoney.action">매출/지출현황</a><br/>
+	<a href="checksales.action">매출/지출현황</a><br/>
 	<a href="checksell.action">판매실적</a><br/>
 
 </body>

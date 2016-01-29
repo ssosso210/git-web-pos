@@ -14,9 +14,7 @@ import com.dobbypos.model.mapper.CheckMapper;
 @Repository("checkDao")
 public class MysqlCheckDao implements CheckDao {
 
-	@Autowired
-	@Qualifier("sqlSessionTemplate")
-	private SqlSessionTemplate sqlSessionTemplate;
+	
 	
 	@Autowired
 	@Qualifier("checkMapper")
@@ -37,11 +35,12 @@ public class MysqlCheckDao implements CheckDao {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	
 	@Override
-	public List<Balance> getList() {
+	public List<Balance> getBalances() {
 		
-	List<Balance> balances = checkMapper.balances();	
+		List<Balance> balances = checkMapper.getBalances();    ////////여기가 이상함!!!
+		System.out.println("DaoImpl");	
 		
-	return balances;
+		return balances;
 	}
 
 }
