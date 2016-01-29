@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Hq;
+import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.HqService;
 
@@ -42,9 +45,11 @@ public class AccountController {
 	public String login(
 		HttpSession session, HttpServletRequest req,
 		String hqCode,String storeCode, String employeeId, String passwd, @RequestParam("returnurl") String returnUrl, 
-		@RequestParam("storeCode1")String storeCode1) {
+		@RequestParam("storeCode1")String storeCode1,  Model model) {
 		
-		System.out.println("login.action에서 storecode1받음:"+storeCode1);
+	//	model.addAttribute("storeCode1", storeCode1);//main.jsp로 보냄 
+		System.out.println("index.jsp 에서 storecode1받음:"+storeCode1);
+		
 		
 		boolean resultValue= false;
 		
@@ -61,10 +66,7 @@ public class AccountController {
 				resultValue = true;
 			}
 		}
-		
-		
-		
-		
+	
 		//조회 결과에 따라 이동 처리
 		if (resultValue) {
 			System.out.println(employee.toString());
@@ -73,7 +75,7 @@ public class AccountController {
 				//spring mvc에서 redirect 경로는 application이름을 포함할 수 없습니다.
 				return "redirect:" + returnUrl.replace("/dobbywebpos", "");
 			} else {
-				return "redirect:/main.action";
+				return "redirect:/main.action?storeCode1="+storeCode1;
 			}
 		} else {
 			
