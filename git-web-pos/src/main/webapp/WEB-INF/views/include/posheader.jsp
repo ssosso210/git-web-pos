@@ -16,8 +16,8 @@
 					<ul class="nav pull-right">
 						<li class=""><a href="signup.html" class=""> Don't have an account? </a></li>
 						<li class="">
-							<a href="index.html" class=""> 
-								<i class="icon-chevron-left"></i> Back to Homepage
+							<a href="/dobbywebpos/account/hqlogin.action" class=""> 
+								<i class="icon-chevron-left"></i> go to 본사page
 							</a>
 						</li>
 					</ul>
@@ -29,10 +29,7 @@
 		<!-- /navbar-inner -->
 	</div>
 	<!-- /navbar -->			
-           
 </div>   
-
-     
 <div id="menu">
             
 </div>

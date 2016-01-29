@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <html>
@@ -9,6 +10,11 @@
 
 <script src="//code.jquery.com/jquery-1.12.0.js"></script>
 <script type="text/javascript">
+
+  
+   
+   
+	
 	function newTable() {
 		//각 div마다 고유 id 지정해야되는데 잘 안됨  
 		var id = 1;
@@ -23,6 +29,14 @@
 		id++;
 		document.body.appendChild(div);
 	}
+
+	
+	function order_pos() { // 주문하기 팝업창
+		window.open("../sale/orderform.action", "", "width=600, height=500, left=500, top=200");
+	}
+	
+	
+
 	
 	/* Ajax코드- db에 insert함  */
 	//var proxy=null;//비동기상태
@@ -84,6 +98,7 @@
 		return null;
 	
 	}
+
 	
 	
 </script>
@@ -95,21 +110,95 @@
 	text-align: center;
 	float: left;
 }
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: initial;
-}
 </style>
 <body>
+
+
+	<!-- ------------------------------------------------------------- -->
+	[이걸로 테스트중이야]<br />
+	<table border="1" width="500" height="100">
+		<tr>
+			<td>1번 테이블</td>
+			<td>2번 테이블</td>
+		</tr>
+		<tr>
+			<td>3번 테이블</td>
+			<td>4번 테이블</td>
+		</tr>
+	</table><br />
+	<input type="button" value="주문하기" onClick="order_pos()">
+	<input type="button" value="결제하기" onClick="pay_pos()">
+
+	<!-- ------------------------------------------------------------- -->
+
+
+
+
+
+	<br /><br /><br /><br /><br />
+	<Button id=addtable type="button" onclick="newTable()">+</Button>&nbsp&nbsp
+
+	<a href="orderform">주문하기</a>&nbsp&nbsp&nbsp
+	<a href="paymentform">결제하기</a><br />
+
+
+	<div id="myid" style="width: 100px; height: 100px;" onclick="myFunction()">
+		<img style="width: 100px; height: 100px;" src="/dobbywebpos/resources/image/order.png">
+		<br />
+		<img style="width: 100px; height: 100px;" src="/dobbywebpos/resources/image/pay.png">
+	</div>
+	
+	<br /><br /><br /><br /><br />
+	
+	<hr />
+	
+	<!-- <div id="test_table" style="width: 100px; height: 100px" border="1px solid black"> -->
+		
+<%-- 		<c:forEach var="menus" items="${ menus }">
+		<td>${ menus.foodCode }</td>
+		<td>${ menus.foodName }</td>
+		<td>${ menus.foodPrice }</td>
+		<td>${ menus.regDate }</td>
+		<td>${ menus.hqCode }</td><br />
+		</c:forEach> --%>
+		
+		
+	<!-- </div> -->
+	
+	<div>
+		<c:forEach var="menus" items="${ menus }">
+			${ menus.foodCode }
+		</c:forEach>
+	</div>
+	
+	<br /><br /><br /><br /><br />
+	
+	<div class="btn-group" role="group" aria-label="">
+		<button type="button" class= "btn btn-default" style="background-color:#8CBDED; color:navy;" />
+			<a href="orderform.action">주문하기</a>
+		
+		<button type="button" class= "btn btn-default" style="background-color:#8CBDED; color:navy;" />
+			<a href="paymentform.action">결제하기</a>
+		<br />
+		
+	</div>
+
+	<div></div>
+	<br />
+	<br />
+
+
+
+
 	<a href="orderform.action">주문하기</a><br />
 	<a href="paymentform.action">결제하기</a><br/>
+	
+	
+	
 	<a>storecode1: ${storeCode1}</a><br /><br />
 	<a href="javascript:addTable()" onclick="newTable()" class="button">+</a>
 	<!--controller로 넘어가면 화면이 전환되므로 ajax 를 써서 디비와 연결해야함   -->
 	<div ></div><br /><br />
+
 </body>
 </html>
