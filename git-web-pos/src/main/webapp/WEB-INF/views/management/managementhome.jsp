@@ -19,7 +19,7 @@
         		[&nbsp;<a href="salarylist">인건비 관리</a>&nbsp;]
         	</div>
         	<div style='text-align:center'>
-        		[&nbsp;<a href="stock">재고 관리</a>&nbsp;]
+        		[&nbsp;<a href="stocklist">재고 관리</a>&nbsp;]
         	</div>
         	<br /><br />             	
         </div>
