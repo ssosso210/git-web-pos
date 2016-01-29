@@ -39,15 +39,9 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-          <![endif]-->
+    <link href="/dobbywebpos/resources/input.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/input2.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/default.css" rel="stylesheet" type="text/css" />
 
           <style type="text/css">
 
@@ -122,42 +116,6 @@
             
 </script>
 <script type="text/javascript">
-    $(function() {
-                "use strict";
-                //BAR CHART
-                var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40]
-                        },
-                        {
-                            label: "My Second dataset",
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [28, 48, 40, 19, 86, 27, 90]
-                        }
-                    ]
-                };
-            new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
-                responsive : true,
-                maintainAspectRatio: false,
-            });
-
-            });
-            // Chart.defaults.global.responsive = true;
-            
             
             
 </script>
@@ -169,42 +127,60 @@
 			
 		
 		<div class="right-side" style="padding-top:25px;text-align:center">
-			<c:url var="writeform" value="/hq/storeregisterform.action" />
-			[ <a href="${ writeform }"><spring:message code="hq.storemanagement.join" /></a> ]
-			<br /><br />
-
-			<table border="1" style="width:1000px" align="center">
-				<tr style="background-color:#999999;height:30px">
-					<th style="width:40px;text-align:center"><spring:message code="hq.storemanagement.code" /></th>
-					<th style="width:70px;text-align:center"><spring:message code="hq.storemanagement.name" /></th>
-					<th style="width:50px;text-align:center"><spring:message code="hq.storemanagement.managerName" /></th>
-					<th style="width:70px;text-align:center"><spring:message code="hq.storemanagement.phoneNo" /></th>
-					<th style="width:70px;text-align:center"><spring:message code="hq.storemanagement.email" /></th>
-					<th style="width:150px;text-align:center"><spring:message code="hq.storemanagement.address" /></th>
-				</tr>
-				
-				<c:forEach var="store" items="${ stores }">
-				<tr style="height:30px">
-					<td>${ store.storeCode }</td>
-					<td style="text-align:left;padding-left:10px">
-						<c:url var="view" value="view.action">
-							<c:param name="storename" value="${ store.storeName }" />
-						</c:url>
-						<a href='${ view }'>${ store.storeName }</a>
-					</td>
-					<td>${ store.managerName }</td>
-					<td>${ store.phoneNo }</td>
-					<td>${ store.email }</td>
-					<td>${ store.address }</td>					
-				</tr>
-				</c:forEach>
-				
-			</table>
-			<br /><br /><br /><br />
-		
-		</div>
-		
+		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
+		<br /><br />
+		        <form action="register.action" method="post"><!-- 상대경로표시 -->
+		        <table style="margin: 0 auto">
+		            <tr>
+		                <th class="thh"><spring:message code="hq.storemanagement.name" /></th>
+		                <td>
+		                    <input type="text" name="storeName" style="width:280px" />
+		                </td>
+		            </tr>
+		            <tr>
+		                <th class="thh"><spring:message code="hq.storemanagement.managerName" /></th>
+		                <td>
+		                	<input type="password" name="passwd" style="width:280px" />
+		                </td>
+		            </tr>
+		            <tr>
+		                <th class="thh"><spring:message code="hq.storemanagement.phoneNo" /></th>
+		                <td>
+		                    <input type="password" name="confirm" style="width:280px" />
+		                </td>
+		            </tr>
+		            <tr>
+		                <th class="thh"><spring:message code="hq.storemanagement.email" /></th>
+		                <td>
+		                	<input type="text" name="email" style="width:280px" />
+		                </td>
+		            </tr>
+		            <tr>
+		                <th class="thh"><spring:message code="hq.storemanagement.address" /></th>
+		                <td>
+		                	<input type="radio" name="userType" value="user" checked="checked">사용자</input>
+		                	<input type="radio" name="userType" value="admin">관리자</input>
+		                </td>
+		            </tr>
+		            <tr>
+		                <th>활성화여부</th>
+		                <td>
+		                	<input type="checkbox" name="active" value="true">활성사용자</input>
+		                </td>
+		            </tr>
+		        </table>
+		        <div class="buttons">
+		        	<input type="submit" value="등록" style="height:25px" />
+		        	<input type="button" value="취소" style="height:25px"
+		        		onclick="location.href='list.action';" />
+		        </div>
+		        </form>
+		    </div>
+			
+			
+			
 	</div>
+	
 
 
 

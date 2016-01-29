@@ -12,6 +12,8 @@ public interface EmployeeMapper {
 	void insertEmployee(Employee employee);
 	
 	List<Employee> selectEmployees();
+	
+	Employee selectEmployeeByNo(int employeeNo);
 
 	
 	

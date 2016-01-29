@@ -37,6 +37,13 @@
 		SELECT employeeNo,employeeName,wage FROM employee
 		WHERE employeeType = 'user'
 	</select>
+	
+	<select id="selectEmployeeByNo" parameterType="int" resultType="Employee">		
+		SELECT employeeNo,employeeName,employeeId,passwd,phoneNo,storeCode,wage,employeeType
+		FROM employee
+		WHERE employeeNo = #{employeeNo}
+		
+	</select>
 
 	<insert id="insertEmployee" parameterType="Employee">
 		INSERT INTO Employee
