@@ -17,8 +17,8 @@
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
 <!--    <link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" />
 	 -->
-	 <link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
-	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/input.css" />
+	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
+	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/input.css" /> 
 </head>
 <body>
 
@@ -80,10 +80,10 @@
 		   
 			 
 	</div>
-	
-	
-    <script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
+		<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
 	<script src="/dobbywebpos/resources/jsui/bootstrap.js"></script>
 	<script src="/dobbywebpos/resources/jsui/signin.js"></script>
+	
+
 </body>
 </html>
