@@ -73,7 +73,7 @@
 			   	<a href="/dobbywebpos/account/hqlogin.action">
 			   		본사
 			   	</a>
-	        	<!-- <input type="button" value="본사" style="height:25px" /> -->
+	        
 	        </div>
 			 
 

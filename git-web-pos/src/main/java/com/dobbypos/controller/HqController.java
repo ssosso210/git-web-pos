@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Store;
+import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.HqService;
 
 
@@ -26,9 +27,15 @@ public class HqController {
 	@Qualifier("hqService")
 	private HqService hqService;
 	
+	@Autowired
+	@Qualifier("customerService")
+	private CustomerService customerService;
+	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home(HttpServletRequest req, Model model) {
 		String path = req.getRequestURI();
+		int totalCustomers = customerService.countTotalCustomers();
+		model.addAttribute("totalCustomers", totalCustomers);
 		model.addAttribute("path", path);
 		return "hq/home";
 	}
@@ -58,6 +65,12 @@ public class HqController {
 		model.addAttribute("clients", clients);
 		model.addAttribute("path", path);
 		return "hq/clientmanagement";		
+	}
+	
+	@RequestMapping(value = "/storeregisterform.action", method = RequestMethod.GET)
+	public String storeRegisterForm() {
+		
+		return "hq/storeregisterform";
 	}
 	
 	
