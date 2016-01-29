@@ -61,6 +61,12 @@
 		    </div>
 			
 		</div>
+		<div class="buttons">
+			   	<a href="/dobbywebpos/">
+			   		지점
+			   	</a>
+	        
+	        </div>
 	</div>
 
 </body>

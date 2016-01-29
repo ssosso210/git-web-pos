@@ -38,6 +38,7 @@
 				<a href="check/checkmain.action">조회</a><br /> 
 				<a href="management/managementhome">관리</a><br /> 
 				<a href="settings/settinghome.action">설정</a><br /> 
+				
 
 				<!-- 윤수 테스트중 -->
 				<a href="sale/salehome.action">테이블클릭(주문할거야)</a><br />

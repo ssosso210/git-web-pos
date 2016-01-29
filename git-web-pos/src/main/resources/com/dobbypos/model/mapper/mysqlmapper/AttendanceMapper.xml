@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dobbypos.model.mapper.AttendanceMapper"><!-- 클래스 또는 인터페이스 역할 -->
+
+<!-- 	private int attendanceNo;
+	private Date startWork;
+	private Date endWork;
+	private int employeeNo; -->
+
+
+	<sql id="AttendanceColumns">
+		attendanceNo, startWork, endWork, employeeNo
+	</sql>
+	
+	<resultMap type="Attendance" id="attendanceMap">
+		<id property="attendanceNo" column="attendanceNo" />
+		<result property="startWork" column="startWork" />
+		<result property="endWork" column="endWork" />
+		<result property="employeeNo" column="employeeNo" />
+	</resultMap>
+	
+	
+</mapper>
