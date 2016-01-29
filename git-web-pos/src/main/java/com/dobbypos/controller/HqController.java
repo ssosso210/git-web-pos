@@ -1,9 +1,12 @@
 
 package com.dobbypos.controller;
 
+import java.io.Writer;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,12 +14,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.HqService;
+import com.dobbypos.model.service.StoreService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 @Controller
@@ -30,6 +38,10 @@ public class HqController {
 	@Autowired
 	@Qualifier("customerService")
 	private CustomerService customerService;
+	
+	@Autowired
+	@Qualifier("storeService")
+	private StoreService storeService;
 	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home(HttpServletRequest req, Model model) {
@@ -72,6 +84,20 @@ public class HqController {
 		
 		return "hq/storeregisterform";
 	}
+	
+	@RequestMapping(value = "/storenamelist.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String storeNameList(@RequestParam("storename") String storeName) {
+		 
+		List<String> stores = storeService.getStoreNameListById(storeName);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.out.println(stores);
+		String result = gson.toJson(stores);
+		
+		return result;
+	}
+	
+	
 	
 	
 }

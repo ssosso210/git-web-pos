@@ -1,7 +1,7 @@
 <%@page import="com.dobbypos.model.dto.Store"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dobbypos.model.dao.HqDao"%>
-<%@ page language="java" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -116,8 +116,145 @@
             
 </script>
 <script type="text/javascript">
-            
-            
+
+$(function() {
+	
+	var divList;
+	
+	$("#storeName").on("keyup", function(event) {
+		var input = $("#storeName").val();	
+		if (input.length == 0) {
+			if (divList && divList.style.display != "none") {
+ 			   divList.style.display = "none"
+ 		   }
+			return;	
+		}
+		
+		$.ajax({
+			url : "/dobbywebpos/hq/storenamelist.action",
+			type : "GET",
+			async : true,
+			//dataType : "json",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+			data : { storename : input },
+			success : function(data, status, xhr) {
+				console.dir(data);
+				showResult(data);
+			},
+			error : function(xhr, status, error) {
+				alert(error);
+			}			
+		});		
+	});
+});
+
+
+     /*   function doAutoComplete() {
+    	   var storeName = document.getElementById("storeName");
+    	   if (storeName.value.length == 0) {
+    		   if (divList && divList.style.display != "none") {
+    			   divList.style.display = "none"
+    		   }
+    		   return;
+    	   }
+    	   
+    	   proxy = getXmlHttpRequest();
+    	   
+    	   if (proxy == null) {
+    		   return;
+    	   }
+    	   
+    	   proxy.open("GET", "storenamelist.action?storname=" + sotreName.value, true);
+    	   proxy.onreadystatechange = showSuggestions;
+    	   proxy.send(null);
+       }     
+       
+       function showSuggestions(){
+    	   if (proxy.readyState == 4) {
+    		   if (proxy.status == 200) {
+    			   var result = proxy.responseText;
+    			   if (result.indexOf("error") != -1) {
+    				   return;
+    			   }
+    			   
+    			   showResult(result);
+    		   }
+    		   proxy = null;
+    	   }
+       }
+        */
+       /* var divList; */
+       function showResult(data) {
+    	   if (document.getElementById("divAutoCom"))
+    		   document.body.removeChild(document.getElementById("divAutoCom"));
+    	   eval("var nameArray = " + data);
+    	   
+    	   if (nameArray.length == 0) return;
+    	   
+    	   divList = document.createElement("div");
+    	   divList.id = "divAutoCom";
+    	   divList.style.border = "1px black solid";
+    	   divList.style.backgroundColor = "white";
+    	   divList.style.width = "230px";
+    	   divList.style.position = "absolute";
+    	   document.body.appendChild(divList);
+    	   
+    	   var item;
+    	   for(var i = 0; i < nameArray.length; i++) {
+    		   item = document.createElement("div");
+    		   item.style.paddingLeft = "5px";
+    		   item.style.paddingTop = item.style.paddingBottom = "2px;"
+    		   item.style.width = "97%";
+    		   item.innerHTML = nameArray[i];
+    		   divList.appendChild(item);
+    		   
+    		   item.onmousedown = function(oEvent) {
+    			   oEvent = oEvnet || window.event;
+    			   oSrcElement = oEvent.target || oEvent.srcElement;
+    			   document.getElementByid("storeName").value = oSrcElement.innerHTML;
+    			   divList.style.display = "none";
+    		   };
+    		   item.onmouseover = function(oEvent) {
+					oEvent = oEvent	|| window.event;
+					oSrcElement	= oEvent.target	|| oEvent.srcElement;
+					oSrcElement.style.backgroundColor =	"#efefef"; 
+				};
+				item.onmouseout =	function(oEvent) { 
+					oEvent = oEvent	|| window.event;
+					oSrcElement	= oEvent.target	|| oEvent.srcElement;
+					oSrcElement.style.backgroundColor =	"";	
+				};
+    	   }
+    	   
+    	   divList.style.left = getLeft() + "px";
+    	   divList.style.top = getTop() + "px";
+    	   
+    	   var x = 10;
+       }
+       
+       function getTop() {
+			var	t =	document.getElementById("storeName");
+
+			var	topPos = 2 + t.offsetHeight; //memberid 의 높이값
+			while(t.tagName.toLowerCase() != "body" && 
+				  t.tagName.toLowerCase() != "html") {
+				topPos += t.offsetTop;//offsetTop : 상위 요소와의 거리
+				t = t.offsetParent;	//상위 요소를 현재 요소에 대입
+			}
+			return topPos;
+		}
+       
+       function getLeft() {
+    	   var t = document.getElementById("storeName");
+    	   var leftPos = 0;
+    	   while(t.tagName.toLowerCase() != "body" && t.tagName.toLowerCase() != "html") {
+    		   leftPos += t.offsetLeft;
+    		   t = t.offsetParent;
+    	   }
+    	   return leftPos;
+       }
+       
+       
 </script>
       </head>
       <body class="skin-black">
@@ -130,11 +267,11 @@
 		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
 		<br /><br />
 		        <form action="register.action" method="post"><!-- 상대경로표시 -->
-		        <table style="margin: 0 auto">
+		        <table style="margin: 0 auto;border: solid;">
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.name" /></th>
+		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.name" /></th>
 		                <td>
-		                    <input type="text" name="storeName" style="width:280px" />
+		                    <input type="text" id="storeName" name="storeName" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
