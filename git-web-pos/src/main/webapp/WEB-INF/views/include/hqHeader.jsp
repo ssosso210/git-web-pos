@@ -189,7 +189,8 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <c:set var="hqName" value="${ sessionScope.loginuser.hqName }"></c:set>
+                                <span>${ hqName }<i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                                 <li class="dropdown-header text-center"><spring:message code="hq.account" /></li>
@@ -223,7 +224,7 @@
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                            <a href="/dobbywebpos/account/hqlogout.action"><i class="fa fa-ban fa-fw pull-right"></i><spring:message code="hq.logout" /></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -242,13 +243,16 @@
                                     <img src="/dobbywebpos/resources/images/26115.jpg" class="img-circle" alt="User Image" />
                                 </div>
                                 <div class="pull-left info">
-                                    <p><spring:message code="general.welcome" arguments="" /></p>
+                                
+                                    
 
 									<c:choose>
 										<c:when test="${ empty sessionScope.loginuser }">
+										
 											<a href="#"><i class="fa fa-circle text-success"></i> <spring:message code="hq.offline" /></a>
 										</c:when>
 										<c:otherwise>
+										<p><spring:message code="general.welcome" arguments="${ sessionScope.loginuser.hqName }" /></p>
                                     		<a href="#"><i class="fa fa-circle text-success"></i> <spring:message code="hq.online" /></a>
                                     	</c:otherwise>
                                     </c:choose>
@@ -266,31 +270,34 @@
                             </form>
                             <!-- /.search form -->
                             <!-- sidebar menu: : style can be found in sidebar.less -->
-                            <ul class="sidebar-menu">
-                                <li class="active">
-                                    <a href="index.html">
-                                        <i class="fa fa-dashboard"></i> <span><spring:message code="hq.notification" /></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="general.html">
-                                        <i class="fa fa-gavel"></i> <span><spring:message code="hq.schedule" /></span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="basic_form.html">
-                                        <i class="fa fa-globe"></i> <span><spring:message code="hq.dm" /></span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="simple.html">
-                                        <i class="fa fa-glass"></i> <span>Simple tables</span>
-                                    </a>
-                                </li>
-
-                            </ul>
+                           
+                            
+                            <c:set var="mainPath"><spring:message code="hq.mainPath" /></c:set>
+                            <c:set var="menu1Path"><spring:message code="hq.menu1Path" /></c:set>
+                            <c:set var="menu2Path"><spring:message code="hq.menu2Path" /></c:set>
+                            <c:set var="menu3Path"><spring:message code="hq.menu3Path" /></c:set>
+                            <c:set var="menu4Path"><spring:message code="hq.menu4Path" /></c:set>
+                            <c:set var="menu5Path"><spring:message code="hq.menu5Path" /></c:set>
+                            <c:choose>
+                            	<c:when test="${ requestScope.path eq mainPath }">
+                            		<c:import url="/WEB-INF/views/include/sidebarmenumain.jsp"></c:import>
+                            	</c:when>
+                            	<c:when test="${ requestScope.path eq menu1Path }">
+                            		<c:import url="/WEB-INF/views/include/sidebarmenu1.jsp"></c:import>
+                            	</c:when>
+                            	<c:when test="${ requestScope.path eq menu2Path }">
+                            		<c:import url="/WEB-INF/views/include/sidebarmenu2.jsp"></c:import>
+                            	</c:when>
+                            	<c:when test="${ requestScope.path eq menu3Path }">
+                            		<c:import url="/WEB-INF/views/include/sidebarmenu3.jsp"></c:import>
+                            	</c:when>
+                            	<c:when test="${ requestScope.path eq menu4Path }">
+                            		<c:import url="/WEB-INF/views/include/sidebarmenu4.jsp"></c:import>
+                            	</c:when>
+                            	<c:when test="${ requestScope.path eq menu5Path }">
+                            		<c:import url="/WEB-INF/views/include/sidebarmenu5.jsp"></c:import>
+                            	</c:when>
+                            </c:choose>
                         </section>
                         <!-- /.sidebar -->
                     </aside>

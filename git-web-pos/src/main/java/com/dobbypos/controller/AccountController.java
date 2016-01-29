@@ -150,7 +150,7 @@ public class AccountController {
 	@RequestMapping(value = "hqlogout.action", method = RequestMethod.GET)
 	public String hqlogout(HttpSession session) {
 		
-		session.removeAttribute("hqloginuser");
+		session.removeAttribute("loginuser");
 		
 		return "redirect:/account/hqlogin.action";
 	}

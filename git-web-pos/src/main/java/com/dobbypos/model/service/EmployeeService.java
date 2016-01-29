@@ -7,14 +7,15 @@ import com.dobbypos.model.dto.Hq;
 
 public interface EmployeeService {
 	
-	List<Employee> getAllEmployees();
+	List<Employee> getAllEmployees();	
+	
+	Employee searchEmployeeByNo(int employeeNo);
 
-	Employee searchEmployeeByNo(String no);
-
-	void insertEmployee(Employee employee);
-
+	void insertEmployee(Employee employee);	
 
 	Employee searchEmployeeByLogin(String hqCode, String storeCode, String employeeId, String passwd);
+
+	
 
 
 

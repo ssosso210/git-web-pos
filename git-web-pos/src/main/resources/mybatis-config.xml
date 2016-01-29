@@ -58,7 +58,7 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/TableMapper.xml" />
-
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/CustomerMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/MenuMapper.xml" />
 
 		
