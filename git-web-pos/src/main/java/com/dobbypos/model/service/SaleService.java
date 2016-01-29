@@ -7,6 +7,8 @@ import com.dobbypos.model.dto.Menu;
 public interface SaleService {
 
 	List<Menu> getAllMenus();
+
+	List<Menu> getSelectMenus(String foodCode);
 	
 
 }
