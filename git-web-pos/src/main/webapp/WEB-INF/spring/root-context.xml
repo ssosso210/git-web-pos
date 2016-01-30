@@ -93,6 +93,12 @@
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.CustomerMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<bean id="storeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dobbypos.model.mapper.StoreMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 	<bean id="attendanceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.AttendanceMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

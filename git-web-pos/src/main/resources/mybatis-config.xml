@@ -61,6 +61,7 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/TableMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/CustomerMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/MenuMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/StoreMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/AttendanceMapper.xml" />
 
 		
