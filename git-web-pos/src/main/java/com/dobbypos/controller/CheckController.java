@@ -42,7 +42,7 @@ public class CheckController {
 		
 		model.addAttribute("balances", balances);		
 		
-		return "checksales"; 
+		return "check/checksales"; 
 	}
 	
 	
