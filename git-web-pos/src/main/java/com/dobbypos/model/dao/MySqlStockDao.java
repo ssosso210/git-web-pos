@@ -27,11 +27,8 @@ public class MySqlStockDao implements StockDao {
 	}
 
 	@Override
-	public List<StockCode> getList2() {
+	public List<StockCode> getStockCodeByStockNo(int stockNo) {
 		List<StockCode> stockcodes = stockMapper.selectStockCodes();
 		return stockcodes;
-	}
-
-	
-		
+	}		
 }

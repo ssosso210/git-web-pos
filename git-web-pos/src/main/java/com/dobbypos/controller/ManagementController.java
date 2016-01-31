@@ -51,7 +51,7 @@ public class ManagementController {
 	public String menu(Model model) {
 
 		List<Employee> employees = employeeService.getAllEmployees();
-		System.out.println("Controller");
+		//System.out.println("Controller");
 		model.addAttribute("employees", employees);
 
 		return "management/salarylist";
@@ -98,7 +98,7 @@ public class ManagementController {
 	public String menu2(Model model2) {
 
 		List<Stock> stocks = stockService.getAllStocks();
-		System.out.println("Controller");
+		//System.out.println("Controller");
 		model2.addAttribute("stocks", stocks);
 
 		return "management/stocklist";

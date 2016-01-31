@@ -19,15 +19,36 @@
 		<result property="s_price" column="s_price" />
 		<result property="stockCodeNo" column="stockCodeNo" />
 	</resultMap>
+	
+	<resultMap type="StockCode" id="stockCodeMap">
+		<id property="stockCodeNo" column="stockCodeNo"/>
+		<result property="stockName" column="stockName"/>
+		<result property="standard" column="standard"/>
+		<result property="price" column="price"/>
+		<result property="clientName" column="clientName"/>	
+	</resultMap>
+	
+	<select id="selectStocks" parameterType="int" resultMap="stockMap">
+		SELECT
+			stockNo, stockCodeNo,s_price, s_number, s_regDate
+		FROM stock
+		WHERE	
+	</select>	
+	<select id="selectStockCodes" parameterType="int" resultMap="stockCodeMap">
+		SELECT
+			stockCodeNo, stockName, standard
+		FROM stockcode
+		WHERE	
+	</select>
 
 
-	<select id="selectStocks" resultMap="stockMap">
+	<!-- <select id="selectStocks" resultMap="stockMap">
 		select st.stockNo as stockNo, st.stockCodeNo as stockCodeNo, stcd.stockName
 		as stockName,
 		stcd.price as price, st.s_number as s_number, stcd.standard as standard,
 		st.s_regDate as s_regDate
 		from stock st join stockcode stcd
 		where st.stockCodeNo = stcd.stockCodeNo
-	</select>
+	</select> -->
 
 </mapper>
