@@ -78,7 +78,7 @@ public class AutherInterceptor extends HandlerInterceptorAdapter {
 		
 		if (redirect) {			
 			resp.sendRedirect(
-				"/dobbypos/"+returnlogin+"?returnurl=" + uri + queryString);
+				"/dobbywebpos/"+returnlogin+"?returnurl=" + uri + queryString);
 			return false;//컨트롤러 호출 중단
 		} else {
 			return true;//정상 진행

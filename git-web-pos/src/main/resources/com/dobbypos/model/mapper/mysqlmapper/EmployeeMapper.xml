@@ -10,6 +10,9 @@
 		phoneNo; private String passwd; private String storeCode; private int wage; 
 		private String employeeType; private String employeeId; selectEmployees -->
 
+	<sql id="EmployeeColumns">
+		employeeNo, employeeName, phoneNo, passwd, storeCode, wage, employeeType, employeeId
+	</sql>
 
 	<resultMap type="Employee" id="employeeMap">
 		<id property="employeeNo" column="employeeNo" />
@@ -52,4 +55,10 @@
 		VALUES ( #{employeeName}, #{phoneNo}, #{passwd},
 		#{storeCode}, #{wage}, #{employeeType}, #{employeeId})
 	</insert>
+	
+	<select id="selectEmployeesByStoreCode" resultMap="employeeMap" >
+		SELECT <include refid="EmployeeColumns" /> 
+		from employee
+		WHERE storeCode = #{id}
+	</select>
 </mapper>
