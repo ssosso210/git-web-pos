@@ -135,10 +135,11 @@ $(function() {
 			type : "GET",
 			async : true,
 			//dataType : "json",
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+			contentType: "application/json; charset=utf-8",  
 			data : { storename : input },
 			success : function(data, status, xhr) {
 				console.dir(data);
+				data
 				showResult(data);
 			},
 			error : function(xhr, status, error) {
@@ -246,7 +247,7 @@ $(function() {
        
        function getLeft() {
     	   var t = document.getElementById("storeName");
-    	   var leftPos = 0;
+    	   var leftPos = 2;
     	   while(t.tagName.toLowerCase() != "body" && t.tagName.toLowerCase() != "html") {
     		   leftPos += t.offsetLeft;
     		   t = t.offsetParent;

@@ -189,7 +189,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i>
-                                <c:set var="hqName" value="${ sessionScope.loginuser.hqName }"></c:set>
+                                <c:set var="hqName" value="${ sessionScope.hqloginuser.hqName }"></c:set>
                                 <span>${ hqName }<i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
@@ -247,12 +247,12 @@
                                     
 
 									<c:choose>
-										<c:when test="${ empty sessionScope.loginuser }">
+										<c:when test="${ empty sessionScope.hqloginuser }">
 										
 											<a href="#"><i class="fa fa-circle text-success"></i> <spring:message code="hq.offline" /></a>
 										</c:when>
 										<c:otherwise>
-										<p><spring:message code="general.welcome" arguments="${ sessionScope.loginuser.hqName }" /></p>
+										<p><spring:message code="general.welcome" arguments="${ sessionScope.hqloginuser.hqName }" /></p>
                                     		<a href="#"><i class="fa fa-circle text-success"></i> <spring:message code="hq.online" /></a>
                                     	</c:otherwise>
                                     </c:choose>
