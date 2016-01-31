@@ -1,6 +1,9 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
+import java.util.List;
+
+
 
 public class Employee implements Serializable {
 	
@@ -12,6 +15,9 @@ public class Employee implements Serializable {
 	private int wage;
 	private String employeeType;
 	private String employeeId;
+	
+	//Employee 테이블과 Attendance 테이블 사이의 1:Many 관계를 구현한 필드(변수)
+	private List<Attendance> attendances;
 	
 	public int getEmployeeNo() {
 		return employeeNo;
@@ -49,8 +55,6 @@ public class Employee implements Serializable {
 	public void setWage(int wage) {
 		this.wage = wage;
 	}
-	
-	
 	public String getEmployeeType() {
 		return employeeType;
 	}
@@ -63,6 +67,13 @@ public class Employee implements Serializable {
 	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
+	public List<Attendance> getAttendances() {
+		return attendances;
+	}
+	public void setAttendances(List<Attendance> attendances) {
+		this.attendances = attendances;
+	}
+	
 	@Override
 	public String toString() {
 		return "Employee [employeeNo=" + employeeNo + ", employeeName=" + employeeName + ", phoneNo=" + phoneNo

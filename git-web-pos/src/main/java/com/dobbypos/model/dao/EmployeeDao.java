@@ -16,7 +16,9 @@ public interface EmployeeDao {
 
 	Employee getEmployeeByNo(int employeeNo);
 
-	List<Employee> selectEmployeesByStoreCode(String storeCode);
+	List<Employee> selectEmployeesByStoreCodeAndUser(String storeCode);
+
+	
 	
 
 

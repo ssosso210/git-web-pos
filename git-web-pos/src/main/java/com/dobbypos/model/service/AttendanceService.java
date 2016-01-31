@@ -6,6 +6,8 @@ import com.dobbypos.model.dto.Employee;
 
 public interface AttendanceService {
 
-	List<Employee> getEmployeesByStoreCode(String storeCode);
+	List<Employee> getEmployeesByStoreCodeAndUser(String storeCode);
+
+	List<Employee> getAttendanceAllByStoreCode(String storeCode);
 
 }
