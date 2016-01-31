@@ -15,6 +15,8 @@ public interface EmployeeMapper {
 	
 	Employee selectEmployeeByNo(int employeeNo);
 
+	List<Employee> selectEmployeesByStoreCode(String storeCode);
+
 	
 	
 	
