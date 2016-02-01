@@ -23,5 +23,28 @@
 		<result property="employeeNo" column="employeeNo" />
 	</resultMap>
 	
+	<resultMap type="Employee" id="employeeMap">
+		<id property="employeeNo" column="employeeNo" />
+		<result property="employeeName" column="employeeName" />
+		<result property="phoneNo" column="phoneNo" />
+		<result property="passwd" column="passwd" />
+		<result property="storeCode" column="storeCode" />
+		<result property="wage" column="wage" />
+		<result property="employeeType" column="employeeType" />
+		<result property="employeeId" column="employeeId" />
+		<collection property="attendances" column="employeeNo" resultMap="attendanceMap" />
+	</resultMap>
+	
+	
+	
+	<select id="selectAttendanceAllByStoreCode" parameterType="string" resultMap="employeeMap">
+		SELECT 
+			at.attendanceNo, at.startWork, at.endWork,
+			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em
+		LEFT OUTER JOIN attendance at
+		ON em.employeeNo = at.employeeNo
+		WHERE em.storeCode = #{id} AND em.employeeType = 'user'
+	</select>
 	
 </mapper>

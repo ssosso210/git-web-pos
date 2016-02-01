@@ -132,7 +132,7 @@
          
       
       <div class="right-side" style="padding-top:25px;text-align:center">
-         <c:url var="writeform" value="/upload/write.action" />
+         <c:url var="writeform" value="/hq/clientregisterform.action" />
          [ <a href="${ writeform }"><spring:message code="hq.clientmanagement.join" /></a> ]
          <br /><br />
 
