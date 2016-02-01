@@ -50,13 +50,14 @@
 				</h2>
 	        </div> -->
 
+
 	        <div id="content">
 			<br />
 			<br />
 			<br />
 			<br />
 			<br />
-			<h2 style='text-aling: center'>
+			<%-- <h2 style='text-aling: center'>
 				Hello dobby web pos Site Main Page !!!
 				<p>근태/판매/조회/관리/설정 어디에 넣죠?몰랑~ 데헷~ ^0^</p>
 
@@ -66,33 +67,16 @@
 				<a href="management/managementhome">관리</a><br /> <br />
 				<a href="settings/settinghome.action">설정</a><br /> <br />
 
-				
-
-
-			</h2>
-
-			<div id="content">
-				<br /> <br /> <br /> <br /> <br />
-				<h2 style='text-aling: center'>
-					Hello dobby web pos Site Main Page !!!
-					<p>근태/판매/조회/관리/설정 어디에 넣죠?몰랑~ 데헷~ ^0^</p>
-					<a>근태</a><br /> <a>판매--윤수오빠꺼임</a><br /> <a
-						href="check/checkmain.action">조회</a><br /> <a
-						href="management/managementhome">관리</a><br /> <a
-						href="settings/settinghome.action">설정</a><br />
-					
-					<!-- 윤수 테스트중 -->
+				<!-- 윤수 테스트중 -->
 					<a href="sale/salehome.action?storeCode1=${storeCode1}">테이블클릭(주문할거야)</a> <br/>
 					
 				 	<a>storeCode1:${storeCode1}</a>
-				 	
-					
-				</h2>
-			</div>
 
+			</h2> --%>
+			</div>
 		</div>
 	</div>
-   ================================================== --> 
+		
 <!-- Placed at the end of the document so the pages load faster --> 
 <script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
 <script src="/dobbywebpos/resources/jsui/excanvas.min.js"></script> 

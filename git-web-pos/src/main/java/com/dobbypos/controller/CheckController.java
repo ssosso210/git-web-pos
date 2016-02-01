@@ -23,8 +23,8 @@ public class CheckController {
 	@Qualifier("checkService")
 	private CheckService checkService;
 	
-	@Resource(name = "checkDao")
-	private CheckDao checkDao;
+//	@Resource(name = "checkDao")
+//	private CheckDao checkDao;
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	@RequestMapping(value = "/checkmain.action", method = RequestMethod.GET)
@@ -34,21 +34,33 @@ public class CheckController {
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	@RequestMapping(value = "/checkmoney.action", method = RequestMethod.GET)
-	public String Checkmoney(Model model) {
-		
-		List<Balance> balances = checkDao.getList();
-		model.addAttribute("balances", balances);		
-		
-		return "check/checkmoney"; 
-	}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
-	public String Checksales() {
+	public String Checksales(Model model) {
+		System.out.println("Controller");
+		
+		List<Balance> balances = checkService.getBalances();
+		
+		model.addAttribute("balances", balances);		
 		
 		return "check/checksales"; 
 	}
+	
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+//	@RequestMapping(value = "/checksales.action", method = RequestMethod.POST)
+//	public String ChecksalesPost(Model model) {
+//		System.out.println("/checksales.action POST 들어옴");
+//		
+//		List<Balance> balances = checkService.getBalances();
+//		System.out.println(balances.get(0).getBalanceNo());
+//		
+//		model.addAttribute("balances", balances);		
+//		
+//		return "check/checksales"; 
+//	}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+
 	@RequestMapping(value = "/checksell.action", method = RequestMethod.GET)
 	public String Checksell() {
 		

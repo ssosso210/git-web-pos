@@ -6,12 +6,13 @@ import com.dobbypos.model.dto.Balance;
 
 public interface CheckDao {
 
-	List<Balance> getList();
-	
-	Balance selectBalanceByCode(String storeCode);
 	
 	
-//	
+//	Balance selectBalanceByCode(String storeCode);
+
+	List<Balance> getBalances();
+	
+
 //	void insert(Member member);
 //
 //	List<Member> getList();
