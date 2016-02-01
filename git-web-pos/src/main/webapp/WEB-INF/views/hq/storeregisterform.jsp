@@ -1,7 +1,7 @@
 <%@page import="com.dobbypos.model.dto.Store"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dobbypos.model.dao.HqDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -10,7 +10,8 @@
 
 <html>
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="utf-8"> -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title><spring:message code="hq.storeManagementTitle" /></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Developed By M Abdur Rokib Promy">
@@ -121,7 +122,6 @@
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=0b93caf3b7d18b634e4cda80edd41135&libraries=services"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
 <script type="text/javascript">
@@ -131,31 +131,51 @@ $(function() {
 	var divList;
 	
 	
- $("#storeName").on("keyup", function(event) {
+ /* $("#storeName").on("keyup", function(event) {
 		var input = $("#storeName").val();	
 		if (input.length == 0) {
 			if (divList && divList.style.display != "none") {
  			   divList.style.display = "none"
  		   }
 			return;	 
-		}
-		/* $("").autocomplete({
+		} */
+		$("#storeName").autocomplete({
 			source : function(request, response) {
 				$.ajax({
 					url : "/dobbywebpos/hq/storenamelist.action",
 					type : "GET",
 					async : true,
+					//dataType : "json",
 					data : { storename : request.term },
 					success : function(data) {
-						console.dir(data);
-				          response( data.storeName );
-				       }
+							//console.dir(data);							
+							eval("var list = " + data);
+							var r = [];
+							$.each(list, function(index, value) {
+								r.push({label : value, value : value });							
+							});
+							response(r);
+							
+/* 							response(
+									
+							
+		                            $.map(data, function(item) {
+		                                return {
+		                                    label: item.data,
+		                                    value: item.data
+		                                }
+		                            })
+		                        ); */
+				       },				       
+				    error : function(error) {
+				    	console.log(error);
+				    }
 				})
 			}
 			
-		}); */
+		}); 
 		
-		 $.ajax({
+		 /* $.ajax({
 			url : "/dobbywebpos/hq/storenamelist.action",
 			type : "GET",
 			async : true,
@@ -172,9 +192,8 @@ $(function() {
 			error : function(xhr, status, error) {
 				alert(error);
 			}			
-		});		
-	}); 
-	
+		});		 */
+		 
 	$("#storeregisteraddress").on("click", function(event) {
 		var address = $("#storeregisteraddress").val();
 		address = map();
@@ -217,7 +236,8 @@ function map(streetTarget) {
             
             //console.dir(fullRoadAddr);
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-         document.getElementById('storeregisteraddress').value = fullRoadAddr;
+         //document.getElementById('storeregisteraddress').value = fullRoadAddr;
+         $("#storeregisteraddress").html("fullRoadAddr");
             
         /*     //new 1. 조회된 주소를 이용해서 좌표 요청 (Geocoder) 
         var geocoder = new daum.maps.services.Geocoder();
