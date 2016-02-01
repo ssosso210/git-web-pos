@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,7 +88,7 @@ public class HqController {
 	
 	@RequestMapping(value = "/storenamelist.action", method = RequestMethod.GET)
 	@ResponseBody
-	public String storeNameList(@RequestParam("storename") String storeName) {
+	public String storeNameList(@RequestParam("storename") String storeName ) {
 		 
 		List<String> stores = storeService.getStoreNameListById(storeName);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -95,6 +96,12 @@ public class HqController {
 		String result = gson.toJson(stores);
 		
 		return result;
+	}
+	
+	@RequestMapping(value = "/clientregisterform.action", method = RequestMethod.GET)
+	public String clientRegisterForm() {
+		
+		return "hq/clientregisterform";
 	}
 	
 	
