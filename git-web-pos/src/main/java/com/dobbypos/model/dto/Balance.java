@@ -2,12 +2,13 @@ package com.dobbypos.model.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Balance implements Serializable {
 	
 	private int balanceNo;
 	private int plusMinus;
-	private Date regDate;
+	private Timestamp regDate;
 	private String storeCode;
 	private String description;
 	private String itemCode;
@@ -24,10 +25,10 @@ public class Balance implements Serializable {
 	public void setPlusMinus(int plusMinus) {
 		this.plusMinus = plusMinus;
 	}
-	public Date getRegDate() {
+	public Timestamp getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
 	public String getStoreCode() {

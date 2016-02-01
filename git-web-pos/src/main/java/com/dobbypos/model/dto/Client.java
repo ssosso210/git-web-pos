@@ -2,6 +2,7 @@ package com.dobbypos.model.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Client implements Serializable {
 	
@@ -11,7 +12,7 @@ public class Client implements Serializable {
 	private String businessRegistrationNumber;
 	private String email;
 	private String address;
-	private Date regDate;
+	private Timestamp regDate;
 	
 	public String getClientName() {
 		return clientName;
@@ -49,10 +50,10 @@ public class Client implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getRegDate() {
+	public Timestamp getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
 	
