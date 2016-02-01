@@ -88,12 +88,14 @@ public class HqController {
 	
 	@RequestMapping(value = "/storenamelist.action", method = RequestMethod.GET)
 	@ResponseBody
-	public String storeNameList(@RequestParam("storename") String storeName ) {
+	public String storeNameList(HttpServletResponse resp, @RequestParam("storename") String storeName) {
 		 
 		List<String> stores = storeService.getStoreNameListById(storeName);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		System.out.println(stores);
 		String result = gson.toJson(stores);
+		
+		resp.setContentType("application/json;charset=utf-8");
 		
 		return result;
 	}
