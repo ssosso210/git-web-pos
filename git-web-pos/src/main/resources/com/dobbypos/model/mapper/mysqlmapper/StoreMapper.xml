@@ -11,6 +11,12 @@
 		FROM store
 		WHERE storename LIKE concat(#{ id }, '%')
 	</select>
+	
+	<select id="selectStoreCodeListByStoreCode" parameterType="String" resultType="String">
+		SELECT storecode
+		FROM store
+		WHERE storecode LIKE concat(#{ id }, '%')
+	</select>
 		
 </mapper>
 

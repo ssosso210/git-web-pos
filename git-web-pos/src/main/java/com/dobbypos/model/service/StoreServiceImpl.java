@@ -20,6 +20,12 @@ public class StoreServiceImpl implements StoreService {
 				
 		return storeDao.getStoreNameListByid(storeName);
 	}
+
+	@Override
+	public List<String> getStoreCodeListByStoreCode(String storeCode) {
+		
+		return storeDao.getStoreCodeListByStoreCode(storeCode);
+	}
 	
 	
 

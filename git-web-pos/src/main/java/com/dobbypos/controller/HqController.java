@@ -1,6 +1,7 @@
 
 package com.dobbypos.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.URLEncoder;
 import java.util.List;
@@ -86,14 +87,31 @@ public class HqController {
 		return "hq/storeregisterform";
 	}
 	
+	@RequestMapping(value = "/storeregister.action", method = RequestMethod.POST)
+	public String storeRegister(Store store) {
+		
+		
+		return "redirect:/hq/storemanagement.action";
+	}
+	
 	@RequestMapping(value = "/storenamelist.action", method = RequestMethod.GET)
 	@ResponseBody
 	public String storeNameList(HttpServletResponse resp, @RequestParam("storename") String storeName) {
-		 
+		
 		List<String> stores = storeService.getStoreNameListById(storeName);
+		for (int i = 0; i < stores.size(); i++) {
+			try {
+				stores.set(i, URLEncoder.encode(stores.get(i), "utf-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+//		List<String> storeCodes = storeService.getStoreCodeList(storeCode);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		System.out.println(stores);
 		String result = gson.toJson(stores);
+//		result = gson.toJson(storeCodes);
+		
 		
 		resp.setContentType("application/json;charset=utf-8");
 		
@@ -106,7 +124,19 @@ public class HqController {
 		return "hq/clientregisterform";
 	}
 	
-	
+	@RequestMapping(value = "/storecodelist.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String storeCodeList(HttpServletResponse resp, @RequestParam("storecode") String storeCode) {
+				
+		List<String> storeCodes = storeService.getStoreCodeListByStoreCode(storeCode);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.out.println(storeCodes);
+		String result = gson.toJson(storeCodes);		
+		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		return result;
+	}
 	
 	
 }

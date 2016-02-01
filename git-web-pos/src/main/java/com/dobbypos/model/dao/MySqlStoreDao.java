@@ -21,4 +21,10 @@ public class MySqlStoreDao implements StoreDao {
 		return stores;
 	}
 
+	@Override
+	public List<String> getStoreCodeListByStoreCode(String storeCode) {
+		List<String> storeCodes = storeMapper.selectStoreCodeListByStoreCode(storeCode);
+		return storeCodes;
+	}
+
 }
