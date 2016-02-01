@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.AttendanceDao;
 import com.dobbypos.model.dao.EmployeeDao;
+import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.Employee;
 
 @Service("attendanceService")
@@ -38,7 +39,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public List<Employee> getAttendanceAllByStoreCode(String storeCode) {
+	public List<Attendance> getAttendanceAllByStoreCode(String storeCode) {
 		// TODO Auto-generated method stub
 		return attendanceDao.selectAttendanceAllByStoreCode(storeCode);
 	}
