@@ -44,6 +44,12 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendanceDao.selectAttendanceAllByStoreCode(storeCode);
 	}
 
+	@Override
+	public int setAttendToWork(int employeeNum) {
+		// TODO Auto-generated method stub
+		return attendanceDao.insertAttendanceByEmployeeNo(employeeNum);
+	}
+
 
 	
 

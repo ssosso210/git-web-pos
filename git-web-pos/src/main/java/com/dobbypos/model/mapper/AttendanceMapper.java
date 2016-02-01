@@ -8,5 +8,7 @@ public interface AttendanceMapper {
 
 	List<Attendance> selectAttendanceAllByStoreCode(String storeCode);
 
+	int insertAttendanceByEmployeeNo(int employeeNum);
+
 
 }

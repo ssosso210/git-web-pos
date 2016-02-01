@@ -11,4 +11,6 @@ public interface AttendanceService {
 
 	List<Attendance> getAttendanceAllByStoreCode(String storeCode);
 
+	int setAttendToWork(int employeeNum);
+
 }

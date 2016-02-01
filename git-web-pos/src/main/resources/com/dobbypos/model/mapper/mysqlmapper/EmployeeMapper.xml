@@ -55,9 +55,52 @@
 		#{storeCode}, #{wage}, #{employeeType}, #{employeeId})
 	</insert>
 	
-	<select id="selectEmployeesByStoreCodeAndUser" resultMap="employeeMap" >
+	
+	<resultMap type="Attendance" id="attendanceMap">
+		<id property="attendanceNo" column="attendanceNo" />
+		<result property="startWork" column="startWork" />
+		<result property="endWork" column="endWork" />
+		<result property="employeeNo" column="employeeNo" />
+	</resultMap>
+	<resultMap type="Employee" id="employeeMap2">
+		<id property="employeeNo" column="employeeNo" />
+		<result property="employeeName" column="employeeName" />
+		<result property="phoneNo" column="phoneNo" />
+		<result property="passwd" column="passwd" />
+		<result property="storeCode" column="storeCode" />
+		<result property="wage" column="wage" />
+		<result property="employeeType" column="employeeType" />
+		<result property="employeeId" column="employeeId" />
+		<association property="attendanceone" column="employeeNo" resultMap="attendanceMap" />
+	</resultMap>
+	
+<!-- 	<select id="selectEmployeesByStoreCodeAndUser" resultMap="employeeMap" >
 		SELECT <include refid="EmployeeColumns" /> 
 		from employee
 		WHERE storeCode = #{id} AND employeeType = 'user'
+	</select> -->
+	
+<!-- 	<select id="selectEmployeesByStoreCodeAndUser" parameterType="string" resultMap="employeeMap2" >
+		SELECT 
+			at.attendanceNo, at.startWork, at.endWork,
+			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em
+		LEFT OUTER JOIN attendance at
+		ON em.employeeNo = at.employeeNo
+		WHERE em.storeCode = #{id} AND em.employeeType = 'user' AND curdate() = DATE_FORMAT(startWork, '%Y-%m-%d')
+	</select> -->
+	
+	
+	<select id="selectEmployeesByStoreCodeAndUser" parameterType="string" resultMap="employeeMap2" >
+		select  a.attendanceNo , a.startWork, a.endWork,
+				b.employeeNo, b.employeeName, b.phoneNo, b.passwd, b.storeCode, b.wage, b.employeeType, b.employeeId
+		        from (
+		SELECT  at.attendanceNo , at.startWork, at.endWork,
+				em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		from employee em left outer join attendance at on em.employeeNo = at.employeeNo
+		WHERE em.storeCode = #{id} AND em.employeeType = 'user' 
+		AND curdate() = (DATE_FORMAT(startWork, '%Y-%m-%d'))) a right outer join employee B on A.employeeNo = B.employeeNo
+		WHERE B.employeeType = 'user' 
 	</select>
+
 </mapper>

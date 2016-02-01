@@ -75,4 +75,8 @@
 		WHERE em.storeCode = #{id} AND em.employeeType = 'user' AND em.employeeNo = at.employeeNo
 	</select>
 	
+	<insert id="insertAttendanceByEmployeeNo" parameterType="int" useGeneratedKeys="true">
+		insert into attendance(employeeNo) values( #{id});
+	</insert>
+	
 </mapper>

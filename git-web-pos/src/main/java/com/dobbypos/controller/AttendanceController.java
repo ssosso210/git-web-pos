@@ -42,7 +42,12 @@ public class AttendanceController {
 		
 		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
 		
-		
+		for (Employee employee2 : employees) {
+			System.out.println(employee2.toString());
+			if (employee2.getAttendanceone() != null) {
+				System.out.println(employee2.getAttendanceone().toString());
+			}
+		}
 		req.setAttribute("employees", employees);
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
@@ -58,9 +63,16 @@ public class AttendanceController {
 	@ResponseBody
 	public String attendancecheck(HttpSession session, HttpServletRequest req,HttpServletResponse res) {
 		String employeeNo = req.getParameter("employeeNo");
+		int employeeNum = Integer.parseInt(employeeNo);
 		String attendType = req.getParameter("attendType");
 		
 		System.out.println("attendcheck.action ------ employeeNo="+employeeNo+ " "+ Util.getHourFromAmPm());
+		
+		int returnValue = 0;
+		//출근 일 경우 값을 insert
+		if(attendType.equals("towork")){
+			returnValue = attendanceService.setAttendToWork(employeeNum);			
+		}
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //		Gson gson = new Gson();
