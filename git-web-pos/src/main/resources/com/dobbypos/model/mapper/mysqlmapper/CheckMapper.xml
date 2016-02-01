@@ -28,19 +28,19 @@
 		<result property="itemCode" column="itemCode" />
 	</resultMap>
 	
-	<select id="selectBalances" resultType="Balance">
-		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode
+	<select id="getBalances" resultMap="balanceMap">
+		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
 		FROM balance   
 	</select>
 	
-	<select id="selectBalanceByCode" 
+	<!-- <select id="selectBalanceByCode" 
 		parameterType="hashMap" resultType="Balance">
 		SELECT ba.balanceNo, ba.plusMinus, ba.regDate, ba.storeCode, ba.description, ba.itemCode
     	FROM store st JOIN balance ba
     	where st.storeCode = ba.storeCode
-		<!-- where st.storeCode = #{storeCode}  
-		and st.storeCode = ba.storeCode  -->
-	</select>
+		where st.storeCode = #{storeCode}  
+		and st.storeCode = ba.storeCode 
+	</select> -->
 
 	<!-- <insert id="insertEmployee" parameterType="Employee">
 		INSERT INTO Employee (employeeName,phoneNo,passwd, storeCode,wage, employeeType, employeeId)

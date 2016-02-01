@@ -49,7 +49,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dobbywebpos/resources/styles/26115.jpg" class="img-circle" alt="User Image"/>
+                                                    <img src="/dobbywebpos/resources/images/26115.jpg" class="img-circle" alt="User Image"/>
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -62,7 +62,7 @@
                                             <a href="#">
                                            
                                                 <div class="pull-left">
-                                                    <img src="/dobbywebpos/resources/styles/26115.jpg" class="img-circle" alt="user image"/>
+                                                    <img src="/dobbywebpos/resources/images/26115.jpg" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Director Design Team
@@ -75,7 +75,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dobbywebpos/resources/styles/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="/dobbywebpos/resources/images/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -88,7 +88,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dobbywebpos/resources/styles/26115.jpg" class="img-circle" alt="user image"/>
+                                                    <img src="/dobbywebpos/resources/images/26115.jpg" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -101,7 +101,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dobbywebpos/resources/styles/avatar.png" class="img-circle" alt="user image"/>
+                                                    <img src="/dobbywebpos/resources/images/avatar.png" class="img-circle" alt="user image"/>
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -189,7 +189,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i>
-                                <c:set var="hqName" value="${ sessionScope.loginuser.hqName }"></c:set>
+                                <c:set var="hqName" value="${ sessionScope.hqloginuser.hqName }"></c:set>
                                 <span>${ hqName }<i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
@@ -247,12 +247,12 @@
                                     
 
 									<c:choose>
-										<c:when test="${ empty sessionScope.loginuser }">
+										<c:when test="${ empty sessionScope.hqloginuser }">
 										
 											<a href="#"><i class="fa fa-circle text-success"></i> <spring:message code="hq.offline" /></a>
 										</c:when>
 										<c:otherwise>
-										<p><spring:message code="general.welcome" arguments="${ sessionScope.loginuser.hqName }" /></p>
+										<p><spring:message code="general.welcome" arguments="${ sessionScope.hqloginuser.hqName }" /></p>
                                     		<a href="#"><i class="fa fa-circle text-success"></i> <spring:message code="hq.online" /></a>
                                     	</c:otherwise>
                                     </c:choose>

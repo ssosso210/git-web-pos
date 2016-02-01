@@ -54,5 +54,11 @@ public class MySqlEmployeeDao implements EmployeeDao {
 			
 		return employee;
 	}
+
+	@Override
+	public List<Employee> selectEmployeesByStoreCodeAndUser(String storeCode) {
+		List<Employee> employees = employeeMapper.selectEmployeesByStoreCodeAndUser(storeCode);
+		return employees;
+	}
 		
 }

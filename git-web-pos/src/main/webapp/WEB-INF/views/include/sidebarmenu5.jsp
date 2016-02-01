@@ -7,7 +7,7 @@
                             <!-- sidebar menu: : style can be found in sidebar.less -->
                             <ul class="sidebar-menu">
                                 <li class="active">
-                                    <a href="index.html">
+                                    <a href="/dobbywebpos/hq/clientregisterform.action">
                                         <i class="fa fa-dashboard"></i> <span><spring:message code="hq.sidebarmenu5.1" /></span>
                                     </a>
                                 </li>
