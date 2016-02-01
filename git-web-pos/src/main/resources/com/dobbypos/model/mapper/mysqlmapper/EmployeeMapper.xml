@@ -37,8 +37,7 @@
 	</select>
 
 	<select id="selectEmployees" resultMap="employeeMap">
-		SELECT employeeNo,employeeName,wage FROM employee
-		WHERE employeeType = 'user'
+		SELECT employeeNo,employeeName,wage,employeeType FROM employee		
 	</select>
 	
 	<select id="selectEmployeeByNo" parameterType="int" resultType="Employee">		

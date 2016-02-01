@@ -22,6 +22,7 @@
         			<td>직원번호</td>
         			<td>직원이름</td>
         			<td>시급</td>
+        			<td>직급</td>
         			<!-- <td>축적시간</td>
         			<td>급여</td> -->       			
         		</tr>        	
@@ -50,8 +51,8 @@
         			</td>
         			<td>${ employee.employeeName }</td>
         			<td>${ employee.wage }</td>
-        			<%--<td> ${ employee.workHours } </td>
-        			<td>${ employee.pay } </td>--%>
+        			<td>${ employee.employeeType } </td>
+        			<%--<td>${ employee.pay } </td>--%>
         		</tr>
         	</c:forEach>
         	</table>       	
