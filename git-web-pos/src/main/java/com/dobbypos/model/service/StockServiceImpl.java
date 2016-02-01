@@ -22,10 +22,5 @@ public class StockServiceImpl implements StockService {
 		return stockDao.getList();
 	}
 
-	@Override
-	public List<StockCode> searchStockCodeByStockNo(int stockNo) {
-		return stockDao.getStockCodeByStockNo(stockNo);
-		
-	}
-
+	
 }

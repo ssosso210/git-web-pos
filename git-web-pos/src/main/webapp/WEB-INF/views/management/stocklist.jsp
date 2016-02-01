@@ -32,13 +32,13 @@
 
 		<c:forEach var="stock" items="${ stocks }">
 			<tr style="height: 30px">
-				<td>${ requestScope.stock.stockNo }</td>
-				<td>${ requestScope.stockCode.stockCodeNo }</td>
-				<td>${ requestScope.stockCode.stockName }</td>
-				<td>${ requestScope.stockCode.price }</td>
-				<td>${ requestScope.stock.stockNumber }</td>
-				<td>${ requestScope.stockCode.standard }</td>
-				<td>${ requestScope.stock.stockRegDate }</td>
+				<td>${ stock.stockNo }</td>
+				<td>${ stock.stockCodeNo }</td>
+				<td>${ stock.stockName }</td>
+				<td>${ stock.price }</td>
+				<td>${ stock.stockNumber }</td>
+				<td>${ stock.standard }</td>
+				<td>${ stock.stockRegDate }</td>
 			</tr>
 		</c:forEach>
 

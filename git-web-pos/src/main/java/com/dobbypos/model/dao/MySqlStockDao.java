@@ -7,28 +7,20 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Stock;
-import com.dobbypos.model.dto.StockCode;
 import com.dobbypos.model.mapper.StockMapper;
 
 @Repository("stockDao")
 public class MySqlStockDao implements StockDao {
-	
 
-	
 	@Autowired
 	@Qualifier("stockMapper")
 	private StockMapper stockMapper;
 
 	@Override
 	public List<Stock> getList() {
-		List<Stock> stocks = stockMapper.selectStocks();		
+		List<Stock> stocks = stockMapper.selectStocks();
 		return stocks;
-		
+
 	}
 
-	@Override
-	public List<StockCode> getStockCodeByStockNo(int stockNo) {
-		List<StockCode> stockcodes = stockMapper.selectStockCodes();
-		return stockcodes;
-	}		
 }
