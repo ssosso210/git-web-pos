@@ -41,7 +41,7 @@ public class SaleController {
 //		List<Menu> menus = saleService.getSelectMenus();
 //	    model.addAttribute("menus", menus);
 //		
-//		System.out.println(" [ 선택한 메뉴가져왔어 ]  ");
+		System.out.println(" [ 테이블이 나와야해 ]  ");
 //			
 		//int foodCode = (req.getParameter("foodCode"))
 
@@ -64,16 +64,22 @@ public class SaleController {
 	@RequestMapping(value = "/orderhome_test", method = RequestMethod.GET)
 	public String OrderHome(HttpSession session, HttpServletRequest req, Model model) {
 		
-//		List<Menu> menus = saleService.getSelectMenus();
-//	    model.addAttribute("menus", menus);
-//		
+		List<Menu> menus = saleService.getAllMenus();
+	    model.addAttribute("menus", menus);
+		
 		System.out.println(" [ 주문해야해 ]  ");
-//			
-		//int foodCode = (req.getParameter("foodCode"))
-
-		
-		
+	
 		return "sale/orderhome_test"; 
+	}
+	
+	@RequestMapping(value = "/orderform", method = RequestMethod.GET)
+	public String SelectAllMenu(Model model) {
+		
+		List<Menu> menus = saleService.getAllMenus();
+	    model.addAttribute("menus", menus);
+		
+		System.out.println(" [ 모든 메뉴가져왔어 ]  ");
+		return "sale/orderform";
 	}
 	
 	
@@ -105,15 +111,7 @@ public class SaleController {
 		return "sale/paymentform"; 
 	}	
 	
-	@RequestMapping(value = "/orderform", method = RequestMethod.GET)
-	public String SelectAllMenu(Model model) {
-		
-		List<Menu> menus = saleService.getAllMenus();
-	    model.addAttribute("menus", menus);
-		
-		System.out.println(" [ 모든 메뉴가져왔어 ]  ");
-		return "sale/orderform";
-	}
+
 	
 
 	//테이블디비에추가(박은영)
