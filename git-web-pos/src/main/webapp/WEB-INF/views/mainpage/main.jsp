@@ -76,7 +76,7 @@
 			</div>
 		</div>
 	</div>
-		
+
 <!-- Placed at the end of the document so the pages load faster --> 
 <script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
 <script src="/dobbywebpos/resources/jsui/excanvas.min.js"></script> 

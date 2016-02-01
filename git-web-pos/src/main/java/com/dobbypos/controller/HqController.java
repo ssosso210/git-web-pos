@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.HqService;
@@ -88,8 +90,11 @@ public class HqController {
 	}
 	
 	@RequestMapping(value = "/storeregister.action", method = RequestMethod.POST)
-	public String storeRegister(Store store) {
-		
+	public String storeRegister(Store store, HttpServletRequest req) {
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		System.out.println(hq.getHqCode());
+		store.setHqCode(hq.getHqCode());
+		storeService.registerStore(store);
 		
 		return "redirect:/hq/storemanagement.action";
 	}
@@ -136,6 +141,15 @@ public class HqController {
 		resp.setContentType("application/json;charset=utf-8");
 		
 		return result;
+	}
+	
+	@RequestMapping(value = "/storeview.action", method = RequestMethod.GET)
+	public String storeView(@RequestParam("storename") String storeName, Model model) {
+		Store store = storeService.getStoreByStoreName(storeName);
+		model.addAttribute(store);
+		return "/hq/storeview";
+		
+		
 	}
 	
 	

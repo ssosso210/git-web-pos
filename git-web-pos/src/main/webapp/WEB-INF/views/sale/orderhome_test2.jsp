@@ -11,10 +11,9 @@
 <script src="//code.jquery.com/jquery-1.12.0.js"></script>
 <script type="text/javascript">
    
-	var myWindow;
    
-	function table_pos() { // 주문하기 팝업창
-		myWindow = window.open("../sale/orderhome_test", "myWindow", "width=600, height=600, left=500, top=100");
+	function ordering_pos() { // 주문하기 팝업창
+		window.open("../sale/orderform.action", "", "width=600, height=500, left=500, top=200");
 	}
 	<!-- ------------------------------------------------------------- -->
 	
@@ -23,17 +22,24 @@
 
 <body>
 
-	<div style="text-align: center; margin-top: 200px;">
+	<!-- ------------------------------------------------------------- -->
+	<h2>[이걸로 테스트중이야]</h2><br />
+	<table border="1" width="500" height="100">
+		<tr>
+			<td>1번 테이블</td>
+			<td>2번 테이블</td>
+		</tr>
+		<tr>
+			<td>3번 테이블</td>
+			<td>4번 테이블</td>
+		</tr>
+	</table><br />
+	<input type="button" value="주문하기" onClick="ordering_pos()">
+	<input type="button" value="주문취소" onClick="pay_pos()">
 
 	<!-- ------------------------------------------------------------- -->
-		<h2>[ 테스트 중 ]</h2><br />
-		<h3>[ 밑에 버튼들이 테이블이야 ]</h3><br />
-		<input type="button" style="width: 200px; height: 100px; left: 500; top: 300" value="" onclick="table_pos()">
-		<input type="button" style="width: 200px; height: 100px" value="" onclick="pay_pos()">
 
-	<!-- ------------------------------------------------------------- -->
 
-	</div>
-	
+
 </body>
 </html>

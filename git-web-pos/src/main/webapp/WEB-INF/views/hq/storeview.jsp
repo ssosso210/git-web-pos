@@ -130,15 +130,6 @@
 
 $(function() {
 		
- /* $("#storeName").on("keyup", function(event) {
-		var input = $("#storeName").val();	
-		if (input.length == 0) {
-			if (divList && divList.style.display != "none") {
- 			   divList.style.display = "none"
- 		   }
-			return;	 
-		} */
-		
 		$("#storeCode").autocomplete({
 			source : function(request, response) {
 				$.ajax({
