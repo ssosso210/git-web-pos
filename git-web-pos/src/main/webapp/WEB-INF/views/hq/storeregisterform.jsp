@@ -43,16 +43,20 @@
     <link href="/dobbywebpos/resources/styles/input.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/input2.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/default.css" rel="stylesheet" type="text/css" />
-	<link href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
 
           </style>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+          <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=0b93caf3b7d18b634e4cda80edd41135&libraries=services"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
          <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
+       <!--  
+        <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script> -->
 
         <!-- jQuery UI 1.10.3 -->
-        <script src="/dobbywebpos/resources/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+        <!-- <script src="/dobbywebpos/resources/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script> -->
         <!-- Bootstrap -->
         <script src="/dobbywebpos/resources/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- daterangepicker -->
@@ -120,17 +124,12 @@
             
             
 
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=0b93caf3b7d18b634e4cda80edd41135&libraries=services"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
 
 <script type="text/javascript">
 
 $(function() {
 		
-	var divList;
-	
-	
  /* $("#storeName").on("keyup", function(event) {
 		var input = $("#storeName").val();	
 		if (input.length == 0) {
@@ -139,20 +138,46 @@ $(function() {
  		   }
 			return;	 
 		} */
-		$("#storeName").autocomplete({
+		
+		$("#storeCode").autocomplete({
 			source : function(request, response) {
 				$.ajax({
-					url : "/dobbywebpos/hq/storenamelist.action",
+					url : "/dobbywebpos/hq/storecodelist.action",
 					type : "GET",
 					async : true,
 					//dataType : "json",
-					data : { storename : request.term },
+					data : { storecode : request.term },
+					success : function(data) {												
+							eval("var list = " + data);
+							var r = [];
+							$.each(list, function(index, value) {
+								r.push({label : value, value : value });							
+							});
+							response(r);							 							
+				       },				       
+				    error : function(error) {
+				    	console.log(error);
+				    }
+				})
+			}
+			
+		}); 
+		
+		
+		$("#storeName").autocomplete({
+			source : function(request, response) {
+				var input = $("#storeName").val();				
+				$.ajax({
+					url : "/dobbywebpos/hq/storenamelist.action",
+					type : "GET",					
+					async : true,					
+					data : { storename : input },					
 					success : function(data) {
 							//console.dir(data);							
 							eval("var list = " + data);
 							var r = [];
 							$.each(list, function(index, value) {
-								r.push({label : value, value : value });							
+								r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
 							});
 							response(r);
 							
@@ -236,8 +261,8 @@ function map(streetTarget) {
             
             //console.dir(fullRoadAddr);
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-         //document.getElementById('storeregisteraddress').value = fullRoadAddr;
-         $("#storeregisteraddress").html("fullRoadAddr");
+         document.getElementById('storeregisteraddress').value = fullRoadAddr;
+         //$("#storeregisteraddress").html("fullRoadAddr");
             
         /*     //new 1. 조회된 주소를 이용해서 좌표 요청 (Geocoder) 
         var geocoder = new daum.maps.services.Geocoder();
@@ -401,8 +426,14 @@ function map(streetTarget) {
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
 		<br /><br />
-		        <form action="register.action" method="post"><!-- 상대경로표시 -->
+		        <form action="storeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table style="margin: 0 auto;border: solid;">
+		             <tr>
+		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.code" /></th>
+		                <td>		                    
+		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" />		                    
+		                </td>
+		            </tr>
 		            <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.name" /></th>
 		                <td>
@@ -432,20 +463,14 @@ function map(streetTarget) {
 		            <tr>
 		                <th class="thh"><spring:message code="hq.storemanagement.address" /></th>
 		                <td>
-		                	<input type="search" id="storeregisteraddress" name="storeregisteraddress" style="width:280px" />		                	
+		                	<input type="search" id="storeregisteraddress" name="address" style="width:280px" />		                	
 		                </td>
-		            </tr>
-		            <tr>
-		                <th>활성화여부</th>
-		                <td>
-		                	<input type="checkbox" name="active" value="true" />
-		                </td>
-		            </tr>
+		            </tr>		            
 		        </table>
 		        <div class="buttons">
 		        	<input type="submit" value="등록" style="height:25px" />
 		        	<input type="button" value="취소" style="height:25px"
-		        		onclick="location.href='list.action';" />
+		        		onclick="location.href='/dobbywebpos/hq/storemanagement.action';" />
 		        </div>
 		        </form>
 		    </div>

@@ -1,12 +1,13 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
+
 
 public class Order implements Serializable {
 	
 	private int orderNo;
-	private Date orderDate;
+	private Timestamp orderDate;
 	private String payType;
 	private int discountRate;
 	private String orderStatus;
@@ -20,10 +21,10 @@ public class Order implements Serializable {
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
-	public Date getOrderDate() {
+	public Timestamp getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(Timestamp orderDate) {
 		this.orderDate = orderDate;
 	}
 	public String getPayType() {

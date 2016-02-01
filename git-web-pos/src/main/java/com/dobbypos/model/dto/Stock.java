@@ -1,19 +1,18 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.ArrayList;
+import java.sql.Timestamp;
 
 public class Stock implements Serializable {
 
 	private int stockNo;
-	private Date stockRegDate;
+	private Timestamp stockRegDate;
 	private int stockNumber;
 	private int stockPrice;
 	private String storeCode;
 	private int stockCodeNo;	
 
-	private ArrayList<StockCode> stockCodes;
+	private StockCode stockCode;
 
 	public int getStockNo() {
 		return stockNo;
@@ -23,11 +22,11 @@ public class Stock implements Serializable {
 		this.stockNo = stockNo;
 	}
 
-	public Date getStockRegDate() {
+	public Timestamp getStockRegDate() {
 		return stockRegDate;
 	}
 
-	public void setStockRegDate(Date stockRegDate) {
+	public void setStockRegDate(Timestamp stockRegDate) {
 		this.stockRegDate = stockRegDate;
 	}
 
@@ -63,12 +62,12 @@ public class Stock implements Serializable {
 		this.stockCodeNo = stockCodeNo;
 	}
 
-	public ArrayList<StockCode> getStockCodes() {
-		return stockCodes;
+	public StockCode getStockCode() {
+		return stockCode;
 	}
 
-	public void setStockCodes(ArrayList<StockCode> stockCodes) {
-		this.stockCodes = stockCodes;
+	public void setStockCode(StockCode stockCode) {
+		this.stockCode = stockCode;
 	}
 
 }

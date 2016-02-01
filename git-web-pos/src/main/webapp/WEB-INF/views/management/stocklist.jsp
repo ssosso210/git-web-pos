@@ -26,23 +26,24 @@
 			<td>재고이름</td>
 			<td>원가</td>
 			<td>잔여량</td>
-			<td>단위</td>
 			<td>확인날짜</td>
 		</tr>
 
 		<c:forEach var="stock" items="${ stocks }">
+
 			<tr style="height: 30px">
 				<td>${ stock.stockNo }</td>
-				<td>${ stock.stockCodeNo }</td>
-				<td>${ stock.stockName }</td>
-				<td>${ stock.price }</td>
-				<td>${ stock.stockNumber }</td>
-				<td>${ stock.standard }</td>
+				<td><c:url value="editstocknumber.action" var="viewUrl">
+						<c:param name="stockCodeNo" value="${ stock.stockCodeNo }" />
+					</c:url> <a href="${ viewUrl }">${ stock.stockCodeNo }</a></td>
+				<td>${ stock.stockCode.stockName }</td>
+				<td>${ stock.stockCode.price }원</td>
+				<td>${ stock.stockNumber }${ stock.stockCode.standard }</td>
 				<td>${ stock.stockRegDate }</td>
 			</tr>
 		</c:forEach>
 
 	</table>
-	
+
 </body>
 </html>

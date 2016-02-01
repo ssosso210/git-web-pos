@@ -20,39 +20,30 @@
 </head>
 
 <script type="text/javascript">
-
-var employeeName ;
-var employeeId;
-function employeeAttendSetting(emName, emId) 
+function employeeAttendSetting(emName, emNo) 
 {	
 	$("#employeeName").val(emName);
-	$("#employeeId").val(emId);
-	
-	//employeeName = emName;
-	//employeeId = emId;
-	//alert(employeeName+"씨 ");
-	
+	$("#employeeNo").val(emNo);
+	//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
 }
 
 function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : offwork 
-	alert(employeeName+"씨 "+ attendType);
+	alert($("#employeeName").val()+"씨 "+ attendType);
 	$("#attendType").val(attendType);
 	$.ajax({
 		url : "/dobbywebpos/attendance/attendcheck.action",
-		type : "GET",
+		type : "POST",
 		async : true,
 		dataType : "json", //응답 데이터의 형식
-		//data : { id : $("#memberid").val() },//val() : input의 value를 읽거나 쓰는 함수
-		data : {attendTypeVal : $("#attendType").val(), employeeIdVal : $("#employeeId").val() },
-		success : function(data, status, xhr) {
-			/* $("#email").val(data.email);
-			$("#usertype").val(data.userType);
-			$("#active").val(data.active);
-			$("#regdate").val(data.regDate); */
-			alert(data);
+		data : {attendType : $("#attendType").val(), employeeNo : $("#employeeNo").val() },
+		success : function(data) {
+			alert(data.date);
+			if(data.attendType == 'towork'){
+				$("#startem"+data.employeeNo).text(data.buttonVal);
+			}
 		},
-		error : function(xhr, status, error) {
-			alert('fail to attend');
+		error : function( error) {
+			alert('fail to attend '+ error.toString());
 		}
 	});
 }
@@ -60,11 +51,6 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 </script>
 <body>
 
-<form>
-	<input type="hidden" id="employeeName" name="employeeName" value=""/>
-	<input type="hidden" id="employeeId" name="employeeId" value=""/>
-	<input type="hidden" id="attendType" name="attendType" value=""/>
-</form>
 <div id="wrap">
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
 <div class="main">
@@ -77,7 +63,6 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">출근 목록</a>	
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
-
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
 	              <h3>직원 목록</h3>
@@ -91,10 +76,10 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
             		</c:when>
             		<c:otherwise>
 			            <c:forEach var="employee" items="${ employees }">	
-			              <a href="javascript:employeeAttendSetting('${ employee.employeeName}','${ employee.employeeId}');" class="shortcut">
-			              	<span class="shortcut-label">${ employee.employeeName}
-			              		<br/>출근 : _______________
-			              		<br/>퇴근 : _______________
+			              <a href="javascript:employeeAttendSetting('${ employee.employeeName}',${ employee.employeeNo});" id="employee${employee.employeeNo}" class="shortcut">
+			              	<span class="shortcut-label" >${ employee.employeeName}
+			              		<div id="startem${ employee.employeeNo}" >출근 : _______________</div>
+			              		<div id="endem${ employee.employeeNo}" >퇴근 : _______________</div>
 			              	</span> 
 			              </a>
 			            </c:forEach>
@@ -141,135 +126,22 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
   <!-- /main-inner --> 
 </div>
 <!-- /main -->
-		
+</div>
+
+
+	<input type="hidden" id="employeeName" name="employeeName" value=""/>
+	<input type="hidden" id="employeeNo" name="employeeNo" value=""/>
+	<input type="hidden" id="attendType" name="attendType" value=""/>
+
+
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
+<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
 <script src="/dobbywebpos/resources/jsui/excanvas.min.js"></script> 
 <script src="/dobbywebpos/resources/jsui/chart.min.js" type="text/javascript"></script> 
 <script src="/dobbywebpos/resources/jsui/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="/dobbywebpos/resources/jsui/full-calendar/fullcalendar.min.js"></script>
  
-<script src="js/base.js"></script> 
-<script>     
-
-        var lineChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-				{
-				    fillColor: "rgba(220,220,220,0.5)",
-				    strokeColor: "rgba(220,220,220,1)",
-				    pointColor: "rgba(220,220,220,1)",
-				    pointStrokeColor: "#fff",
-				    data: [65, 59, 90, 81, 56, 55, 40]
-				},
-				{
-				    fillColor: "rgba(151,187,205,0.5)",
-				    strokeColor: "rgba(151,187,205,1)",
-				    pointColor: "rgba(151,187,205,1)",
-				    pointStrokeColor: "#fff",
-				    data: [28, 48, 40, 19, 96, 27, 100]
-				}
-			]
-
-        }
-
-        var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
-
-
-        var barChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-				{
-				    fillColor: "rgba(220,220,220,0.5)",
-				    strokeColor: "rgba(220,220,220,1)",
-				    data: [65, 59, 90, 81, 56, 55, 40]
-				},
-				{
-				    fillColor: "rgba(151,187,205,0.5)",
-				    strokeColor: "rgba(151,187,205,1)",
-				    data: [28, 48, 40, 19, 96, 27, 100]
-				}
-			]
-
-        }    
-
-        $(document).ready(function() {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        var calendar = $('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-          },
-          selectable: true,
-          selectHelper: true,
-          select: function(start, end, allDay) {
-            var title = prompt('Event Title:');
-            if (title) {
-              calendar.fullCalendar('renderEvent',
-                {
-                  title: title,
-                  start: start,
-                  end: end,
-                  allDay: allDay
-                },
-                true // make the event "stick"
-              );
-            }
-            calendar.fullCalendar('unselect');
-          },
-          editable: true,
-          events: [
-            {
-              title: 'All Day Event',
-              start: new Date(y, m, 1)
-            },
-            {
-              title: 'Long Event',
-              start: new Date(y, m, d+5),
-              end: new Date(y, m, d+7)
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: new Date(y, m, d-3, 16, 0),
-              allDay: false
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: new Date(y, m, d+4, 16, 0),
-              allDay: false
-            },
-            {
-              title: 'Meeting',
-              start: new Date(y, m, d, 10, 30),
-              allDay: false
-            },
-            {
-              title: 'Lunch',
-              start: new Date(y, m, d, 12, 0),
-              end: new Date(y, m, d, 14, 0),
-              allDay: false
-            },
-            {
-              title: 'Birthday Party',
-              start: new Date(y, m, d+1, 19, 0),
-              end: new Date(y, m, d+1, 22, 30),
-              allDay: false
-            },
-            {
-              title: 'EGrappler.com',
-              start: new Date(y, m, 28),
-              end: new Date(y, m, 29),
-              url: 'http://EGrappler.com/'
-            }
-          ]
-        });
-      });
-    </script><!-- /Calendar -->					
+<!-- <script src="js/base.js"></script>  -->
+				
 </body>
 </html>

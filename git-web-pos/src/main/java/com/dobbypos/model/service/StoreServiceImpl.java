@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.StoreDao;
+import com.dobbypos.model.dto.Store;
 
 @Service("storeService")
 public class StoreServiceImpl implements StoreService {
@@ -19,6 +20,19 @@ public class StoreServiceImpl implements StoreService {
 	public List<String> getStoreNameListById(String storeName) {
 				
 		return storeDao.getStoreNameListByid(storeName);
+	}
+
+	@Override
+	public List<String> getStoreCodeListByStoreCode(String storeCode) {
+		
+		return storeDao.getStoreCodeListByStoreCode(storeCode);
+	}
+
+	@Override
+	public void registerStore(Store store) {
+		
+		storeDao.insertStore(store);
+		
 	}
 	
 	
