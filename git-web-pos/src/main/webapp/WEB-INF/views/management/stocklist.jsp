@@ -26,7 +26,6 @@
 			<td>재고이름</td>
 			<td>원가</td>
 			<td>잔여량</td>
-			<td>단위</td>
 			<td>확인날짜</td>
 		</tr>
 
@@ -36,9 +35,8 @@
 				<td>${ stock.stockNo }</td>
 				<td>${ stock.stockCodeNo }</td>
 				<td>${ stock.stockCode.stockName }</td>
-				<td>${ stock.stockCode.price }</td>
-				<td>${ stock.stockNumber }</td>
-				<td>${ stock.stockCode.standard }</td>
+				<td>${ stock.stockCode.price } 원 </td>
+				<td>${ stock.stockNumber } ${ stock.stockCode.standard }</td>				
 				<td>${ stock.stockRegDate }</td>
 			</tr>
 		</c:forEach>
