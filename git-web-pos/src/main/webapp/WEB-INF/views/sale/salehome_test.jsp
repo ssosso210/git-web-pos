@@ -11,9 +11,10 @@
 <script src="//code.jquery.com/jquery-1.12.0.js"></script>
 <script type="text/javascript">
    
+	var myWindow;
    
-	function order_pos() { // 주문하기 팝업창
-		window.open("../sale/orderhome_test.action", "", "width=600, height=500, left=500, top=200");
+	function table_pos() { // 주문하기 팝업창
+		myWindow = window.open("../sale/orderhome_test", "myWindow", "width=600, height=600, left=500, top=100");
 	}
 	<!-- ------------------------------------------------------------- -->
 	
@@ -26,8 +27,9 @@
 
 	<!-- ------------------------------------------------------------- -->
 		<h2>[ 테스트 중 ]</h2><br />
-		<input type="button" style="width: 200px; height: 100px; left: 500; top: 300" value="주문하기" onclick="order_pos()">
-		<input type="button" style="width: 200px; height: 100px" value="결제하기" onclick="pay_pos()">
+		<h3>[ 밑에 버튼들이 테이블이야 ]</h3><br />
+		<input type="button" style="width: 200px; height: 100px; left: 500; top: 300" value="" onclick="table_pos()">
+		<input type="button" style="width: 200px; height: 100px" value="" onclick="pay_pos()">
 
 	<!-- ------------------------------------------------------------- -->
 

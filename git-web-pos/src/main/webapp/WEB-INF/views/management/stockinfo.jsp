@@ -10,8 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>재고 리스트</title>
-
+<title>재고 정보</title>
 </head>
 
 <body>
@@ -26,9 +25,8 @@
 			<td>재고이름</td>
 			<td>원가</td>
 			<td>잔여량</td>
-			<td>단위</td>
 			<td>확인날짜</td>
-		</tr>
+		</tr>		
 
 		<c:forEach var="stock" items="${ stocks }">
 			<tr style="height: 30px">
@@ -37,12 +35,20 @@
 				<td>${ stock.stockName }</td>
 				<td>${ stock.price }</td>
 				<td>${ stock.stockNumber }</td>
-				<td>${ stock.standard }</td>
 				<td>${ stock.stockRegDate }</td>
 			</tr>
 		</c:forEach>
 
+
 	</table>
-	
+	<div class="buttons">
+		<a href="stocklist">목록</a>
+		 &nbsp;&nbsp;
+		<a href="#">정보수정</a>
+		 &nbsp;&nbsp;
+		<a href="#">재고신청</a> 
+	</div>
+
+
 </body>
 </html>

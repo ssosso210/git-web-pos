@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Salary Manegement</title>
+	<title>직원 리스트</title>
 	
 </head>
 
