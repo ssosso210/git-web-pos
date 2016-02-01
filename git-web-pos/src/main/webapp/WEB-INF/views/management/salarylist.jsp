@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Salary Manegement</title>
+	<title>Salary List</title>
 	
 </head>
 

@@ -1,6 +1,8 @@
-<%@ page language="java" pageEncoding="utf-8" %>
-
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.dobbypos.model.dto.Stock"%>
+<%@page import="com.dobbypos.model.dto.StockCode"%>
+<%@page import="com.dobbypos.model.dao.EmployeeDao"%>
 
 <!DOCTYPE html>
 

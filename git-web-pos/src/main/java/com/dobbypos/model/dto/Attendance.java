@@ -34,5 +34,11 @@ public class Attendance implements Serializable {
 	public void setEmployeeNo(int employeeNo) {
 		this.employeeNo = employeeNo;
 	}
+	@Override
+	public String toString() {
+		return "Attendance [attendanceNo=" + attendanceNo + ", startWork=" + startWork + ", endWork=" + endWork
+				+ ", employeeNo=" + employeeNo + "]";
+	}
+	
 
 }
