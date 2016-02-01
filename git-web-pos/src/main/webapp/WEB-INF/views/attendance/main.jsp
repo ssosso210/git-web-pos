@@ -1,3 +1,4 @@
+<%@ page import="com.dobbypos.model.dto.Employee"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
@@ -19,62 +20,90 @@
 </head>
 
 <script type="text/javascript">
-   
+
+var employeeName ;
+var employeeId;
+function employeeAttendSetting(emName, emId) 
+{	
+	$("#employeeName").val(emName);
+	$("#employeeId").val(emId);
+	
+	//employeeName = emName;
+	//employeeId = emId;
+	//alert(employeeName+"씨 ");
+	
+}
+
+function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : offwork 
+	alert(employeeName+"씨 "+ attendType);
+	$("#attendType").val(attendType);
+	$.ajax({
+		url : "/dobbywebpos/attendance/attendcheck.action",
+		type : "GET",
+		async : true,
+		dataType : "json", //응답 데이터의 형식
+		//data : { id : $("#memberid").val() },//val() : input의 value를 읽거나 쓰는 함수
+		data : {attendTypeVal : $("#attendType").val(), employeeIdVal : $("#employeeId").val() },
+		success : function(data, status, xhr) {
+			/* $("#email").val(data.email);
+			$("#usertype").val(data.userType);
+			$("#active").val(data.active);
+			$("#regdate").val(data.regDate); */
+			alert(data);
+		},
+		error : function(xhr, status, error) {
+			alert('fail to attend');
+		}
+	});
+}
 
 </script>
-
-
 <body>
+
+<form>
+	<input type="hidden" id="employeeName" name="employeeName" value=""/>
+	<input type="hidden" id="employeeId" name="employeeId" value=""/>
+	<input type="hidden" id="attendType" name="attendType" value=""/>
+</form>
 <div id="wrap">
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
 <div class="main">
   <div class="main-inner">
     <div class="container">
       <div class="row">
-	       <div class="span12">
+	    <div class="span12">
+       		<div class="widget widget-plain">
+				<div class="widget-content">
+					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">출근 목록</a>	
+				</div> <!-- /widget-content -->
+			</div> <!-- /widget -->
+
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
 	              <h3>직원 목록</h3>
 	            </div>
-	            <!-- /widget-header -->
-	            <div class="widget-content">
-	              <div class="shortcuts"> 
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-list-alt"></i>
-	              	<span class="shortcut-label">Apps</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-bookmark"></i>
-	              	<span class="shortcut-label">Bookmarks</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-signal"></i> 
-	              	<span class="shortcut-label">Reports</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut"> 
-	              	<i class="shortcut-icon icon-comment"></i>
-	              	<span class="shortcut-label">Comments</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-user"></i>
-	              	<span class="shortcut-label">Users</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-file"></i>
-	              	<span class="shortcut-label">Notes</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-picture"></i> 
-	              	<span class="shortcut-label">Photos</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut"> 
-	              	<i class="shortcut-icon icon-tag"></i>
-	              	<span class="shortcut-label">Tags</span> 
-	              </a> 
-	             </div>
-	             <!-- /shortcuts --> 
-	            </div>
-	            <!-- /widget-content --> 
+	             <!-- /widget-header -->
+			      <div class="widget-content">
+			      	 <div class="shortcuts"> 
+	            <c:choose>
+            		<c:when test="${ empty employees }">
+            		직원이 없습니다. 
+            		</c:when>
+            		<c:otherwise>
+			            <c:forEach var="employee" items="${ employees }">	
+			              <a href="javascript:employeeAttendSetting('${ employee.employeeName}','${ employee.employeeId}');" class="shortcut">
+			              	<span class="shortcut-label">${ employee.employeeName}
+			              		<br/>출근 : _______________
+			              		<br/>퇴근 : _______________
+			              	</span> 
+			              </a>
+			            </c:forEach>
+	            	</c:otherwise>
+            	</c:choose>
+            		</div>
+			         <!-- /shortcuts --> 
+           	    </div>
+		        <!-- /widget-content --> 
 	          </div>
 	          <!-- /widget -->
 	          <div class="widget">
@@ -84,38 +113,18 @@
 	            <!-- /widget-header -->
 	            <div class="widget-content">
 	              <div class="shortcuts"> 
-	              <a href="javascript:;" class="shortcut">
+	              <a href="javascript:employeeAttend('towork');" class="shortcut">
 	              	<i class="shortcut-icon icon-list-alt"></i>
-	              	<span class="shortcut-label">Apps</span> 
+	              	<span class="shortcut-label">출근</span> 
 	              </a>
-	              <a href="javascript:;" class="shortcut">
+	              <a href="javascript:employeeAttend('offwork');" class="shortcut">
 	              	<i class="shortcut-icon icon-bookmark"></i>
-	              	<span class="shortcut-label">Bookmarks</span> 
+	              	<span class="shortcut-label">조퇴</span> 
 	              </a>
-	              <a href="javascript:;" class="shortcut">
+	              <a href="javascript:employeeAttend('offwork');" class="shortcut">
 	              	<i class="shortcut-icon icon-signal"></i> 
-	              	<span class="shortcut-label">Reports</span> 
+	              	<span class="shortcut-label">퇴근</span> 
 	              </a>
-	              <a href="javascript:;" class="shortcut"> 
-	              	<i class="shortcut-icon icon-comment"></i>
-	              	<span class="shortcut-label">Comments</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-user"></i>
-	              	<span class="shortcut-label">Users</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-file"></i>
-	              	<span class="shortcut-label">Notes</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut">
-	              	<i class="shortcut-icon icon-picture"></i> 
-	              	<span class="shortcut-label">Photos</span> 
-	              </a>
-	              <a href="javascript:;" class="shortcut"> 
-	              	<i class="shortcut-icon icon-tag"></i>
-	              	<span class="shortcut-label">Tags</span> 
-	              </a> 
 	             </div>
 	             <!-- /shortcuts --> 
 	            </div>

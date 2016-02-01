@@ -11,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.service.AttendanceService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 @RequestMapping("/attendance")
@@ -42,6 +45,32 @@ public class AttendanceController {
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return urlstr+"main";
 	}	
+	
+	
+	/**
+	 * 출석을 위해서 헤딩 store의 직원리스트를 불러옴
+	 * @return
+	 */
+	@RequestMapping(value = "attendcheck.action", method = RequestMethod.GET)
+	public String attendancecheck(HttpSession session, HttpServletRequest req) {
+		String employeeId = req.getParameter("employeeIdVal");
+		String attendType = req.getParameter("attendTypeVal");
+		
+		System.out.println("attendcheck.action ------ employeeId="+employeeId);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String result = gson.toJson(Util.getHourFromAmPm());
+		return result;
+		
+		
+//		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
+		
+		
+//		req.setAttribute("employees", employees);
+	
+		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
+//		return urlstr+"main";
+	}	
+	
 	
 	
 	/**
