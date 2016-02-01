@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dobbypos.model.dao.EmployeeDao;
-import com.dobbypos.model.dao.StockDao;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Stock;
 import com.dobbypos.model.service.EmployeeService;
@@ -80,7 +79,9 @@ public class ManagementController {
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// 재고관리
-
+	
+	
+	//관리 홈에서 stocklist.jsp로 이동
 	@Autowired()
 	@Qualifier("stockService")
 	private StockService stockService;
@@ -94,4 +95,5 @@ public class ManagementController {
 		
 		return "management/stocklist";
 	}
+	
 }
