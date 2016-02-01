@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Stock List(지점)</title>
+<title>재고 리스트</title>
 
 </head>
 
