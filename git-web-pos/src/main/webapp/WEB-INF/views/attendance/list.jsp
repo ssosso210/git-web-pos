@@ -42,39 +42,71 @@
 	<div id="wrap">
 
 		<c:import url="/WEB-INF/views/include/posheader.jsp" />
-		<div id="container">
-			<!-- <div id="content">
-	        	<br /><br /><br /><br /><br />
-	        	<h2 style='text-aling:center'>
-					Hello dobby web pos Site Main Page !!!
-				</h2>
-	        </div> -->
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row">
+	    <div class="span12">
+	    <!-- /widget -->
+          <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>근태 목록</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th> Free Resource </th>
+                    <th> Download</th>
+                    <th class="td-actions"> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> Fresh Web Development Resources </td>
+                    <td> http://www.egrappler.com/ </td>
+                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> Fresh Web Development Resources </td>
+                    <td> http://www.egrappler.com/ </td>
+                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> Fresh Web Development Resources </td>
+                    <td> http://www.egrappler.com/ </td>
+                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> Fresh Web Development Resources </td>
+                    <td> http://www.egrappler.com/ </td>
+                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                  <tr>
+                    <td> Fresh Web Development Resources </td>
+                    <td> http://www.egrappler.com/ </td>
+                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                  </tr>
+                
+                </tbody>
+              </table>
+            </div>
+            <!-- /widget-content --> 
+          </div>
 
-
-	        <div id="content">
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<%-- <h2 style='text-aling: center'>
-				Hello dobby web pos Site Main Page !!!
-				<p>근태/판매/조회/관리/설정 어디에 넣죠?몰랑~ 데헷~ ^0^</p>
-
-				<a>근태</a><br /> <br />
-				<a href="sale/salehome_test.action">판매--윤수오빠꺼임</a><br /><br /> 
-				<a href="check/checkmain.action">조회</a><br /> <br />
-				<a href="management/managementhome">관리</a><br /> <br />
-				<a href="settings/settinghome.action">설정</a><br /> <br />
-
-				<!-- 윤수 테스트중 -->
-					<a href="sale/salehome.action?storeCode1=${storeCode1}">테이블클릭(주문할거야)</a> <br/>
-					
-				 	<a>storeCode1:${storeCode1}</a>
-
-			</h2> --%>
-			</div>
+	          <!-- /widget -->
+	          
+          </div>
+          <!-- /span -->
 		</div>
+      <!-- /row --> 
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /main-inner --> 
+</div>
+<!-- /main -->
 	</div>
 		
 <!-- Placed at the end of the document so the pages load faster --> 
