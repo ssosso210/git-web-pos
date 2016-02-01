@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dobbypos.model.mapper.StockMapper"><!-- 클래스 또는 인터페이스 역할 -->
+
+	<!-- private int employeeNo; private String employeeName; private String 
+		phoneNo; private String passwd; private String storeCode; private int wage; 
+		private String employeeType; private String employeeId; selectEmployees -->
+
+
+ 	<resultMap type="Stock" id="stockMap">
+		<id property="stockNo" column="stockNo" />
+		<result property="stockRegDate" column="s_regDate" />
+		<result property="stockNumber" column="s_number" />
+		<result property="storeCode" column="storeCode" />
+		<result property="stockPrice" column="s_price" />
+		<result property="stockCodeNo" column="stockCodeNo" />
+		<collection property="stockCode" column="stockCodeNo"
+			resultMap="stockCodeMap" />
+	</resultMap>
+	<resultMap type="StockCode" id="stockCodeMap">
+		<id property="stockCodeNo" column="stockCodeNo" />
+		<result property="stockName" column="stockName" />
+		<result property="standard" column="standard" />
+		<result property="price" column="price" />
+		<result property="clientName" column="clientName" />
+	</resultMap> 
+
+
+	<select id="selectStocks" resultMap="stockMap">
+		select
+		st.stockNo, st.stockCodeNo, stcd.stockName,
+		stcd.price, st.s_number, stcd.standard ,st.s_regDate
+		from stock st join stockcode stcd
+		where st.stockCodeNo = stcd.stockCodeNo
+	</select>
+	
+	<!-- <select id="selectStocks" resultMap="stockMap"> select st.stockNo as 
+		stockNo, st.stockCodeNo as stockCodeNo, stcd.stockName as stockName, stcd.price 
+		as price, st.s_number as s_number, stcd.standard as standard, st.s_regDate 
+		as s_regDate from stock st join stockcode stcd where st.stockCodeNo = stcd.stockCodeNo 
+		</select> -->
+
+</mapper>
