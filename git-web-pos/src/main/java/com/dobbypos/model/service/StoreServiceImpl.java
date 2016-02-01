@@ -34,6 +34,12 @@ public class StoreServiceImpl implements StoreService {
 		storeDao.insertStore(store);
 		
 	}
+
+	@Override
+	public Store getStoreByStoreName(String storeName) {
+		
+		return storeDao.getStoreByStoreName(storeName);
+	}
 	
 	
 

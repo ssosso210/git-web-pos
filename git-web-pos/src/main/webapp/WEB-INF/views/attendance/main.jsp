@@ -78,8 +78,18 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 			            <c:forEach var="employee" items="${ employees }">	
 			              <a href="javascript:employeeAttendSetting('${ employee.employeeName}',${ employee.employeeNo});" id="employee${employee.employeeNo}" class="shortcut">
 			              	<span class="shortcut-label" >${ employee.employeeName}
-			              		<div id="startem${ employee.employeeNo}" >출근 : _______________</div>
-			              		<div id="endem${ employee.employeeNo}" >퇴근 : _______________</div>
+			            
+			              	<c:choose>
+			              		<c:when test="${ empty attendanceone}">
+			              			<div id="startem${ employee.employeeNo}" >출근 : _______________</div>
+			              			<div id="endem${ employee.employeeNo}" >퇴근 : _______________</div>
+			              		</c:when>
+			              		<c:otherwise>
+			              			<div id="startem${ employee.employeeNo}" >출근 : <fmt:formatDate value="${ employee.attendanceone.startWork}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+			              			<div id="endem${ employee.employeeNo}" >퇴근 : <fmt:formatDate value="${ employee.attendanceone.endWork}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+			              		</c:otherwise>
+			              	</c:choose>
+			              		
 			              	</span> 
 			              </a>
 			            </c:forEach>

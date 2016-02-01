@@ -8,6 +8,8 @@ public interface AttendanceDao {
 
 	List<Attendance> selectAttendanceAllByStoreCode(String storeCode);
 
+	int insertAttendanceByEmployeeNo(int employeeNum);
+
 	
 
 

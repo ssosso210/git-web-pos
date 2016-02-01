@@ -12,4 +12,6 @@ public interface StoreMapper {
 
 	void insertStore(Store store);
 
+	Store selectStoreByStoreName(String storeName);
+
 }

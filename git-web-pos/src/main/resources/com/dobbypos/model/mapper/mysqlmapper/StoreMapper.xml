@@ -22,6 +22,12 @@
 		INSERT INTO store
 		VALUES (#{storeCode}, #{address}, #{storeName}, #{managerName}, #{email}, #{phoneNo}, #{hqCode})
 	</insert>
+	
+	<select id="selectStoreByStoreName" parameterType="String" resultType="Store">
+		SELECT storecode, address, storename, managername, email, phoneno, hqcode
+		FROM store
+		WHERE storename = #{id}
+	</select>
 		
 </mapper>
 

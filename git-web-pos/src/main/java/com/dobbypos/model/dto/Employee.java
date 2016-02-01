@@ -18,6 +18,7 @@ public class Employee implements Serializable {
 	
 	//Employee 테이블과 Attendance 테이블 사이의 1:Many 관계를 구현한 필드(변수)
 	private List<Attendance> attendances;
+	private Attendance attendanceone;
 	
 	public int getEmployeeNo() {
 		return employeeNo;
@@ -72,6 +73,12 @@ public class Employee implements Serializable {
 	}
 	public void setAttendances(List<Attendance> attendances) {
 		this.attendances = attendances;
+	}
+	public Attendance getAttendanceone() {
+		return attendanceone;
+	}
+	public void setAttendanceone(Attendance attendanceone) {
+		this.attendanceone = attendanceone;
 	}
 	
 	@Override

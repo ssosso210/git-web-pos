@@ -153,7 +153,7 @@
 				<tr style="height:30px">
 					<td>${ store.storeCode }</td>
 					<td style="text-align:left;padding-left:10px">
-						<c:url var="view" value="view.action">
+						<c:url var="view" value="storeview.action">
 							<c:param name="storename" value="${ store.storeName }" />
 						</c:url>
 						<a href='${ view }'>${ store.storeName }</a>
