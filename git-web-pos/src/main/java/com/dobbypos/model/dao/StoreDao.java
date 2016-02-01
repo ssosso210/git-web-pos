@@ -11,4 +11,6 @@ public interface StoreDao {
 	List<String> getStoreCodeListByStoreCode(String storeCode);
 
 	void insertStore(Store store);
+
+	Store getStoreByStoreName(String storeName);
 }

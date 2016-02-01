@@ -143,5 +143,14 @@ public class HqController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/storeview.action", method = RequestMethod.GET)
+	public String storeView(@RequestParam("storename") String storeName, Model model) {
+		Store store = storeService.getStoreByStoreName(storeName);
+		model.addAttribute(store);
+		return "/hq/storeview";
+		
+		
+	}
+	
 	
 }
