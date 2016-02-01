@@ -17,6 +17,11 @@
 		FROM store
 		WHERE storecode LIKE concat(#{ id }, '%')
 	</select>
+	
+	<insert id="insertStore" parameterType="Store">
+		INSERT INTO store
+		VALUES (#{storeCode}, #{address}, #{storeName}, #{managerName}, #{email}, #{phoneNo}, #{hqCode})
+	</insert>
 		
 </mapper>
 

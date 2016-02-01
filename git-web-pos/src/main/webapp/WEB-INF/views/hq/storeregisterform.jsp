@@ -261,8 +261,8 @@ function map(streetTarget) {
             
             //console.dir(fullRoadAddr);
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-         //document.getElementById('storeregisteraddress').value = fullRoadAddr;
-         $("#storeregisteraddress").html("fullRoadAddr");
+         document.getElementById('storeregisteraddress').value = fullRoadAddr;
+         //$("#storeregisteraddress").html("fullRoadAddr");
             
         /*     //new 1. 조회된 주소를 이용해서 좌표 요청 (Geocoder) 
         var geocoder = new daum.maps.services.Geocoder();
@@ -426,7 +426,7 @@ function map(streetTarget) {
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
 		<br /><br />
-		        <form action="register.action" method="post"><!-- 상대경로표시 -->
+		        <form action="storeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table style="margin: 0 auto;border: solid;">
 		             <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.code" /></th>
