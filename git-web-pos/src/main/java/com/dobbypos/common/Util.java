@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -108,5 +109,16 @@ public class Util {
 			
 			return sb.toString();
 		}
+	/**
+	  * 현재 시를 12시간제를 기준으로 리턴해주는 함수
+	  * @return 시간+AM/PM을 포함하여 문자열로 리턴
+	  */
+	 public static String getHourFromAmPm(){
+	  Calendar cal = Calendar.getInstance();
+	  String str = Integer.toString(cal.get(Calendar.HOUR));
+	  if (cal.get(Calendar.AM_PM) == 0) str += "AM";
+	     else str += "PM";
+	  return str;
+	 }
 
 }
