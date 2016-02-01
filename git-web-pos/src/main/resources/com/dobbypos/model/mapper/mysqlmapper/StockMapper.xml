@@ -18,7 +18,7 @@
 		<result property="storeCode" column="storeCode" />
 		<result property="stockPrice" column="s_price" />
 		<result property="stockCodeNo" column="stockCodeNo" />
-		<collection property="stockCodes" column="stockCodeNo"
+		<collection property="stockCode" column="stockCodeNo"
 			resultMap="stockCodeMap" />
 	</resultMap>
 	<resultMap type="StockCode" id="stockCodeMap">

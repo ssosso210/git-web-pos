@@ -91,7 +91,7 @@ public class ManagementController {
 		List<Stock> stocks = stockService.getAllStocks();
 		System.out.println("Controller");
 		model.addAttribute("stocks", stocks);
-
+		
 		return "management/stocklist";
 	}
 }

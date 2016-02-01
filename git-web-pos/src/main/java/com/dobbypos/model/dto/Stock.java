@@ -13,7 +13,7 @@ public class Stock implements Serializable {
 	private String storeCode;
 	private int stockCodeNo;	
 
-	private ArrayList<StockCode> stockCodes;
+	private StockCode stockCode;
 
 	public int getStockNo() {
 		return stockNo;
@@ -63,12 +63,12 @@ public class Stock implements Serializable {
 		this.stockCodeNo = stockCodeNo;
 	}
 
-	public ArrayList<StockCode> getStockCodes() {
-		return stockCodes;
+	public StockCode getStockCode() {
+		return stockCode;
 	}
 
-	public void setStockCodes(ArrayList<StockCode> stockCodes) {
-		this.stockCodes = stockCodes;
+	public void setStockCode(StockCode stockCode) {
+		this.stockCode = stockCode;
 	}
 
 }
