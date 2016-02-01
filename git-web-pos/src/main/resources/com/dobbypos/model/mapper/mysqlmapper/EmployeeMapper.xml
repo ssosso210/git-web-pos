@@ -56,9 +56,9 @@
 		#{storeCode}, #{wage}, #{employeeType}, #{employeeId})
 	</insert>
 	
-	<select id="selectEmployeesByStoreCode" resultMap="employeeMap" >
+	<select id="selectEmployeesByStoreCodeAndUser" resultMap="employeeMap" >
 		SELECT <include refid="EmployeeColumns" /> 
 		from employee
-		WHERE storeCode = #{id}
+		WHERE storeCode = #{id} AND employeeType = 'user'
 	</select>
 </mapper>

@@ -32,9 +32,15 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 
 	@Override
-	public List<Employee> getEmployeesByStoreCode(String storeCode) {
+	public List<Employee> getEmployeesByStoreCodeAndUser(String storeCode) {
 		// TODO Auto-generated method stub
-		return employeeDao.selectEmployeesByStoreCode(storeCode);
+		return employeeDao.selectEmployeesByStoreCodeAndUser(storeCode);
+	}
+
+	@Override
+	public List<Employee> getAttendanceAllByStoreCode(String storeCode) {
+		// TODO Auto-generated method stub
+		return attendanceDao.selectAttendanceAllByStoreCode(storeCode);
 	}
 
 
