@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.dobbypos.model.dto.Employee;
+import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.mapper.AttendanceMapper;
 
 @Repository("attendanceDao")
@@ -20,7 +20,7 @@ public class MySqlAttendanceDao implements AttendanceDao {
 
 	
 	@Override
-	public List<Employee> selectAttendanceAllByStoreCode(String storeCode) {
+	public List<Attendance> selectAttendanceAllByStoreCode(String storeCode) {
 		// TODO Auto-generated method stub
 		return attendanceMapper.selectAttendanceAllByStoreCode(storeCode);
 	}

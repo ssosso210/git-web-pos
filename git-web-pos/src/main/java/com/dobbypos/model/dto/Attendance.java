@@ -1,14 +1,17 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
+
 
 public class Attendance implements Serializable {
 	
 	private int attendanceNo;
-	private Date startWork;
-	private Date endWork;
+	private Timestamp startWork;
+	private Timestamp endWork;
 	private int employeeNo;
+	
+	private Employee employeeone;
 	
 	public int getAttendanceNo() {
 		return attendanceNo;
@@ -16,16 +19,16 @@ public class Attendance implements Serializable {
 	public void setAttendanceNo(int attendanceNo) {
 		this.attendanceNo = attendanceNo;
 	}
-	public Date getStartWork() {
+	public Timestamp getStartWork() {
 		return startWork;
 	}
-	public void setStartWork(Date startWork) {
+	public void setStartWork(Timestamp startWork) {
 		this.startWork = startWork;
 	}
-	public Date getEndWork() {
+	public Timestamp getEndWork() {
 		return endWork;
 	}
-	public void setEndWork(Date endWork) {
+	public void setEndWork(Timestamp endWork) {
 		this.endWork = endWork;
 	}
 	public int getEmployeeNo() {
@@ -33,6 +36,14 @@ public class Attendance implements Serializable {
 	}
 	public void setEmployeeNo(int employeeNo) {
 		this.employeeNo = employeeNo;
+	}
+	
+	
+	public Employee getEmployeeone() {
+		return employeeone;
+	}
+	public void setEmployeeone(Employee employeeone) {
+		this.employeeone = employeeone;
 	}
 	@Override
 	public String toString() {

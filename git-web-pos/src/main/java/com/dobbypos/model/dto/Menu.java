@@ -1,14 +1,14 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Menu implements Serializable {
 	
 	private String foodCode;
 	private String foodName;
 	private int foodPrice;
-	private Date regDate;
+	private Timestamp regDate;
 	private String hqCode;
 	
 	public String getFoodCode() {
@@ -29,10 +29,10 @@ public class Menu implements Serializable {
 	public void setFoodPrice(int foodPrice) {
 		this.foodPrice = foodPrice;
 	}
-	public Date getRegDate() {
+	public Timestamp getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
 	public String getHqCode() {
