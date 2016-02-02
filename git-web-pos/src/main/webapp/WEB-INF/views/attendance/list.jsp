@@ -38,16 +38,71 @@
 
 <div id="wrap">
 
-		<c:import url="/WEB-INF/views/include/posheader.jsp" />
+<c:import url="/WEB-INF/views/include/posheader.jsp" />
+
 <div class="main">
   <div class="main-inner">
     <div class="container">
       <div class="row">
 	    <div class="span12">
+	      <div class="widget ">
+	      	<div class="widget-header">
+   				<i class=" icon-search"></i>
+   				<h3>검색 기간</h3>
+			</div> <!-- /widget-header -->
+		  <div class="widget-content">
+		  
+		  	<form id="edit-profile" class="form-horizontal" 
+		  		action="/dobbywebpos/attendance/searchlist.action" method="post">
+		  		<fieldset>
+										
+					<div class="control-group">											
+						<label class="control-label" for="username">Year </label>
+						<div class="controls">
+							<select id="year_select" class="year_select" name="year_select">
+							  <option value="2016" selected="selected">2016</option>
+							  <option value="2015">2015</option>
+							</select>
+						</div> <!-- /controls -->				
+					</div> <!-- /control-group -->
+					
+					
+					<div class="control-group">											
+						<label class="control-label" for="firstname">Month</label>
+						<div class="controls">
+							<select id="month_select" class="month_select" name="month_select">
+							  <option value="01" >01</option>
+							  <option value="02" selected="selected">02</option>
+							  <option value="03">03</option>
+							  <option value="04">04</option>
+							  <option value="05">05</option>
+							  <option value="06">06</option>
+							  <option value="07">07</option>
+							  <option value="08">08</option>
+							  <option value="09">09</option>
+							  <option value="10">10</option>
+							  <option value="11">11</option>
+							  <option value="12">12</option>
+							</select>
+							
+							
+							<input class="btn btn-large" type="submit" value="Search" />
+							<!-- <a class="btn btn-large" href="#"> Search</a> -->
+						</div> <!-- /controls -->				
+					</div> <!-- /control-group -->
+					</fieldset>
+		  	</form>
+		  		
+		  
+		  </div> <!-- /widget-content -->
+		</div> <!-- /widget -->	
+						
+	    
+	    
 	    <!-- /widget -->
           <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>근태 목록</h3>
+              <h3>근태 목록 : ${datestr }</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
@@ -63,17 +118,34 @@
                   </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="attendance" items="${ attendances }">	
-                  <tr>
-                  	<td class="td-actions">${attendance.attendanceNo }</td>
-                    <td> ${attendance.employeeone.employeeName }</td>
-                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd"/></td>
-                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                    <%-- <td> <fmt:formatDate value="${attendance.endWork }" pattern="yyyy-MM-dd (a) hh:mm:ss"/></td> --%>
-                    <td> <fmt:formatDate value="${attendance.endWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                    
-                  </tr>
-                  </c:forEach>
+                <c:choose>
+		           <c:when test="${ empty attendances}">
+		           <tr>
+		           		<td colspan="5" style="text-align: center; height: 300px;"> data가 없습니다. </td>
+		           		
+		           </tr>
+		           </c:when>
+		           <c:otherwise>
+			           	<c:forEach var="attendance" items="${ attendances }">	
+		                  <tr>
+		                  	<td class="td-actions">${attendance.attendanceNo }</td>
+		                    <td> ${attendance.employeeone.employeeName }</td>
+		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd"/></td>
+		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+		                   <c:choose>
+					           <c:when test="${  attendance.startWork == attendance.endWork}">
+					           	<td> </td>
+					           </c:when>
+					           <c:otherwise>
+					           	<td> <fmt:formatDate value="${attendance.endWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					           </c:otherwise>
+					       </c:choose>
+		                  </tr>
+	                  </c:forEach>
+		           </c:otherwise>
+		        </c:choose>
+			           
+                
                 </tbody>
               </table>
             </div>

@@ -10,5 +10,6 @@ public interface StoreService {
 	List<String> getStoreCodeListByStoreCode(String storeCode);
 	void registerStore(Store store);
 	Store getStoreByStoreName(String storeName);
+	void editStoreInfo(Store store);
 	
 }

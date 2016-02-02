@@ -130,90 +130,105 @@
 
 $(function() {
 		
-		$("#storeCode").autocomplete({
-			source : function(request, response) {
-				$.ajax({
-					url : "/dobbywebpos/hq/storecodelist.action",
-					type : "GET",
-					async : true,
-					//dataType : "json",
-					data : { storecode : request.term },
-					success : function(data) {												
-							eval("var list = " + data);
-							var r = [];
-							$.each(list, function(index, value) {
-								r.push({label : value, value : value });							
-							});
-							response(r);							 							
-				       },				       
-				    error : function(error) {
-				    	console.log(error);
-				    }
-				})
-			}
+		$(document).ready(function() {
+			$(".storeedit").attr("readonly", true);
+			//$("#storeregisteraddress").attr("disabled", true);
+			$("#storeregisteraddress").unbind("click");
+		});
+	
+		$("#edit").on("click", function() {
+			$(".storeedit").attr("readonly", false);
 			
-		}); 
-		
-		
-		$("#storeName").autocomplete({
-			source : function(request, response) {
-				var input = $("#storeName").val();				
-				$.ajax({
-					url : "/dobbywebpos/hq/storenamelist.action",
-					type : "GET",					
-					async : true,					
-					data : { storename : input },					
-					success : function(data) {
-							//console.dir(data);							
-							eval("var list = " + data);
-							var r = [];
-							$.each(list, function(index, value) {
-								r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
-							});
-							response(r);
-							
-/* 							response(
-									
-							
-		                            $.map(data, function(item) {
-		                                return {
-		                                    label: item.data,
-		                                    value: item.data
-		                                }
-		                            })
-		                        ); */
-				       },				       
-				    error : function(error) {
-				    	console.log(error);
-				    }
-				})
-			}
 			
-		}); 
-		
-		 /* $.ajax({
-			url : "/dobbywebpos/hq/storenamelist.action",
-			type : "GET",
-			async : true,
-			//dataType : "json",
-			contentType: "application/json; charset=utf-8",  
-			data : { storename : input },
-			success : function(data, status, xhr) {
-				console.dir(data);
-				data
-				showResult(data);
+			$("#storeCode").autocomplete({
+				source : function(request, response) {
+					$.ajax({
+						url : "/dobbywebpos/hq/storecodelist.action",
+						type : "GET",
+						async : true,
+						//dataType : "json",
+						data : { storecode : request.term },
+						success : function(data) {												
+								eval("var list = " + data);
+								var r = [];
+								$.each(list, function(index, value) {
+									r.push({label : value, value : value });							
+								});
+								response(r);							 							
+					       },				       
+					    error : function(error) {
+					    	console.log(error);
+					    }
+					})
+				}
 				
-			    
-			},
-			error : function(xhr, status, error) {
-				alert(error);
-			}			
-		});		 */
-		 
-	$("#storeregisteraddress").on("click", function(event) {
-		var address = $("#storeregisteraddress").val();
-		address = map();
-	});
+			}); 
+			
+			
+			$("#storeName").autocomplete({
+				source : function(request, response) {
+					var input = $("#storeName").val();				
+					$.ajax({
+						url : "/dobbywebpos/hq/storenamelist.action",
+						type : "GET",					
+						async : true,					
+						data : { storename : input },					
+						success : function(data) {
+								//console.dir(data);							
+								eval("var list = " + data);
+								var r = [];
+								$.each(list, function(index, value) {
+									r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
+								});
+								response(r);
+					       },				       
+					    error : function(error) {
+					    	console.log(error);
+					    }
+					})
+				}
+				
+			}); 
+					
+		$("#storeregisteraddress").on("click", function(event) {
+			var address = $("#storeregisteraddress").val();
+			address = map();
+		});
+		
+		
+			$("#edit").val("수정확인");
+			$("#edit").on("click", function(event) {
+				var params = $("#storeeditinfo").serialize();	
+				/* console.dir(params);
+				var temp = "";
+				$.each(params, function(index, data) {//each 함수는 배열을 순회하면서 function 호출(반복문의 일종)
+					//alert(data.name + "/" + data.value);
+					temp += data.name + "/" + data.value + "\r\n";
+				});
+				alert(temp); */
+				$.ajax({
+					url : "/dobbywebpos/hq/storeedit.action",
+					type : "POST",
+					async : true,
+					data : params,
+					success : function(data, status, xhr) {
+						eval("store = " + decodeURIComponent(data));
+						alert(store.address);
+						
+					},
+					error : function(xhr, status, data) {
+						alert(error)
+					}
+					
+				}); 
+			});
+		
+			
+		});
+				
+		
+	
+		
 	
 	
 });
@@ -417,49 +432,49 @@ function map(streetTarget) {
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
 		<br /><br />
-		        <form action="storeregister.action" method="post"><!-- 상대경로표시 -->
+		        <form id="storeeditinfo" action="storeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table style="margin: 0 auto;border: solid;">
 		             <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.code" /></th>
 		                <td>		                    
-		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" />		                    
+		                    <input type="text" id="storeCode" class="storeedit" name="storeCode" value="${ store.storeCode }" style="width:280px" />		                    
 		                </td>
 		            </tr>
 		            <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.name" /></th>
 		                <td>
 		                    
-		                    <input type="text" id="storeName" name="storeName" style="width:280px" />
+		                    <input type="text" id="storeName" class="storeedit" name="storeName" value="${ store.storeName }" style="width:280px" />
 		                    
 		                </td>
 		            </tr>
 		            <tr>
 		                <th class="thh"><spring:message code="hq.storemanagement.managerName" /></th>
 		                <td>
-		                	<input type="text" name="managerName" style="width:280px" />
+		                	<input type="text" class="storeedit" name="managerName" value="${ store.managerName }" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
 		                <th class="thh"><spring:message code="hq.storemanagement.phoneNo" /></th>
 		                <td>
-		                    <input type="text" name="phoneNo" style="width:280px" />
+		                    <input type="text" class="storeedit" name="phoneNo" value="${ store.phoneNo }" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
 		                <th class="thh"><spring:message code="hq.storemanagement.email" /></th>
 		                <td>
-		                	<input type="text" name="email" style="width:280px" />
+		                	<input type="text" class="storeedit" name="email" value="${ store.email }" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
 		                <th class="thh"><spring:message code="hq.storemanagement.address" /></th>
 		                <td>
-		                	<input type="search" id="storeregisteraddress" name="address" style="width:280px" />		                	
+		                	<input type="search" class="storeedit" id="storeregisteraddress" value="${ store.address }" name="address" style="width:280px" />		                	
 		                </td>
 		            </tr>		            
 		        </table>
 		        <div class="buttons">
-		        	<input type="submit" value="등록" style="height:25px" />
+		        	<input type="button" value="수정" id="edit" style="height:25px" />
 		        	<input type="button" value="취소" style="height:25px"
 		        		onclick="location.href='/dobbywebpos/hq/storemanagement.action';" />
 		        </div>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Set;
@@ -119,6 +120,72 @@ public class Util {
 	  if (cal.get(Calendar.AM_PM) == 0) str += "AM";
 	     else str += "PM";
 	  return str;
+	 }
+	 
+	 
+	 
+	 /**
+	  * 오늘 날짜를 yyyy-MM형식으로  가져옴 
+	  * @return
+	  */
+	 public static String getTodayMonth(){
+		 Calendar cal = Calendar.getInstance( );  // 현재 날짜/시간 등의 각종 정보 얻기
+
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH) + 1;
+
+	
+
+			String today = String.format("%04d-%02d",year,month );
+			return today;
+		 
+	 }
+	 
+	 /**
+	  * 오늘 날짜를 yyyy-MM-dd형식으로  가져옴 
+	  * @return
+	  */
+	 public static String getTodayDate(){
+		 Calendar cal = Calendar.getInstance( );  // 현재 날짜/시간 등의 각종 정보 얻기
+
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH) + 1;
+			int day = cal.get(Calendar.DAY_OF_MONTH);
+
+	
+
+			String today = String.format("%04d-%02d-%02d",year,month, day );
+			return today;
+		 
+	 }
+	 /**
+	  * 오늘 날짜를 yyyy-MM-dd HH:mm:ss형식으로  가져옴 
+	  * @return
+	  */
+	 public static String getTodayDateTime(){
+		 Calendar cal = Calendar.getInstance( );  // 현재 날짜/시간 등의 각종 정보 얻기
+
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH) + 1;
+			int day = cal.get(Calendar.DAY_OF_MONTH);
+			
+			int hour = cal.get(Calendar.HOUR_OF_DAY);
+			int minute = cal.get(Calendar.MINUTE);
+			int second = cal.get(Calendar.SECOND);
+
+			String today = String.format("%04d-%02d-%02d %02d:%02d:%02d",year,month, day, hour,minute,second );
+			return today;
+		 
+	 }
+	 
+	 /**
+	  * 날짜를 yyyy-MM-dd HH:mm:ss형식으로  가져옴 
+	  * @return
+	  */
+	 public static String getTimestampFormat(Timestamp tstamp){
+		 java.text.SimpleDateFormat dateformat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 return dateformat.format(tstamp);
+		 
 	 }
 
 }

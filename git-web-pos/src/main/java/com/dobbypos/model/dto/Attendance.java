@@ -14,7 +14,7 @@ public class Attendance implements Serializable {
 	private Employee employeeone;
 	
 	public int getAttendanceNo() {
-		return attendanceNo;
+		return attendanceNo;                         
 	}
 	public void setAttendanceNo(int attendanceNo) {
 		this.attendanceNo = attendanceNo;
