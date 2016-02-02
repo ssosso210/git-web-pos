@@ -133,19 +133,30 @@ public class AttendanceController {
 		Employee employee = (Employee)session.getAttribute("loginuser");
 		System.out.println("attendancelist list");
 		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCode(employee.getStoreCode());
-		/*for (Employee employee2 : employees) {
-			System.out.println(employee2.toString());
-			for (Attendance attendance2 : employee2.getAttendances()) {
-				System.out.println(attendance2.toString());
-			}
-		}*/
-		for (Attendance attendance2 : attendances) {
-			System.out.println(attendance2.toString());
-			System.out.println(attendance2.getStartWork().toString());
-		}
+	
+		
+		req.setAttribute("datestr", Util.getTodayMonth());
+		req.setAttribute("attendances", attendances);
+	
+		return urlstr+"list";
+	}	
+	
+	
+	@RequestMapping(value = "searchlist.action", method = RequestMethod.POST)
+	public String attendanceSearchlist(HttpSession session, HttpServletRequest req) {
+		Employee employee = (Employee)session.getAttribute("loginuser");
+		
+		String yearStr = (String)req.getParameter("year_select");
+		String monthStr = (String)req.getParameter("month_select");
+		System.out.println("attendanceSearchlist : dateStr="+yearStr+monthStr);
 		
 		
 		
+		
+		
+		
+		List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
+		req.setAttribute("datestr", yearStr+"-"+monthStr);
 		req.setAttribute("attendances", attendances);
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp

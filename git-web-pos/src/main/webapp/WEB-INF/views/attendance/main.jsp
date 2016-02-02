@@ -131,7 +131,7 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	            <div class="widget-content">
 	              <div class="shortcuts"> 
 	              <a href="javascript:employeeAttend('towork');" class="shortcut">
-	              	<i class="shortcut-icon icon-list-alt"></i>
+	              	<i class="shortcut-icon icon-signin"></i>
 	              	<span class="shortcut-label">출근</span> 
 	              </a>
 	             <!--  
@@ -141,7 +141,7 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	              </a> 
 	              -->
 	              <a href="javascript:employeeAttend('offwork');" class="shortcut">
-	              	<i class="shortcut-icon icon-signal"></i> 
+	              	<i class="shortcut-icon icon-signout"></i> 
 	              	<span class="shortcut-label">퇴근</span> 
 	              </a>
 	             </div>
