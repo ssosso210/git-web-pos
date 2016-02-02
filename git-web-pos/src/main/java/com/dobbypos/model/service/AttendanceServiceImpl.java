@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.dobbypos.common.Util;
 import com.dobbypos.model.dao.AttendanceDao;
 import com.dobbypos.model.dao.EmployeeDao;
 import com.dobbypos.model.dto.Attendance;
@@ -34,20 +35,49 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 	@Override
 	public List<Employee> getEmployeesByStoreCodeAndUser(String storeCode) {
-		// TODO Auto-generated method stub
+
 		return employeeDao.selectEmployeesByStoreCodeAndUser(storeCode);
 	}
 
 	@Override
 	public List<Attendance> getAttendanceAllByStoreCode(String storeCode) {
-		// TODO Auto-generated method stub
+
 		return attendanceDao.selectAttendanceAllByStoreCode(storeCode);
 	}
 
 	@Override
 	public int setAttendToWork(int employeeNum) {
-		// TODO Auto-generated method stub
-		return attendanceDao.insertAttendanceByEmployeeNo(employeeNum);
+		
+		int returnNum = 0;
+		//오늘 출근한지 알아보기 가장 최신 날짜의 값을 불러옴 
+		Attendance attendance = attendanceDao.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
+		if((attendance == null) || (attendance.getAttendanceNo() < 1)){
+			// data가 없으면 insert 
+			returnNum = attendanceDao.insertAttendanceByEmployeeNo(employeeNum);
+		}else{
+			System.out.println("setAttendToWork --> " + attendance.toString());
+		}
+		
+		
+		return returnNum;
+	}
+
+	@Override
+	public int setAttendOffWork(int attendanceNo, int employeeNum) {
+		
+		int returnNum = 0;
+		//퇴근한 여부를 알아보기 
+		Attendance attendance = attendanceDao.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
+		if(attendance ==  null){  // 출근하지 않았으면
+			System.out.println("출근하지 않았음 ");
+			return returnNum;
+		}else if(!attendance.getStartWork().equals(attendance.getEndWork()) ){ // 퇴근했으면 
+			System.out.println("퇴근했음");
+			return returnNum;
+		}
+		
+		
+		return attendanceDao.updateAttendanceEndWorkByAttendanceNo(attendanceNo);
 	}
 
 

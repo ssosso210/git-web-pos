@@ -50,8 +50,8 @@
         			</td>
         			<td>${ employee.employeeName }</td>
         			<td>${ employee.wage }</td>
-        			<%--<td> ${ employee.workHours } </td>
-        			<td>${ employee.pay } </td>--%>
+        			<td>${ employee.employeeType } </td>
+        			<%--<td>${ employee.pay } </td>--%>
         		</tr>
         	</c:forEach>
         	</table>       	
