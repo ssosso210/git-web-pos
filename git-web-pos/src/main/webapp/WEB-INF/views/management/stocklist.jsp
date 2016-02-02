@@ -10,17 +10,27 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<meta name="viewport"	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="/dobbywebpos/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
 <title>재고 리스트</title>
 
 </head>
 
 <body>
+<c:import url="/WEB-INF/views/include/posheader.jsp" />
 
 
 	<br />
 	<br />
 	<table border="1" align="center" width="700px">
-		<tr style="height: 30px; background-color: orange">
+		<tr style="height: 30px; background-color: orange;text-align:center">
 			<td>No</td>
 			<td>재고번호</td>
 			<td>재고이름</td>
@@ -31,15 +41,15 @@
 
 		<c:forEach var="stock" items="${ stocks }">
 
-			<tr style="height: 30px">
-				<td>${ stock.stockNo }</td>
-				<td><c:url value="editstocknumber.action" var="viewUrl">
+			<tr style="height: 30px;text-align:center">
+				<td style="width:50px">${ stock.stockNo }</td>
+				<td style="width:80px"><c:url value="editstocknumber.action" var="viewUrl">
 						<c:param name="stockCodeNo" value="${ stock.stockCodeNo }" />
 					</c:url> <a href="${ viewUrl }">${ stock.stockCodeNo }</a></td>
 				<td>${ stock.stockCode.stockName }</td>
-				<td>${ stock.stockCode.price }원</td>
+				<td>${ stock.stockCode.price } 원</td>
 				<td>${ stock.stockNumber }${ stock.stockCode.standard }</td>
-				<td>${ stock.stockRegDate }</td>
+				<td style="width:170px">${ stock.stockRegDate }</td>
 			</tr>
 		</c:forEach>
 

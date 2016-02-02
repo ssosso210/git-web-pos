@@ -11,14 +11,23 @@
 <head>
 	<meta charset="utf-8" />
 	<title>직원 리스트</title>
+	<meta name="viewport"	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="/dobbywebpos/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
 	
 </head>
 
 <body>
-
+<c:import url="/WEB-INF/views/include/posheader.jsp" />
 <br /><br />        	
-        	<table border="1" align="center" width="700px">
-        		<tr style="height:30px;background-color:orange">
+        	<table border="1" align="center" width="600px">
+        		<tr style="height:30px;background-color:orange;text-align:center">
         			<td>직원번호</td>
         			<td>직원이름</td>
         			<td>시급</td>
@@ -42,16 +51,16 @@
  			</c:forEach> --%>
         	
         	<c:forEach var="employee" items="${ employees }">
-        		<tr style="height:30px">
-        			<td>
+        		<tr style="height:30px;text-align:center">
+        			<td style="width:50px">
         				<c:url value="view.action" var="viewUrl">
         					<c:param name="employeeNo" value="${ employee.employeeNo }" />
         				</c:url>
         			<a href="${ viewUrl }">${ employee.employeeNo }</a>
         			</td>
-        			<td>${ employee.employeeName }</td>
-        			<td>${ employee.wage }</td>
-        			<td>${ employee.employeeType } </td>
+        			<td style="width:100px">${ employee.employeeName }</td>
+        			<td style="width:50px">${ employee.wage }</td>
+        			<td style="width:50px">${ employee.employeeType } </td>
         			<%--<td>${ employee.pay } </td>--%>
         		</tr>
         	</c:forEach>
