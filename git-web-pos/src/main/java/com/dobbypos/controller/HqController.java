@@ -151,6 +151,16 @@ public class HqController {
 		storeService.editStoreInfo(store);		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		System.out.println(store);
+		
+		try {
+			store.setAddress(URLEncoder.encode(store.getAddress(), "utf-8").replace("+", "%20"));
+			store.setStoreName(URLEncoder.encode(store.getStoreName(), "utf-8").replace("+", "%20"));
+			store.setManagerName(URLEncoder.encode(store.getManagerName(), "utf-8").replace("+", "%20"));
+			
+		} catch (UnsupportedEncodingException e) {
+			
+			e.printStackTrace();
+		}
 		String result = gson.toJson(store);		
 		
 		resp.setContentType("application/json;charset=utf-8");

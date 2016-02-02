@@ -212,12 +212,9 @@ $(function() {
 					async : true,
 					data : params,
 					success : function(data, status, xhr) {
-						eval("var list = " + data);
-						var r = [];
-						$.each(list, function(index, value) {
-							r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
-						});
-						alert(r);
+						eval("store = " + decodeURIComponent(data));
+						alert(store.address);
+						
 					},
 					error : function(xhr, status, data) {
 						alert(error)
