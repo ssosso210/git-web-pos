@@ -17,4 +17,6 @@ public interface AttendanceService {
 
 	Attendance selectAttendancByEmployeeNoDate(int employeeNum, String todayDate);
 
+	List<Attendance> getAttendanceByStoreCodeAndMonth(String storeCode, String monthDateStr);
+
 }

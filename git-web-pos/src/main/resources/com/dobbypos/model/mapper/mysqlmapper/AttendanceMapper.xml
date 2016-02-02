@@ -73,6 +73,7 @@
 			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
 		FROM employee em,  attendance at
 		WHERE em.storeCode = #{id} AND em.employeeType = 'user' AND em.employeeNo = at.employeeNo
+		order by at.attendanceNo 
 	</select>
 	
 	<insert id="insertAttendanceByEmployeeNo" parameterType="int" useGeneratedKeys="true">
@@ -91,5 +92,16 @@
 		SET endWork = now()
 		where attendanceNo = #{id}
 	</update>
+	
+	<select id="selectAttendanceByStoreCodeAndMonth" parameterType="string" resultMap="attendanceMap">
+		SELECT at.attendanceNo, at.startWork, at.endWork, 
+		em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em,  attendance at
+		where em.storeCode = #{storeCode} AND em.employeeType = 'user' 
+			and DATE_FORMAT(at.startWork, '%Y-%m') = #{monthDateStr} 
+			and em.employeeNo = at.employeeNo
+		order by at.attendanceNo 
+	
+	</select>
 	
 </mapper>

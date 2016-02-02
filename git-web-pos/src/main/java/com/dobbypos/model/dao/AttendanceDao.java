@@ -15,6 +15,8 @@ public interface AttendanceDao {
 
 	int updateAttendanceEndWorkByAttendanceNo(int attendanceNo);
 
+	List<Attendance> selectAttendanceByStoreCodeAndMonth(String storeCode, String monthDateStr);
+
 	
 
 
