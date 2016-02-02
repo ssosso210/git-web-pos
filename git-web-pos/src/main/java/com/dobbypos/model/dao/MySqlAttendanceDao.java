@@ -25,6 +25,13 @@ public class MySqlAttendanceDao implements AttendanceDao {
 		return attendanceMapper.selectAttendanceAllByStoreCode(storeCode);
 	}
 
+
+	@Override
+	public int insertAttendanceByEmployeeNo(int employeeNum) {
+		// TODO Auto-generated method stub
+		return attendanceMapper.insertAttendanceByEmployeeNo(employeeNum);
+	}
+
 	
 		
 }
