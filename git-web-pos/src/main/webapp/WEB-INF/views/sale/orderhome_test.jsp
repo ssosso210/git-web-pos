@@ -20,7 +20,17 @@
 	    myWindow.close();
 	}
 	
-	
+	$(function () {
+		var i;
+		var menuList = $('[class^=menuList]');
+		
+		var menus = $('[class^=chooseMenu]').length;
+		for(i = 0; i < menus; i++) {
+			$('.chooseMenu' + i).on('click', function () {
+				/* console.log('나온다'); */
+			});
+		}
+	});
 
 	
 </script>
@@ -33,7 +43,8 @@
       
       
       <!-- 선택한 메뉴나올부분 -->
-      <table style="width:250px; height:250px; float:left; margin: 20px 10px 20px 30px" border='1' cellspacing='1' cellpadding='5'>
+      <table style="width:250px; height:250px; float:left; margin: 20px 10px 20px 30px" border='1' cellspacing='1' cellpadding='5'
+      id="orderMenuList">
          
          <tr style="height: 20px">
 	         <td >No</td>
@@ -42,9 +53,8 @@
 	         <td>금액</td>
          </tr>
          
-         <tr>
-         <c:forEach begin="0" end="7" step="1" varStatus="stat">
-				
+         <c:forEach var="menuIndex" begin="0" end="7" step="1" varStatus="stat">
+         <tr class="menuList${menuIndex}">
 			<c:choose>
 				<c:when test="${ stat.index < fn:length(menus) }">
 		            
@@ -97,10 +107,13 @@
 		<tr>
 		<c:choose>
 			<c:when test="${ stat.index < fn:length(menus) }">
-	            <td><input type="button" value="${ menus[stat.index].foodName }" name="name" style="width:80px; height:30px"></td>
+	            <td class="chooseMenu${stat.index}">
+	            	<input type="button" value="${ menus[stat.index].foodName }" name="name" style="width:80px; height:30px">
+	            	<input type="hidden" value="${ menus[stat.index].foodCode }" />
+	            </td>
 	        </c:when> 
 	        <c:otherwise>
-	        	<td><input type="button" value="" name="name" style="width:80px; height:30px"></td>
+	        	<td class="chooseMenu${stat.index}"><input type="button" value="" name="name" style="width:80px; height:30px"></td>
 	        </c:otherwise>
         </c:choose>
             <td><input type="button" name="name" style="width:80px; height:30px"></td>
