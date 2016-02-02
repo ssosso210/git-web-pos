@@ -8,10 +8,19 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Employee Info</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="/dobbywebpos/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
+	<title>직원정보</title>
 </head>
 
 <body>
+<c:import url="/WEB-INF/views/include/posheader.jsp" />
  <table>
 		            <tr>
 		                <th>직원번호</th>
