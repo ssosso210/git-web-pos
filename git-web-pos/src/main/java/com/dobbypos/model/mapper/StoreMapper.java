@@ -14,4 +14,6 @@ public interface StoreMapper {
 
 	Store selectStoreByStoreName(String storeName);
 
+	void updateStoreInfo(Store store);
+
 }

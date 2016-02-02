@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -143,10 +144,29 @@ public class HqController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/storeedirform.action", method = RequestMethod.GET)
-	public String storeEditForm() {
+	@RequestMapping(value = "/storeedit.action", method = RequestMethod.POST)
+	@ResponseBody
+	public String storeEdit(Store store, HttpServletResponse resp) {
+		System.out.println(store.getAddress());
+		storeService.editStoreInfo(store);		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.out.println(store);
 		
-		return "/hq/storeeditform";
+		try {
+			store.setAddress(URLEncoder.encode(store.getAddress(), "utf-8").replace("+", "%20"));
+			store.setStoreName(URLEncoder.encode(store.getStoreName(), "utf-8").replace("+", "%20"));
+			store.setManagerName(URLEncoder.encode(store.getManagerName(), "utf-8").replace("+", "%20"));
+			
+		} catch (UnsupportedEncodingException e) {
+			
+			e.printStackTrace();
+		}
+		String result = gson.toJson(store);		
+		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		return result;	
+		
 	}
 	
 	@RequestMapping(value = "/storeview.action", method = RequestMethod.GET)
