@@ -40,4 +40,10 @@ public class MySqlStoreDao implements StoreDao {
 		return store;
 	}
 
+	@Override
+	public void updateStoreInfo(Store store) {
+		storeMapper.updateStoreInfo(store);
+		
+	}
+
 }

@@ -40,6 +40,13 @@ public class StoreServiceImpl implements StoreService {
 		
 		return storeDao.getStoreByStoreName(storeName);
 	}
+
+	@Override
+	public void editStoreInfo(Store store) {
+		
+		storeDao.updateStoreInfo(store);
+		
+	}
 	
 	
 

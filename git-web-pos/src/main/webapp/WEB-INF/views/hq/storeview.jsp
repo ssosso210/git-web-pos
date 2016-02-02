@@ -198,7 +198,32 @@ $(function() {
 		
 			$("#edit").val("수정확인");
 			$("#edit").on("click", function(event) {
-				
+				var params = $("#storeeditinfo").serialize();	
+				/* console.dir(params);
+				var temp = "";
+				$.each(params, function(index, data) {//each 함수는 배열을 순회하면서 function 호출(반복문의 일종)
+					//alert(data.name + "/" + data.value);
+					temp += data.name + "/" + data.value + "\r\n";
+				});
+				alert(temp); */
+				$.ajax({
+					url : "/dobbywebpos/hq/storeedit.action",
+					type : "POST",
+					async : true,
+					data : params,
+					success : function(data, status, xhr) {
+						eval("var list = " + data);
+						var r = [];
+						$.each(list, function(index, value) {
+							r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
+						});
+						alert(r);
+					},
+					error : function(xhr, status, data) {
+						alert(error)
+					}
+					
+				}); 
 			});
 		
 			
@@ -410,7 +435,7 @@ function map(streetTarget) {
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
 		<br /><br />
-		        <form action="storeregister.action" method="post"><!-- 상대경로표시 -->
+		        <form id="storeeditinfo" action="storeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table style="margin: 0 auto;border: solid;">
 		             <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.code" /></th>

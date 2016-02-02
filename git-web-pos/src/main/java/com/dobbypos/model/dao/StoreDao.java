@@ -13,4 +13,6 @@ public interface StoreDao {
 	void insertStore(Store store);
 
 	Store getStoreByStoreName(String storeName);
+
+	void updateStoreInfo(Store store);
 }
