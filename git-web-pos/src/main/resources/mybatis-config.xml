@@ -37,6 +37,8 @@
 		<typeAlias type="com.dobbypos.model.dto.Stock" alias="Stock" />
 		<typeAlias type="com.dobbypos.model.dto.StockCode" alias="StockCode" />
 		
+		<typeAlias type="com.dobbypos.model.dto.AttendanceSearch" alias="AttendanceSearch" />
+		
 		<!-- 윤수가추가 -->
 		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>
 		
