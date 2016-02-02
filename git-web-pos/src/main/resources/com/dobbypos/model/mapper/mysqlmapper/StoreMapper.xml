@@ -28,6 +28,11 @@
 		FROM store
 		WHERE storename = #{id}
 	</select>
+	
+	<update id="updateStoreInfo" parameterType="Store">
+		UPDATE store SET address = #{address}, storename = #{storeName}, managername = #{managerName}, 
+		email = #{email}, phoneno = #{phoneNo}, hqcode = #{hqCode} WHERE storecode = #{storeCode} 
+	</update>
 		
 </mapper>
 

@@ -32,13 +32,13 @@
 		            <tr>
 		                <th>날짜시간</th>
 		                <td>
-		                	<form:input type="date" path="regDate" cssStyle="width:280px" />
+		                	<form:input type="datetime"  path="regDate" cssStyle="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
 		                <th>구분</th>
 		                <td>
-		                	<form:input type="text" path="itemCode" cssStyle="width:280px" />
+		                	<form:input type="option" path="itemCode" cssStyle="width:280px" />
 		                </td>
 		            </tr>		            
 		            <tr>

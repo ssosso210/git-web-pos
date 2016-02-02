@@ -79,4 +79,17 @@
 		insert into attendance(employeeNo) values( #{id});
 	</insert>
 	
+	<select id="selectAttendancByEmployeeNoDate" parameterType="AttendanceSearch" resultMap="attendanceMap">
+		SELECT <include refid="AttendanceColumns" /> 
+		FROM attendance 
+		where employeeNo = #{employeeNo} and DATE_FORMAT(startWork, '%Y-%m-%d') = #{dateStr}
+		
+	</select>
+	
+	<update id="updateAttendanceEndWorkByAttendanceNo" parameterType="int" >
+		UPDATE attendance
+		SET endWork = now()
+		where attendanceNo = #{id}
+	</update>
+	
 </mapper>
