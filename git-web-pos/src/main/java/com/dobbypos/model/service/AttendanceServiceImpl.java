@@ -86,6 +86,15 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendanceDao.selectAttendancByEmployeeNoDate(employeeNum, todayDate);
 	}
 
+	/**
+	 * 해당 지점의 한달간 attendance data
+	 */
+	@Override
+	public List<Attendance> getAttendanceByStoreCodeAndMonth(String storeCode, String monthDateStr) {
+		// TODO Auto-generated method stub
+		return attendanceDao.selectAttendanceByStoreCodeAndMonth(storeCode, monthDateStr);
+	}
+
 
 	
 
