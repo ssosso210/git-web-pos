@@ -8,7 +8,7 @@ public interface SaleService {
 
 	List<Menu> getAllMenus();
 
-	List<Menu> getSelectMenus(String foodCode);
+	List<Menu> getSelectMenus(String foodName);
 	
 
 }

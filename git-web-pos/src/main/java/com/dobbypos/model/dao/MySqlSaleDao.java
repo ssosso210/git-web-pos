@@ -32,9 +32,9 @@ public class MySqlSaleDao implements SaleDao {
 	}
 
 	@Override
-	public List<Menu> getSelectMenu(String foodCode) {
+	public List<Menu> getSelectMenu(String foodName) {
 
-		List<Menu> menus = saleMapper.selectMenus(foodCode);
+		List<Menu> menus = saleMapper.selectMenus(foodName);
 		
 		return menus;
 	}

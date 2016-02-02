@@ -85,10 +85,10 @@
 													<!-- /control-group -->
 
 													<div class="control-group">
-														<label class="control-label" for="regDate">날짜/시간</label>
+														<label class="control-label" for="regDate">날짜/시간</label>      <!-- 이거 시간은 왜 안나옴??? -->
 														<div class="controls">
 															<input type="text" class="span6 disabled" id="regDate"
-																value=<fmt:formatDate value="${ balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/> disabled>
+																value=<fmt:formatDate value="${ requestScope.balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/> disabled>
 														</div>
 														<!-- /controls -->
 													</div>
@@ -96,10 +96,10 @@
 
 
 													<div class="control-group">
-														<label class="control-label" for="employeeId">구분</label>
+														<label class="control-label" for="itemCode">구분</label>
 														<div class="controls">
-															<input type="text" class="span6 disabled" id="employeeId"
-																value=${ requestScope.employee.employeeId } disabled>
+															<input type="text" class="span6 disabled" id="itemCode"
+																value=${ requestScope.balance.itemCode } disabled>
 														</div>
 														<!-- /controls -->
 													</div>
@@ -107,10 +107,10 @@
 
 
 													<div class="control-group">
-														<label class="control-label" for="passwd">금액</label>
+														<label class="control-label" for="plusMinus">금액</label>
 														<div class="controls">
-															<input type="text" class="span6 disabled" id="passwd"
-																value=${ requestScope.employee.passwd } disabled>
+															<input type="text" class="span6 disabled" id="plusMinus"
+																value=${ requestScope.balance.plusMinus } disabled>
 														</div>
 														<!-- /controls -->
 													</div>
@@ -118,10 +118,10 @@
 
 
 													<div class="control-group">
-														<label class="control-label" for="phoneNo">세부사항</label>
+														<label class="control-label" for="description">세부사항</label>
 														<div class="controls">
-															<input type="text" class="span6 disabled" id="phoneNo"
-																value=${ requestScope.employee.phoneNo } disabled>
+															<input type="text" class="span6 disabled" id="description"
+																value=${ requestScope.balance.description } disabled>
 														</div>
 														<!-- /controls -->
 													</div>
