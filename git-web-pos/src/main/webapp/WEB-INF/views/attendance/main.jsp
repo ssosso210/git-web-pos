@@ -34,6 +34,10 @@ function employeeAttendSetting(emName, emNo, attendNo)
 function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : offwork 
 	//alert($("#employeeName").val()+"씨 "+ attendType);
 	$("#attendType").val(attendType);
+	if($("#employeeName").val() == ""){
+		alert("직원을 선택하세요 ");
+		return ;
+	}
 	$.ajax({
 		url : "/dobbywebpos/attendance/attendcheck.action",
 		type : "POST",
