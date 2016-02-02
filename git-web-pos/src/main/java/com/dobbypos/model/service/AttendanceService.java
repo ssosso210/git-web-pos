@@ -13,4 +13,8 @@ public interface AttendanceService {
 
 	int setAttendToWork(int employeeNum);
 
+	int setAttendOffWork(int attendanceNo, int employeeNum);
+
+	Attendance selectAttendancByEmployeeNoDate(int employeeNum, String todayDate);
+
 }
