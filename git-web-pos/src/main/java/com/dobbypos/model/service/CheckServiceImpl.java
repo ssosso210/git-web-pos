@@ -32,6 +32,12 @@ public class CheckServiceImpl implements CheckService {
 		System.out.println("ServiceImpl");
 		return checkDao.getBalances();
 	}
+
+	@Override
+	public Balance getBalanceByNo(int balanceNo) {
+		
+		return checkDao.getBalanceByNo(balanceNo);
+	}
 	
 //	public List<Balance> getBalances() {
 //		System.out.println("getBalances");

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Balance;
+import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.mapper.CheckMapper;
 
 @Repository("checkDao")
@@ -42,6 +43,16 @@ public class MysqlCheckDao implements CheckDao {
 		System.out.println("DaoImpl");
 
 		return balances;
+	}
+
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+	@Override
+	public Balance getBalanceByNo(int balanceNo) {
+
+		Balance balance = checkMapper.getBalanceByNo(balanceNo);
+		
+		return balance;
 	}
 
 }

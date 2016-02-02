@@ -1,45 +1,64 @@
 <%@page import="com.dobbypos.model.dto.Balance"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dobbypos.model.dao.CheckDao"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 <div style="text-align:left;margin-top:1px;padding:5px">
-        	[ ³¯Â¥ : ${ balance.regData }  ]
-        	[ ÁöÁ¡ÄÚµå : ${ balance.storeCode }  ]
+        	<c:forEach var="balance" begin="0" end="0" items="${ balances }">
+        	[ ë‚ ì§œ : ${ balance.regDate }  ]
+        	[ ì§€ì ì½”ë“œ : ${ balance.storeCode }  ]
+        	</c:forEach>
         </div>
 
 	<div id="pageContainer">
 
-		<!-- <c:import url="/WEB-INF/views/include/header.jsp" /> --> 
+		<c:import url="/WEB-INF/views/include/header.jsp" /> 
 		<div id="content">
 			<br />
 			<br />
 			<div style='text-align: right'>
-				<button>»ğÀÔ</button>
-				<button>¼öÁ¤</button>
-				<button>»èÁ¦</button>
+				<button>ì‚½ì…</button>
+				<button>ìˆ˜ì •</button>
+				<button>ì‚­ì œ</button>
 			</div>
 			<br />
 			<br />
+			<div class="inputsubtitle">ë§¤ì¶œ/ì§€ì¶œ ë‚´ì—­</div>
 			<table border="1" align="center" width="700px">
         		<tr style="height:30px;background-color:orange">
-        			<td>½Ã°£</td>
-					<td>±¸ºĞ</td>
-					<td>±İ¾×</td>
-					<td>¼¼ºÎ»çÇ×</td>
+        			<td>ëª©ì°¨</td>
+        			<td>ì‹œê°„</td>
+					<td>êµ¬ë¶„</td>
+					<td>ê¸ˆì•¡</td>
+					<td>ì„¸ë¶€ì‚¬í•­</td>
         		</tr>        	
         	<c:forEach var="balance" items="${ balances }">
         		<tr style="height:30px">
+        			
+        			<td>
+        				<c:url value="salesview.action" var="salesviewUrl">
+        					<c:param name="balanceno" value="${ balance.balanceNo }" />
+        				</c:url>
+        				<a href="${ salesviewUrl }">${ balance.balanceNo }</a>
+        			</td>
+        			<%-- <td>${ balance.balanceNo }</td> --%>
         			<td>${ balance.regDate }</td>
+        			<%-- <td>
+        				<c:url value="salesview.action" var="salesviewUrl">
+        					<c:param name="ragdate" value="${ balance.regDate }" />
+        				</c:url>
+        				<a href="${ salesviewUrl }">${ balance.regDate }</a>
+        			</td> --%>
         			<td>${ balance.itemCode }</td>
         			<td>${ balance.plusMinus }</td>
         			<td>${ balance.description }</td>
