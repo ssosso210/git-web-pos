@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Set;
@@ -168,6 +169,16 @@ public class Util {
 
 			String today = String.format("%04d-%02d-%02d %02d:%02d:%02d",year,month, day, hour,minute,second );
 			return today;
+		 
+	 }
+	 
+	 /**
+	  * 날짜를 yyyy-MM-dd HH:mm:ss형식으로  가져옴 
+	  * @return
+	  */
+	 public static String getTimestampFormat(Timestamp tstamp){
+		 java.text.SimpleDateFormat dateformat = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 return dateformat.format(tstamp);
 		 
 	 }
 

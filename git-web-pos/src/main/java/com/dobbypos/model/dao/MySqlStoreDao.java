@@ -37,7 +37,7 @@ public class MySqlStoreDao implements StoreDao {
 	@Override
 	public Store getStoreByStoreName(String storeName) {
 		Store store = storeMapper.selectStoreByStoreName(storeName);
-		return null;
+		return store;
 	}
 
 }

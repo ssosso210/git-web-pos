@@ -80,6 +80,12 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendanceDao.updateAttendanceEndWorkByAttendanceNo(attendanceNo);
 	}
 
+	@Override
+	public Attendance selectAttendancByEmployeeNoDate(int employeeNum, String todayDate) {
+		// TODO Auto-generated method stub
+		return attendanceDao.selectAttendancByEmployeeNoDate(employeeNum, todayDate);
+	}
+
 
 	
 
