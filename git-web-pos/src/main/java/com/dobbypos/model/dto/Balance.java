@@ -13,6 +13,7 @@ public class Balance implements Serializable {
 	private String description;
 	private String itemCode;
 	
+	
 	public int getBalanceNo() {
 		return balanceNo;
 	}
@@ -49,5 +50,6 @@ public class Balance implements Serializable {
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
-
+	
+	
 }
