@@ -26,7 +26,14 @@
 		<result property="storeCode" column="storeCode" />
 		<result property="description" column="description" />
 		<result property="itemCode" column="itemCode" />
+		<collection property="accountCode" column="itemCode"
+			resultMap="accountCodeMap" />
 	</resultMap>
+	<resultMap type="AccountCode" id="accountCodeMap">
+		<id property="itemCode" column="itemCode"/>
+		<result property="itemName" column="itemName"/>
+	</resultMap>
+	
 	
 	<select id="getBalances" resultMap="balanceMap">
 		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
