@@ -184,5 +184,6 @@ public class HqController {
 		
 		return "redirect:/hq/storemanagement.action";
 	}
+		
 	
 }
