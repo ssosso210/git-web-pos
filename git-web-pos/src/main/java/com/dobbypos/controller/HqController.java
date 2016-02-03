@@ -177,13 +177,12 @@ public class HqController {
 				
 	}
 	
-	@RequestMapping(value = "/storedelete.action", method = RequestMethod.GET)
-	@ResponseBody
+	@RequestMapping(value = "/storedelete.action", method = RequestMethod.GET)	
 	public String storeDelete(@RequestParam("storecode") String storeCode) {
 		System.out.println(storeCode);
 		storeService.deleteStoreByStoreCode(storeCode);
 		
-		return "success";
+		return "redirect:/hq/storemanagement.action";
 	}
 	
 }

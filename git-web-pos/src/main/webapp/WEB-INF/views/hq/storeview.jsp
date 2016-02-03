@@ -136,6 +136,7 @@ $(function() {
 			//$("#storeregisteraddress").attr("disabled", true);
 			$("#storeregisteraddress").unbind("click");
 			$("#delete").hide();
+			$("#cancel2").hide();
 		});
 	
 		$("#edit").on("click", function() {
@@ -144,7 +145,19 @@ $(function() {
 			$("#edit").hide();
 			$("#delete").show();
 			$("#editconfirm").show();
-			
+			$("#cancel").hide();
+			$("#cancel2").show();
+			$("#cancel2").on("click", function(event) {
+				$("#editconfirm").hide();
+				$(".storeedit").attr("readonly", true);				
+				$("#storeregisteraddress").unbind("click");
+				$("#delete").hide();
+				$("#cancel2").hide();
+				$("#cancel").show();
+				$("#edit").show();
+				return true;
+			});
+		});
 			
 			$("#storeCode").autocomplete({
 				source : function(request, response) {
@@ -219,7 +232,7 @@ $(function() {
 					data : params,
 					success : function(data, status, xhr) {
 						eval("store = " + decodeURIComponent(data));
-						//alert(status);
+						alert("정보가 수정되었습니다.");
 						$("#storeCode").html(store.storeCode);
 						$("#storeName").html(store.storeName);
 						$("#managerName").html(store.managerName);
@@ -244,13 +257,14 @@ $(function() {
 						 } */
 					
 				}); 
+				
 			});
 			
-			/* $("#delete").on("click", function(event) {
+			$("#delete").on("click", function(event) {
 				if (confirm("삭제하시겠습니까?")) {
 				var param = $("#storeCode").val();
-				
-				$.ajax({
+				location.href="/dobbywebpos/hq/storedelete.action?storecode=" + param;
+				/* $.ajax({
 					url : "/dobbywebpos/hq/storedelete.action",
 					type : "GET",
 					async : true,
@@ -264,19 +278,14 @@ $(function() {
 						
 					}
 					
-				});
+				}); */
 				}
-			});  */
+			}); 
+			
+			
 			
 			
 		});
-				
-		
-	
-		
-	
-	
-});
 
 var address = $("#storeregisteraddress").val();
 function map(streetTarget) {
@@ -522,7 +531,8 @@ function map(streetTarget) {
 		        	<input type="button" value="수정" id="edit" style="height:25px" />
 		        	<input type="button" value="수정확인" id="editconfirm" style="height:25px" />
 		        	<input type="button" value="삭제" id="delete" style="height: 25px" />
-		        	<input type="button" value="취소" style="height:25px"
+		        	<input type="button" value="취소" id="cancel2" style="height: 25px" />
+		        	<input type="button" value="취소" id="cancel" style="height:25px"
 		        		onclick="location.href='/dobbywebpos/hq/storemanagement.action';" />
 		        </div>
 		        </form>
