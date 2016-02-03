@@ -36,6 +36,7 @@
 		<typeAlias type="com.dobbypos.model.dto.Balance" alias="Balance" />
 		<typeAlias type="com.dobbypos.model.dto.Stock" alias="Stock" />
 		<typeAlias type="com.dobbypos.model.dto.StockCode" alias="StockCode" />
+		<typeAlias type="com.dobbypos.model.dto.AccountCode" alias="AccountCode" />
 		
 		<typeAlias type="com.dobbypos.model.dto.AttendanceSearch" alias="AttendanceSearch" />
 		
