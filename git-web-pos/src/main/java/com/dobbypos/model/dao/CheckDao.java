@@ -11,6 +11,8 @@ public interface CheckDao {
 //	Balance selectBalanceByCode(String storeCode);
 
 	List<Balance> getBalances();
+
+	Balance getBalanceByNo(int balanceNo);
 	
 
 //	void insert(Member member);

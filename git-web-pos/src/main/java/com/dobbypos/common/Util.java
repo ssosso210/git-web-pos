@@ -122,6 +122,25 @@ public class Util {
 	  return str;
 	 }
 	 
+	 
+	 
+	 /**
+	  * 오늘 날짜를 yyyy-MM형식으로  가져옴 
+	  * @return
+	  */
+	 public static String getTodayMonth(){
+		 Calendar cal = Calendar.getInstance( );  // 현재 날짜/시간 등의 각종 정보 얻기
+
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH) + 1;
+
+	
+
+			String today = String.format("%04d-%02d",year,month );
+			return today;
+		 
+	 }
+	 
 	 /**
 	  * 오늘 날짜를 yyyy-MM-dd형식으로  가져옴 
 	  * @return
@@ -133,22 +152,9 @@ public class Util {
 			int month = cal.get(Calendar.MONTH) + 1;
 			int day = cal.get(Calendar.DAY_OF_MONTH);
 
-			String monthstr = "";
-			if(month < 10){
-				monthstr = "0"+month;
-			} else {
-				monthstr = String.valueOf(month);
-			}
+	
 
-
-			String daystr = "";
-			if(day < 10){
-				daystr = "0"+day;
-			} else {
-				
-				daystr = String.valueOf(day);
-			}
-			String today = year +"-"+ monthstr +"-"+ daystr;
+			String today = String.format("%04d-%02d-%02d",year,month, day );
 			return today;
 		 
 	 }

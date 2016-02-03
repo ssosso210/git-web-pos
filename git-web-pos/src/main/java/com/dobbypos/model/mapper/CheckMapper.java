@@ -11,4 +11,6 @@ public interface CheckMapper {
 
 	List<Balance> getBalances();
 
+	Balance getBalanceByNo(int balanceNo);
+
 }

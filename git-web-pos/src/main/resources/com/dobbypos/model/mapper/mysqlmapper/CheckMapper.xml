@@ -33,6 +33,14 @@
 		FROM balance   
 	</select>
 	
+	
+	<select id="getBalanceByNo" parameterType="int" resultType="Balance">		
+		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
+		FROM balance
+		WHERE balanceNo = #{balanceNo}
+		
+	</select>
+	
 	<!-- <select id="selectBalanceByCode" 
 		parameterType="hashMap" resultType="Balance">
 		SELECT ba.balanceNo, ba.plusMinus, ba.regDate, ba.storeCode, ba.description, ba.itemCode

@@ -36,9 +36,9 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public List<Menu> getSelectMenus(String foodCode) {
+	public List<Menu> getSelectMenus(String foodName) {
 		
-		return saleDao.getSelectMenu(foodCode);
+		return saleDao.getSelectMenu(foodName);
 	}
 
 	

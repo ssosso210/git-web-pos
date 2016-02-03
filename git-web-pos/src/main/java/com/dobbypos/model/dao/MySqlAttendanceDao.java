@@ -53,6 +53,18 @@ public class MySqlAttendanceDao implements AttendanceDao {
 		return attendanceMapper.updateAttendanceEndWorkByAttendanceNo(attendanceNo);
 	}
 
+
+	@Override
+	public List<Attendance> selectAttendanceByStoreCodeAndMonth(String storeCode, String monthDateStr) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("storeCode", storeCode);
+		params.put("monthDateStr", monthDateStr);
+		
+		return attendanceMapper.selectAttendanceByStoreCodeAndMonth( params);
+	}
+
+
+
 	
 		
 }

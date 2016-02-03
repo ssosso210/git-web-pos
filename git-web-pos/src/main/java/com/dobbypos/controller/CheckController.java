@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dobbypos.model.dao.CheckDao;
 import com.dobbypos.model.dto.Balance;
@@ -45,6 +47,48 @@ public class CheckController {
 		return "check/checksales"; 
 	}
 	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	@RequestMapping(value = "salesview.action", method = RequestMethod.GET)
+	public String salesView(
+		@RequestParam("balanceno") int balanceno, @ModelAttribute("balance") Balance balance) {
+		
+		Balance balance2 = checkService.getBalanceByNo(balanceno);		
+		if (balance2 != null) {
+			balance.setBalanceNo(balance2.getBalanceNo());
+			balance.setRegDate(balance2.getRegDate());
+			balance.setItemCode(balance2.getItemCode());
+			balance.setPlusMinus(balance2.getPlusMinus());
+			balance.setDescription(balance2.getDescription());
+			return "check/salesview";
+		} else {
+			return "redirect:/check/checksales.action";
+		}
+		
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	@RequestMapping(value = "salesedit.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String salesEdit(
+		@RequestParam("balanceno") int balanceno,		
+		@ModelAttribute("balance") Balance balance) {//HttpServletRequest.setAttribute("member", member)
+		
+		Balance balance2 = checkService.getBalanceByNo(balanceno);
+		
+		if (balance2 != null) {
+			balance.setBalanceNo(balance2.getBalanceNo());
+			balance.setRegDate(balance2.getRegDate());
+			balance.setItemCode(balance2.getItemCode());
+			balance.setPlusMinus(balance2.getPlusMinus());
+			balance.setDescription(balance2.getDescription());
+			return "check/salesedit";
+		} else {
+			return "redirect:/check/checksales.action";
+		}
+		
+	}
+
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 //	@RequestMapping(value = "/checksales.action", method = RequestMethod.POST)

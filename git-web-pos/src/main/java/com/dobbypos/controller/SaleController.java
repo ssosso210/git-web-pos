@@ -16,10 +16,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.service.SaleService;
 import com.dobbypos.model.service.TableService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 @RequestMapping("/sale")
@@ -61,6 +65,39 @@ public class SaleController {
 	}
 		
 	
+//	@RequestMapping(value = "/orderform", method = RequestMethod.GET)
+//	public String SelectAllMenu(Model model) {
+//		
+//		List<Menu> menus = saleService.getAllMenus();
+//	    model.addAttribute("menus", menus);
+//		
+//		System.out.println(" [ 모든 메뉴가져왔어 ]  ");
+//		return "sale/orderform";
+//	}
+	
+	
+	/////////////////////////////////////
+	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	@ResponseBody
+	public String SelectMenu(HttpSession session, HttpServletRequest req, 
+			@RequestParam("foodname") String foodName, Model model) {
+
+//		int foodCode = 1;
+//		List<Menu> menus = saleService.getSelectMenus(foodCode);
+//	    model.addAttribute("menus", menus);
+		
+		System.out.println(foodName);
+		
+		List<Menu> menus = saleService.getSelectMenus(foodName);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.out.println(menus);
+		String result = gson.toJson(menus);
+				
+	    model.addAttribute("menus", menus);
+		
+		return result; 
+	}
+	
 	@RequestMapping(value = "/orderhome_test", method = RequestMethod.GET)
 	public String OrderHome(HttpSession session, HttpServletRequest req, Model model) {
 		
@@ -70,35 +107,6 @@ public class SaleController {
 		System.out.println(" [ 주문해야해 ]  ");
 	
 		return "sale/orderhome_test"; 
-	}
-	
-	@RequestMapping(value = "/orderform", method = RequestMethod.GET)
-	public String SelectAllMenu(Model model) {
-		
-		List<Menu> menus = saleService.getAllMenus();
-	    model.addAttribute("menus", menus);
-		
-		System.out.println(" [ 모든 메뉴가져왔어 ]  ");
-		return "sale/orderform";
-	}
-	
-	
-	/////////////////////////////////////
-	@RequestMapping(value = "/select", method = RequestMethod.POST)
-	public String SelectMenu(HttpSession session, HttpServletRequest req, Model model) {
-		
-//		;
-//		int foodCode = 1;
-//		List<Menu> menus = saleService.getSelectMenus(foodCode);
-//	    model.addAttribute("menus", menus);
-//		
-		System.out.println(" [ 선택한 메뉴가져왔어 ]  ");
-		
-		String foodCode = "1";
-		List<Menu> menus = saleService.getSelectMenus(foodCode);
-	    model.addAttribute("menus", menus);
-		
-		return "redirect:salehome_test"; 
 	}
 	
 	
