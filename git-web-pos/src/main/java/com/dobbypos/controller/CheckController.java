@@ -3,6 +3,8 @@ package com.dobbypos.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dobbypos.model.dao.CheckDao;
 import com.dobbypos.model.dto.Balance;
+import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.service.CheckService;
 
 @Controller
@@ -41,8 +44,8 @@ public class CheckController {
 		System.out.println("Controller");
 		
 		List<Balance> balances = checkService.getBalances();
-		
-		model.addAttribute("balances", balances);		
+		model.addAttribute("balances", balances);	
+			
 		
 		return "check/checksales"; 
 	}
@@ -88,7 +91,19 @@ public class CheckController {
 		}
 		
 	}
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping(value = "/chooseperiod.action", method = RequestMethod.GET)
+	public String OrderHome(HttpSession session, HttpServletRequest req, Model model) {
+		
+		List<Balance> balances = checkService.getBalances();
+		model.addAttribute("balances", balances);
+		
+		System.out.println(" 기간 선택  ");
+	
+		return "check/chooseperiod"; 
+	}
+	
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 //	@RequestMapping(value = "/checksales.action", method = RequestMethod.POST)

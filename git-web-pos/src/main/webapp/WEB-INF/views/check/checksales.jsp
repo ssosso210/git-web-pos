@@ -33,6 +33,19 @@
 
 </head>
 
+<script src="//code.jquery.com/jquery-1.12.0.js"></script>
+<script type="text/javascript">
+   
+	var myWindow;
+   
+	function choose_period() { 
+		myWindow = window.open("../check/chooseperiod.action", "myWindow", "width=600, height=600, left=500, top=100");
+	}
+	
+	
+	
+</script>
+
 <body>
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
 
@@ -43,6 +56,40 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
+						<div> 
+							<!-- <input class="btn btn-large" type="button" value="기간 선택" onclick="choose_period()"> -->
+							<form>
+							<table>
+								<tr>
+									<th>	
+										<input class="btn btn-small" type="button" value="시작일" />
+									</th>
+									<th>	
+										<input class="btn btn-middle" type="date" value="start" />&nbsp;&nbsp;
+									</th>
+									
+									<th>
+										<input class="btn btn-small" type="button" value="종료일" />
+									</th>		
+									<th>
+										<input class="btn btn-middle" type="date" value="end" />
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										
+										
+									</th>
+									<th>
+										<input class="btn btn-middle" type="button" value="보기" />
+									</th>	
+								</tr>
+							</table>
+							</form>	
+						</div>
 
 						<!-- <div class="widget ">
 							<div class="widget-header">
@@ -104,7 +151,7 @@
 						/widget
 
  -->
-
+						<br/>
 						<div class="widget widget-table action-table">
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
