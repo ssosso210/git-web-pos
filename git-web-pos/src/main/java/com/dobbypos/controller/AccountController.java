@@ -46,7 +46,7 @@ public class AccountController {
 		HttpSession session, HttpServletRequest req,
 		String hqCode,String storeCode, String employeeId, String passwd, @RequestParam("returnurl") String returnUrl, 
 		@RequestParam("storeCode1")String storeCode1,  Model model) {
-		
+
 
 	//	model.addAttribute("storeCode1", storeCode1);//main.jsp로 보냄 
 		//System.out.println("index.jsp 에서 storecode1받음:"+storeCode1);
