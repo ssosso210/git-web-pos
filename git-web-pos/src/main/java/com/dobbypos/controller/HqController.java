@@ -174,9 +174,16 @@ public class HqController {
 		Store store = storeService.getStoreByStoreName(storeName);
 		model.addAttribute(store);
 		return "/hq/storeview";
-		
-		
+				
 	}
 	
+	@RequestMapping(value = "/storedelete.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String storeDelete(@RequestParam("storecode") String storeCode) {
+		System.out.println(storeCode);
+		storeService.deleteStoreByStoreCode(storeCode);
+		
+		return "success";
+	}
 	
 }

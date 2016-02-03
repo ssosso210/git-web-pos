@@ -33,6 +33,10 @@
 		UPDATE store SET address = #{address}, storename = #{storeName}, managername = #{managerName}, 
 		email = #{email}, phoneno = #{phoneNo}, hqcode = #{hqCode} WHERE storecode = #{storeCode} 
 	</update>
+	
+	<delete id="deleteStoreByStoreCode" parameterType="String">
+		DELETE FROM store WHERE storeCode = #{id}
+	</delete>
 		
 </mapper>
 

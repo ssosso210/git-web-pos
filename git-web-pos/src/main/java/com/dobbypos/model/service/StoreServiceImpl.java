@@ -47,6 +47,13 @@ public class StoreServiceImpl implements StoreService {
 		storeDao.updateStoreInfo(store);
 		
 	}
+
+	@Override
+	public void deleteStoreByStoreCode(String storeCode) {
+
+		storeDao.deleteStoreByStoreCode(storeCode);
+		
+	}
 	
 	
 
