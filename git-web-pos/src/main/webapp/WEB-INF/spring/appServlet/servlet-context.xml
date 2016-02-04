@@ -48,6 +48,7 @@
 			<beans:list>
 				<beans:value>message.tags</beans:value> <!-- message package의 tags.properties 파일  -->
 				<beans:value>message.hq_message</beans:value>
+				<beans:value>message.webpos_message</beans:value>
 				<!-- <beans:value>message.error</beans:value>
 				<beans:value>message.warning</beans:value> -->
 			</beans:list>

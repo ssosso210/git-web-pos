@@ -1,10 +1,13 @@
 package com.dobbypos.model.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dao.TableDao;
+import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
 
 @Repository("tableService")
@@ -15,9 +18,16 @@ public class TableServiceImpl implements TableService {
 	private TableDao tableDao;
 	
 	@Override
-	public void insertTable(StoreTable table) {
-		tableDao.insertTable(table);
-		
+	public void insertTable(StoreTable st) {
+		tableDao.insertTable(st);
+
 	}
 
+	@Override
+	public int selectRecentTableNo(String storeCode) {
+		int recentableno=tableDao.selectRecentTableNo(storeCode);
+		//tableDao.insertTable(Map<recentableno+1, storeCode>);
+		//tableDao.insertTable(recentableno+1, storeCode);
+		return recentableno;
+	}
 }
