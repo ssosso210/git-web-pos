@@ -13,7 +13,6 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"	rel="stylesheet">
 	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css"> 
-<!--    <link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" /> -->
 	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
 	
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
@@ -42,29 +41,29 @@
             <!-- /widget-header -->
             <div class="widget-content" style="border:0px;">
               <div class="shortcuts"> 
-              	<a href="javascript:;" class="shortcut">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label">근태</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #7ddb9c; width:30%; ">
+              		<i class="shortcut-icon icon-check" style="font-size:60px;"></i>
+              		<span class="shortcut-label" style="font-size:18px" >근태</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label">판매</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #ec5948; width:30%; ">
+              		<i class="shortcut-icon icon-shopping-cart" style="font-size:60px;"></i>
+              		<span class="shortcut-label" style="font-size:18px">판매</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label">조회</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #88b9d7; width:30%; ">
+              		<i class="shortcut-icon icon-bar-chart" style="font-size:60px;"></i>
+              		<span class="shortcut-label" style="font-size:18px">조회</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label">관리</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #e4b076; width:30%; ">
+              		<i class="shortcut-icon icon-wrench" style="font-size:60px;"></i>
+              		<span class="shortcut-label" style="font-size:18px">관리</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label">설정</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #c7b7d5; width:30%; ">
+              		<i class="shortcut-icon icon-cogs" style="font-size:60px;"></i>
+              		<span class="shortcut-label" style="font-size:18px">설정</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label">관리자 페이지</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #7da51c; width:30%; ">
+              		<i class="shortcut-icon icon-list-alt" style="font-size:60px;"></i>
+              		<span class="shortcut-label" style="font-size:18px">관리자 페이지</span> 
               	</a>
               </div>
               <!-- /shortcuts --> 

@@ -40,7 +40,7 @@ function addLoadEvent(func){
 } 
 
 //$(document).ready(function() {
-	function menuIconActive(){
+function menuIconActive(){
 	
 	var mainpage = getCurrentPage();
 	if(mainpage == ""){
@@ -58,8 +58,8 @@ function addLoadEvent(func){
 	}else {
 		$("#menu-icon-main").addClass('active');
 	}
-	}
-	addLoadEvent(menuIconActive);
+}
+addLoadEvent(menuIconActive);
 	  
 //}); 
 
