@@ -50,7 +50,7 @@ public class HqController {
 	private StoreService storeService;
 	
 	@Autowired
-	@Qualifier("clienService")
+	@Qualifier("clientService")
 	private ClientService clientService;
 	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
