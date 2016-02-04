@@ -11,6 +11,12 @@
 		FROM client
 		WHERE clientname LIKE concat(#{ id }, '%')
 	</select>
+	
+	<select id="selectClientBusinessNumberByBusinessNumber" parameterType="String" resultType="String">
+		SELECT businessRegistrationNumber
+		FROM client
+		WHERE businessRegistrationNumber LIKE concat(#{ id }, '%')
+	</select>
 			
 </mapper>
 
