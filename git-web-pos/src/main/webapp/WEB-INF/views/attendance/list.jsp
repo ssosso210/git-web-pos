@@ -21,17 +21,11 @@
 	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
+	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
 <!-- <link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" />
 <link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" /> -->
 </head>
 
-
-<script type="text/javascript">
-   
-   
-
-	
-</script>
 
 
 <body>
@@ -167,7 +161,7 @@
 	</div>
 		
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
+
 <script src="/dobbywebpos/resources/jsui/excanvas.min.js"></script> 
 <script src="/dobbywebpos/resources/jsui/chart.min.js" type="text/javascript"></script> 
 <script src="/dobbywebpos/resources/jsui/bootstrap.js"></script>

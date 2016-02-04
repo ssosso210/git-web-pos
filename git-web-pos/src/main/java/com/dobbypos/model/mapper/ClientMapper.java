@@ -6,4 +6,6 @@ public interface ClientMapper {
 	
 	List<String> selectClientListByClientName(String clientName);
 
+	List<String> selectClientBusinessNumberByBusinessNumber(String businessNumber);
+
 }

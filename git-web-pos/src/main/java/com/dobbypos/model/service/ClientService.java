@@ -6,4 +6,6 @@ public interface ClientService {
 	
 	List<String> getClientListByClientName(String clientName);
 
+	List<String> getClientBusinessNumberByBusinessNumber(String businessNumber);
+
 }

@@ -24,4 +24,11 @@ public class MySqlClientDao implements ClientDao {
 		return clients;
 	}
 
+	@Override
+	public List<String> getClientBusinessNumberByBusinessNumber(String businessNumber) {
+		
+		List<String> businessNumbers = clientMapper.selectClientBusinessNumberByBusinessNumber(businessNumber);
+		return businessNumbers;
+	}
+
 }
