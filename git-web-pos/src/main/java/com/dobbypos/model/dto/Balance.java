@@ -1,7 +1,6 @@
 package com.dobbypos.model.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Balance implements Serializable {
@@ -12,6 +11,7 @@ public class Balance implements Serializable {
 	private String storeCode;
 	private String description;
 	private String itemCode;
+	private AccountCode accountCode;
 	
 	public int getBalanceNo() {
 		return balanceNo;
@@ -49,5 +49,12 @@ public class Balance implements Serializable {
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
-
+	public AccountCode getAccountCode() {
+		return accountCode;
+	}
+	public void setAccountCode(AccountCode accountCode) {
+		this.accountCode = accountCode;
+	}
+	
+	
 }

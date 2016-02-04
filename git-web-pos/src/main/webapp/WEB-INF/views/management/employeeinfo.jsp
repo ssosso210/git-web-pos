@@ -125,8 +125,8 @@
 
 								<div class="tabbable">
 									<ul class="nav nav-tabs">
-										<li class="active"><a href="#employee" data-toggle="tab">직원
-												정보</a></li>
+										<li class="active"><a href="#employee"
+											data-toggle="tab">직원 정보</a></li>
 										<li><a href="#salary" data-toggle="tab">급여 정보</a></li>
 									</ul>
 
