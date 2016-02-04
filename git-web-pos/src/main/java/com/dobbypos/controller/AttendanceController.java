@@ -1,6 +1,5 @@
 package com.dobbypos.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +18,6 @@ import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.service.AttendanceService;
 import com.dobbypos.model.service.EmployeeService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @Controller
 @RequestMapping("/attendance")
@@ -51,6 +48,7 @@ public class AttendanceController {
 			System.out.println(employee2.toString());
 			if (employee2.getAttendanceone() != null) {
 				System.out.println(employee2.getAttendanceone().toString());
+				
 			}
 		}
 		req.setAttribute("employees", employees);
@@ -58,6 +56,11 @@ public class AttendanceController {
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return urlstr+"main";
+		
+		
+		
+		
+		
 	}	
 	
 	
@@ -151,14 +154,13 @@ public class AttendanceController {
 	 * @return
 	 */
 	@RequestMapping(value = "attendcheck.action", method = RequestMethod.POST)
-	@ResponseBody
 	public String attendancecheck(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		String employeeNo = req.getParameter("employeeNo");
 		int employeeNum = Integer.parseInt(employeeNo);
 		String attendType = req.getParameter("attendType");
 		String attenNo = req.getParameter("attendanceNo");
 		int attendanceNo = Integer.parseInt(attenNo);
-		String passwd = req.getParameter("passwd");
+		String passwd = req.getParameter("model_input_passwd");
 		
 		System.out.println("attendcheck.action ------ employeeNo="+employeeNo+ ", attendType="+attendType+", attendanceNo="+attendanceNo +", passwd="+passwd);
 		

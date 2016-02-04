@@ -109,8 +109,11 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  	  ly = 'layer_pop_center';
  	  _ly;
  	  ly_bg = $('.opacity_bg_layer');
- 	  var returnMsg = <%= request.getAttribute("returnMsg") %>;
- 	  if(returnMsg != ""){
+ 	 /* 
+ 	 var returnMsgAlert = '<%= request.getAttribute("returnMsg") %>';
+ 	  */
+ 	 var returnMsgAlert = '${returnMsg}';
+ 	  if(returnMsgAlert != ""){
  		  alert(returnMsg);
  	  }
  	  
@@ -149,10 +152,10 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	
 	
 	if(!ly_bg.length) opacity_bg_layer(); // 불투명 배경 레이어 띄우기
-    var str_html = "<h5>비밀번호 입력</h5>"; // 레이어 팝업 내용
+    var str_html = "<h1>비밀번호 입력</h1>"; // 레이어 팝업 내용
     str_html+= '<input type="text" class="layer_pop_center_txt"></input>';
     str_html+= '<br/><input type="submit" class="layer_pop_center_btn" value="OK"/>';
-    str_html+= '<input type="submit" class="layer_pop_center_btn_cancel" value="Cancel"/>';
+    str_html+= '<input type="submit" style="width: 50px;" class="layer_pop_center_btn_cancel" value="Cancel"/>';
     if(layer_pop_crt(ly, str_html)) {
       _ly = $('.' + ly); // 레이어 팝업 생성 후 재 선언
       layer_pop_center(_ly);
