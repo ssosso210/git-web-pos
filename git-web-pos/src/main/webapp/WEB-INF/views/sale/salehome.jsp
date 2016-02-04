@@ -111,28 +111,24 @@
 	
 	<script type="text/javascript">
 
+	
 	//DB 에 있는 테이블 미리 만들어놔야됨 
 	var recentno=${recentno};
 	
 	for(var i=0;i<recentno;i++){
 		newTable();
 	}
-
+	
+	var id=1 ;
+	 
 	function newTable() {
-		//각 div마다 고유 id 지정해야되는데 잘 안됨  
-		var id = 1;
-		var div = document.createElement("div")
-		div.setAttribute("id", id)
-		div.setAttribute("class", "newDiv") 
+		var div = document.createElement("div");
+		div.setAttribute("id", 'table'+ id++);		
+		div.setAttribute("class", "newDiv");
 		div.style.width = "200px";
 		div.style.height = "200px";
-		div.textContent = 'table' + id;
-
-		div.textContent="판매버튼";//어떻게 넣는지 모름 
-		id++;
-		if(div!=null){
+		div.textContent = 'table : ' +(id++);
 		document.body.appendChild(div);
-		}
 	}
 
 	

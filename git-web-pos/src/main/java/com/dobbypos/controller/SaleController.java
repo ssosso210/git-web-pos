@@ -56,7 +56,7 @@ public class SaleController {
 		return "sale/salehome"; 
 	}
 		
-	
+		
 	@RequestMapping(value = "/orderhome_test", method = RequestMethod.GET)
 	public String OrderHome(HttpSession session, HttpServletRequest req, Model model) {
 		
