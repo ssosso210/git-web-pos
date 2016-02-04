@@ -17,7 +17,6 @@
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
-	<script src="/dobbywebpos/resources/jsui/base.js"></script>
 
 <style>
 .opacity_bg_layer {display:none;position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.5; filter:alpha(opacity=50); z-index:10;}
@@ -32,7 +31,6 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
 	$("#attend-employee-name").text("근태 버튼  : "+emName);
 	$("#attendStartWork").val(startWork);
 	$("#attendEndWork").val(endWork);
-	
 	
 	//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
 }
@@ -110,13 +108,6 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  	  ly = 'layer_pop_center';
  	  _ly;
  	  ly_bg = $('.opacity_bg_layer');
- 	 /* 
- 	 var returnMsgAlert = '<%= request.getAttribute("returnMsg") %>';
- 	  */
- 	 var returnMsgAlert = '${returnMsg}';
- 	  if(returnMsgAlert != ""){
- 		  alert(returnMsg);
- 	  }
  	  
  	 
  	  
@@ -153,10 +144,10 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	
 	
 	if(!ly_bg.length) opacity_bg_layer(); // 불투명 배경 레이어 띄우기
-    var str_html = "<h1>비밀번호 입력</h1>"; // 레이어 팝업 내용
+    var str_html = "<h5>비밀번호 입력</h5>"; // 레이어 팝업 내용
     str_html+= '<input type="text" class="layer_pop_center_txt"></input>';
     str_html+= '<br/><input type="submit" class="layer_pop_center_btn" value="OK"/>';
-    str_html+= '<input type="submit" style="width: 50px;" class="layer_pop_center_btn_cancel" value="Cancel"/>';
+    str_html+= '<input type="submit" class="layer_pop_center_btn_cancel" value="Cancel"/>';
     if(layer_pop_crt(ly, str_html)) {
       _ly = $('.' + ly); // 레이어 팝업 생성 후 재 선언
       layer_pop_center(_ly);
@@ -172,13 +163,7 @@ function employeeAttendwork(){
 		alert("비밀번호를 입력하지 않았습니다.");
 		return;
 	}
-	
-	frm = document.getElementById("attendcheckform");
-	frm.submit(); 
-
-
-	
-	/* $.ajax({
+	$.ajax({
 		url : "/dobbywebpos/attendance/attendcheck.action",
 		type : "POST",
 		async : true,
@@ -199,7 +184,7 @@ function employeeAttendwork(){
 		error : function( error) {
 			alert('fail to attend '+ error.toString());
 		}
-	}); */
+	});
 }
 
 $(document).on('click', '.opacity_bg_layer', function() { // 불투명 배경 레이어를 클릭하면 닫기
@@ -333,15 +318,14 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 <!-- /main -->
 </div>
 
-<form action="/dobbywebpos/attendance/attendcheck.action" id="attendcheckform" name="attendcheckform" method="post">
+
 	<input type="hidden" id="employeeName" name="employeeName" value=""/>
 	<input type="hidden" id="employeeNo" name="employeeNo" value=""/>
 	<input type="hidden" id="attendType" name="attendType" value=""/>
 	<input type="hidden" id="attendanceNo" name="attendanceNo" value=""/>
 	<input type="hidden" id="attendStartWork" name="attendStartWork" value=""/>
 	<input type="hidden" id="attendEndWork" name="attendEndWork" value=""/>
-	<input type="hidden" id="model_input_passwd" name="model_input_passwd" value=""/>
-	</form>
+	<input type="text" id="model_input_passwd" name="model_input_passwd" value=""/>
 
 
 <!-- Placed at the end of the document so the pages load faster --> 
