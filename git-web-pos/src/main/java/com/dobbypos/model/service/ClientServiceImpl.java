@@ -18,9 +18,15 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public List<String> getClientListByClientName(String clientName) {
 		
-		List<String> clients = clientDao.getClientListByClientName(clientName);
+		return clientDao.getClientListByClientName(clientName);
 		
-		return clients;
+		
+	}
+
+	@Override
+	public List<String> getClientBusinessNumberByBusinessNumber(String businessNumber) {
+		
+		return clientDao.getClientBusinessNumberByBusinessNumber(businessNumber);
 	}
 
 }

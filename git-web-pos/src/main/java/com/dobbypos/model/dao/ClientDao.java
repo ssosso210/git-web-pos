@@ -6,4 +6,6 @@ public interface ClientDao {
 	
 	List<String> getClientListByClientName(String clientName);
 
+	List<String> getClientBusinessNumberByBusinessNumber(String businessNumber);
+
 }
