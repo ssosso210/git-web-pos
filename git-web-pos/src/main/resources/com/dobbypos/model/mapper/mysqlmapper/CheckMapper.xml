@@ -40,6 +40,20 @@
 		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
 	</select>
 	
+	<select id="getBalancebyPeriodAndPlus" parameterType="hashMap" resultMap="balanceMap">		
+		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
+		FROM balance 
+		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
+		and plusMinus >= 0
+	</select>
+	
+	<select id="getBalancebyPeriodAndMinus" parameterType="hashMap" resultMap="balanceMap">		
+		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
+		FROM balance 
+		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
+		and plusMinus &lt; 0
+	</select>
+	
 	
 	
 	<!-- <select id="selectBalanceByCode" 

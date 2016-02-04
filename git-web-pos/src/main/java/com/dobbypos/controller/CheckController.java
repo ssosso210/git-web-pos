@@ -52,6 +52,8 @@ public class CheckController {
 		String todayDate = Util.getTodayDate();
 		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
 		model.addAttribute("balances", balances);	
+		model.addAttribute("startday",todayDate);
+		model.addAttribute("endday",todayDate);
 			
 		
 		return "check/checksales"; 
@@ -141,10 +143,22 @@ public class CheckController {
 
 		String startday = (String)req.getParameter("startday");
 		String endday = (String)req.getParameter("endday");
+		String typeval = (String)req.getParameter("typeval");
+		List<Balance> balances = null;
+		if (typeval.equals("all") ){
+			balances = checkService.getBalancesbyPeriod(startday, endday);
+		}else if(typeval.equals("plus") ){
+			balances = checkService.getBalancesbyPeriodAndPlus(startday, endday);
+		}else if(typeval.equals("minus") ){
+			balances = checkService.getBalancesbyPeriodAndMinus(startday, endday);
+		}
+		
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
 		
-		List<Balance> balances = checkService.getBalancesbyPeriod(startday, endday);
+		
 		req.setAttribute("balances", balances);
+		req.setAttribute("startday",startday);
+		req.setAttribute("endday",endday);
 		
 		System.out.println(balances);
 

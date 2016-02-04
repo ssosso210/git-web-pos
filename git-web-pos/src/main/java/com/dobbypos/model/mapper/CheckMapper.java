@@ -16,4 +16,8 @@ public interface CheckMapper {
 
 	List<Balance> getBalancebyPeriod(HashMap<String, String> params);
 
+	List<Balance> getBalancebyPeriodAndPlus(HashMap<String, String> params);
+
+	List<Balance> getBalancebyPeriodAndMinus(HashMap<String, String> params);
+
 }
