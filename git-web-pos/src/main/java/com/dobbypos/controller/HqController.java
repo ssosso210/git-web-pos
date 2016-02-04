@@ -25,6 +25,7 @@ import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
+import com.dobbypos.model.service.ClientService;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.HqService;
 import com.dobbypos.model.service.StoreService;
@@ -47,6 +48,10 @@ public class HqController {
 	@Autowired
 	@Qualifier("storeService")
 	private StoreService storeService;
+	
+	@Autowired
+	@Qualifier("clientService")
+	private ClientService clientService;
 	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home(HttpServletRequest req, Model model) {
@@ -184,5 +189,41 @@ public class HqController {
 		
 		return "redirect:/hq/storemanagement.action";
 	}
+	@RequestMapping(value = "/clientnamelist.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String clientNameList(HttpServletResponse resp, @RequestParam("clientname") String clientName) {
+		
+		List<String> clients = clientService.getClientListByClientName(clientName);
+		for (int i = 0; i < clients.size(); i++) {
+			try {
+				clients.set(i, URLEncoder.encode(clients.get(i), "utf-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.out.println(clients);
+		String result = gson.toJson(clients);		
+		
+		resp.setContentType("application/json;charset=utf-8");
+		return result;
+	}
 	
+	@RequestMapping(value = "/clientbusinessnumber.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String clientBusinessNumber(HttpServletResponse resp, @RequestParam("businessnumber") String businessNumber) {
+		
+		List<String> businessNumbers = clientService.getClientBusinessNumberByBusinessNumber(businessNumber);
+		String result1 = null;
+		for (int i = 0; i < businessNumbers.size(); i++) {
+			if (businessNumber.equals(businessNumbers.get(i))) {
+				result1 = "unable";
+			} else {
+				result1 = "able";
+			}
+		}
+		System.out.println(businessNumbers);
+		System.out.println(result1);
+		return result1;
+	}
 }

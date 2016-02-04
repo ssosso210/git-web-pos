@@ -140,6 +140,7 @@ $(function() {
 		});
 	
 		$("#edit").on("click", function() {
+			$("#storeregisteraddress").bind("click");
 			$(".storeedit").attr("readonly", false);
 			$("#storeCode").attr("readonly", true);
 			$("#edit").hide();
@@ -147,6 +148,10 @@ $(function() {
 			$("#editconfirm").show();
 			$("#cancel").hide();
 			$("#cancel2").show();
+			$("#storeregisteraddress").on("click", function(event) {
+				var address = $("#storeregisteraddress").val();
+				address = map();
+			});
 			$("#cancel2").on("click", function(event) {
 				$("#editconfirm").hide();
 				$(".storeedit").attr("readonly", true);				
@@ -154,8 +159,7 @@ $(function() {
 				$("#delete").hide();
 				$("#cancel2").hide();
 				$("#cancel").show();
-				$("#edit").show();
-				return true;
+				$("#edit").show();				
 			});
 		});
 			
@@ -209,10 +213,10 @@ $(function() {
 				
 			}); 
 					
-		$("#storeregisteraddress").on("click", function(event) {
+		/* $("#storeregisteraddress").on("click", function(event) {
 			var address = $("#storeregisteraddress").val();
 			address = map();
-		});
+		}); */
 		
 		
 			//$("#edit").val("수정확인");
