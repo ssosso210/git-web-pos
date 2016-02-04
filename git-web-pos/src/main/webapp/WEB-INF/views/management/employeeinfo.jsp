@@ -125,8 +125,8 @@
 
 								<div class="tabbable">
 									<ul class="nav nav-tabs">
-										<li class="active"><a href="#employee"
-											data-toggle="tab">직원 정보</a></li>
+										<li class="active"><a href="#employee" data-toggle="tab">직원
+												정보</a></li>
 										<li><a href="#salary" data-toggle="tab">급여 정보</a></li>
 									</ul>
 
@@ -173,7 +173,7 @@
 													<!-- /control-group -->
 
 
-													<div class="control-group">
+													<%-- <div class="control-group">
 														<label class="control-label" for="passwd">직원 비밀번호</label>
 														<div class="controls">
 															<input type="text" class="span6 disabled" id="passwd"
@@ -181,7 +181,7 @@
 														</div>
 														<!-- /controls -->
 													</div>
-													<!-- /control-group -->
+													<!-- /control-group --> --%>
 
 
 													<div class="control-group">
@@ -242,18 +242,38 @@
 												<fieldset>
 
 													<div class="control-group">
-														<label class="control-label" for="employeeName">년도 월</label>
+														<label class="control-label" for="employeeName">년도
+															월</label>
 														<div class="controls">
 															<input type="text" class="span6 disabled"
 																id="employeeName"
-																value=${ requestScope.employee.employeeName }>
-																<p class="help-block">ex) 2015년 3월 → 201503</p>
+																value="은영짱~~~~~~구">
+															<p class="help-block">ex) 2015년 3월 → 201503</p>
 														</div>
 														<!-- /controls -->
 													</div>
 													<!-- /control-group -->
-																										
+
 													<form id="edit-profile2" class="form-vertical">
+														<fieldset>
+															<div class="control-group">
+																<label class="control-label" for="employeeType">총 
+																	급여</label>
+																<div class="controls">
+																	<input type="text" class="span6 disabled"
+																		id="employeeType"
+																		value="급여보기 누르면 여기 급여가 뜰꺼여" disabled>
+																		<p class="help-block">(만원)</p>
+																</div>
+																<!-- /controls -->
+															</div>
+															<!-- /control-group -->
+
+														</fieldset>
+													</form>
+
+
+													<form id="edit-profile3" class="form-vertical">
 														<fieldset>
 															<div class="form-actions">
 																<button type="submit" class="btn btn-success">급여보기</button>
