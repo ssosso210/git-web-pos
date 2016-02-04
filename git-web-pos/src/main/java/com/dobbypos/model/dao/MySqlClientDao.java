@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.mapper.ClientMapper;
 
+
+@Repository("clientDao")
 public class MySqlClientDao implements ClientDao {
 
 	@Autowired
