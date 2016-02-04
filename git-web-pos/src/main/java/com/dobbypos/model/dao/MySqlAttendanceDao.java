@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.AttendanceSearch;
-import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.mapper.AttendanceMapper;
 
 @Repository("attendanceDao")

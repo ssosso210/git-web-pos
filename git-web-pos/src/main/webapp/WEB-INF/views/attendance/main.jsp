@@ -108,6 +108,10 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  	  ly = 'layer_pop_center';
  	  _ly;
  	  ly_bg = $('.opacity_bg_layer');
+ 	  var returnMsg = <%= request.getAttribute("returnMsg") %>;
+ 	  if(returnMsg != ""){
+ 		  alert(returnMsg);
+ 	  }
  	  
  	 
  	  
@@ -163,7 +167,13 @@ function employeeAttendwork(){
 		alert("비밀번호를 입력하지 않았습니다.");
 		return;
 	}
-	$.ajax({
+	
+	frm = document.getElementById("attendcheckform");
+	frm.submit(); 
+
+
+	
+	/* $.ajax({
 		url : "/dobbywebpos/attendance/attendcheck.action",
 		type : "POST",
 		async : true,
@@ -184,7 +194,7 @@ function employeeAttendwork(){
 		error : function( error) {
 			alert('fail to attend '+ error.toString());
 		}
-	});
+	}); */
 }
 
 $(document).on('click', '.opacity_bg_layer', function() { // 불투명 배경 레이어를 클릭하면 닫기
@@ -318,14 +328,15 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 <!-- /main -->
 </div>
 
-
+<form action="/dobbywebpos/attendance/attendcheck.action" id="attendcheckform" name="attendcheckform" method="post">
 	<input type="hidden" id="employeeName" name="employeeName" value=""/>
 	<input type="hidden" id="employeeNo" name="employeeNo" value=""/>
 	<input type="hidden" id="attendType" name="attendType" value=""/>
 	<input type="hidden" id="attendanceNo" name="attendanceNo" value=""/>
 	<input type="hidden" id="attendStartWork" name="attendStartWork" value=""/>
 	<input type="hidden" id="attendEndWork" name="attendEndWork" value=""/>
-	<input type="text" id="model_input_passwd" name="model_input_passwd" value=""/>
+	<input type="hidden" id="model_input_passwd" name="model_input_passwd" value=""/>
+	</form>
 
 
 <!-- Placed at the end of the document so the pages load faster --> 
