@@ -16,4 +16,6 @@ public interface StoreMapper {
 
 	void updateStoreInfo(Store store);
 
+	void deleteStoreByStoreCode(String storeCode);
+
 }

@@ -131,14 +131,37 @@
 $(function() {
 		
 		$(document).ready(function() {
+			$("#editconfirm").hide();
 			$(".storeedit").attr("readonly", true);
 			//$("#storeregisteraddress").attr("disabled", true);
 			$("#storeregisteraddress").unbind("click");
+			$("#delete").hide();
+			$("#cancel2").hide();
 		});
 	
 		$("#edit").on("click", function() {
+			$("#storeregisteraddress").bind("click");
 			$(".storeedit").attr("readonly", false);
-			
+			$("#storeCode").attr("readonly", true);
+			$("#edit").hide();
+			$("#delete").show();
+			$("#editconfirm").show();
+			$("#cancel").hide();
+			$("#cancel2").show();
+			$("#storeregisteraddress").on("click", function(event) {
+				var address = $("#storeregisteraddress").val();
+				address = map();
+			});
+			$("#cancel2").on("click", function(event) {
+				$("#editconfirm").hide();
+				$(".storeedit").attr("readonly", true);				
+				$("#storeregisteraddress").unbind("click");
+				$("#delete").hide();
+				$("#cancel2").hide();
+				$("#cancel").show();
+				$("#edit").show();				
+			});
+		});
 			
 			$("#storeCode").autocomplete({
 				source : function(request, response) {
@@ -159,7 +182,7 @@ $(function() {
 					    error : function(error) {
 					    	console.log(error);
 					    }
-					})
+					});
 				}
 				
 			}); 
@@ -185,19 +208,19 @@ $(function() {
 					    error : function(error) {
 					    	console.log(error);
 					    }
-					})
+					});
 				}
 				
 			}); 
 					
-		$("#storeregisteraddress").on("click", function(event) {
+		/* $("#storeregisteraddress").on("click", function(event) {
 			var address = $("#storeregisteraddress").val();
 			address = map();
-		});
+		}); */
 		
 		
-			$("#edit").val("수정확인");
-			$("#edit").on("click", function(event) {
+			//$("#edit").val("수정확인");
+			$("#editconfirm").on("click", function(event) {
 				var params = $("#storeeditinfo").serialize();	
 				/* console.dir(params);
 				var temp = "";
@@ -213,25 +236,60 @@ $(function() {
 					data : params,
 					success : function(data, status, xhr) {
 						eval("store = " + decodeURIComponent(data));
-						alert(store.address);
+						alert("정보가 수정되었습니다.");
+						$("#storeCode").html(store.storeCode);
+						$("#storeName").html(store.storeName);
+						$("#managerName").html(store.managerName);
+						$("#phoneNo").html(store.phoneNo);
+						$("#email").html(store.email);
+						$("#storeregisteraddress").html(store.address);
+						
+						$(".storeedit").attr("readonly", true);						
+						$("#storeregisteraddress").unbind("click");
+						$("#delete").hide();
+						$("#edit").show();
+						$("#editconfirm").hide();
+						
 						
 					},
 					error : function(xhr, status, data) {
 						alert(error)
 					}
+					/* complete: function(){ //A function to be called when the request finishes (after success and error callbacks are executed) - from jquery docs
+						   //do smth if you need
+						   document.location.reload(); 
+						 } */
 					
 				}); 
+				
 			});
-		
+			
+			$("#delete").on("click", function(event) {
+				if (confirm("삭제하시겠습니까?")) {
+				var param = $("#storeCode").val();
+				location.href="/dobbywebpos/hq/storedelete.action?storecode=" + param;
+				/* $.ajax({
+					url : "/dobbywebpos/hq/storedelete.action",
+					type : "GET",
+					async : true,
+					data : { storecode : param },
+					success : function(data, status, xhr){
+						alert(data);					
+					}, 
+					error : function(xhr, status, data) {
+						alert(status);
+						
+						
+					}
+					
+				}); */
+				}
+			}); 
+			
+			
+			
 			
 		});
-				
-		
-	
-		
-	
-	
-});
 
 var address = $("#storeregisteraddress").val();
 function map(streetTarget) {
@@ -348,7 +406,7 @@ function map(streetTarget) {
        }
         */
        /* var divList; */
-       function showResult(data) {
+      /*  function showResult(data) {
     	  if (document.getElementById("divAutoCom"))
     		   document.body.removeChild(document.getElementById("divAutoCom"));
     	   eval("var nameArray = " + data);
@@ -418,7 +476,7 @@ function map(streetTarget) {
     		   t = t.offsetParent;
     	   }
     	   return leftPos;
-       }
+       } */
        
        
 </script>
@@ -435,47 +493,50 @@ function map(streetTarget) {
 		        <form id="storeeditinfo" action="storeregister.action" method="post"><!-- 상대경로표시 -->
 		        <table style="margin: 0 auto;border: solid;">
 		             <tr>
-		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.code" /></th>
+		                <th style="font-size: 20pt; fonbackground-color: #999999"><spring:message code="hq.storemanagement.code" /></th>
 		                <td>		                    
-		                    <input type="text" id="storeCode" class="storeedit" name="storeCode" value="${ store.storeCode }" style="width:280px" />		                    
+		                    <input type="text" id="storeCode" class="storeedit" name="storeCode" value="${ store.storeCode }" style="width:700px; font-size: 20pt;" />		                    
 		                </td>
 		            </tr>
 		            <tr>
-		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.name" /></th>
+		                <th style="font-size: 20pt; background-color: #999999"><spring:message code="hq.storemanagement.name" /></th>
 		                <td>
 		                    
-		                    <input type="text" id="storeName" class="storeedit" name="storeName" value="${ store.storeName }" style="width:280px" />
+		                    <input type="text" id="storeName" class="storeedit" name="storeName" value="${ store.storeName }" style="width:700px; font-size: 20pt;" />
 		                    
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.managerName" /></th>
+		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.storemanagement.managerName" /></th>
 		                <td>
-		                	<input type="text" class="storeedit" name="managerName" value="${ store.managerName }" style="width:280px" />
+		                	<input type="text" class="storeedit" name="managerName" value="${ store.managerName }" style="width:700px; font-size: 20pt;" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.phoneNo" /></th>
+		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.storemanagement.phoneNo" /></th>
 		                <td>
-		                    <input type="text" class="storeedit" name="phoneNo" value="${ store.phoneNo }" style="width:280px" />
+		                    <input type="text" class="storeedit" name="phoneNo" value="${ store.phoneNo }" style="width:700px; font-size: 20pt;" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.email" /></th>
+		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.storemanagement.email" /></th>
 		                <td>
-		                	<input type="text" class="storeedit" name="email" value="${ store.email }" style="width:280px" />
+		                	<input type="text" class="storeedit" name="email" value="${ store.email }" style="width:700px; font-size: 20pt;" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.address" /></th>
+		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.storemanagement.address" /></th>
 		                <td>
-		                	<input type="search" class="storeedit" id="storeregisteraddress" value="${ store.address }" name="address" style="width:280px" />		                	
+		                	<input type="search" class="storeedit" id="storeregisteraddress" value="${ store.address }" name="address" style="width:700px; font-size: 20pt;" />		                	
 		                </td>
 		            </tr>		            
 		        </table>
 		        <div class="buttons">
 		        	<input type="button" value="수정" id="edit" style="height:25px" />
-		        	<input type="button" value="취소" style="height:25px"
+		        	<input type="button" value="수정확인" id="editconfirm" style="height:25px" />
+		        	<input type="button" value="삭제" id="delete" style="height: 25px" />
+		        	<input type="button" value="취소" id="cancel2" style="height: 25px" />
+		        	<input type="button" value="취소" id="cancel" style="height:25px"
 		        		onclick="location.href='/dobbywebpos/hq/storemanagement.action';" />
 		        </div>
 		        </form>

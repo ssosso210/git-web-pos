@@ -8,6 +8,6 @@ public interface SaleDao {
 
 
 	List<Menu> getAllList();
-	List<Menu> getSelectMenu(String foodCode);
+	List<Menu> getSelectMenu(String foodName);
 
 }

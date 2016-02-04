@@ -18,6 +18,7 @@ import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.service.AttendanceService;
+import com.dobbypos.model.service.EmployeeService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -28,6 +29,10 @@ public class AttendanceController {
 	@Autowired
 	@Qualifier("attendanceService")
 	private AttendanceService attendanceService;
+	
+	@Autowired
+	@Qualifier("employeeService")
+	private EmployeeService employeeService;
 	
 	private String urlstr = "attendance/";
 	
@@ -67,39 +72,56 @@ public class AttendanceController {
 		String attendType = req.getParameter("attendType");
 		String attenNo = req.getParameter("attendanceNo");
 		int attendanceNo = Integer.parseInt(attenNo);
+		String passwd = req.getParameter("passwd");
 		
-		System.out.println("attendcheck.action ------ employeeNo="+employeeNo+ ", attendType="+attendType+", attendanceNo="+attendanceNo );
+		System.out.println("attendcheck.action ------ employeeNo="+employeeNo+ ", attendType="+attendType+", attendanceNo="+attendanceNo +", passwd="+passwd);
 		
 		int returnValue = 0;
 		String returnMsg = "";
 		String buttonMsg = "";
 		Attendance attendance = null;
-		//출근 일 경우 값을 insert
-		if(attendType.equals("towork")){ // 출근 
-			returnValue = attendanceService.setAttendToWork(employeeNum); 
-			if(returnValue == 0){
-				returnMsg = "출근하였습니다. ";
-			}else{
-				//현재 퇴근한 날짜를 db에서 가져오기 
-				attendance =  attendanceService.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
-				buttonMsg = "출근 : " +Util.getTimestampFormat(attendance.getStartWork());
-			}
-		}else if(attendType.equals("offwork")){ // 퇴근
-			if(attendanceNo < 1){
-				returnMsg = "먼저 출근을 하세요. ";
-			}else{
-				returnValue = attendanceService.setAttendOffWork(attendanceNo, employeeNum);
-				if(returnValue < 1){
-					returnMsg = "퇴근을 하거나 출근하지 않았습니다.";
+		
+		//비밀번호 check
+		passwd = Util.getHashedString(passwd, "SHA-1");
+		Employee employee = employeeService.searchEmployeeByNo(employeeNum);
+		
+		if((employee == null) || !(employee.getPasswd().equals(passwd)) ){
+			// employee 값이 없거나, 비밀번호가 일치하지 않을 때 
+			returnMsg = "비밀번호가 일치하지 않습니다.";
+			
+		}else{ // 비밀번호 인증
+			//출근 일 경우 값을 insert
+			if(attendType.equals("towork")){ // 출근 
+				returnValue = attendanceService.setAttendToWork(employeeNum); 
+				if(returnValue == 0){
+					returnMsg = "출근하였습니다. ";
 				}else{
 					//현재 퇴근한 날짜를 db에서 가져오기 
 					attendance =  attendanceService.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
-					buttonMsg = "퇴근 : "+Util.getTimestampFormat(attendance.getEndWork());
+					buttonMsg = "출근 : " +Util.getTimestampFormat(attendance.getStartWork());
 				}
+			}else if(attendType.equals("offwork")){ // 퇴근
+				if(attendanceNo < 1){
+					returnMsg = "먼저 출근을 하세요. ";
+				}else{
+					returnValue = attendanceService.setAttendOffWork(attendanceNo, employeeNum);
+					if(returnValue < 1){
+						returnMsg = "퇴근을 하거나 출근하지 않았습니다.";
+					}else{
+						//현재 퇴근한 날짜를 db에서 가져오기 
+						attendance =  attendanceService.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
+						buttonMsg = "퇴근 : "+Util.getTimestampFormat(attendance.getEndWork());
+					}
 
-				
+					
+				}
 			}
+			
 		}
+		
+		
+		
+	
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //		Gson gson = new Gson();

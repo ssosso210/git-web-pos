@@ -15,4 +15,6 @@ public interface StoreDao {
 	Store getStoreByStoreName(String storeName);
 
 	void updateStoreInfo(Store store);
+
+	void deleteStoreByStoreCode(String storeCode);
 }

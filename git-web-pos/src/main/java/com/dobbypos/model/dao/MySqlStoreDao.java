@@ -46,4 +46,10 @@ public class MySqlStoreDao implements StoreDao {
 		
 	}
 
+	@Override
+	public void deleteStoreByStoreCode(String storeCode) {
+		storeMapper.deleteStoreByStoreCode(storeCode);
+		
+	}
+
 }
