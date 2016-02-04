@@ -187,5 +187,12 @@ public class Util {
 		 return dateformat.format(tstamp);
 		 
 	 }
+	 
+	 public static long getDiffHourTimestamp(Timestamp startTime, Timestamp endTime){
+		long hour = ((endTime.getTime()- startTime.getTime())/ (1000 * 60 * 60 ));
+			
+		return hour;
+			
+	}
 
 }

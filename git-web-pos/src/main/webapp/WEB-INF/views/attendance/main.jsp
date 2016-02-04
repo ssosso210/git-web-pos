@@ -31,6 +31,7 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
 	$("#attend-employee-name").text("근태 버튼  : "+emName);
 	$("#attendStartWork").val(startWork);
 	$("#attendEndWork").val(endWork);
+	alert($("#attend-employee-name").text());
 	
 	//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
 }
