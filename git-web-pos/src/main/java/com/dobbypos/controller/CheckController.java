@@ -1,5 +1,7 @@
 package com.dobbypos.controller;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dobbypos.model.dao.CheckDao;
+import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.Balance;
+import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.service.CheckService;
 
@@ -58,11 +62,11 @@ public class CheckController {
 		
 		Balance balance2 = checkService.getBalanceByNo(balanceno);		
 		if (balance2 != null) {
-			balance.setBalanceNo(balance2.getBalanceNo());
+			/*balance.setBalanceNo(balance2.getBalanceNo());
 			balance.setRegDate(balance2.getRegDate());
 			balance.setItemCode(balance2.getItemCode());
 			balance.setPlusMinus(balance2.getPlusMinus());
-			balance.setDescription(balance2.getDescription());
+			balance.setDescription(balance2.getDescription());*/
 			return "check/salesview";
 		} else {
 			return "redirect:/check/checksales.action";
@@ -80,11 +84,11 @@ public class CheckController {
 		Balance balance2 = checkService.getBalanceByNo(balanceno);
 		
 		if (balance2 != null) {
-			balance.setBalanceNo(balance2.getBalanceNo());
+			/*balance.setBalanceNo(balance2.getBalanceNo());
 			balance.setRegDate(balance2.getRegDate());
 			balance.setItemCode(balance2.getItemCode());
 			balance.setPlusMinus(balance2.getPlusMinus());
-			balance.setDescription(balance2.getDescription());
+			balance.setDescription(balance2.getDescription());*/
 			return "check/salesedit";
 		} else {
 			return "redirect:/check/checksales.action";
@@ -126,7 +130,34 @@ public class CheckController {
 		return "check/checksell"; 
 	}
 	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+	@RequestMapping(value = "viewbyperiod.action", method = RequestMethod.POST)
+	public String attendanceSearchlist(HttpSession session, HttpServletRequest req) {
+
+		String startday = (String)req.getParameter("startday");
+		String endday = (String)req.getParameter("endday");
+		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
+		
+		List<Balance> balances = checkService.getBalancesbyPeriod(startday, endday);
+		req.setAttribute("balances", balances);
+		
+		System.out.println(balances);
+
+		//		List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
+//		req.setAttribute("datestr", yearStr+"-"+monthStr);
+//		req.setAttribute("attendances", attendances);
+	
+		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
+		return "check/checksales";
+	}	
+	
+	
+	
+	
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	/*@RequestMapping(value="/tableregister.action", method=RequestMethod.POST)
