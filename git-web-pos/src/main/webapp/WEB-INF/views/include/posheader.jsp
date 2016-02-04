@@ -3,7 +3,70 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %><!--  태그를 spring으로 수정  -->
+<script type="text/javascript">
 
+function addLoadEvent(func){
+    var oldonload = window.onload;
+      if(typeof window.onload != 'function'){
+              window.onload = func;      
+       }else{
+         window.onload = function(){
+        oldonload();
+       func();
+         };
+     }
+}
+
+
+
+
+
+
+ function getCurrentPage() {
+	var currentPage = document.location.href; 
+	//현재 전체 주소를 가져온다. 예) http://www.naver.com
+	   
+	currentPage = currentPage.slice(7); 
+	//slice를 이용하여 앞에 http:// 빼고 가져올 수 있다. slice는 특정 인덱스부터 잘라낸다.
+	   
+	arr = currentPage.split("/");
+	//URL의 "/" 뒤에 나오는 값을 화용하여 split 이용하여 자를 수 있다.
+
+	currentPage = arr[2];
+	//  "/"에서 자른 것들을 배열로 저장되는데 2로 하면 2번째 위치 값이 내가 얻고자하는 값이다.
+
+
+    return currentPage;
+} 
+
+//$(document).ready(function() {
+	function menuIconActive(){
+	
+	var mainpage = getCurrentPage();
+	if(mainpage == ""){
+		$("#menu-icon-main").addClass('active');
+	}else if(mainpage == 'attendance'){
+		$("#menu-icon-attendance").addClass('active');
+	}else if(mainpage == 'sale'){
+		$("#menu-icon-sale").addClass('active');
+	}else if(mainpage == 'check'){
+		$("#menu-icon-check").addClass('active');
+	}else if(mainpage == 'management'){
+		$("#menu-icon-management").addClass('active');
+	}else if(mainpage == 'setting'){
+		$("#menu-icon-setting").addClass('active');
+	}else {
+		$("#menu-icon-main").addClass('active');
+	}
+	}
+	addLoadEvent(menuIconActive);
+	  
+//}); 
+
+
+
+
+</script>
 <div id="header">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -16,7 +79,7 @@
 					<ul class="nav pull-right">
 					 <c:choose>
             			<c:when test="${ empty sessionScope.loginuser }">
-            				<li class=""><a href="signup.html" class=""> Don't have an account? </a></li>
+            				<!-- <li class=""><a href="signup.html" class=""> Don't have an account? </a></li> -->
 							<li class="">
 								<a href="/dobbywebpos/account/hqlogin.action" class=""> 
 									<i class="icon-chevron-left"></i> go to 본사page
@@ -24,13 +87,15 @@
 							</li>
             			</c:when>
             			<c:otherwise>
+	            			<!-- 
 	            			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
 	                            class="icon-cog"></i> Account <b class="caret"></b></a>
 				            <ul class="dropdown-menu">
 				              <li><a href="javascript:;">Settings</a></li>
 				              <li><a href="javascript:;">Help</a></li>
 				            </ul>
-				          </li>
+				          </li> 
+				          -->
 				          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				          	<i class="icon-user"></i> ${ loginuser.employeeName } <b class="caret"></b></a>
 				            <ul class="dropdown-menu">
@@ -67,13 +132,13 @@
 	
 		      
 		      
-		        <li class="active"><a href="main.action"><i class="icon-dashboard"></i><span>mainpage</span> </a> </li>	        
-		        <li><a href="/dobbywebpos/attendance/main.action"><i class=" icon-check"></i><span>근태</span> </a> </li>
-		        <li><a href="/dobbywebpos/sale/salehome_test.action"><i class="icon-shopping-cart"></i><span>판매--윤수</span> </a></li>
-		        <li><a href="/dobbywebpos/check/checkmain.action"><i class="icon-bar-chart"></i><span>조회</span> </a> </li>
-		        <li><a href="/dobbywebpos/management/managementhome"><i class="icon-wrench"></i><span>관리</span> </a> </li>
-		        <li><a href="/dobbywebpos/settings/settinghome.action"><i class="icon-cogs"></i><span>설정</span> </a> </li>
-		        <li><a href="/dobbywebpos/sale/salehome.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-code"></i><span>테이블클릭(주문할거야)</span> </a> </li>
+		        <li id="menu-icon-main" > <!-- class="active" >--> <a href="/dobbywebpos/main.action"><i class="icon-home"></i><span>mainpage</span> </a> </li>	        
+		        <li id="menu-icon-attendance" ><a href="/dobbywebpos/attendance/main.action"><i class=" icon-check"></i><span>근태</span> </a> </li>
+		        <li id="menu-icon-sale" ><a href="/dobbywebpos/sale/salehome_test.action"><i class="icon-shopping-cart"></i><span>판매--윤수</span> </a></li>
+		        <li id="menu-icon-check" ><a href="/dobbywebpos/check/checkmain.action"><i class="icon-bar-chart"></i><span>조회</span> </a> </li>
+		        <li id="menu-icon-management" ><a href="/dobbywebpos/management/managementhome"><i class="icon-wrench"></i><span>관리</span> </a> </li>
+		        <li id="menu-icon-setting" ><a href="/dobbywebpos/settings/settinghome.action"><i class="icon-cogs"></i><span>설정</span> </a> </li>
+		        <li id="menu-icon-saletale" ><a href="/dobbywebpos/sale/salehome.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-code"></i><span>테이블클릭(주문할거야)</span> </a> </li>
 		        
 		        
 		        
