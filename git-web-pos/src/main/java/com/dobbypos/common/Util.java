@@ -187,5 +187,18 @@ public class Util {
 		 return dateformat.format(tstamp);
 		 
 	 }
+	 
+	 /**
+	  * 시간 차를 구하여 리턴해 줌 
+	  * @param startTime
+	  * @param endTime
+	  * @return
+	  */
+	 public static long getDiffHourTimestamp(Timestamp startTime, Timestamp endTime){
+		long hour = ((endTime.getTime()- startTime.getTime())/ (1000 * 60 * 60 ));
+			
+		return hour;
+			
+	}
 
 }

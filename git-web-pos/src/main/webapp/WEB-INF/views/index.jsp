@@ -12,7 +12,7 @@
 	<link href="/dobbywebpos/resources/css/font-awesome.css" rel="stylesheet">
 	<link	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"	rel="stylesheet">
 	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
-	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css"> 
 <!--    <link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" />
 	 -->
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
