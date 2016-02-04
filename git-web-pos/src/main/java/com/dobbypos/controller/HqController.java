@@ -25,6 +25,7 @@ import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
+import com.dobbypos.model.service.ClientService;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.HqService;
 import com.dobbypos.model.service.StoreService;
@@ -47,6 +48,10 @@ public class HqController {
 	@Autowired
 	@Qualifier("storeService")
 	private StoreService storeService;
+	
+	@Autowired
+	@Qualifier("clienService")
+	private ClientService clientService;
 	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home(HttpServletRequest req, Model model) {
@@ -185,5 +190,12 @@ public class HqController {
 		return "redirect:/hq/storemanagement.action";
 	}
 		
-	
+	@RequestMapping(value = "/clientnamelisi.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String clientNameList(@RequestParam("clientname") String clientName, HttpServletResponse resp) {
+		
+		List<String> clients = clientService.getClientListByClientName(clientName);
+		
+		return "";
+	}
 }

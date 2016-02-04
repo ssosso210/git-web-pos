@@ -71,7 +71,7 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/AttendanceMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/CheckMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/StockMapper.xml" />
-		
+		<mapper resource="con/dobbypos/model/mapper/mysqlmapper/ClientMapper.xml" />
 
 		
 		<!-- 윤수가추가 -->
