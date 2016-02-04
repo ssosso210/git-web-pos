@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Hq;
-import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.HqService;
 
@@ -49,7 +47,7 @@ public class AccountController {
 
 
 	//	model.addAttribute("storeCode1", storeCode1);//main.jsp로 보냄 
-		//System.out.println("index.jsp 에서 storecode1받음:"+storeCode1);
+	//	System.out.println("index.jsp 에서 storecode1받음:"+storeCode1);
 		
 		
 
