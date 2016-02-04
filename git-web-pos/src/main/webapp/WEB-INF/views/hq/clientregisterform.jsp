@@ -158,6 +158,10 @@ $(function() {
 		
 		$("#businessRegistrationNumber").on("keyup", function(event){
 			var businessRegistrationNumber = $("#businessRegistrationNumber").val();
+			if (businessRegistrationNumber.length == 0) {
+				$("#businessnumberchecked").html("");
+				return;
+			}
 				//alert(businessRegistrationNumber);
 				$.ajax({
 					url : "/dobbywebpos/hq/clientbusinessnumber.action",
@@ -250,7 +254,7 @@ function map(streetTarget) {
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="inputsubtitle"><spring:message code="hq.clientInfo" /></div>
 		<br /><br />
-		        <form id="" action="storeregister.action" method="post"><!-- 상대경로표시 -->
+		        <form id="" action="clientregister.action" method="post"><!-- 상대경로표시 -->
 		        <table style="margin: 0 auto;border: solid;width: 500px">
 		             <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.clientmanagement.name" /></th>
@@ -269,7 +273,7 @@ function map(streetTarget) {
 		            <tr>
 		                <th class="thh"><spring:message code="hq.clientmanagement.phoneNo" /></th>
 		                <td>
-		                	<input type="text" id="phoneNo" name="phoneNo" style="width:280px" />
+		                	<input type="text" id="clientPhoneNo" name="clientPhoneNo" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
