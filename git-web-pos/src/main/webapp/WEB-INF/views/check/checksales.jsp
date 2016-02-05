@@ -12,6 +12,7 @@
 <head>
 <meta charset="utf-8" />
 <title>매출-지출 현황</title>
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,10 +31,14 @@
 	rel="stylesheet" type="text/css">
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
+	
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 </head>
 
-<script src="//code.jquery.com/jquery-1.12.0.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.12.0.js"></script> -->
 <script type="text/javascript">
    
 	/* var myWindow;
@@ -51,7 +56,17 @@
 	}
 	
 	
-</script>
+    $(function() {
+       $( "#startday" ).datepicker({
+    	   dateFormat:"yy-mm-dd"
+       });
+       $( "#endday" ).datepicker({
+    	   dateFormat:"yy-mm-dd"
+        });
+    });
+
+	
+	</script>
 
 <body>
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
@@ -67,16 +82,24 @@
 							<!-- <input class="btn btn-large" type="button" value="기간 선택" onclick="choose_period()"> -->
 							<form id="edit-profile" class="form-horizontla" action="/dobbywebpos/check/viewbyperiod.action" method="post">
 							<input type="hidden" id="typeval" name="typeval"  value="all" />
+							<p>시작일: <input type="text" id="startday" name="startday" value="${startday}">
+							종료일: <input type="text" id="endday" name="endday" value="${endday}">
+							<input class="btn" style="margin-bottom: 9px;" type="submit" value="보기" /> </p>
+							
 							<table>
 								<tr>
-									<th>	
+									<%-- <th>	
 										<input class="btn btn-small" type="button" value="시작일" />
 									</th>
 									<th>	
 										<input class="btn btn-middle" type="date" id="startday" name="startday" value="${startday }" />&nbsp;&nbsp;
-									</th>
+									</th> --%>
 									
 									<th>
+										
+									</th>
+									
+									<%-- <th>
 										<input class="btn btn-small" type="button" value="종료일"  />
 									</th>		
 									<th>
@@ -89,10 +112,13 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
+											
+									</th> --%>
+									<th>
 										
 									</th>
 									<th>
-										<input class="btn btn-middle" type="submit" value="보기" />
+										
 									</th>	
 								</tr>
 							</table>
@@ -282,3 +308,8 @@
 
 </body> --%>
 </html>
+
+
+
+
+
