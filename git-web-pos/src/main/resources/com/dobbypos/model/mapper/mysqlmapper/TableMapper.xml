@@ -35,6 +35,13 @@
 		where storeCode=#{storeCode}
 		and tableNo=#{tableNo};
 	</update>
+	
+	<select id="selectCurrentTables" resultType="StoreTable">
+		select TOTALTABLENO, storecode, tableno from
+		StoreTable
+		where isDeleted = 0
+		and storeCode=#{storeCode}
+	</select>
 
 
 </mapper>
