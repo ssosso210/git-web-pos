@@ -14,4 +14,8 @@ public interface ClientDao {
 
 	Client getClientByClientName(String clientName);
 
+	void deleteClientByClientName(String clientName);
+
+	void editClientInfo(Client client);
+
 }

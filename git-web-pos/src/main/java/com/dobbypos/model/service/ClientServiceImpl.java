@@ -43,4 +43,18 @@ public class ClientServiceImpl implements ClientService {
 		return clientDao.getClientByClientName(clientName);
 	}
 
+	@Override
+	public void deleteClientByClientName(String clientName) {
+		
+		clientDao.deleteClientByClientName(clientName);
+		
+	}
+
+	@Override
+	public void editClientInfo(Client client) {
+		
+		clientDao.editClientInfo(client);
+		
+	}
+
 }

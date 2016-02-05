@@ -246,4 +246,34 @@ public class HqController {
 		
 		return "hq/clientview";
 	}
+	
+	@RequestMapping(value = "/clientdelete.action", method = RequestMethod.GET)	
+	public String clientDelete(@RequestParam("clientname") String clientName) {
+		System.out.println(clientName);
+		clientService.deleteClientByClientName(clientName);
+		
+		return "redirect:/hq/clientmanagement.action";
+	}
+	
+	@RequestMapping(value = "/clientedit.action", method = RequestMethod.POST)
+	@ResponseBody
+	public String clientEdit(Client client, HttpServletResponse resp) {
+		System.out.println(client);
+		clientService.editClientInfo(client);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		try {
+			client.setAddress(URLEncoder.encode(client.getAddress(), "utf-8").replace("+", "%20"));
+			client.setClientName(URLEncoder.encode(client.getClientName(), "utf-8").replace("+", "%20"));
+			
+			
+		} catch (UnsupportedEncodingException e) {
+			
+			e.printStackTrace();
+		}
+		String result = gson.toJson(client);		
+		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		return result;	
+	}
 }
