@@ -45,4 +45,11 @@ public class MySqlTableDao implements TableDao {
 		
 	}
 
+
+	@Override
+	public void setIsDeleted(StoreTable st) {
+		tableMapper.setIsDeleted(st);
+		
+	}
+
 }

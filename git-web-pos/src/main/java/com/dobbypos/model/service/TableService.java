@@ -8,4 +8,5 @@ import com.dobbypos.model.dto.StoreTable;
 public interface TableService {
 	void insertTable(StoreTable st);
 	int selectRecentTableNo(String storeCode1);
+	void setIsDeleted(StoreTable st);
 }

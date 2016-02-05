@@ -70,36 +70,36 @@ public class SettingsController {
 		Integer recentableNo=tableService.selectRecentTableNo(storeCode1);
 		model.addAttribute("recentableNo", recentableNo);
 		
-		//ajax꺼 
-	/*	Gson gson=new Gson();
-		String result=gson.toJson(recentableNo);
-		response.setContentType("text/plain;charset=utf-8");
-		
-		PrintWriter out = response.getWriter();
-		out.print(result);// send result to the server
-		*/
 		return "settings/tableregisterform";
 	}
 	
 	@RequestMapping(value="/tableadd.action", method=RequestMethod.GET)
 	@ResponseBody
 	public String TableAdd(HttpServletResponse resp, @RequestParam("rt")int recentableNo,  @RequestParam("sc") String storeCode1){
-		System.out.println("sc"+storeCode1);
 		
 		StoreTable st=new StoreTable();
 		st.setStoreCode(storeCode1);
 		st.setTableNo(recentableNo+1);
 		tableService.insertTable(st);
-		System.out.println("tableadd호출 ~");
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()
-		
-		String result = gson.toJson(recentableNo+1);		
-		
-		resp.setContentType("application/json;charset=utf-8");
-	
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()		
+		String result = gson.toJson(recentableNo+1);				
+		resp.setContentType("application/json;charset=utf-8");	
 		return result;
+	}
+	
+	@RequestMapping(value="/tableminus.action", method=RequestMethod.GET)
+	@ResponseBody
+	public String TableMinus(HttpServletResponse resp, @RequestParam("rt")int recentableNo,  @RequestParam("sc") String storeCode1){
+		StoreTable st= new StoreTable();
+		st.setStoreCode(storeCode1);
+		st.setTableNo(recentableNo);
+		tableService.setIsDeleted(st);
 		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()		
+		String result = gson.toJson(recentableNo-1);				
+		resp.setContentType("application/jsSon;charset=utf-8");	
+		return result;
 	}
 	
 	

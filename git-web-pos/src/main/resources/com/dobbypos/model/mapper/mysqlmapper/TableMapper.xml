@@ -15,17 +15,26 @@
 
 	<insert id="insertTable" parameterType="StoreTable">
 		INSERT INTO StoreTable
-		(tableNo,storeCode)
+		(tableNo,storeCode,isDeleted)
 		VALUES
-		(#{tableNo},#{storeCode})
+		(#{tableNo},#{storeCode}, 0)
 	</insert>
 
-	<select id="selectRecentTableNo" parameterType="Store" resultType="int">
+	<select id="selectRecentTableNo" parameterType="Store"
+		resultType="int">
 		select tableNo from
 		StoreTable
 		where storeCode=#{storeCode}
+		and isDeleted=0
 		order by tableNo DESC limit 1;
 	</select>
+
+	<update id="setIsDeleted" parameterType="StoreTable">
+		update StoreTable
+		set isDeleted=1
+		where storeCode=#{storeCode}
+		and tableNo=#{tableNo};
+	</update>
 
 
 </mapper>

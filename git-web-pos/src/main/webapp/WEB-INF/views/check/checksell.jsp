@@ -1,11 +1,11 @@
 <%@page import="com.dobbypos.model.dto.Balance"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dobbypos.model.dao.CheckDao"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,24 @@
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
 
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 </head>
+
+<script type="text/javascript">
+	$(function() {
+	    $( "#startday" ).datepicker({
+	 	   dateFormat:"yy-mm-dd"
+	    });
+	    $( "#endday" ).datepicker({
+	 	   dateFormat:"yy-mm-dd"
+	     });
+	 });
+</script>
 
 <body>
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
@@ -43,106 +60,82 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-						
+
 						<form>
-							<table>
-								<tr>
-									<th>	
-										<input class="btn btn-small" type="button" value="시작일" />
-									</th>
-									<th>	
-										<input class="btn btn-middle" type="date" value="start" />&nbsp;&nbsp;
-									</th>
-									
-									<th>
-										<input class="btn btn-small" type="button" value="종료일" />
-									</th>		
-									<th>
-										<input class="btn btn-middle" type="date" value="end" />
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										
-										
-									</th>
-									<th>
-										<input class="btn btn-middle" type="button" value="보기" />
-									</th>	
-								</tr>
-							</table>
-							</form>	
-						</div>
-						
-						
-						
-						
-						
-						
-						<div class="widget widget-table action-table">
-							<div class="widget-header">
-								<i class="icon-th-list"></i>
-								<h3>판매 실적</h3>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<!-- 앜ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ혹시 누가 본다면 이거 쫌 도와 주세요 -->
-									<input class="btn btn-middle" type="button" value="[메뉴별]" /> &nbsp;&nbsp;&nbsp;&nbsp;
-									<input class="btn btn-middle" type="button" value="[회원별]" />
-									<!-- <button>[ + ]</button>
-									<button>[ - ]</button> -->
-							</div>
-							<!-- /widget-header -->
-							<div class="widget-content">
 
-								<table class="table table-striped table-bordered" border="1"
-									align="center" width="600px">
-									<thead>
-										<tr>
-											<td>No</td>
-											<td>메뉴</td>
-											<td>누적판매량</td>
-											<td>누적매출</td>
-											<!-- <td>축적시간</td>
-        									<td>급여</td> -->
-										</tr>
-									</thead>
-									
 
-									<c:forEach var="employee" items="${ employees }">
-										<tbody>
-											<tr style="height: 30px; text-align: center">
-												<td style="width: 50px"><c:url value="view.action"
-														var="viewUrl">
-														<c:param name="employeeNo"
-															value="${ employee.employeeNo }" />
-													</c:url> <a href="${ viewUrl }">${ employee.employeeNo }</a></td>
-												<td style="width: 100px">${ employee.employeeName }</td>
-												<td style="width: 50px">${ employee.wage }</td>
-												<td style="width: 50px">${ employee.employeeType }</td>
-												<%--<td>${ employee.pay } </td>--%>
-											</tr>
-									</c:forEach>
-									</tbody>
-								</table>
-							</div>
-							<!-- /span -->
-						</div>
-						<!-- /row -->
+							<input type="hidden" id="typeval" name="typeval" value="all" />
+							<p>
+								시작일: <input type="text" id="startday" name="startday" value="${startday}"> 
+								종료일: <input type="text" d="endday" name="endday" value="${endday}"> 
+								<input class="btn" style="margin-bottom: 9px;" type="submit"value="보기" />
+							</p>
+
+						</form>
 					</div>
-					<!-- /container -->
+
+					<div class="widget widget-table action-table">
+						<div class="widget-header">
+							<i class="icon-th-list"></i>
+							<h3>판매 실적</h3>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<!-- 앜ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ혹시 누가 본다면 이거 쫌 도와 주세요 -->
+							<input class="btn btn-middle" type="button" value="[메뉴별]" />
+							&nbsp;&nbsp;&nbsp;&nbsp; <input class="btn btn-middle"
+								type="button" value="[회원별]" />
+							<!-- <button>[ + ]</button>
+									<button>[ - ]</button> -->
+						</div>
+						<!-- /widget-header -->
+						<div class="widget-content">
+
+							<table class="table table-striped table-bordered" border="1"
+								align="center" width="600px">
+								<thead>
+									<tr>
+										<td>No</td>
+										<td>메뉴</td>
+										<td>누적판매량</td>
+										<td>누적매출</td>
+										<!-- <td>축적시간</td>
+        									<td>급여</td> -->
+									</tr>
+								</thead>
+
+
+								<c:forEach var="employee" items="${ employees }">
+									<tbody>
+										<tr style="height: 30px; text-align: center">
+											<td style="width: 50px"><c:url value="view.action"
+													var="viewUrl">
+													<c:param name="employeeNo" value="${ employee.employeeNo }" />
+												</c:url> <a href="${ viewUrl }">${ employee.employeeNo }</a></td>
+											<td style="width: 100px">${ employee.employeeName }</td>
+											<td style="width: 50px">${ employee.wage }</td>
+											<td style="width: 50px">${ employee.employeeType }</td>
+											<%--<td>${ employee.pay } </td>--%>
+										</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<!-- /span -->
+					</div>
+					<!-- /row -->
 				</div>
-				<!-- /main-inner -->
+				<!-- /container -->
 			</div>
+			<!-- /main-inner -->
+		</div>
+	</div>
 </body>
 </html>
 

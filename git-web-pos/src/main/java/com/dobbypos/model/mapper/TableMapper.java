@@ -12,4 +12,6 @@ public interface TableMapper {
 	
 	//void insertTable(Integer recentableno, String storeCode);
 	void insertTable(StoreTable st);
+
+	void setIsDeleted(StoreTable st);
 }

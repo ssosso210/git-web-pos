@@ -78,113 +78,19 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-						<div> 
+						<div>
 							<!-- <input class="btn btn-large" type="button" value="기간 선택" onclick="choose_period()"> -->
-							<form id="edit-profile" class="form-horizontla" action="/dobbywebpos/check/viewbyperiod.action" method="post">
-							<input type="hidden" id="typeval" name="typeval"  value="all" />
-							<p>시작일: <input type="text" id="startday" name="startday" value="${startday}">
-							종료일: <input type="text" id="endday" name="endday" value="${endday}">
-							<input class="btn" style="margin-bottom: 9px;" type="submit" value="보기" /> </p>
-							
-							<table>
-								<tr>
-									<%-- <th>	
-										<input class="btn btn-small" type="button" value="시작일" />
-									</th>
-									<th>	
-										<input class="btn btn-middle" type="date" id="startday" name="startday" value="${startday }" />&nbsp;&nbsp;
-									</th> --%>
-									
-									<th>
-										
-									</th>
-									
-									<%-- <th>
-										<input class="btn btn-small" type="button" value="종료일"  />
-									</th>		
-									<th>
-										<input class="btn btn-middle" type="date" id="endday" name="endday" value="${endday }" />
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										
-											
-									</th> --%>
-									<th>
-										
-									</th>
-									<th>
-										
-									</th>	
-								</tr>
-							</table>
-							</form>	
+							<form id="edit-profile" class="form-horizontla"
+								action="/dobbywebpos/check/viewbyperiod.action" method="post">
+								<input type="hidden" id="typeval" name="typeval" value="all" />
+								<p>
+									시작일: <input type="text" id="startday" name="startday"value="${startday}"> 
+									종료일: <input type="text" id="endday" name="endday" value="${endday}"> 
+									<input class="btn" style="margin-bottom: 9px;" type="submit" value="보기" />
+								</p>
+
+							</form>
 						</div>
-
-						<!-- <div class="widget ">
-							<div class="widget-header">
-								<i class=" icon-search"></i>
-								<h3>검색 기간</h3>
-							</div>
-							/widget-header
-							<div class="widget-content">
-
-								<form id="edit-profile" class="form-horizontal"
-									action="/dobbywebpos/attendance/searchlist.action"
-									method="post">
-									<fieldset>
-
-										<div class="control-group">
-											<label class="control-label" for="username">Year </label>
-											<div class="controls">
-												<select id="year_select" class="year_select"
-													name="year_select">
-													<option value="2016" selected="selected">2016</option>
-													<option value="2015">2015</option>
-												</select>
-											</div>
-											/controls
-										</div>
-										/control-group
-
-
-										<div class="control-group">
-											<label class="control-label" for="firstname">Month</label>
-											<div class="controls">
-												<select id="month_select" class="month_select"
-													name="month_select">
-													<option value="01">01</option>
-													<option value="02" selected="selected">02</option>
-													<option value="03">03</option>
-													<option value="04">04</option>
-													<option value="05">05</option>
-													<option value="06">06</option>
-													<option value="07">07</option>
-													<option value="08">08</option>
-													<option value="09">09</option>
-													<option value="10">10</option>
-													<option value="11">11</option>
-													<option value="12">12</option>
-												</select> <input class="btn btn-large" type="submit" value="Search" />
-												<a class="btn btn-large" href="#"> Search</a>
-											</div>
-											/controls
-										</div>
-										/control-group
-									</fieldset>
-								</form>
-
-
-							</div>
-							/widget-content
-						</div>
-						/widget
-
- -->
 						<br/>
 						<div class="widget widget-table action-table">
 							<div class="widget-header">
@@ -252,7 +158,9 @@
 				</div>
 				<!-- /main-inner -->
 			</div>
-			
+		</div>
+		</div>
+		
 </body>
 
 

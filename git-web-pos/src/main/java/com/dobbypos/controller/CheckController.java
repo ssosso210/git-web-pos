@@ -130,8 +130,12 @@ public class CheckController {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
 	@RequestMapping(value = "/checksell.action", method = RequestMethod.GET)
-	public String Checksell() {
+	public String Checksell(Model model) {
+		System.out.println("Controller");
 		
+		String todayDate = Util.getTodayDate();
+		model.addAttribute("startday", todayDate);
+		model.addAttribute("endday", todayDate);
 		return "check/checksell"; 
 	}
 	

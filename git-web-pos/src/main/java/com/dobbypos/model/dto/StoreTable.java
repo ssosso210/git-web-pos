@@ -3,8 +3,8 @@ package com.dobbypos.model.dto;
 public class StoreTable {
 	private int tableNo;
 	private String storeCode;
-	private int occupied;
-	
+	private String totalTableNo;
+	private int isDeleted;
 	public int getTableNo() {
 		return tableNo;
 	}
@@ -17,12 +17,19 @@ public class StoreTable {
 	public void setStoreCode(String storeCode) {
 		this.storeCode = storeCode;
 	}
-	public int getOccupied() {
-		return occupied;
+	public String getTotalTableNo() {
+		return totalTableNo;
 	}
-	public void setOccupied(int occupied) {
-		this.occupied = occupied;
+	public void setTotalTableNo(String totalTableNo) {
+		this.totalTableNo = totalTableNo;
 	}
-
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+	
+	
 	
 }
