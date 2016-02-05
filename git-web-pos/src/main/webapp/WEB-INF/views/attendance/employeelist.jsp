@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="utf-8" />
@@ -45,8 +43,8 @@ $(function() {
   <div class="main-inner">
     <div class="container">
       <div class="row">
-	    <div class="span12">
-	      <div class="widget " >
+        <div class="span6">
+          <div class="widget " >
 		   <!-- <div class="widget-content">  -->
 		  	<form id="edit-profile" class="form-horizontal" 
 		  		action="/dobbywebpos/attendance/searchemployeelist.action" method="post">
@@ -70,54 +68,62 @@ $(function() {
 		  		<p>
 		  		
 		  			searchDate :  
-		  			<input type="text" id="datepicker-month" name="datepicker-month" value="${startdatestr }"> 
+		  			<input type="text" id="datepicker-month" name="datepicker-month" value="${dateMonth }"> 
 		  			<input type="submit" class="btn"   value="Search"/>
 		  		</p>
 		  		
-		  		<!-- 
-		  		13개씩 뿌려주기 
-		  		<fieldset>
-										
-					<div class="control-group">											
-						<label class="control-label" for="username">Year </label>
-						<div class="controls">
-							<select id="year_select" class="year_select" name="year_select">
-							  <option value="2016" selected="selected">2016</option>
-							  <option value="2015">2015</option>
-							</select>
-						</div> /controls				
-					</div> /control-group
-					
-					
-					<div class="control-group">											
-						<label class="control-label" for="firstname">Month</label>
-						<div class="controls">
-							<select id="month_select" class="month_select" name="month_select">
-							  <option value="01" >01</option>
-							  <option value="02" selected="selected">02</option>
-							  <option value="03">03</option>
-							  <option value="04">04</option>
-							  <option value="05">05</option>
-							  <option value="06">06</option>
-							  <option value="07">07</option>
-							  <option value="08">08</option>
-							  <option value="09">09</option>
-							  <option value="10">10</option>
-							  <option value="11">11</option>
-							  <option value="12">12</option>
-							</select>
-							
-							
-							<input class="btn btn-large" type="submit" value="Search" />
-							<a class="btn btn-large" href="#"> Search</a>
-						</div> /controls				
-					</div> /control-group
-					</fieldset> -->
+		  		
 		  	</form>
 		  		
 		  
 		 <!--  </div> --> <!-- /widget-content -->
-		</div> <!-- /widget -->	
+		  </div> <!-- /widget -->	
+        </div> <!-- /span6 -->
+         
+        <div class="span6">
+        <!-- /widget -->
+          <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>   </h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                  	
+                    <th> 구분 </th>
+                    <th> 날짜 </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+		           <tr> 	
+	                    <td> 근무 일수 </td>
+	                    <td> 3일 </td> 
+		           </tr>
+		           <tr> 	
+	                    <td> 근무 시간 </td>
+	                    <td> 10:30 </td> 
+		           </tr>
+		           <tr> 	
+	                    <td> 총 급여액 </td>
+	                    <td> 30,000 </td> 
+		           </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+<!-- /widget -->
+         
+         
+        </div>
+         <!-- /span6 -->
+      
+      
+	    <div class="span12">
+	     
 						
 	    
 	    
@@ -152,7 +158,7 @@ $(function() {
 			           	<c:forEach var="attendance" items="${ attendances }">	
 		                  <tr>
 		                  	<td class="td-actions">${attendance.attendanceNo }</td>
-		                    <td> ${attendance.employeeone.employeeName }</td>
+		                    <td> ${selectEmployee.employeeName }</td>
 		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd"/></td>
 		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="HH:mm"/></td>
 		                   <c:choose>
@@ -188,7 +194,7 @@ $(function() {
   <!-- /main-inner --> 
 </div>
 <!-- /main -->
-	</div>
+</div>
 		
 <!-- Placed at the end of the document so the pages load faster --> 
 
