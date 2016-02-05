@@ -39,7 +39,7 @@
 			$(this).on("click", function(event) {
 				
 				var param = self.val();
-					alert(param);
+					/* alert(param); */
 				
 				 $.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
 					url : "/dobbywebpos/sale/select",
@@ -47,7 +47,7 @@
 					async : true,
 					data : { foodname : param },
 					success : function(data, status, xhr) {
-						alert(data);
+						/* alert(data); */
 						$("#result").html(data);
 						eval("var menus="+data);
 						for(var i = 0; i <menus.length; i++) {
