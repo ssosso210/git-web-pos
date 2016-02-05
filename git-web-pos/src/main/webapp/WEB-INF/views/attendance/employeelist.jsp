@@ -28,11 +28,11 @@
 <script type="text/javascript">
 $(function() {
     $( "#datepicker-start" ).datepicker({
-       dateFormat:"yy-mm-dd",
-    });
-    $( "#datepicker-end" ).datepicker({
         dateFormat:"yy-mm-dd",
      });
+     $( "#datepicker-end" ).datepicker({
+         dateFormat:"yy-mm-dd",
+      });
  });
 
 
@@ -54,7 +54,11 @@ $(function() {
 		  	<form id="edit-profile" class="form-horizontal" 
 		  		action="/dobbywebpos/attendance/searchlist.action" method="post">
 		  		<p>
-		  			Search Date :  
+		  			직원 선택 
+		  		</p>
+		  		<p>
+		  		
+		  			searchDate :  
 		  			<input type="text" id="datepicker-start" name="datepicker-start" value="${startdatestr }"> ~ 
 		  			<input type="text" id="datepicker-end" name="datepicker-end" value="${enddatestr }">
 		  			<input type="submit" class="btn"   value="Search"/>
@@ -110,7 +114,7 @@ $(function() {
 	    <!-- /widget -->
           <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>근태 목록  </h3>
+              <h3> 근태 목록  </h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">

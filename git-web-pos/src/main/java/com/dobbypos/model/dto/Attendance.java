@@ -14,7 +14,8 @@ public class Attendance implements Serializable {
 	/**
 	 * 계산된 값, DB(X)
 	 */
-	private long workHour;
+	private long workMinute;
+	private String workTime;
 	
 	
 	private Employee employeeone;
@@ -43,8 +44,6 @@ public class Attendance implements Serializable {
 	public void setEmployeeNo(int employeeNo) {
 		this.employeeNo = employeeNo;
 	}
-	
-	
 	public Employee getEmployeeone() {
 		return employeeone;
 	}
@@ -52,12 +51,17 @@ public class Attendance implements Serializable {
 		this.employeeone = employeeone;
 	}
 	
-	
-	public long getWorkHour() {
-		return workHour;
+	public long getWorkMinute() {
+		return workMinute;
 	}
-	public void setWorkHour(long workHour) {
-		this.workHour = workHour;
+	public void setWorkMinute(long workMinute) {
+		this.workMinute = workMinute;
+	}
+	public String getWorkTime() {
+		return workTime;
+	}
+	public void setWorkTime(String workTime) {
+		this.workTime = workTime;
 	}
 	@Override
 	public String toString() {
