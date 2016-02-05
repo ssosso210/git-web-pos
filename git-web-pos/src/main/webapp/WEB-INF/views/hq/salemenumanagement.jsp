@@ -52,7 +52,7 @@
           <style type="text/css">
 
 			* { margin : 0px; padding : 0px; }
-        body { background-color : #525252; }
+        body { background-color : White/* #525252; */ }
         .item {
             margin : 5px;
             width : 100px; height : 100px;

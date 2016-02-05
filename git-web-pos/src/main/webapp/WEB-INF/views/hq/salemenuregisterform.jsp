@@ -248,8 +248,8 @@ function map(streetTarget) {
       <body class="skin-black">
 
       <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
-      <div id="pageContainer">	
-			
+      <!-- <div id="pageContainer">	
+			 -->
 		
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="account-container register">
