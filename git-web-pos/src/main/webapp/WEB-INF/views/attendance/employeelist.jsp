@@ -104,11 +104,11 @@ $(function() {
 		           </tr>
 		           <tr> 	
 	                    <td> 근무 시간 </td>
-	                    <td> 10:30 </td> 
+	                    <td> ${totalworktime } </td> 
 		           </tr>
 		           <tr> 	
 	                    <td> 총 급여액 </td>
-	                    <td> 30,000 </td> 
+	                    <td> ${workwage } </td> 
 		           </tr>
                 </tbody>
               </table>

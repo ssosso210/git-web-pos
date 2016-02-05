@@ -298,18 +298,24 @@ public class AttendanceController {
 		
 		List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employee.getEmployeeNo(),todaymonth);
 		
-		
+		long totalworktime = 0;
 		
 	
 		for (Attendance attendance : attendances) {
 			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+			totalworktime +=Util.getDiffMinuteTimestamp(attendance.getStartWork(), attendance.getEndWork());
 		}
-		
+		long workhours = (totalworktime/60);
+		String totalWorkTimeStr = workhours+ ":" + (totalworktime%60);
+		long workwage = workhours*(employee.getWage());
+		System.out.println("workhours "+workhours );
 		
 		req.setAttribute("attendances", attendances);
 		req.setAttribute("selectEmployee", employee);
 		req.setAttribute("dateMonth", todaymonth);
 		req.setAttribute("employees", employees);
+		req.setAttribute("totalworktime", totalWorkTimeStr);
+		req.setAttribute("workwage", workwage+"");
 		
 		
 		
