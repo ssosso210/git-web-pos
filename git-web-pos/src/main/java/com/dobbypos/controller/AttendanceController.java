@@ -241,7 +241,7 @@ public class AttendanceController {
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
 	public String attendancelist(HttpSession session, HttpServletRequest req) {
 		Employee employee = (Employee)session.getAttribute("loginuser");
-		System.out.println("attendancelist list");
+		
 		String todayStr = Util.getTodayDate();
 		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCodeAndDate(employee.getStoreCode(),todayStr,todayStr);
 	
@@ -277,6 +277,41 @@ public class AttendanceController {
 		req.setAttribute("attendances", attendances);
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
+		return urlstr+"list";
+	}	
+	
+	
+	
+	
+	/**
+	 * 출석을 위해서 헤딩 store의 해당 직원리스트를 불러옴
+	 * @return
+	 */
+	@RequestMapping(value = "employeelist.action", method = RequestMethod.GET)
+	public String attendanceEmployeelist(HttpSession session, HttpServletRequest req) {
+		Employee employee = (Employee)session.getAttribute("loginuser");
+		
+		String todaymonth = Util.getTodayMonth();
+		
+		//해당 직원들의 목록을 가져옴
+		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
+		
+//		List<Attendance> attendances = attendanceService.getAttendanceByEmployee(employee.getEmployeeNo(),todaymonth);
+		
+		
+		
+	
+		/*for (Attendance attendance : attendances) {
+			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+		}
+		
+		
+		req.setAttribute("attendances", attendances);*/
+		req.setAttribute("listEmployee", employee);
+		
+		
+		
+	
 		return urlstr+"list";
 	}	
 	
