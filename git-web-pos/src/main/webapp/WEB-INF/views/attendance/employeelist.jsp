@@ -27,12 +27,9 @@
       
 <script type="text/javascript">
 $(function() {
-    $( "#datepicker-start" ).datepicker({
-        dateFormat:"yy-mm-dd",
+    $( "#datepicker-month" ).datepicker({
+        dateFormat:"yy-mm",
      });
-     $( "#datepicker-end" ).datepicker({
-         dateFormat:"yy-mm-dd",
-      });
  });
 
 
@@ -52,15 +49,28 @@ $(function() {
 	      <div class="widget " >
 		   <!-- <div class="widget-content">  -->
 		  	<form id="edit-profile" class="form-horizontal" 
-		  		action="/dobbywebpos/attendance/searchlist.action" method="post">
+		  		action="/dobbywebpos/attendance/searchemployeelist.action" method="post">
 		  		<p>
 		  			직원 선택 
+		  			<select id="employee_select" class="employee_select" name="employee_select">
+		  				<c:forEach var="employee" items="${ employees }">
+		  					<c:choose>
+					           <c:when test="${  employee.employeeNo == selectEmployee.employeeNo}">
+					           	<option value="${employee.employeeNo }" selected="selected" > ${employee.employeeName }</option>
+					           </c:when>
+					           <c:otherwise>
+					           	<option value="${employee.employeeNo }" > ${employee.employeeName }</option>
+					           </c:otherwise>
+					        </c:choose>
+		  					
+		  				</c:forEach>
+							 
+					</select>
 		  		</p>
 		  		<p>
 		  		
 		  			searchDate :  
-		  			<input type="text" id="datepicker-start" name="datepicker-start" value="${startdatestr }"> ~ 
-		  			<input type="text" id="datepicker-end" name="datepicker-end" value="${enddatestr }">
+		  			<input type="text" id="datepicker-month" name="datepicker-month" value="${startdatestr }"> 
 		  			<input type="submit" class="btn"   value="Search"/>
 		  		</p>
 		  		

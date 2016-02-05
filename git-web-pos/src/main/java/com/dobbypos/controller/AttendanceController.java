@@ -296,23 +296,25 @@ public class AttendanceController {
 		//해당 직원들의 목록을 가져옴
 		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
 		
-//		List<Attendance> attendances = attendanceService.getAttendanceByEmployee(employee.getEmployeeNo(),todaymonth);
+		List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employee.getEmployeeNo(),todaymonth);
 		
 		
 		
 	
-		/*for (Attendance attendance : attendances) {
+		for (Attendance attendance : attendances) {
 			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
 		}
 		
 		
-		req.setAttribute("attendances", attendances);*/
-		req.setAttribute("listEmployee", employee);
+		req.setAttribute("attendances", attendances);
+		req.setAttribute("selectEmployee", employee);
+		req.setAttribute("dateMonth", todaymonth);
+		req.setAttribute("employees", employees);
 		
 		
 		
 	
-		return urlstr+"list";
+		return urlstr+"employeelist";
 	}	
 	
 	
