@@ -189,7 +189,7 @@ public class Util {
 	 }
 	 
 	 /**
-	  * 시간 차를 구하여 리턴해 줌 
+	  * Timestamp 시간 차를 구하여 시간을 숫자로 리턴
 	  * @param startTime
 	  * @param endTime
 	  * @return
@@ -199,6 +199,38 @@ public class Util {
 			
 		return hour;
 			
+	}
+	 
+	/**
+	 * Timestamp 시간 차를 구하여 총 분을숫자로 리턴
+	 * @param startTime
+	 * @param endTime
+	 * @return
+	 */
+	public static long getDiffMinuteTimestamp(Timestamp startTime, Timestamp endTime){
+
+		long minute = ((endTime.getTime()- startTime.getTime())/ (1000 * 60  ));
+		
+		
+		return minute;
+		
+	}
+	
+	/**
+	 * Timestamp 시간 차를 구하여 String으로 리턴 (ex)09:10)
+	 * @param startTime
+	 * @param endTime
+	 * @return
+	 */
+	public static String getDiffTimestamp(Timestamp startTime, Timestamp endTime){
+
+		long minute = ((endTime.getTime()- startTime.getTime())/ (1000 * 60  ));
+		long hour = minute/ 60;
+		minute = minute% 60;
+		
+
+		return String.format("%02d:%02d",hour,minute);
+		
 	}
 
 }
