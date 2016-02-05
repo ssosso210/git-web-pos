@@ -242,6 +242,9 @@ public class AttendanceController {
 		System.out.println("attendancelist list");
 		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCode(employee.getStoreCode());
 	
+		for (Attendance attendance : attendances) {
+			attendance.setWorkHour(Util.getDiffHourTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+		}
 		
 		req.setAttribute("datestr", Util.getTodayMonth());
 		req.setAttribute("attendances", attendances);
@@ -264,6 +267,10 @@ public class AttendanceController {
 		
 		
 		List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
+		for (Attendance attendance : attendances) {
+			attendance.setWorkHour(Util.getDiffHourTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+		}
+		
 		req.setAttribute("datestr", yearStr+"-"+monthStr);
 		req.setAttribute("attendances", attendances);
 	

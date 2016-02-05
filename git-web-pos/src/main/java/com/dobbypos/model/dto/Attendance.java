@@ -11,6 +11,12 @@ public class Attendance implements Serializable {
 	private Timestamp endWork;
 	private int employeeNo;
 	
+	/**
+	 * 계산된 값, DB(X)
+	 */
+	private long workHour;
+	
+	
 	private Employee employeeone;
 	
 	public int getAttendanceNo() {
@@ -44,6 +50,14 @@ public class Attendance implements Serializable {
 	}
 	public void setEmployeeone(Employee employeeone) {
 		this.employeeone = employeeone;
+	}
+	
+	
+	public long getWorkHour() {
+		return workHour;
+	}
+	public void setWorkHour(long workHour) {
+		this.workHour = workHour;
 	}
 	@Override
 	public String toString() {

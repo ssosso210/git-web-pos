@@ -106,8 +106,9 @@
                   	<th class="td-actions"> 번호 </th>
                     <th> 직원 이름 </th>
                     <th> 근무일 </th>
-                    <th> 출근시간 </th>
-                    <th> 퇴근시간 </th>
+                    <th> 출근 시간 </th>
+                    <th> 퇴근 시간 </th>
+                    <th> 일한 시간 </th>
                     
                   </tr>
                 </thead>
@@ -128,10 +129,12 @@
 		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 		                   <c:choose>
 					           <c:when test="${  attendance.startWork == attendance.endWork}">
-					           	<td> </td>
+					           	<td></td>
+					           	<td>0</td>
 					           </c:when>
 					           <c:otherwise>
 					           	<td> <fmt:formatDate value="${attendance.endWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					           	<td>${attendance.workHour}</td>
 					           </c:otherwise>
 					       </c:choose>
 		                  </tr>

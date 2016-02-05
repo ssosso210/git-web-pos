@@ -226,4 +226,24 @@ public class HqController {
 		System.out.println(result1);
 		return result1;
 	}
+	
+	@RequestMapping(value = "clientregister.action", method = RequestMethod.POST)
+	public String clientRegister(Client client, HttpServletRequest req) {
+		
+		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
+		System.out.println(hq.getHqCode());
+		client.setHqCode(hq.getHqCode());
+		clientService.registerClient(client);
+		
+		return "redirect:/hq/clientmanagement.action";
+	}
+	
+	@RequestMapping(value = "clientview.action", method = RequestMethod.GET)
+	public String clientView(@RequestParam("clientname") String clientName, Model model) {
+		
+		Client client = clientService.getClientByClientName(clientName);
+		model.addAttribute(client);
+		
+		return "hq/clientview";
+	}
 }

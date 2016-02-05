@@ -41,23 +41,23 @@
             <!-- /widget-header -->
             <div class="widget-content" style="border:0px;">
               <div class="shortcuts"> 
-              	<a href="javascript:;" class="shortcut" style="background: #7ddb9c; width:30%; ">
+              	<a href="/dobbywebpos/attendance/main.action" class="shortcut" style="background: #7ddb9c; width:30%; ">
               		<i class="shortcut-icon icon-check" style="font-size:60px;"></i>
               		<span class="shortcut-label" style="font-size:18px" >근태</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut" style="background: #ec5948; width:30%; ">
+              	<a href="/dobbywebpos/sale/salehome_test.action" class="shortcut" style="background: #ec5948; width:30%; ">
               		<i class="shortcut-icon icon-shopping-cart" style="font-size:60px;"></i>
               		<span class="shortcut-label" style="font-size:18px">판매</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut" style="background: #88b9d7; width:30%; ">
+              	<a href="/dobbywebpos/check/checkmain.action" class="shortcut" style="background: #88b9d7; width:30%; ">
               		<i class="shortcut-icon icon-bar-chart" style="font-size:60px;"></i>
               		<span class="shortcut-label" style="font-size:18px">조회</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut" style="background: #e4b076; width:30%; ">
+              	<a href="/dobbywebpos/management/managementhome" class="shortcut" style="background: #e4b076; width:30%; ">
               		<i class="shortcut-icon icon-wrench" style="font-size:60px;"></i>
               		<span class="shortcut-label" style="font-size:18px">관리</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut" style="background: #c7b7d5; width:30%; ">
+              	<a href="/dobbywebpos/settings/settinghome.action" class="shortcut" style="background: #c7b7d5; width:30%; ">
               		<i class="shortcut-icon icon-cogs" style="font-size:60px;"></i>
               		<span class="shortcut-label" style="font-size:18px">설정</span> 
               	</a>

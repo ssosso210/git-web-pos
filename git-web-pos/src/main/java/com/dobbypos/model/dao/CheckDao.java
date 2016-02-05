@@ -15,6 +15,10 @@ public interface CheckDao {
 	Balance getBalanceByNo(int balanceNo);
 
 	List<Balance> getBalancebyPeriod(String startday, String endday);
+
+	List<Balance> getBalancebyPeriodAndPlus(String startday, String endday);
+
+	List<Balance> getBalancebyPeriodAndMinus(String startday, String endday);
 	
 
 //	void insert(Member member);

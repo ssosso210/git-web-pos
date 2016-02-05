@@ -149,7 +149,7 @@
             <c:forEach var="client" items="${ clients }">
             <tr style="height:30px">               
                <td style="text-align:left;padding-left:10px">
-                  <c:url var="view" value="view.action">
+                  <c:url var="view" value="clientview.action">
                      <c:param name="clientname" value="${ client.clientName }" />
                   </c:url>
                   <a href='${ view }'>${ client.clientName }</a>
