@@ -60,6 +60,7 @@ public class HqController {
 		model.addAttribute("totalCustomers", totalCustomers);
 		model.addAttribute("path", path);
 		return "hq/home";
+		//return "hq/salemenumanagement";
 	}
 	
 	@RequestMapping(value = "/storemanagement.action", method = RequestMethod.GET)
@@ -275,5 +276,18 @@ public class HqController {
 		resp.setContentType("application/json;charset=utf-8");
 		
 		return result;	
+	}
+	
+	@RequestMapping(value ="/salemenumanagement.action", method = RequestMethod.GET)
+	public String saleMenuManagement(HttpServletRequest req,  Model model) {
+		String path = req.getRequestURI();
+		model.addAttribute("path", path);
+		return "hq/salemenumanagement";
+	}
+	
+	@RequestMapping(value = "/salemenuregister.action", method = RequestMethod.GET)
+	public String saleMenuRegister() {
+		
+		return "hq/salemenuregister";
 	}
 }
