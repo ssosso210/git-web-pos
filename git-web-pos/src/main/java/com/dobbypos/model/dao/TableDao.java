@@ -15,5 +15,6 @@ public interface TableDao {
 	//void insertTable(int recentableno, String storeCode);
 	void insertTable(StoreTable st);
 	int selectRecentTableNo(String storeCode);
+	void setIsDeleted(StoreTable st);
 
 }

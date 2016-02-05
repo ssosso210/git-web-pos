@@ -30,4 +30,10 @@ public class TableServiceImpl implements TableService {
 		//tableDao.insertTable(recentableno+1, storeCode);
 		return recentableno;
 	}
+
+	@Override
+	public void setIsDeleted(StoreTable st) {
+		tableDao.setIsDeleted(st);
+		
+	}
 }
