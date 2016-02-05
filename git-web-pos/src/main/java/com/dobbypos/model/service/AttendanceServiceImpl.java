@@ -102,6 +102,12 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendanceDao.selectAttendanceAllByStoreCodeAndDate(storeCode, startdayStr, enddayStr);
 	}
 
+	@Override
+	public List<Attendance> getAttendanceByEmployeeAndMonth(int employeeNo, String todaymonth) {
+		
+		return attendanceDao.selectAttendanceByEmployeeAndMonth(employeeNo, todaymonth);
+	}
+
 
 	
 
