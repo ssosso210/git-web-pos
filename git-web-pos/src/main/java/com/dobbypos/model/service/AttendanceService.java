@@ -19,4 +19,6 @@ public interface AttendanceService {
 
 	List<Attendance> getAttendanceByStoreCodeAndMonth(String storeCode, String monthDateStr);
 
+	List<Attendance> getAttendanceAllByStoreCodeAndDate(String storeCode, String startdayStr, String endtodayStr);
+
 }

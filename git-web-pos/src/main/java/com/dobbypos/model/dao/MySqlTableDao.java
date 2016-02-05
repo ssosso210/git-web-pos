@@ -1,6 +1,7 @@
 package com.dobbypos.model.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -43,6 +44,20 @@ public class MySqlTableDao implements TableDao {
 	public void insertTable(StoreTable st) {
 		tableMapper.insertTable(st);
 		
+	}
+
+
+	@Override
+	public void setIsDeleted(StoreTable st) {
+		tableMapper.setIsDeleted(st);
+		
+	}
+
+
+	@Override
+	public List<StoreTable> selectCurrentTables(String storeCode1) {
+		List<StoreTable> st=tableMapper.selectCurrentTables(storeCode1);
+		return st;
 	}
 
 }

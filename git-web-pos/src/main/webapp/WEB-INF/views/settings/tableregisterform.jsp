@@ -33,7 +33,25 @@ $(function(){
 				alert(error.toString());
 			}
 		});
-		//event.preventDefault();
+	});
+	$("#minusbutton").on("click", function(event){
+		var rt= $("#recentableNo").val();	
+		var sc= $("#storeCode1").val();	;//이거 그대로 보내서 db에서 isDeleted=-1해야됨
+		
+			$.ajax({
+				
+			 url : "/dobbywebpos/settings/tableminus.action",
+             type : "GET",               
+             async : true, 
+             data:{"sc":sc, "rt":rt},
+             //dataType:"json",
+			 success:function(data, status, xhr){
+				$("#recentableNo").val(data);
+			 },
+			 error:function(xhr, status, error){
+				alert(error.toString());
+			}
+		});
 	});
 });
 
@@ -55,6 +73,7 @@ $(function(){
 		                	<div>
 		                	<input type="text" id="recentableNo" value="${ recentableNo }" readonly="readonly" />
 		                	<input type="button" id="plusbutton" value="+" />
+		                	<input type="button" id="minusbutton" value="-" />
 		                	</div>
 		                  <!--  <input type="number" name="tableNo" style="width:280px"></input> --> 
 		                </td>
@@ -68,17 +87,10 @@ $(function(){
 		                	</div>
 		                </td>
 		            </tr> 
-		            <tr>
-		                <th>사용중인지 아닌지(0/1)</th>
-		                <td>
-		                    <input type="number" name="occupied" style="width:280px" />
-		                </td>
-		            </tr> 
-		            
 		        </table>
 		        <div class="buttons">
-		        	<input type="submit" value="등록" style="height:25px" />
-		        	
+		        	<!-- <input type="submit" value="등록" style="height:25px" />
+		        	 -->
 		        </div>
 		        </form>
 		    </div>

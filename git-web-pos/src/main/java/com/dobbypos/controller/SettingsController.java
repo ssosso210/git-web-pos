@@ -3,7 +3,9 @@ package com.dobbypos.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -64,42 +66,47 @@ public class SettingsController {
 	
 	//바꾼거~
 	@RequestMapping(value="/tableregisterform.action", method=RequestMethod.GET)
-	public String TableRegisterForm(HttpServletResponse response,Model model, String storeCode1) throws IOException{
+	public String TableRegisterForm(Model model, HttpSession session, HttpServletRequest req) throws IOException{
+		
+		
+//		model.addAttribute("storeCode1", storeCode1);
+		Employee employee = (Employee)session.getAttribute("loginuser");
+		String storeCode1 = employee.getStoreCode();
 		model.addAttribute("storeCode1", storeCode1);
-		
+		System.out.println("tableregisterform 의 storeCode1"+storeCode1);
 		Integer recentableNo=tableService.selectRecentTableNo(storeCode1);
-		model.addAttribute("recentableNo", recentableNo);
 		
-		//ajax꺼 
-	/*	Gson gson=new Gson();
-		String result=gson.toJson(recentableNo);
-		response.setContentType("text/plain;charset=utf-8");
-		
-		PrintWriter out = response.getWriter();
-		out.print(result);// send result to the server
-		*/
+		req.setAttribute("recentableNo", recentableNo);
 		return "settings/tableregisterform";
 	}
 	
 	@RequestMapping(value="/tableadd.action", method=RequestMethod.GET)
 	@ResponseBody
 	public String TableAdd(HttpServletResponse resp, @RequestParam("rt")int recentableNo,  @RequestParam("sc") String storeCode1){
-		System.out.println("sc"+storeCode1);
 		
 		StoreTable st=new StoreTable();
 		st.setStoreCode(storeCode1);
 		st.setTableNo(recentableNo+1);
 		tableService.insertTable(st);
-		System.out.println("tableadd호출 ~");
 		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()
-		
-		String result = gson.toJson(recentableNo+1);		
-		
-		resp.setContentType("application/json;charset=utf-8");
-	
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()		
+		String result = gson.toJson(recentableNo+1);				
+		resp.setContentType("application/json;charset=utf-8");	
 		return result;
+	}
+	
+	@RequestMapping(value="/tableminus.action", method=RequestMethod.GET)
+	@ResponseBody
+	public String TableMinus(HttpServletResponse resp, @RequestParam("rt")int recentableNo,  @RequestParam("sc") String storeCode1){
+		StoreTable st= new StoreTable();
+		st.setStoreCode(storeCode1);
+		st.setTableNo(recentableNo);
+		tableService.setIsDeleted(st);
 		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()		
+		String result = gson.toJson(recentableNo-1);				
+		resp.setContentType("application/jsSon;charset=utf-8");	
+		return result;
 	}
 	
 	

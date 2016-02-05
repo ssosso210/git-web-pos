@@ -1,6 +1,7 @@
 package com.dobbypos.model.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,5 +30,17 @@ public class TableServiceImpl implements TableService {
 		//tableDao.insertTable(Map<recentableno+1, storeCode>);
 		//tableDao.insertTable(recentableno+1, storeCode);
 		return recentableno;
+	}
+
+	@Override
+	public void setIsDeleted(StoreTable st) {
+		tableDao.setIsDeleted(st);
+		
+	}
+
+	@Override
+	public List<StoreTable> selectCurrentTables(String storeCode1) {
+		List<StoreTable>st=tableDao.selectCurrentTables(storeCode1);
+		return st;
 	}
 }
