@@ -7,13 +7,13 @@
                             <!-- sidebar menu: : style can be found in sidebar.less -->
                             <ul class="sidebar-menu">
                                 <li class="active">
-                                    <a href="index.html">
-                                        <i class="fa fa-dashboard"></i> <span><spring:message code="hq.notification" /></span>
+                                    <a href="/dobbywebpos/hq/salemenuregister.action">
+                                        <i class="fa fa-dashboard"></i> <span><spring:message code="hq.sidebarmenu3.1" /></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="general.html">
-                                        <i class="fa fa-gavel"></i> <span><spring:message code="hq.schedule" /></span>
+                                        <i class="fa fa-gavel"></i> <span><spring:message code="hq.sidebarmenu3.2" /></span>
                                     </a>
                                 </li>
 
