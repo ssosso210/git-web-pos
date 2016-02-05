@@ -17,6 +17,8 @@ public interface AttendanceDao {
 
 	List<Attendance> selectAttendanceByStoreCodeAndMonth(String storeCode, String monthDateStr);
 
+	List<Attendance> selectAttendanceAllByStoreCodeAndDate(String storeCode, String startdayStr, String endtodayStr);
+
 	
 
 
