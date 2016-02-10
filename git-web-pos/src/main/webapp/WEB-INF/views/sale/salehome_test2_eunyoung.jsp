@@ -27,7 +27,7 @@
 	var myWindow;
    
 	function table_pos() { // 주문하기 팝업창
-		myWindow = window.open("../sale/orderhome_test", "myWindow", "width=600, height=600, left=500, top=100");
+		myWindow = window.open("../sale/orderhome_test", "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
 	}
 
 	

@@ -1,9 +1,12 @@
 
 package com.dobbypos.controller;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.URLEncoder;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,14 +23,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Hq;
+import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.service.ClientService;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.HqService;
+import com.dobbypos.model.service.MenuService;
 import com.dobbypos.model.service.StoreService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,6 +61,10 @@ public class HqController {
 	@Autowired
 	@Qualifier("clientService")
 	private ClientService clientService;
+	
+	@Autowired
+	@Qualifier("menuService")
+	private MenuService menuService;
 	
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home(HttpServletRequest req, Model model) {
@@ -281,13 +294,62 @@ public class HqController {
 	@RequestMapping(value ="/salemenumanagement.action", method = RequestMethod.GET)
 	public String saleMenuManagement(HttpServletRequest req,  Model model) {
 		String path = req.getRequestURI();
+				
+		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
+		List<Menu> menus = menuService.getAllMenus(hq.getHqCode());
 		model.addAttribute("path", path);
+		System.out.println(path);
+		model.addAttribute("menus", menus);
 		return "hq/salemenumanagement";
 	}
 	
 	@RequestMapping(value = "/salemenuregister.action", method = RequestMethod.GET)
-	public String saleMenuRegister() {
+	public String saleMenuRegisterForm() {
 		
-		return "hq/salemenuregister";
+		return "hq/salemenuregisterform";
+	}
+	
+	@RequestMapping(value = "/salemenuregister.action", method = RequestMethod.POST)
+	public ModelAndView saleMenuRegister(MultipartHttpServletRequest req, Menu menu, HttpServletRequest request, ModelAndView mav) {
+		Hq hq = (Hq) request.getSession().getAttribute("hqloginuser");
+		System.out.println(menu.getFoodName());
+		menu.setHqCode(hq.getHqCode());
+		String path = req.getSession().getServletContext().getRealPath("/WEB-INF/uploadfiles");
+		String path1 = req.getSession().getServletContext().getRealPath("/resources/uploadfiles");
+		System.out.println(path);
+		Iterator<String> iterator = req.getFileNames();
+		while(iterator.hasNext()) {
+			String fileName = iterator.next();
+			MultipartFile file = req.getFile(fileName);
+			
+			if (file != null && file.getSize() > 0) {
+				String savedName = Util.getUniqueFileName(path, file.getOriginalFilename());
+				//menu.setFoodName(menu.getFoodName());
+				menu.setSavedFileName(savedName);
+				menu.setUserFileName(file.getOriginalFilename());
+					
+				try {
+				//Disk에 파일 저장
+				FileOutputStream ostream = new FileOutputStream(path1 + "/" + savedName);
+				InputStream istream = file.getInputStream();
+				byte[] buffer = new byte[512];
+				while (true) {
+					int count = istream.read(buffer, 0, buffer.length);
+					if (count == -1) break;
+					ostream.write(buffer, 0, count);
+				}
+				istream.close();
+				ostream.close();	
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+		System.out.println(menu.getFoodName());
+		System.out.println(menu.getUserFileName());
+		menuService.insertMenu2(menu);
+		mav.addObject("path", path );
+		mav.setViewName("redirect:/hq/salemenumanagement.action");
+		return mav;
 	}
 }
