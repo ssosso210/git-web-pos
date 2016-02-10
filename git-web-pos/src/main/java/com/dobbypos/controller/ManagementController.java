@@ -74,8 +74,13 @@ public class ManagementController {
 		} else {
 			return "redirect:/management/salarylist";
 		}
-
 	}
+	
+
+	// 급여보기
+	
+
+	
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// 재고관리
