@@ -12,8 +12,8 @@
 	</select>
 <insert id="insertCustomer" parameterType="Customer">
         insert into Customer
-        (c_name, c_phoneNo, c_age, c_gender, c_point, c_level, storeCode )
+        (c_name, c_phoneNo, c_age, c_point, c_level, c_gender, storeCode )
          values
-         (#{c_name},#{c_phoneNo},#{c_age},#{c_gender},#{c_point},#{c_level},#{storeCode})
+         (#{c_name},#{c_phoneNo},#{c_age},#{c_point}, #{c_level}, #{c_gender},#{storeCode})
     </insert> 
 </mapper>
