@@ -45,19 +45,7 @@
                             <input type="radio" name="c_gender" value="female">여</input>
                         </td>
                     </tr>
-                     <tr>
-                        <th>포인트</th>
-                        <td>
-                            <input type="number" name="c_point" style="width:280px" value=0 />
-                        </td>
-                    </tr>
-                 
-                  <tr>
-                        <th>고객등급</th>
-                        <td>
-                            <input type="text" name="c_level" style="width:280px" value="basic"/>
-                        </td>
-                    </tr>
+                   
                     <tr>
                         <th>가게코드</th>
                         <td>
