@@ -14,6 +14,16 @@ public class Menu implements Serializable {
 	private String savedFileName;
 	private String userFileName;
 	
+	/**
+	 * 계산된 가격의 함계
+	 */
+	private long totalprice;
+	/**
+	 * 총 갯수
+	 */
+	private int totalcount;
+	
+	private int orderDetailPrice;
 	
 	public String getFoodCode() {
 		return foodCode;
@@ -63,5 +73,37 @@ public class Menu implements Serializable {
 	public void setHqCode(String hqCode) {
 		this.hqCode = hqCode;
 	}
+	
+	
+	
+	
+	public long getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(long totalprice) {
+		this.totalprice = totalprice;
+	}
+	
+	
+	public int getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
+	public int getOrderDetailPrice() {
+		return orderDetailPrice;
+	}
+	public void setOrderDetailPrice(int orderDetailPrice) {
+		this.orderDetailPrice = orderDetailPrice;
+	}
+	@Override
+	public String toString() {
+		return "Menu [foodCode=" + foodCode + ", foodName=" + foodName + ", foodPrice=" + foodPrice + ", regDate="
+				+ regDate + ", hqCode=" + hqCode + ", menuGroups=" + menuGroups + ", savedFileName=" + savedFileName
+				+ ", userFileName=" + userFileName + ", totalprice=" + totalprice + "]";
+	}
+	
+	
 
 }

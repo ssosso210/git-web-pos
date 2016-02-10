@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Employee;
+import com.dobbypos.model.dto.Menu;
 
 public interface CheckService {
 
@@ -16,4 +17,6 @@ public interface CheckService {
 	List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday);
 
 	List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday);
+
+	List<Menu> getMenuByDaySell(String todayDate, String storeCode);
 }

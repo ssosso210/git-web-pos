@@ -1,10 +1,7 @@
 package com.dobbypos.controller;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dobbypos.common.Util;
-import com.dobbypos.model.dao.CheckDao;
-import com.dobbypos.model.dto.Attendance;
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
@@ -38,7 +33,25 @@ public class CheckController {
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	@RequestMapping(value = "/checkmain.action", method = RequestMethod.GET)
-	public String Checkmain() {
+	public String Checkmain(HttpSession session,Model model) {
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
+		
+		
+		String todayDate = Util.getTodayDate();
+		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
+		
+		
+		//menu 별 메출 오늘 
+		List<Menu> menus = checkService.getMenuByDaySell(todayDate, employeeSession.getStoreCode());
+		
+		for (Menu menu : menus) {
+			System.out.println(menu.toString());
+		}
+		
+		model.addAttribute("balances", balances);	
+		model.addAttribute("startday",todayDate);
+		model.addAttribute("endday",todayDate);
+		model.addAttribute("menus",menus);
 		
 		return "check/checkmain"; 
 	}
@@ -134,10 +147,28 @@ public class CheckController {
 		System.out.println("Controller");
 		
 		String todayDate = Util.getTodayDate();
+//		List<SellByMenu> sellbymenus = checkService.getSellByMenuAndPeriod(todayDate, todayDate);
+		
 		model.addAttribute("startday", todayDate);
 		model.addAttribute("endday", todayDate);
 		return "check/checksell"; 
 	}
+	
+//	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
+//	public String Checksales(Model model) {
+//		System.out.println("Controller");
+//		
+////		List<Balance> balances = checkService.getBalances();
+//		String todayDate = Util.getTodayDate();
+//		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
+//		model.addAttribute("balances", balances);	
+//		model.addAttribute("startday",todayDate);
+//		model.addAttribute("endday",todayDate);
+//			
+//		
+//		return "check/checksales"; 
+//	}
+	
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -166,7 +197,7 @@ public class CheckController {
 		
 		System.out.println(balances);
 
-		//		List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
+		//List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
 //		req.setAttribute("datestr", yearStr+"-"+monthStr);
 //		req.setAttribute("attendances", attendances);
 	
