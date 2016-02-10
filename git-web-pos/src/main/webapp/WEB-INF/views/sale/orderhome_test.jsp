@@ -156,7 +156,7 @@
 	        </c:otherwise>
         </c:choose>
             <td><input type="button" name="name" style="width:80px; height:30px"></td>
-         </tr>
+        </tr>
 		</c:forEach>
 
 

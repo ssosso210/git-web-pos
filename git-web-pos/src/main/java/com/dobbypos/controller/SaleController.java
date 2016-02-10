@@ -38,12 +38,23 @@ public class SaleController {
 	@Qualifier("tableService")
 	private TableService tableService;
 	
+	//윤수오빠화면으로 테스트해봄 --박은영
+	@RequestMapping(value = "/salehome_test.action", method = RequestMethod.GET)
+	public String SaleHome(Model model, String storeCode1,HttpSession session, HttpServletRequest req) {
+		System.out.println("salehome.test  storecode "+storeCode1);
+		List<StoreTable> st= tableService.selectCurrentTables(storeCode1);
+		model.addAttribute("st", st);
+	
+		Integer recentableNo=tableService.selectRecentTableNo(storeCode1);
+		model.addAttribute("recentno", recentableNo);
+		return "sale/salehome_test2_eunyoung"; 
+	}
+	/*//원래윤수오빠꺼
 	@RequestMapping(value = "/salehome_test", method = RequestMethod.GET)
 	public String SaleHome(HttpSession session, HttpServletRequest req, Model model) {
 	
 		return "sale/salehome_test"; 
-	}
-
+	}*/
 	
 	@RequestMapping(value = "/salehome.action", method = RequestMethod.GET)
 	public String SettingMenu(String storeCode1,  Model model) {

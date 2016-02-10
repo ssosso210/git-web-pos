@@ -114,8 +114,11 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  	 var returnMsgAlert = '<%= request.getAttribute("returnMsg") %>';
  	  */
  	 var returnMsgAlert = '${returnMsg}';
+ 	 var successMsg = '${successMsg}';
  	  if(returnMsgAlert != ""){
  		  alert(returnMsg);
+ 	  }else if(successMsg != ""){
+ 		  alert(successMsg);
  	  }
  	  
  	 
@@ -154,7 +157,7 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	
 	if(!ly_bg.length) opacity_bg_layer(); // 불투명 배경 레이어 띄우기
     var str_html = "<h1>비밀번호 입력</h1>"; // 레이어 팝업 내용
-    str_html+= '<input type="text" class="layer_pop_center_txt"></input>';
+    str_html+= '<input type="password" class="layer_pop_center_txt"></input>';
     str_html+= '<br/><input type="submit" class="layer_pop_center_btn" value="OK"/>';
     str_html+= '<input type="submit" style="width: 50px;" class="layer_pop_center_btn_cancel" value="Cancel"/>';
     if(layer_pop_crt(ly, str_html)) {
@@ -176,30 +179,6 @@ function employeeAttendwork(){
 	frm = document.getElementById("attendcheckform");
 	frm.submit(); 
 
-
-	
-	/* $.ajax({
-		url : "/dobbywebpos/attendance/attendcheck.action",
-		type : "POST",
-		async : true,
-		dataType : "json", //응답 데이터의 형식
-		data : {attendType : $("#attendType").val(), employeeNo : $("#employeeNo").val(),attendanceNo :  $("#attendanceNo").val(), passwd: $('#model_input_passwd').val()},
-		success : function(data) {
-			
-			if(data.returnValue == '0'){ //returnValue 값이 
-				alert(data.returnMsg);
-			}else{
-				if(data.attendType == 'towork'){
-					$("#startem"+data.employeeNo).text(data.buttonMsg);
-				}else if(data.attendType == 'offwork'){
-					$("#endem"+data.employeeNo).text(data.buttonMsg);
-				}
-			}
-		},
-		error : function( error) {
-			alert('fail to attend '+ error.toString());
-		}
-	}); */
 }
 
 $(document).on('click', '.opacity_bg_layer', function() { // 불투명 배경 레이어를 클릭하면 닫기
@@ -246,12 +225,14 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 	    <div class="span12">
        		<div class="widget widget-plain">
 				<div class="widget-content">
-					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">출근 목록</a>	
+					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">날짜별 출근 목록</a>	
+					<a href="/dobbywebpos/attendance/employeelist.action" class="btn btn-large btn-success btn-support-ask">직원별 출근 목록</a>	
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
+			
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
-	              <h3>근태 현황</h3>
+	              <h3>근태 현황 [ ${todayStr} ]</h3>
 	            </div>
 	             <!-- /widget-header -->
 			      <div class="widget-content">
@@ -266,17 +247,17 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 			              	<span class="shortcut-label" >${ employee.employeeName}
 			              	<c:choose>
 			              		<c:when test="${  employee.attendanceone.attendanceNo == 0}">
-			              			<div id="startem${ employee.employeeNo}" >출근 : _______________</div>
-			              			<div id="endem${ employee.employeeNo}" >퇴근 : _______________</div>
+			              			<div id="startem${ employee.employeeNo}" >출근 : __________</div>
+			              			<div id="endem${ employee.employeeNo}" >퇴근 : __________</div>
 			              		</c:when>
 			              		<c:otherwise>
-			              			<div id="startem${ employee.employeeNo}" >출근 : <fmt:formatDate value="${ employee.attendanceone.startWork}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+			              			<div id="startem${ employee.employeeNo}" >출근 : <fmt:formatDate value="${ employee.attendanceone.startWork}" pattern="HH:mm:ss"/> </div>
 			              			<c:choose>
 			              				<c:when test="${  employee.attendanceone.startWork == employee.attendanceone.endWork}">
-			              					<div id="endem${ employee.employeeNo}" >퇴근 : _______________</div>
+			              					<div id="endem${ employee.employeeNo}" >퇴근 : __________</div>
 			              				</c:when>
 			              				<c:otherwise>
-			              					<div id="endem${ employee.employeeNo}" >퇴근 : <fmt:formatDate value="${ employee.attendanceone.endWork}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+			              					<div id="endem${ employee.employeeNo}" >퇴근 : <fmt:formatDate value="${ employee.attendanceone.endWork}" pattern="HH:mm:ss"/> </div>
 			              				</c:otherwise>
 			              			</c:choose>
 			              			
@@ -305,12 +286,6 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 	              	<i class="shortcut-icon icon-signin"></i>
 	              	<span class="shortcut-label">출근</span> 
 	              </a>
-	             <!--  
-	             <a href="javascript:employeeAttend('offwork');" class="shortcut">
-	              	<i class="shortcut-icon icon-bookmark"></i>
-	              	<span class="shortcut-label">조퇴</span> 
-	              </a> 
-	              -->
 	              <a href="javascript:employeeAttend('offwork');" class="shortcut">
 	              	<i class="shortcut-icon icon-signout"></i> 
 	              	<span class="shortcut-label">퇴근</span> 

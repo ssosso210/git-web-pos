@@ -10,5 +10,10 @@
 		SELECT COUNT(c_name)
 		FROM customer
 	</select>
-
+<insert id="insertCustomer" parameterType="Customer">
+        insert into Customer
+        (c_name, c_phoneNo, c_age, c_gender, c_point, c_level, storeCode )
+         values
+         (#{c_name},#{c_phoneNo},#{c_age},#{c_gender},#{c_point},#{c_level},#{storeCode})
+    </insert> 
 </mapper>

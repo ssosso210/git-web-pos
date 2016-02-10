@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Attendance;
@@ -53,6 +52,7 @@ public class AttendanceController {
 		}
 		req.setAttribute("employees", employees);
 		req.setAttribute("returnMsg", "");
+		req.setAttribute("todayStr", Util.getTodayDate());
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return urlstr+"main";
@@ -162,12 +162,11 @@ public class AttendanceController {
 		int attendanceNo = Integer.parseInt(attenNo);
 		String passwd = req.getParameter("model_input_passwd");
 		
-		System.out.println("attendcheck.action ------ employeeNo="+employeeNo+ ", attendType="+attendType+", attendanceNo="+attendanceNo +", passwd="+passwd);
 		
 		int returnValue = 0;
 		String returnMsg = "";
-		String buttonMsg = "";
 		Attendance attendance = null;
+		String successMsg= "";
 		
 		//비밀번호 check
 		passwd = Util.getHashedString(passwd, "SHA-1");
@@ -182,7 +181,11 @@ public class AttendanceController {
 			if(attendType.equals("towork")){ // 출근 
 				returnValue = attendanceService.setAttendToWork(employeeNum); 
 				if(returnValue == 0){
-					returnMsg = "출근하였습니다. ";
+					returnMsg = " 출근하였습니다. ";
+				}else{
+					//현재 퇴근한 날짜를 db에서 가져오기 
+					attendance =  attendanceService.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
+					successMsg = Util.getTimestampFormat(attendance.getStartWork())+ "에 "+employee.getEmployeeName()+"씨가 출근하였습니다.";
 				}
 			}else if(attendType.equals("offwork")){ // 퇴근
 				if(attendanceNo < 1){
@@ -191,6 +194,10 @@ public class AttendanceController {
 					returnValue = attendanceService.setAttendOffWork(attendanceNo, employeeNum);
 					if(returnValue < 1){
 						returnMsg = "퇴근을 하거나 출근하지 않았습니다.";
+					}else{
+						//현재 퇴근한 날짜를 db에서 가져오기 
+						attendance =  attendanceService.selectAttendancByEmployeeNoDate(employeeNum, Util.getTodayDate());
+						successMsg = Util.getTimestampFormat(attendance.getEndWork())+ "에 "+employee.getEmployeeName()+"씨가 퇴근하였습니다.";
 					}
 
 					
@@ -199,10 +206,6 @@ public class AttendanceController {
 			
 		}
 		
-		
-		
-	
-
 		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		
 		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employeeSession.getStoreCode());
@@ -218,9 +221,8 @@ public class AttendanceController {
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		
 		req.setAttribute("returnMsg", returnMsg);
-		
-		System.out.println("attendType="+ attendType+ ", buttonMsg="+ buttonMsg+", employeeNo="+ employeeNo+", returnMsg="+ returnMsg+", returnValue="+ returnValue);
-		
+		req.setAttribute("successMsg", successMsg);
+		req.setAttribute("todayStr", Util.getTodayDate());
 		
 		
 		
@@ -239,45 +241,146 @@ public class AttendanceController {
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
 	public String attendancelist(HttpSession session, HttpServletRequest req) {
 		Employee employee = (Employee)session.getAttribute("loginuser");
-		System.out.println("attendancelist list");
-		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCode(employee.getStoreCode());
+		
+		String todayStr = Util.getTodayDate();
+		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCodeAndDate(employee.getStoreCode(),todayStr,todayStr);
 	
 		for (Attendance attendance : attendances) {
-			attendance.setWorkHour(Util.getDiffHourTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
 		}
 		
-		req.setAttribute("datestr", Util.getTodayMonth());
+		req.setAttribute("startdatestr", todayStr);
+		req.setAttribute("enddatestr", todayStr);
 		req.setAttribute("attendances", attendances);
 	
 		return urlstr+"list";
 	}	
 	
-	
+	/**
+	 * 기간 조건에 따른 검색된 직원 리스트를 불러옴 
+	 * @param session
+	 * @param req
+	 * @return
+	 */
 	@RequestMapping(value = "searchlist.action", method = RequestMethod.POST)
 	public String attendanceSearchlist(HttpSession session, HttpServletRequest req) {
 		Employee employee = (Employee)session.getAttribute("loginuser");
 		
-		String yearStr = (String)req.getParameter("year_select");
-		String monthStr = (String)req.getParameter("month_select");
-		System.out.println("attendanceSearchlist : dateStr="+yearStr+monthStr);
 		
 		
+		String startDateStr = (String)req.getParameter("datepicker-start");
+		String endDateStr = (String)req.getParameter("datepicker-end");
+	
 		
-		
-		
-		
-		List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
+		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCodeAndDate(employee.getStoreCode(),startDateStr,endDateStr); 
 		for (Attendance attendance : attendances) {
-			attendance.setWorkHour(Util.getDiffHourTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
 		}
 		
-		req.setAttribute("datestr", yearStr+"-"+monthStr);
+		req.setAttribute("startdatestr", startDateStr);
+		req.setAttribute("enddatestr", endDateStr);
 		req.setAttribute("attendances", attendances);
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return urlstr+"list";
 	}	
 	
+	
+	
+	
+	/**
+	 * 출석을 위해서 헤딩 store의 해당 직원리스트를 불러옴
+	 * @return
+	 */
+	@RequestMapping(value = "employeelist.action", method = RequestMethod.GET)
+	public String attendanceEmployeelist(HttpSession session, HttpServletRequest req) {
+		Employee employee = (Employee)session.getAttribute("loginuser");
+		
+		String todaymonth = Util.getTodayMonth();
+		
+		//해당 직원들의 목록을 가져옴
+		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
+		
+		//현재 로그인한 직원의 출근 데이터를 가져옴 
+		List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employee.getEmployeeNo(),todaymonth);
+		
+		long totalworktime = 0;
+		
+	
+		for (Attendance attendance : attendances) {
+			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+			totalworktime +=Util.getDiffMinuteTimestamp(attendance.getStartWork(), attendance.getEndWork());
+		}
+		long workhours = (totalworktime/60);
+		String totalWorkTimeStr = String.format("%02d:%02d", workhours, (totalworktime%60)) ;
+		long workwage = workhours*(employee.getWage());
+		System.out.println("workhours "+workhours );
+		
+		req.setAttribute("attendances", attendances);
+		req.setAttribute("selectEmployee", employee);
+		req.setAttribute("dateMonth", todaymonth);
+		req.setAttribute("employees", employees);
+		req.setAttribute("totalworktime", totalWorkTimeStr);
+		req.setAttribute("workwage", workwage+"");
+		req.setAttribute("totalworkday", attendances.size());
+		
+		
+		
+	
+		return urlstr+"employeelist";
+	}	
+	
+	
+	/**
+	 * 선택한 직원의 출근 목록 가져옴 
+	 * @param session
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(value = "searchemployeelist.action", method = RequestMethod.POST)
+	public String attendanceSearchEmployeelist(HttpSession session, HttpServletRequest req) {
+//			Employee employeeSession = (Employee)session.getAttribute("loginuser");
+			
+			
+			String daymonth =  req.getParameter("datepicker-month");
+			if((daymonth == null) || (daymonth.length()  < 7)){
+				daymonth = Util.getTodayMonth();
+			}
+			int employeeNo = Integer.parseInt(req.getParameter("employee_select"));
+			
+			Employee employee = employeeService.searchEmployeeByNo(employeeNo);
+			
+			//해당 직원들의 목록을 가져옴
+			List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
+			
+			
+			List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employeeNo,daymonth);
+			
+			long totalworktime = 0;
+			
+		
+			for (Attendance attendance : attendances) {
+				attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+				totalworktime +=Util.getDiffMinuteTimestamp(attendance.getStartWork(), attendance.getEndWork());
+			}
+			long workhours = (totalworktime/60);
+			String totalWorkTimeStr = String.format("%02d:%02d", workhours, (totalworktime%60));
+			long workwage = workhours*(employee.getWage());
+			System.out.println("workhours "+workhours );
+			
+			req.setAttribute("attendances", attendances);
+			req.setAttribute("selectEmployee", employee);
+			req.setAttribute("dateMonth", daymonth);
+			req.setAttribute("employees", employees);
+			req.setAttribute("totalworktime", totalWorkTimeStr);
+			req.setAttribute("workwage", workwage+"");
+			req.setAttribute("totalworkday", attendances.size());
+			
+			
+			
+		
+			return urlstr+"employeelist";
+		}	
 	
 	
 

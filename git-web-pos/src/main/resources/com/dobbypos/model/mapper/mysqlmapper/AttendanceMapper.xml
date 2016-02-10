@@ -104,4 +104,23 @@
 	
 	</select>
 	
+	
+	<select id="selectAttendanceAllByStoreCodeAndDate" parameterType="hashMap" resultMap="attendanceMap">
+		SELECT 
+			at.attendanceNo, at.startWork, at.endWork,
+			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em,  attendance at
+		WHERE em.storeCode = #{storeCode} AND em.employeeType = 'user' AND em.employeeNo = at.employeeNo
+		AND at.startWork &gt;= date(#{startdaystr}) and at.startWork &lt; date(#{enddaystr}) + interval 1 day
+		order by at.attendanceNo 
+	</select>
+	
+	
+	<select id="selectAttendanceByEmployeeAndMonth" parameterType="AttendanceSearch" resultMap="attendanceMap">
+		SELECT <include refid="AttendanceColumns" /> 
+		FROM attendance 
+		where employeeNo = #{employeeNo} and DATE_FORMAT(startWork, '%Y-%m') = #{dateStr}
+		
+	</select>
+	
 </mapper>
