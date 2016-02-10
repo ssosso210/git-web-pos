@@ -3,7 +3,9 @@ package com.dobbypos.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -64,12 +66,17 @@ public class SettingsController {
 	
 	//바꾼거~
 	@RequestMapping(value="/tableregisterform.action", method=RequestMethod.GET)
-	public String TableRegisterForm(HttpServletResponse response,Model model, String storeCode1) throws IOException{
+	public String TableRegisterForm(Model model, HttpSession session, HttpServletRequest req) throws IOException{
+		
+		
+//		model.addAttribute("storeCode1", storeCode1);
+		Employee employee = (Employee)session.getAttribute("loginuser");
+		String storeCode1 = employee.getStoreCode();
 		model.addAttribute("storeCode1", storeCode1);
-		
+		System.out.println("tableregisterform 의 storeCode1"+storeCode1);
 		Integer recentableNo=tableService.selectRecentTableNo(storeCode1);
-		model.addAttribute("recentableNo", recentableNo);
 		
+		req.setAttribute("recentableNo", recentableNo);
 		return "settings/tableregisterform";
 	}
 	

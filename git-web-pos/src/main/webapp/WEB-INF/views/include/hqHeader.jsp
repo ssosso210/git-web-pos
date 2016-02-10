@@ -23,8 +23,9 @@
                 <ul id="menu3">
                 	<li><spring:message code="hq.menu1" /></li>                	
                 	<spring:message code="hq.menu2Path" var="i18nMenu2Path" />
-                	<li><a id="store" href="${ i18nMenu2Path }"><spring:message code="hq.menu2" /></a></li>                	
-                	<li><spring:message code="hq.menu3" /></li>
+                	<li><a id="store" href="${ i18nMenu2Path }"><spring:message code="hq.menu2" /></a></li>
+                	<spring:message code="hq.menu3Path" var="i18nMenu3Path" />                	
+                	<li><a id="salemenu" href="${ i18nMenu3Path }"><spring:message code="hq.menu3" /></a></li>
                 	<spring:message code="hq.menu4Path" var="i18nMenu4Path" />
                 	<li><a href="${ i18nMenu4Path }"><spring:message code="hq.menu4" /></a></li>
                 	<spring:message code="hq.menu5Path" var="i18nMenu5Path" />

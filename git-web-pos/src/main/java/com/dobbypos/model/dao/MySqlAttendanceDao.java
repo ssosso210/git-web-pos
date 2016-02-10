@@ -75,6 +75,16 @@ public class MySqlAttendanceDao implements AttendanceDao {
 	}
 
 
+	@Override
+	public List<Attendance> selectAttendanceByEmployeeAndMonth(int employeeNo, String todaymonth) {
+		
+		AttendanceSearch attendanceSearch = new AttendanceSearch();
+		attendanceSearch.setEmployeeNo(employeeNo);
+		attendanceSearch.setDateStr(todaymonth);
+		return attendanceMapper.selectAttendanceByEmployeeAndMonth(attendanceSearch);
+	}
+
+
 
 	
 		

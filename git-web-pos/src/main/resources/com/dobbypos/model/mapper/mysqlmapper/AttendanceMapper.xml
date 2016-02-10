@@ -115,4 +115,12 @@
 		order by at.attendanceNo 
 	</select>
 	
+	
+	<select id="selectAttendanceByEmployeeAndMonth" parameterType="AttendanceSearch" resultMap="attendanceMap">
+		SELECT <include refid="AttendanceColumns" /> 
+		FROM attendance 
+		where employeeNo = #{employeeNo} and DATE_FORMAT(startWork, '%Y-%m') = #{dateStr}
+		
+	</select>
+	
 </mapper>

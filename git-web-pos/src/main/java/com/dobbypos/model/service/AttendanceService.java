@@ -21,4 +21,6 @@ public interface AttendanceService {
 
 	List<Attendance> getAttendanceAllByStoreCodeAndDate(String storeCode, String startdayStr, String endtodayStr);
 
+	List<Attendance> getAttendanceByEmployeeAndMonth(int employeeNo, String todaymonth);
+
 }

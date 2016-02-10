@@ -21,6 +21,8 @@ public interface AttendanceMapper {
 
 	List<Attendance> selectAttendanceAllByStoreCodeAndDate(HashMap<String, String> params);
 
+	List<Attendance> selectAttendanceByEmployeeAndMonth(AttendanceSearch attendanceSearch);
+
 
 
 
