@@ -1,4 +1,4 @@
-<%@page import="com.dobbypos.model.dto.Client"%>
+<%@page import="com.dobbypos.model.dto.Menu"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dobbypos.model.dao.HqDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -40,9 +40,9 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-    <link href="/dobbywebpos/resources/styles/input.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/dobbywebpos/resources/styles/input.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/input2.css" rel="stylesheet" type="text/css" />
-    <link href="/dobbywebpos/resources/styles/default.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/styles/default.css" rel="stylesheet" type="text/css" /> -->
 	<link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
 
@@ -248,64 +248,66 @@ function map(streetTarget) {
       <body class="skin-black">
 
       <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
-      <div id="pageContainer">	
-			
+      <!-- <div id="pageContainer">	
+			 -->
 		
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="account-container register">
+	<div class="account-container register">
 	
 	<div class="content clearfix">
 		
-		<form action="#" method="post">
+		<form action="salemenuregister.action" method="post" enctype="multipart/form-data">
 		
-			<h1>Signup for Free Account</h1>			
+			<h1>메뉴 등록</h1>			
 			
 			<div class="login-fields">
 				
-				<p>Create your free account:</p>
+				<p>메뉴 생성:</p>
 				
 				<div class="field">
-					<label for="firstname">First Name:</label>
-					<input type="text" id="firstname" name="firstname" value="" placeholder="First Name" class="login" />
+					<label for="foodCode">코드:</label>
+					<input type="text" id="foodCode" name="foodCode" value="" placeholder="메뉴 이름" class="login" />
 				</div> <!-- /field -->
 				
 				<div class="field">
-					<label for="lastname">Last Name:</label>	
-					<input type="text" id="lastname" name="lastname" value="" placeholder="Last Name" class="login" />
+					<label for="foodName">이름:</label>
+					<input type="text" id="foodName" name="foodName" value="" placeholder="메뉴 이름" class="login" />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="menuGroups">분류:</label>	
+					<input type="text" id="menuGroups" name="menuGroups" value="" placeholder="분류" class="login" />
 				</div> <!-- /field -->
 				
 				
 				<div class="field">
-					<label for="email">Email Address:</label>
-					<input type="text" id="email" name="email" value="" placeholder="Email" class="login"/>
+					<label for="foodPrice">가격:</label>
+					<input type="number" id="foodPrice" name="foodPrice" value="" placeholder="...원" class="login" min="500" step="100" />
 				</div> <!-- /field -->
 				
 				<div class="field">
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" value="" placeholder="Password" class="login"/>
+					<label for="password" style="display: inline;">메뉴 사진:</label>
+					<input type="file" id="photoFile" name="photoFile" class="login" style="display: inline;" />
 				</div> <!-- /field -->
 				
-				<div class="field">
-					<label for="confirm_password">Confirm Password:</label>
-					<input type="password" id="confirm_password" name="confirm_password" value="" placeholder="Confirm Password" class="login"/>
-				</div> <!-- /field -->
-				
+								
 			</div> <!-- /login-fields -->
 			
 			<div class="login-actions">
 				
-				<span class="login-checkbox">
-					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-					<label class="choice" for="Field">Agree with the Terms & Conditions.</label>
-				</span>
-									
-				<button class="button btn btn-primary btn-large">Register</button>
+				<br /><br />
+				<div class="buttons">
+		        	<input type="submit" value="자료등록" style="height:25px" onclick="document.forms[0].submit();" />
+		        	<input type="button" value="취소" style="height:25px" onclick="location.href='list.action';" />
+		        </div>
 				
 			</div> <!-- .actions -->
 			
 		</form>
 		
 	</div> <!-- /content -->
+	</div> <!-- /account-container -->
 	
 </div> <!-- /account-container -->
 		

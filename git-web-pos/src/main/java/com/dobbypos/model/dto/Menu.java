@@ -10,6 +10,10 @@ public class Menu implements Serializable {
 	private int foodPrice;
 	private Timestamp regDate;
 	private String hqCode;
+	private String menuGroups;
+	private String savedFileName;
+	private String userFileName;
+	
 	
 	public String getFoodCode() {
 		return foodCode;
@@ -37,6 +41,24 @@ public class Menu implements Serializable {
 	}
 	public String getHqCode() {
 		return hqCode;
+	}
+	public String getMenuGroups() {
+		return menuGroups;
+	}
+	public void setMenuGroups(String menuGroups) {
+		this.menuGroups = menuGroups;
+	}
+	public String getSavedFileName() {
+		return savedFileName;
+	}
+	public void setSavedFileName(String savedFileName) {
+		this.savedFileName = savedFileName;
+	}
+	public String getUserFileName() {
+		return userFileName;
+	}
+	public void setUserFileName(String userFileName) {
+		this.userFileName = userFileName;
 	}
 	public void setHqCode(String hqCode) {
 		this.hqCode = hqCode;

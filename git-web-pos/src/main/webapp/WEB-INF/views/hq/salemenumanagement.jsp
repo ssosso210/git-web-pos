@@ -39,7 +39,7 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-
+	<link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -52,7 +52,7 @@
           <style type="text/css">
 
 			* { margin : 0px; padding : 0px; }
-        body { background-color : #525252; }
+        body { background-color : White/* #525252; */ }
         .item {
             margin : 5px;
             width : 100px; height : 100px;
@@ -61,9 +61,38 @@
             float : left;
         }
 
-        .big { width : 210px; height : 430px; }
+        .big { width : 350px; height : 500px; }
         .normal { width : 210px; height : 210px; }
         .small { width : 100px; height : 100px; }
+        
+       div[id^=big] {
+	position: relative;
+	background: #88b7d5;
+	border: 4px solid #c2e1f5;
+}
+div[id^=big]:after, #big:before {
+	right: 100%;
+	top: 20%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+div[id^=big]:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #88b7d5;
+	border-width: 30px;
+	margin-top: -30px;
+}
+div[id^=big]:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-right-color: #c2e1f5;
+	border-width: 36px;
+	margin-top: -36px;
+}
 
           </style>
         <!-- jQuery 2.0.2 -->
@@ -123,11 +152,85 @@
                 checkboxClass: 'icheckbox_flat-grey',
                 radioClass: 'iradio_flat-grey'
             });
-                       
+                                              
 </script>
+
+<script type="text/javascript">
+
+$(function() {
+	$("div[id^=big]").hide();
+	
+	$("div[id^=menu]").each(function(index, value) {
+		var self = $(this);
+		
+		$(this).on("mouseover", function(event) {
+			
+			$("#big"+index).show();
+			$("#menu"+index).css({
+                'filter': 'blur(10px)',
+                '-webkit-filter': 'blur(10px)',
+                '-moz-filter': 'blur(10px)',
+                '-o-filter': 'blur(10px)',
+                '-ms-filter': 'blur(10px)'
+            });
+			
+			
+		});
+		
+		$(this).on("mouseout", function(event) {
+			
+			$("#big"+index).hide();
+			$("#menu"+index).css({
+                'filter': 'blur(0px)',
+                '-webkit-filter': 'blur(0px)',
+                '-moz-filter': 'blur(0px)',
+                '-o-filter': 'blur(0px)',
+                '-ms-filter': 'blur(0px)',
+                'position': 'relative'
+            });
+			
+		});
+		
+	});
+	
+});
+</script>
+      </head>
+      <body class="skin-black">
+
+      <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
+      
+		<!--  <div id="pageContainer">	 -->	
+		
+		<div class="right-side" style="padding-top:25px;text-align:center">
+			
+	
+	<c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">		
+					
+    <div id = "masonry_container">
+    	
+        <div id="menu${ status.index }" class = "item normal" style="display: inline-block;">
+        	<img alt="" src="/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }" style="width : 200px; height : 200px;margin-top: 2px;border;display: inline-block;">
+        </div>   
+                
+        <div id="big${ status.index }" class = "item big" style="display: inline-block;position: static;">
+        	<img alt="" src="/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }" style="width : 300px; height : 300px;margin-top: 2px;border;display: inline-block;">
+        	<div><h2><a>${menu.foodName }</a></h2><h3>${menu.menuGroups }</h3><h3>${menu.foodPrice }</h3></div>
+        </div>
+        
+    </div>
+    
+    </c:forEach> 
+		
+		</div>
+		
+
+
 <script src = "http://masonry.desandro.com/masonry.pkgd.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
+	//alert("${ path }");
+	
     $('#masonry_container').masonry({
         itemSelector : '.item',
         columnWidth : 110
@@ -137,38 +240,6 @@ $(document).ready(function () {
             
             
 </script>
-      </head>
-      <body class="skin-black">
-
-      <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
-      
-		 <div id="pageContainer">		
-		
-		<div class="right-side" style="padding-top:25px;text-align:center">
-			
-			
-    <div id = "masonry_container">
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-        <div class = "item normal"></div>
-    </div>
-
-			
-			
-		</div>
-		
-</div>
-
-
 
 </body>
 </html>

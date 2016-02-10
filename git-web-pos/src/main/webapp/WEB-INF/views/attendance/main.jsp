@@ -225,7 +225,8 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 	    <div class="span12">
        		<div class="widget widget-plain">
 				<div class="widget-content">
-					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">출근 목록</a>	
+					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">날짜별 출근 목록</a>	
+					<a href="/dobbywebpos/attendance/employeelist.action" class="btn btn-large btn-success btn-support-ask">직원별 출근 목록</a>	
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
 	          <div class="widget">

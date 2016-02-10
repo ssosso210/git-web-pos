@@ -20,4 +20,15 @@
 		VALUES (#{foodCode},#{foodName},#{regDate}, #{hqCode}, #{foodPrice})
 	</insert>
 	
+	<insert id="insertMenu2" parameterType="Menu">
+		INSERT INTO menu (foodCode, foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userFileName)
+		VALUES (#{foodCode}, #{foodName}, #{foodPrice}, current_timestamp(), #{hqCode}, #{menuGroups}, #{savedFileName}, #{userFileName})
+	</insert>
+	
+	<select id="selectMenuList" parameterType="String" resultType="Menu">
+		SELECT foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userfileName
+		FROM menu
+		WHERE hqCode = #{id}
+	</select>
+	
 </mapper>
