@@ -99,7 +99,7 @@ addLoadEvent(menuIconActive);
 				          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				          	<i class="icon-user"></i> ${ loginuser.employeeName } <b class="caret"></b></a>
 				            <ul class="dropdown-menu">
-				              <li><a href="javascript:;">Profile</a></li>
+				              <li><a href="/dobbywebpos/management/view.action?employeeNo=${loginuser.employeeNo }">Profile</a></li>
 				              <li><a href="/dobbywebpos/account/logout.action">Logout</a></li>
 				            </ul>
 				          </li>
