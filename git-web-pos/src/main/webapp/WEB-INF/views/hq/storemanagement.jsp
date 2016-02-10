@@ -39,6 +39,7 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 
 
