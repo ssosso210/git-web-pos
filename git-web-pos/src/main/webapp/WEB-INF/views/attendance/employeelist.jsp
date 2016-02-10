@@ -25,8 +25,9 @@
       
 <script type="text/javascript">
 $(function() {
-    $( "#datepicker-month" ).datepicker({
+    $( "#datepicker-month" ).monthpicker({
         dateFormat:"yy-mm",
+         Button: false ,
      });
  });
 
@@ -83,9 +84,9 @@ $(function() {
         <div class="span6">
         <!-- /widget -->
           <div class="widget widget-table action-table">
-            <div class="widget-header"> <i class="icon-th-list"></i>
+           <!--  <div class="widget-header"> <i class="icon-th-list"></i>
               <h3>   </h3>
-            </div>
+            </div> -->
             <!-- /widget-header -->
             <div class="widget-content">
               <table class="table table-striped table-bordered">
@@ -100,7 +101,7 @@ $(function() {
                 <tbody>
 		           <tr> 	
 	                    <td> 근무 일수 </td>
-	                    <td> 3일 </td> 
+	                    <td> ${totalworkday }일 </td> 
 		           </tr>
 		           <tr> 	
 	                    <td> 근무 시간 </td>

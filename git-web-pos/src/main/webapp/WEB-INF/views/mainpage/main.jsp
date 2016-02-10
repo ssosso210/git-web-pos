@@ -18,6 +18,24 @@
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" />
 	<link rel="Stylesheet" href="/dobbywebpos/resources/styles/input.css" /> 
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
+<style type="text/css">
+.shortcuts .shortcut{
+	 width:30%;
+	 height: 150px;
+	 padding-top: 50px;
+	 margin-bottom: 30px;
+}
+	
+
+.shortcuts .shortcut .shortcut-icon {
+	font-size:60px;
+}
+.shortcuts .shortcut-label {
+	font-size:18px;
+	font-weight: bold;
+	padding-top: 20px;
+}
+</style>
 </head>
 <body>
     <div id="wrap">
@@ -41,29 +59,29 @@
             <!-- /widget-header -->
             <div class="widget-content" style="border:0px;">
               <div class="shortcuts"> 
-              	<a href="/dobbywebpos/attendance/main.action" class="shortcut" style="background: #7ddb9c; width:30%; ">
-              		<i class="shortcut-icon icon-check" style="font-size:60px;"></i>
-              		<span class="shortcut-label" style="font-size:18px" >근태</span> 
+              	<a href="/dobbywebpos/attendance/main.action" class="shortcut" style="background: #7ddb9c; "> 
+              		<i class="shortcut-icon icon-check" ></i>
+              		<span class="shortcut-label"  >근태</span> 
               	</a>
-              	<a href="/dobbywebpos/sale/salehome_test.action" class="shortcut" style="background: #ec5948; width:30%; ">
-              		<i class="shortcut-icon icon-shopping-cart" style="font-size:60px;"></i>
-              		<span class="shortcut-label" style="font-size:18px">판매</span> 
+              	<a href="/dobbywebpos/sale/salehome_test.action" class="shortcut" style="background: #ec5948;  ">
+              		<i class="shortcut-icon icon-shopping-cart" ></i>
+              		<span class="shortcut-label" >판매</span> 
               	</a>
-              	<a href="/dobbywebpos/check/checkmain.action" class="shortcut" style="background: #88b9d7; width:30%; ">
-              		<i class="shortcut-icon icon-bar-chart" style="font-size:60px;"></i>
-              		<span class="shortcut-label" style="font-size:18px">조회</span> 
+              	<a href="/dobbywebpos/check/checkmain.action" class="shortcut" style="background: #88b9d7;">
+              		<i class="shortcut-icon icon-bar-chart" ></i>
+              		<span class="shortcut-label" >조회</span> 
               	</a>
-              	<a href="/dobbywebpos/management/managementhome" class="shortcut" style="background: #e4b076; width:30%; ">
-              		<i class="shortcut-icon icon-wrench" style="font-size:60px;"></i>
-              		<span class="shortcut-label" style="font-size:18px">관리</span> 
+              	<a href="/dobbywebpos/management/managementhome" class="shortcut" style="background: #e4b076; ">
+              		<i class="shortcut-icon icon-wrench" ></i>
+              		<span class="shortcut-label" >관리</span> 
               	</a>
-              	<a href="/dobbywebpos/settings/settinghome.action" class="shortcut" style="background: #c7b7d5; width:30%; ">
-              		<i class="shortcut-icon icon-cogs" style="font-size:60px;"></i>
-              		<span class="shortcut-label" style="font-size:18px">설정</span> 
+              	<a href="/dobbywebpos/settings/settinghome.action" class="shortcut" style="background: #c7b7d5;  ">
+              		<i class="shortcut-icon icon-cogs" ></i>
+              		<span class="shortcut-label" >설정</span> 
               	</a>
-              	<a href="javascript:;" class="shortcut" style="background: #7da51c; width:30%; ">
-              		<i class="shortcut-icon icon-list-alt" style="font-size:60px;"></i>
-              		<span class="shortcut-label" style="font-size:18px">관리자 페이지</span> 
+              	<a href="javascript:;" class="shortcut" style="background: #7da51c; ">
+              		<i class="shortcut-icon icon-list-alt"></i>
+              		<span class="shortcut-label" >관리자 페이지</span> 
               	</a>
               </div>
               <!-- /shortcuts --> 
