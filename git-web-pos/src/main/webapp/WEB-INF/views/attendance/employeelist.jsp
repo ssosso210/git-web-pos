@@ -1,7 +1,7 @@
 <%@ page import="com.dobbypos.model.dto.Employee"%>
 <%@ page import="com.dobbypos.model.dto.Attendance"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,19 +18,29 @@
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
-	
-	 <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
- <!--      <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-      <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-      
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<style type="text/css">
+#datepicker-month {
+	width: 60px;
+}
+#btn_monthpicker {
+	background: url('/dobbywebpos/resources/img/monthpicker/datepicker.png');
+	border: 0;
+	height: 24px;
+	overflow: hieen;
+	text-indent: 999;
+	width: 24px;
+}
+
+</style>
 <script type="text/javascript">
 $(function() {
-    $( "#datepicker-month" ).datepicker({
+    $( "#datepicker-month" ).monthpicker({
         dateFormat:"yy-mm",
+         Button: false ,
      });
  });
-
-
 </script>
 </head>
 <body>
@@ -44,48 +54,72 @@ $(function() {
     <div class="container">
       <div class="row">
         <div class="span6">
-          <div class="widget " >
-		   <!-- <div class="widget-content">  -->
+          <div class="widget" >
+		    <div class="widget-content" style="height: 100px;">  
 		  	<form id="edit-profile" class="form-horizontal" 
 		  		action="/dobbywebpos/attendance/searchemployeelist.action" method="post">
 		  		<p>
 		  			직원 선택 
 		  			<select id="employee_select" class="employee_select" name="employee_select">
-		  				<c:forEach var="employee" items="${ employees }">
+		  				<c:forEach var="employee" items="${employees}">
 		  					<c:choose>
-					           <c:when test="${  employee.employeeNo == selectEmployee.employeeNo}">
-					           	<option value="${employee.employeeNo }" selected="selected" > ${employee.employeeName }</option>
+					           <c:when test="${employee.employeeNo == selectEmployee.employeeNo}">
+					           	<option value="${employee.employeeNo}" selected="selected" > ${employee.employeeName}</option>
 					           </c:when>
 					           <c:otherwise>
-					           	<option value="${employee.employeeNo }" > ${employee.employeeName }</option>
+					           	<option value="${employee.employeeNo}" > ${employee.employeeName}</option>
 					           </c:otherwise>
 					        </c:choose>
-		  					
 		  				</c:forEach>
-							 
 					</select>
 		  		</p>
 		  		<p>
-		  		
-		  			searchDate :  
-		  			<input type="text" id="datepicker-month" name="datepicker-month" value="${dateMonth }"> 
-		  			<input type="submit" class="btn"   value="Search"/>
+		  			searchMonth :  
+		  			<input type="text" id="datepicker-month" name="datepicker-month" value="${dateMonth}"> 
+		  			<input type="button" id="btn_monthpicker" value="" />
+		  			<script type="text/javascript" src="/dobbywebpos/resources/jsui/monthpicker/jquery.mtz.monthpicker.js"></script>
+					<script>
+						/* MonthPicker 옵션 */
+						options = {
+							pattern: 'yyyy-mm', // Default is 'mm/yyyy' and separator char is not mandatory
+							selectedYear: 2014,
+							startYear: 2008,
+							finalYear: 2018,
+							monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+						};
+						
+						/* MonthPicker Set */
+						$('#datepicker-month').monthpicker(options);
+						
+						/* 버튼 클릭시 MonthPicker Show */
+						$('#btn_monthpicker').bind('click', function () {
+							$('#datepicker-month').monthpicker('show');
+						});
+						
+						/* MonthPicker 선택 이벤트 */
+						/* $('#datepicker-month').monthpicker().bind('monthpicker-click-month', function (e, month) {
+							alert("선택하신 월은 : " + month + "월");
+						}); */
+					</script>
+				<span style="float: right;">
+		  			<input type="submit" class="btn" value="Search" />
+		  			</span>
 		  		</p>
 		  		
 		  		
 		  	</form>
 		  		
 		  
-		 <!--  </div> --> <!-- /widget-content -->
+		    </div>  <!-- /widget-content -->
 		  </div> <!-- /widget -->	
         </div> <!-- /span6 -->
          
         <div class="span6">
         <!-- /widget -->
           <div class="widget widget-table action-table">
-            <div class="widget-header"> <i class="icon-th-list"></i>
+           <!--  <div class="widget-header"> <i class="icon-th-list"></i>
               <h3>   </h3>
-            </div>
+            </div> -->
             <!-- /widget-header -->
             <div class="widget-content">
               <table class="table table-striped table-bordered">
@@ -100,15 +134,15 @@ $(function() {
                 <tbody>
 		           <tr> 	
 	                    <td> 근무 일수 </td>
-	                    <td> 3일 </td> 
+	                    <td> ${totalworkday}일 </td> 
 		           </tr>
 		           <tr> 	
 	                    <td> 근무 시간 </td>
-	                    <td> ${totalworktime } </td> 
+	                    <td> ${totalworktime} </td> 
 		           </tr>
 		           <tr> 	
 	                    <td> 총 급여액 </td>
-	                    <td> ${workwage } </td> 
+	                    <td> ${workwage} </td> 
 		           </tr>
                 </tbody>
               </table>
@@ -199,9 +233,8 @@ $(function() {
 <!-- Placed at the end of the document so the pages load faster --> 
 
 <script src="/dobbywebpos/resources/jsui/excanvas.min.js"></script> 
-<script src="/dobbywebpos/resources/jsui/chart.min.js" type="text/javascript"></script> 
 <script src="/dobbywebpos/resources/jsui/bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="/dobbywebpos/resources/jsui/full-calendar/fullcalendar.min.js"></script>
+
  
 <!-- <script src="js/base.js"></script>  -->
 			

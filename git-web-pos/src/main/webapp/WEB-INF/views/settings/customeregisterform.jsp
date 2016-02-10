@@ -10,10 +10,6 @@
 <head>
 <meta charset="utf-8">
 <title>Account - Bootstrap Admin Template</title>
-<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
-
-<script src="/dobbywebpos/resources/jsui//bootstrap.js"></script>
-<script src="/dobbywebpos/resources/jsui//base.js"></script>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -49,7 +45,6 @@
 
 			<div class="container">
 
-				
 			</div>
 			<!-- /container -->
 
@@ -92,7 +87,7 @@
 
 							<div class="widget-header">
 								<i class="icon-user"></i>
-								<h3>직원 등록</h3>
+								<h3>고객 등록</h3>
 							</div>
 							<!-- /widget-header -->
 
@@ -100,20 +95,19 @@
 
 
 
-								<div>
-
+								<div >
+								
 									<br>
 
 									<div class="tab-content">
-										<div>
-											<form class="form-horizontal" action="employeeregister.action" method="post">
+										<div >
+											<form  class="form-horizontal" action="customeregister.action" method="post">
 												<fieldset>
 
 													<div class="control-group">
-														<label class="control-label" for="username">이름</label>
+														<label class="control-label" for="username">고객이름</label>
 														<div class="controls">
-															<input type="text" class="span6 disabled"
-																name="employeeName">
+															<input type="text" class="span6 disabled" name="c_name" >
 
 														</div>
 														<!-- /controls -->
@@ -124,61 +118,65 @@
 													<div class="control-group">
 														<label class="control-label" for="firstname">전화번호</label>
 														<div class="controls">
-															<input type="text" class="span6" name="phoneNo">
+															<input type="text" class="span6" name="c_phoneNo">
+														</div>
+														<!-- /controls -->
+													</div>
+													<!-- /control-group -->
+
+
+													<div class="control-group">
+														<label class="control-label" for="lastname">나이</label>
+														<div class="controls">
+															<input type="number" class="span6" name="c_age">
+														</div>
+														<!-- /controls -->
+													</div>
+													
+													<div class="control-group">
+														<label class="control-label">성별</label>
+
+
+														<div class="controls">
+															<label class="radio inline"> <input type="radio"
+																name="c_gender" value="male"> 남
+															</label> <label class="radio inline"> <input type="radio"
+																name="c_gender" value="female"> 여
+															</label>
 														</div>
 														<!-- /controls -->
 													</div>
 													<!-- /control-group -->
 													<div class="control-group">
-														<label class="control-label" for="lastname">직원 ID
-														</label>
+														<label class="control-label" for="email">가게코드</label>
 														<div class="controls">
-															<input type="text" class="span6" name="employeeId">
+															<input type="text" class="span4"  name="storeCode"value="${storeCode}" >
 														</div>
 														<!-- /controls -->
 													</div>
+													<br />
 
-													<div class="control-group">
-														<label class="control-label" for="lastname">비밀번호</label>
-														<div class="controls">
-															<input type="password" class="span6" name="passwd">
-														</div>
-														<!-- /controls -->
-													</div>
-													<div class="control-group">
-														<label class="control-label" for="lastname">지점코드</label>
-														<div class="controls">
-															<input type="text" class="span6" name="storeCode">
-														</div>
-														<!-- /controls -->
-													</div>
-													<div class="control-group">
-														<label class="control-label" for="lastname">임금</label>
-														<div class="controls">
-															<input type="number" class="span6" name="wage">
-														</div>
-														<!-- /controls -->
-													</div>
-													<div class="control-group">
-														<label class="control-label" for="lastname">직원타입(admin/user)</label>
-														<div class="controls">
-															<input type="text" class="span6" name="employeeType">
-														</div>
-														<!-- /controls -->
-													</div>
 
 													<div class="form-actions">
-														<input type="submit" class="btn btn-primary" value="등록" />
-
+														<button type="submit" class="btn btn-primary">등록</button>
+														
 													</div>
 													<!-- /form-actions -->
 												</fieldset>
 											</form>
 										</div>
+
+
+
 									</div>
 
 
 								</div>
+
+
+
+
+
 							</div>
 							<!-- /widget-content -->
 
@@ -186,6 +184,11 @@
 						<!-- /widget -->
 
 					</div>
+					<!-- /span8 -->
+
+
+
+
 				</div>
 				<!-- /row -->
 
@@ -197,6 +200,19 @@
 
 	</div>
 	<!-- /main -->
+
+
+
+
+
+
+
+
+	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
+
+	<script src="/dobbywebpos/resources/jsui//bootstrap.js"></script>
+	<script src="/dobbywebpos/resources/jsui//base.js"></script>
+
 
 </body>
 

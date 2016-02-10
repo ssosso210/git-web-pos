@@ -8,6 +8,6 @@ public interface SaleMapper {
 	
 	List<Menu> allMenus();
 	
-	List<Menu> selectMenus(String foodCode);
+	List<Menu> selectMenus(String foodName);
 
 }

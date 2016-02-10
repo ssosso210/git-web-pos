@@ -157,7 +157,7 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	
 	if(!ly_bg.length) opacity_bg_layer(); // 불투명 배경 레이어 띄우기
     var str_html = "<h1>비밀번호 입력</h1>"; // 레이어 팝업 내용
-    str_html+= '<input type="text" class="layer_pop_center_txt"></input>';
+    str_html+= '<input type="password" class="layer_pop_center_txt"></input>';
     str_html+= '<br/><input type="submit" class="layer_pop_center_btn" value="OK"/>';
     str_html+= '<input type="submit" style="width: 50px;" class="layer_pop_center_btn_cancel" value="Cancel"/>';
     if(layer_pop_crt(ly, str_html)) {
@@ -229,6 +229,7 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 					<a href="/dobbywebpos/attendance/employeelist.action" class="btn btn-large btn-success btn-support-ask">직원별 출근 목록</a>	
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
+			
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
 	              <h3>근태 현황 [ ${todayStr} ]</h3>

@@ -2,6 +2,8 @@ package com.dobbypos.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,17 +11,22 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
+import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.MenuService;
 import com.dobbypos.model.service.TableService;
@@ -29,6 +36,12 @@ import com.google.gson.GsonBuilder;
 @Controller
 @RequestMapping("/settings")
 public class SettingsController {
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
+	}
 	
 
 	@Autowired
@@ -42,6 +55,10 @@ public class SettingsController {
 	@Autowired
 	@Qualifier("tableService")
 	private TableService tableService;
+	
+	@Autowired
+	@Qualifier("customerService")
+	private CustomerService customerService;
 	
 	@RequestMapping(value = "/settinghome.action", method = RequestMethod.GET)
 	public String SettingMenu(Model model, String storeCode1) {
@@ -121,12 +138,26 @@ public class SettingsController {
 	@RequestMapping(value="/menuregisterform.action", method=RequestMethod.GET)
 	public String MenuRegisterForm(){
 		return "settings/menuregisterform";
-	}
+	}                       
 	@RequestMapping(value="/menuregister.action", method=RequestMethod.POST)
 	public String MenuRegister(Menu menu){
 		menuService.insertMenu(menu);
-		System.out.println();
 		return "redirect:/settings/settinghome.action";
 	}
+	@RequestMapping(value="/customeregisterform.action", method=RequestMethod.GET)
+    public String CustomerRegisterForm(HttpSession session, Model model){
+        Employee employee = (Employee)session.getAttribute("loginuser");
+        String storeCode = employee.getStoreCode();
+        model.addAttribute("storeCode", storeCode);
+        return "settings/customeregisterform";
+    }
+   
+    @RequestMapping(value="/customeregister.action", method=RequestMethod.POST)
+    public String CustomerRegister(Customer customer){
+    	customer.setC_point(0);
+    	customer.setC_level("basic");
+        customerService.insertCustomer(customer);
+        return "redirect:/settings/settinghome.action";
+    }
 	
 }
