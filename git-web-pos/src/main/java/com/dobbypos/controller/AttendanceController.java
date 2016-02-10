@@ -241,7 +241,7 @@ public class AttendanceController {
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
 	public String attendancelist(HttpSession session, HttpServletRequest req) {
 		Employee employee = (Employee)session.getAttribute("loginuser");
-		System.out.println("attendancelist list");
+		
 		String todayStr = Util.getTodayDate();
 		List<Attendance> attendances = attendanceService.getAttendanceAllByStoreCodeAndDate(employee.getStoreCode(),todayStr,todayStr);
 	
@@ -278,6 +278,49 @@ public class AttendanceController {
 	
 		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return urlstr+"list";
+	}	
+	
+	
+	
+	
+	/**
+	 * 출석을 위해서 헤딩 store의 해당 직원리스트를 불러옴
+	 * @return
+	 */
+	@RequestMapping(value = "employeelist.action", method = RequestMethod.GET)
+	public String attendanceEmployeelist(HttpSession session, HttpServletRequest req) {
+		Employee employee = (Employee)session.getAttribute("loginuser");
+		
+		String todaymonth = Util.getTodayMonth();
+		
+		//해당 직원들의 목록을 가져옴
+		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
+		
+		List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employee.getEmployeeNo(),todaymonth);
+		
+		long totalworktime = 0;
+		
+	
+		for (Attendance attendance : attendances) {
+			attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+			totalworktime +=Util.getDiffMinuteTimestamp(attendance.getStartWork(), attendance.getEndWork());
+		}
+		long workhours = (totalworktime/60);
+		String totalWorkTimeStr = workhours+ ":" + (totalworktime%60);
+		long workwage = workhours*(employee.getWage());
+		System.out.println("workhours "+workhours );
+		
+		req.setAttribute("attendances", attendances);
+		req.setAttribute("selectEmployee", employee);
+		req.setAttribute("dateMonth", todaymonth);
+		req.setAttribute("employees", employees);
+		req.setAttribute("totalworktime", totalWorkTimeStr);
+		req.setAttribute("workwage", workwage+"");
+		
+		
+		
+	
+		return urlstr+"employeelist";
 	}	
 	
 	

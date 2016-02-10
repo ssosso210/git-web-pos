@@ -108,23 +108,9 @@
             });
             
             
-			/* $(function() {
-            	
-            	$("#store").on("click", function(event) {
-            		$("#management").load("data2.html");
-            		
-            	});
-            	
-            }); */
-            
-            
-            
+			          
 </script>
-            
-            
-            
-
-
+          
 
 <script type="text/javascript">
 
@@ -132,30 +118,30 @@ $(function() {
 		
 		$(document).ready(function() {
 			$("#editconfirm").hide();
-			$(".storeedit").attr("readonly", true);
+			$(".clientedit").attr("readonly", true);
 			//$("#storeregisteraddress").attr("disabled", true);
-			$("#storeregisteraddress").unbind("click");
+			$("#address").unbind("click");
 			$("#delete").hide();
 			$("#cancel2").hide();
 		});
 	
 		$("#edit").on("click", function() {
-			$("#storeregisteraddress").bind("click");
-			$(".storeedit").attr("readonly", false);
-			$("#storeCode").attr("readonly", true);
+			$("#address").bind("click");
+			$(".clientedit").attr("readonly", false);
+			$("#clientName").attr("readonly", true);
 			$("#edit").hide();
 			$("#delete").show();
 			$("#editconfirm").show();
 			$("#cancel").hide();
 			$("#cancel2").show();
-			$("#storeregisteraddress").on("click", function(event) {
-				var address = $("#storeregisteraddress").val();
+			$("#address").on("click", function(event) {
+				var address = $("#address").val();
 				address = map();
 			});
 			$("#cancel2").on("click", function(event) {
 				$("#editconfirm").hide();
-				$(".storeedit").attr("readonly", true);				
-				$("#storeregisteraddress").unbind("click");
+				$(".clientedit").attr("readonly", true);				
+				$("#address").unbind("click");
 				$("#delete").hide();
 				$("#cancel2").hide();
 				$("#cancel").show();
@@ -213,16 +199,45 @@ $(function() {
 				
 			}); 
 					
-		/* $("#storeregisteraddress").on("click", function(event) {
-			var address = $("#storeregisteraddress").val();
-			address = map();
-		}); */
+		
+			$("#businessRegistrationNumber").on("keyup", function(event){
+				var businessRegistrationNumber = $("#businessRegistrationNumber").val();
+				if (businessRegistrationNumber.length == 0) {
+					$("#businessnumberchecked").html("");
+					return;
+				}
+					//alert(businessRegistrationNumber);
+					$.ajax({
+						url : "/dobbywebpos/hq/clientbusinessnumber.action",
+						type : "GET",					
+						async : true,					
+						data : { businessnumber : businessRegistrationNumber },					
+						success : function(data) {
+								console.dir(data);							
+								if (data == 'unable') {
+									$("#businessnumberchecked").html("<div style='width: 0;overflow: visible;color:red'>&nbsp;&nbsp;사용불가<div>");
+									//$("#a").append('<div id="businessnumberchecked" style="color:red;width: 0;overflow: visible;float: right;word-break: keep-all">&nbsp;&nbsp;사용불가</div>');
+									 //$('input[type="submit"]').attr('disabled','disabled');
+									
+								} else {
+									$("#businessnumberchecked").html("<div>&nbsp;&nbsp;사용가능<div>");
+									//$('input[type="submit"]').attr('abled','abled');
+								}
+
+					       },				       
+					    error : function(error) {
+					    	console.log(error);
+					    }
+					}) 
+				});
+			
 		
 		
 			//$("#edit").val("수정확인");
 			$("#editconfirm").on("click", function(event) {
-				var params = $("#storeeditinfo").serialize();	
-				/* console.dir(params);
+				var params = $("#clienteditinfo").serialize();	
+				console.dir(params);
+				/*
 				var temp = "";
 				$.each(params, function(index, data) {//each 함수는 배열을 순회하면서 function 호출(반복문의 일종)
 					//alert(data.name + "/" + data.value);
@@ -230,19 +245,19 @@ $(function() {
 				});
 				alert(temp); */
 				$.ajax({
-					url : "/dobbywebpos/hq/storeedit.action",
+					url : "/dobbywebpos/hq/clientedit.action",
 					type : "POST",
 					async : true,
 					data : params,
 					success : function(data, status, xhr) {
-						eval("store = " + decodeURIComponent(data));
+						eval("client = " + decodeURIComponent(data));
 						alert("정보가 수정되었습니다.");
-						$("#storeCode").html(store.storeCode);
-						$("#storeName").html(store.storeName);
-						$("#managerName").html(store.managerName);
-						$("#clientPhoneNo").html(store.phoneNo);
-						$("#email").html(store.email);
-						$("#address").html(store.address);
+						$("#clientName").html(client.clientName);
+						$("#businessRegistrationNumber").html(client.businessRegistrationNumber);
+						$("#managerName").html(clinet.managerName);
+						$("#clientPhoneNo").html(client.clientPhoneNo);
+						$("#email").html(client.email);
+						$("#address").html(client.address);
 						
 						$(".clientedit").attr("readonly", true);						
 						$("#address").unbind("click");
@@ -268,21 +283,7 @@ $(function() {
 				if (confirm("삭제하시겠습니까?")) {
 				var param = $("#clientName").val();
 				location.href="/dobbywebpos/hq/clientdelete.action?clientname=" + param;
-				/* $.ajax({
-					url : "/dobbywebpos/hq/storedelete.action",
-					type : "GET",
-					async : true,
-					data : { storecode : param },
-					success : function(data, status, xhr){
-						alert(data);					
-					}, 
-					error : function(xhr, status, data) {
-						alert(status);
-						
-						
-					}
-					
-				}); */
+				
 				}
 			}); 
 			
@@ -326,40 +327,7 @@ function map(streetTarget) {
             //console.dir(fullRoadAddr);
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
          document.getElementById('storeregisteraddress').value = fullRoadAddr;
-         //$("#storeregisteraddress").html("fullRoadAddr");
-            
-        /*     //new 1. 조회된 주소를 이용해서 좌표 요청 (Geocoder) 
-        var geocoder = new daum.maps.services.Geocoder();
-        geocoder.addr2coord(fullRoadAddr, function(status, result) {
-
-         // 정상적으로 검색이 완료됐으면 
-          if (status === daum.maps.services.Status.OK) {
-
-             var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-          //응답된 좌표로 지도 이동                     
-           
-              
-             // 출발지와 (경유지 또는 목적지) 출발지-경유지, 출발지-목적지
-            /*  if (locations[0] != null && (locations[1] != null || locations[2] != null)) {                        
-                
-                var temp = [];
-                temp[0] = locations[0];         // temp[0]은 출발지
-                if (locations[1] != null) {      // 경유지가 null이 아니면
-                   temp[1] = locations[1];      // temp[1]은 경유지 
-                   if (locations[2] != null) {    // 목적지가 null이 아니면 
-                      temp[2] = locations[2];      // temp[2]는 목적지
-                   }
-                } else {                  // 그밖에는 temp[1]은 목적지             
-                   temp[1] = locations[2];
-                }
-                                        
-                
-             } 
-             
-            
-            } 
-                 
-        }); */
+       
 
         }
     }).open({
@@ -371,112 +339,7 @@ function map(streetTarget) {
   }
 
 
-     /*   function doAutoComplete() {
-    	   var storeName = document.getElementById("storeName");
-    	   if (storeName.value.length == 0) {
-    		   if (divList && divList.style.display != "none") {
-    			   divList.style.display = "none"
-    		   }
-    		   return;
-    	   }
-    	   
-    	   proxy = getXmlHttpRequest();
-    	   
-    	   if (proxy == null) {
-    		   return;
-    	   }
-    	   
-    	   proxy.open("GET", "storenamelist.action?storname=" + sotreName.value, true);
-    	   proxy.onreadystatechange = showSuggestions;
-    	   proxy.send(null);
-       }     
-       
-       function showSuggestions(){
-    	   if (proxy.readyState == 4) {
-    		   if (proxy.status == 200) {
-    			   var result = proxy.responseText;
-    			   if (result.indexOf("error") != -1) {
-    				   return;
-    			   }
-    			   
-    			   showResult(result);
-    		   }
-    		   proxy = null;
-    	   }
-       }
-        */
-       /* var divList; */
-      /*  function showResult(data) {
-    	  if (document.getElementById("divAutoCom"))
-    		   document.body.removeChild(document.getElementById("divAutoCom"));
-    	   eval("var nameArray = " + data);
-    	   
-    	   if (nameArray.length == 0) return;
-    	   
-    	   divList = document.createElement("div");
-    	   divList.id = "divAutoCom";
-    	   divList.style.border = "1px black solid";
-    	   divList.style.backgroundColor = "white";
-    	   divList.style.width = "230px";
-    	   divList.style.position = "absolute";
-    	   document.body.appendChild(divList);
-    	   
-    	   var item;
-    	   for(var i = 0; i < nameArray.length; i++) {
-    		   item = document.createElement("div");
-    		   item.style.paddingLeft = "5px";
-    		   item.style.paddingTop = item.style.paddingBottom = "2px;"
-    		   item.style.width = "97%";
-    		   item.innerHTML = nameArray[i];
-    		   divList.appendChild(item);
-    		   
-    		   item.onmousedown = function(oEvent) {
-    			   oEvent = oEvnet || window.event;
-    			   oSrcElement = oEvent.target || oEvent.srcElement;
-    			   document.getElementByid("storeName").value = oSrcElement.innerHTML;
-    			   divList.style.display = "none";
-    		   };
-    		   item.onmouseover = function(oEvent) {
-					oEvent = oEvent	|| window.event;
-					oSrcElement	= oEvent.target	|| oEvent.srcElement;
-					oSrcElement.style.backgroundColor =	"#efefef"; 
-				};
-				item.onmouseout =	function(oEvent) { 
-					oEvent = oEvent	|| window.event;
-					oSrcElement	= oEvent.target	|| oEvent.srcElement;
-					oSrcElement.style.backgroundColor =	"";	
-				};
-    	   }
-    	   
-    	   divList.style.left = getLeft() + "px";
-    	   divList.style.top = getTop() + "px";
-    	   
-    	   var x = 10; 
-    	   
-    	  
-       }
-       
-       function getTop() {
-			var	t =	document.getElementById("storeName");
-
-			var	topPos = 2 + t.offsetHeight; //memberid 의 높이값
-			while(t.tagName.toLowerCase() != "body" && 
-				  t.tagName.toLowerCase() != "html") {
-				topPos += t.offsetTop;//offsetTop : 상위 요소와의 거리
-				t = t.offsetParent;	//상위 요소를 현재 요소에 대입
-			}
-			return topPos;
-		}
-       
-       function getLeft() {
-    	   var t = document.getElementById("storeName");
-    	   var leftPos = 2;
-    	   while(t.tagName.toLowerCase() != "body" && t.tagName.toLowerCase() != "html") {
-    		   leftPos += t.offsetLeft;
-    		   t = t.offsetParent;
-    	   }
-    	   return leftPos;
-       } */
+    
        
        
 </script>
@@ -491,7 +354,7 @@ function map(streetTarget) {
 		<div class="inputsubtitle"><spring:message code="hq.clientInfo" /></div>
 		<br /><br />
 		        <form id="clienteditinfo" action="clientregister.action" method="post"><!-- 상대경로표시 -->
-		        <table style="margin: 0 auto;border: solid;">
+		        <table style="margin: 0 auto;border: solid;width: 900px">
 		             <tr>
 		                <th style="font-size: 20pt; fonbackground-color: #999999"><spring:message code="hq.clientmanagement.name" /></th>
 		                <td>		                    
@@ -503,19 +366,19 @@ function map(streetTarget) {
 		                <td>
 		                    
 		                    <input type="text" id="businessRegistrationNumber" class="clientedit" name="businessRegistrationNumber" value="${ client.businessRegistrationNumber }" style="width:700px; font-size: 20pt;" />
-		                    
+		                    <div id="businessnumberchecked" style="font-size: 20pt;width: 0;overflow: visible;float: right;word-break: keep-all"></div>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.clientmanagement.phoneNo" /></th>
 		                <td>
-		                	<input type="text" class="clientedit" name="managerName" value="${ client.clientPhoneNo }" style="width:700px; font-size: 20pt;" />
+		                	<input type="text" id="clientPhoneNo" class="clientedit" name="clientPhoneNo" value="${ client.clientPhoneNo }" style="width:700px; font-size: 20pt;" />
 		                </td>
 		            </tr>		           
 		            <tr>
 		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.clientmanagement.email" /></th>
 		                <td>
-		                	<input type="text" class="clientedit" name="email" value="${ client.email }" style="width:700px; font-size: 20pt;" />
+		                	<input type="text" id="email" class="clientedit" name="email" value="${ client.email }" style="width:700px; font-size: 20pt;" />
 		                </td>
 		            </tr>
 		            <tr>

@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
+import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.MenuService;
 import com.dobbypos.model.service.TableService;
@@ -42,6 +44,10 @@ public class SettingsController {
 	@Autowired
 	@Qualifier("tableService")
 	private TableService tableService;
+	
+	@Autowired
+	@Qualifier("customerService")
+	private CustomerService customerService;
 	
 	@RequestMapping(value = "/settinghome.action", method = RequestMethod.GET)
 	public String SettingMenu(Model model, String storeCode1) {
@@ -128,5 +134,18 @@ public class SettingsController {
 		System.out.println();
 		return "redirect:/settings/settinghome.action";
 	}
+	@RequestMapping(value="/customeregisterform.action", method=RequestMethod.GET)
+    public String CustomerRegisterForm(HttpSession session, Model model){
+        Employee employee = (Employee)session.getAttribute("loginuser");
+        String storeCode = employee.getStoreCode();
+        model.addAttribute("storeCode", storeCode);
+        return "settings/customeregisterform";
+    }
+   
+    @RequestMapping(value="/customeregister.action", method=RequestMethod.POST)
+    public String CustomerRegister(Customer customer){
+        customerService.insertCustomer(customer);
+        return "redirect:/settings/settinghome.action";
+    }
 	
 }

@@ -14,4 +14,8 @@ public interface ClientMapper {
 
 	Client selectClientByClientName(String clientName);
 
+	void deleteClientByClientName(String clientName);
+
+	void editClientInfo(Client client);
+
 }

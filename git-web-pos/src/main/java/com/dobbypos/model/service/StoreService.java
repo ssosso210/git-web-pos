@@ -12,5 +12,5 @@ public interface StoreService {
 	Store getStoreByStoreName(String storeName);
 	void editStoreInfo(Store store);
 	void deleteStoreByStoreCode(String storeCode);
-	
+		
 }

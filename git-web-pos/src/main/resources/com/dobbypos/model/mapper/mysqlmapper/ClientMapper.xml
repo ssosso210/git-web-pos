@@ -28,6 +28,15 @@
 		FROM client
 		WHERE clientname = #{id}
 	</select>
+	
+	<delete id="deleteClientByClientName" parameterType="String">
+		DELETE FROM client WHERE clientName = #{id}
+	</delete>
+	
+	<update id="editClientInfo" parameterType="Client">
+		UPDATE client SET clientPhoneNo = #{clientPhoneNo}, businessregistrationnumber = #{businessRegistrationNumber}, 
+			email = #{email}, address = #{address} WHERE clientname = #{clientName}
+	</update>
 			
 </mapper>
 

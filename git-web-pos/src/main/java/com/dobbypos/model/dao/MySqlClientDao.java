@@ -47,4 +47,18 @@ public class MySqlClientDao implements ClientDao {
 		return client;
 	}
 
+	@Override
+	public void deleteClientByClientName(String clientName) {
+		
+		clientMapper.deleteClientByClientName(clientName);
+		
+	}
+
+	@Override
+	public void editClientInfo(Client client) {
+		
+		clientMapper.editClientInfo(client);
+		
+	}
+
 }
