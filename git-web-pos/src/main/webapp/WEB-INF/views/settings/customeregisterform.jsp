@@ -48,14 +48,14 @@
                      <tr>
                         <th>포인트</th>
                         <td>
-                            <input type="number" name="c_point" style="width:280px" />
+                            <input type="number" name="c_point" style="width:280px" value=0 />
                         </td>
                     </tr>
                  
                   <tr>
                         <th>고객등급</th>
                         <td>
-                            <input type="text" name="c_level" style="width:280px" />
+                            <input type="text" name="c_level" style="width:280px" value="basic"/>
                         </td>
                     </tr>
                     <tr>
