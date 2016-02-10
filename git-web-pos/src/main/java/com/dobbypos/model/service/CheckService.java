@@ -10,4 +10,10 @@ public interface CheckService {
 	List<Balance> getBalances();
 	
 	Balance getBalanceByNo(int balanceNo);
+
+	List<Balance> getBalancesbyPeriod(String startday, String endday);
+
+	List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday);
+
+	List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday);
 }

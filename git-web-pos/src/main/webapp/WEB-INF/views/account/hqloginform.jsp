@@ -42,7 +42,7 @@
 						</a> <a class="brand" href="index.html"> Dobby web pos </a>
 						<div class="nav-collapse">
 							<ul class="nav pull-right">
-								<li class=""><a href="signup.html" class=""> Don't have an account? </a></li>
+								<!-- <li class=""><a href="signup.html" class=""> Don't have an account? </a></li> -->
 								<li class="">
 									<a href="/dobbywebpos/" class=""> 
 										<i class="icon-chevron-left"></i> go to pospage
@@ -59,8 +59,107 @@
 			<!-- /navbar -->			
 		           
 		</div>   	
+		
+		
+		
+		<div class="account-container">
+	
+			<div class="content clearfix">
+				
+				<form action="/dobbywebpos/account/hqlogin.action" method="post">
+				<!-- input type="hidden" : 사용자에게 보이지 않지만 서버로 전송되는 입력 요소 -->
+		        <input type="hidden" name="returnurl" value='${ empty requestScope.returnurl ? "" : requestScope.returnurl }' />
+				
+					<h1>Dobby pos Headquarter</h1>		
+				
+					
+					<div class="login-fields">
+						
+						<p>Please provide your details</p>
+						
+		
+						
+						<div class="field">
+							<!-- <label for="username">Username</label> -->
+							<!-- <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /> -->
+							아이디
+							<input type="text" id="hqId" name="hqId" value="superadmin" placeholder="Username" class="login username-field" />
+						</div> <!-- /field -->
+						
+						<div class="field">
+							Password
+							<input type="password" id="hqpasswd" name="hqpasswd" value="123" placeholder="Password" class="login password-field"/>
+						</div> <!-- /password -->
+						
+					</div> <!-- /login-fields -->
+					
+					<div class="login-actions">
+						
+						<!-- <span class="login-checkbox">
+							<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+							<label class="choice" for="Field">Keep me signed in</label>
+						</span> -->
+											
+						<button class="button btn btn-success btn-large" type="submit" >Sign In</button>
+						
+					</div> <!-- .actions -->
+					
+					
+					
+				</form>
+				
+			</div> <!-- /content -->
+			
+		</div> <!-- /account-container -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
-		<div id="container">
+		<%-- <div id="container">
 			<div id="mainimg"> 
 			<h1>Dobby hq pos</h1>
 			</div>
@@ -94,7 +193,7 @@
 		        
 		    </div>
 			
-		</div>
+		</div> --%>
 		
 	</div>
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>

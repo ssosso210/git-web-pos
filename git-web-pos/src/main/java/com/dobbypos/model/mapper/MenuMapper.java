@@ -1,12 +1,12 @@
 package com.dobbypos.model.mapper;
 
-import java.util.HashMap;
+import java.util.List;
 
-import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
-import com.dobbypos.model.dto.StoreTable;
 
 public interface MenuMapper {
 	void insertMenu(Menu menu);
+	void insertMenu2(Menu menu);
+	List<Menu> selectMenuList(String hqCode);
 
 }

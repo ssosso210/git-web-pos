@@ -5,17 +5,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dobbypos.model.mapper.TableMapper"><!-- 클래스 또는 인터페이스 역할 -->
-	
+
 	<resultMap type="StoreTable" id="storetableMap">
 		<id property="tableNo" column="tableNo" />
 		<result property="storeCode" column="storeCode" />
 		<result property="occupied" column="occupied" />
 	</resultMap>
-	
-	
+
+
 	<insert id="insertTable" parameterType="StoreTable">
-		INSERT INTO StoreTable (tableNo,storeCode,occupied)
-		VALUES (#{tableNo},#{storeCode},#{occupied})
+		INSERT INTO StoreTable
+		(tableNo,storeCode,isDeleted)
+		VALUES
+		(#{tableNo},#{storeCode}, 0)
 	</insert>
+
+	<select id="selectRecentTableNo" parameterType="Store"
+		resultType="int">
+		select tableNo from
+		StoreTable
+		where storeCode=#{storeCode}
+		and isDeleted=0
+		order by tableNo DESC limit 1;
+	</select>
+
+	<update id="setIsDeleted" parameterType="StoreTable">
+		update StoreTable
+		set isDeleted=1
+		where storeCode=#{storeCode}
+		and tableNo=#{tableNo};
+	</update>
 	
+	<select id="selectCurrentTables" resultType="StoreTable">
+		select TOTALTABLENO, storecode, tableno from
+		StoreTable
+		where isDeleted = 0
+		and storeCode=#{storeCode}
+	</select>
+
+
 </mapper>
