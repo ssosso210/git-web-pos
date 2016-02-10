@@ -140,7 +140,7 @@
 
 									<div class="tab-content">
 										<div>
-											<form action="employeeregister.action" method="post">
+											<form class="form-horizontal" action="employeeregister.action" method="post">
 												<fieldset>
 
 													<div class="control-group">

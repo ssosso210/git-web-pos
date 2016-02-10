@@ -140,7 +140,7 @@
 
 									<div class="tab-content">
 										<div  >
-											<form 
+											<form class="form-horizontal"
 											 action="menuregister.action" method="post">
 												<fieldset>
 

@@ -136,13 +136,13 @@
 
 									<div class="tab-content">
 										<div >
-											<form  action="customeregister.action" method="post">
+											<form  class="form-horizontal" action="customeregister.action" method="post">
 												<fieldset>
 
 													<div class="control-group">
 														<label class="control-label" for="username">고객이름</label>
 														<div class="controls">
-															<input type="text" class="span6 disabled" name="c_name">
+															<input type="text" class="span6 disabled" name="c_name" >
 
 														</div>
 														<!-- /controls -->
@@ -194,7 +194,7 @@
 
 													<div class="form-actions">
 														<button type="submit" class="btn btn-primary">등록</button>
-														<button class="btn">취소</button>
+														
 													</div>
 													<!-- /form-actions -->
 												</fieldset>

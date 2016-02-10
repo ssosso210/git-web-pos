@@ -190,7 +190,7 @@
 
 									<div class="tab-content">
 										<div>
-											<form action="tableregister.action" method="post">
+											<form class="form-horizontal" action="tableregister.action" method="post">
 												<fieldset>
 
 													<div class="control-group">
