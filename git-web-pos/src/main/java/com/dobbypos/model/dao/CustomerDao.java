@@ -1,6 +1,8 @@
 package com.dobbypos.model.dao;
 
-public interface CustomerDao {
+import com.dobbypos.model.dto.Customer;
 
+public interface CustomerDao {
+	void insertCustomer(Customer customer);
 	int countTotalCustomers();
 }
