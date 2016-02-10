@@ -48,7 +48,7 @@
 
 		
 		
-			<a href="javascript:table_pos();" class="shortcut" style="background: #7ddb9c; width:23%; ">
+			<a href="javascript:table_pos();" class="shortcut" style="background: #7ddb9c; width:14%; ">
              	
 			<div  > 
 			 <span  >
