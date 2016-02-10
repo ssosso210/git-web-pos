@@ -55,4 +55,41 @@ public class MysqlCheckDao implements CheckDao {
 		return balance;
 	}
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	@Override
+	public List<Balance> getBalancebyPeriod(String startday, String endday) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriod(params);
+		
+		return balances;
+	}
+
+
+	@Override
+	public List<Balance> getBalancebyPeriodAndPlus(String startday, String endday) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriodAndPlus(params);
+		
+		return balances;
+	}
+
+
+	@Override
+	public List<Balance> getBalancebyPeriodAndMinus(String startday, String endday) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriodAndMinus(params);
+		
+		return balances;
+	}
+
 }

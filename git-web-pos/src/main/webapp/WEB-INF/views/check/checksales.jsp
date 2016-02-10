@@ -36,12 +36,19 @@
 <script src="//code.jquery.com/jquery-1.12.0.js"></script>
 <script type="text/javascript">
    
-	var myWindow;
+	/* var myWindow;
    
 	function choose_period() { 
 		myWindow = window.open("../check/chooseperiod.action", "myWindow", "width=600, height=600, left=500, top=100");
-	}
+	} */
 	
+	function checkPlusMinus(typeval) {
+		$('#typeval').val(typeval);
+		
+		frm = document.getElementById("edit-profile");
+		frm.submit(); 
+		
+	}
 	
 	
 </script>
@@ -58,21 +65,22 @@
 					<div class="span12">
 						<div> 
 							<!-- <input class="btn btn-large" type="button" value="기간 선택" onclick="choose_period()"> -->
-							<form>
+							<form id="edit-profile" class="form-horizontla" action="/dobbywebpos/check/viewbyperiod.action" method="post">
+							<input type="hidden" id="typeval" name="typeval"  value="all" />
 							<table>
 								<tr>
 									<th>	
 										<input class="btn btn-small" type="button" value="시작일" />
 									</th>
 									<th>	
-										<input class="btn btn-middle" type="date" value="start" />&nbsp;&nbsp;
+										<input class="btn btn-middle" type="date" id="startday" name="startday" value="${startday }" />&nbsp;&nbsp;
 									</th>
 									
 									<th>
-										<input class="btn btn-small" type="button" value="종료일" />
+										<input class="btn btn-small" type="button" value="종료일"  />
 									</th>		
 									<th>
-										<input class="btn btn-middle" type="date" value="end" />
+										<input class="btn btn-middle" type="date" id="endday" name="endday" value="${endday }" />
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,7 +92,7 @@
 										
 									</th>
 									<th>
-										<input class="btn btn-middle" type="button" value="보기" />
+										<input class="btn btn-middle" type="submit" value="보기" />
 									</th>	
 								</tr>
 							</table>
@@ -164,10 +172,11 @@
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									
 									<!-- 앜ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ혹시 누가 본다면 이거 쫌 도와 주세요 -->
-									<input class="btn btn-middle" type="button" value="[ + ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
-									<input class="btn btn-middle" type="button" value="[ - ]" />
+									<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('all');" value="[ all ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
+									<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('plus');" value="[ + ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
+									<input id="viewminus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('minus');" value="[ - ]" />
 									<!-- <button>[ + ]</button>
 									<button>[ - ]</button> -->
 								
@@ -217,6 +226,7 @@
 				</div>
 				<!-- /main-inner -->
 			</div>
+			
 </body>
 
 

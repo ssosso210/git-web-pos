@@ -11,6 +11,23 @@
 		FROM client
 		WHERE clientname LIKE concat(#{ id }, '%')
 	</select>
+	
+	<select id="selectClientBusinessNumberByBusinessNumber" parameterType="String" resultType="String">
+		SELECT businessRegistrationNumber
+		FROM client
+		WHERE businessRegistrationNumber LIKE concat(#{ id }, '%')
+	</select>
+	
+	<insert id="insertClient" parameterType="Client">
+		INSERT INTO client
+		VALUES (#{hqCode}, #{clientName}, #{clientPhoneNo}, current_timestamp(), #{businessRegistrationNumber}, #{email}, #{address})
+	</insert>
+	
+	<select id="selectClientByClientName" parameterType="String" resultType="Client">
+		SELECT clientname, businessregistrationnumber, clientphoneno, email, address
+		FROM client
+		WHERE clientname = #{id}
+	</select>
 			
 </mapper>
 

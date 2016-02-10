@@ -72,7 +72,7 @@
 		        <li><a href="/dobbywebpos/sale/salehome_test.action"><i class="icon-shopping-cart"></i><span>판매--윤수</span> </a></li>
 		        <li><a href="/dobbywebpos/check/checkmain.action"><i class="icon-bar-chart"></i><span>조회</span> </a> </li>
 		        <li><a href="/dobbywebpos/management/managementhome"><i class="icon-wrench"></i><span>관리</span> </a> </li>
-		        <li><a href="/dobbywebpos/settings/settinghome.action"><i class="icon-cogs"></i><span>설정</span> </a> </li>
+		        <li><a href="/dobbywebpos/settings/settinghome.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-cogs"></i><span>설정</span> </a> </li>
 		        <li><a href="/dobbywebpos/sale/salehome.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-code"></i><span>테이블클릭(주문할거야)</span> </a> </li>
 		        
 		        

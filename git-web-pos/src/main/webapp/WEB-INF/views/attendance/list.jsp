@@ -21,17 +21,11 @@
 	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
+	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
 <!-- <link rel="Stylesheet" href="/dobbywebpos/resources/styles/default.css" />
 <link rel="Stylesheet" href="/dobbywebpos/resources/styles/main.css" /> -->
 </head>
 
-
-<script type="text/javascript">
-   
-   
-
-	
-</script>
 
 
 <body>
@@ -112,8 +106,9 @@
                   	<th class="td-actions"> 번호 </th>
                     <th> 직원 이름 </th>
                     <th> 근무일 </th>
-                    <th> 출근시간 </th>
-                    <th> 퇴근시간 </th>
+                    <th> 출근 시간 </th>
+                    <th> 퇴근 시간 </th>
+                    <th> 일한 시간 </th>
                     
                   </tr>
                 </thead>
@@ -134,10 +129,12 @@
 		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 		                   <c:choose>
 					           <c:when test="${  attendance.startWork == attendance.endWork}">
-					           	<td> </td>
+					           	<td></td>
+					           	<td>0</td>
 					           </c:when>
 					           <c:otherwise>
 					           	<td> <fmt:formatDate value="${attendance.endWork }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					           	<td>${attendance.workHour}</td>
 					           </c:otherwise>
 					       </c:choose>
 		                  </tr>
@@ -167,7 +164,7 @@
 	</div>
 		
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
+
 <script src="/dobbywebpos/resources/jsui/excanvas.min.js"></script> 
 <script src="/dobbywebpos/resources/jsui/chart.min.js" type="text/javascript"></script> 
 <script src="/dobbywebpos/resources/jsui/bootstrap.js"></script>

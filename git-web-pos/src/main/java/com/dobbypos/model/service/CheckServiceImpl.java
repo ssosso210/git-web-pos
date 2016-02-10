@@ -38,6 +38,24 @@ public class CheckServiceImpl implements CheckService {
 		
 		return checkDao.getBalanceByNo(balanceNo);
 	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriod(String startday, String endday) {
+		
+		return checkDao.getBalancebyPeriod(startday, endday);
+	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday) {
+		
+		return checkDao.getBalancebyPeriodAndPlus(startday, endday);
+	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday) {
+		
+		return checkDao.getBalancebyPeriodAndMinus(startday, endday);
+	}
 	
 //	public List<Balance> getBalances() {
 //		System.out.println("getBalances");

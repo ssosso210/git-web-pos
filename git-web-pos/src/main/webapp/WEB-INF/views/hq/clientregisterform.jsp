@@ -138,12 +138,13 @@ $(function() {
 					async : true,
 					//dataType : "json",
 					data : { clientname : request.term },
-					success : function(data) {												
+					success : function(data) {			
+							
 							eval("var list = " + data);
 							var r = [];
 							$.each(list, function(index, value) {
-								r.push({label : value, value : value });							
-							});
+								r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
+							});							
 							response(r);							 							
 				       },				       
 				    error : function(error) {
@@ -155,31 +156,38 @@ $(function() {
 		}); 
 		
 		
-		$("#storeName").autocomplete({
-			source : function(request, response) {
-				var input = $("#storeName").val();				
+		$("#businessRegistrationNumber").on("keyup", function(event){
+			var businessRegistrationNumber = $("#businessRegistrationNumber").val();
+			if (businessRegistrationNumber.length == 0) {
+				$("#businessnumberchecked").html("");
+				return;
+			}
+				//alert(businessRegistrationNumber);
 				$.ajax({
-					url : "/dobbywebpos/hq/storenamelist.action",
+					url : "/dobbywebpos/hq/clientbusinessnumber.action",
 					type : "GET",					
 					async : true,					
-					data : { storename : input },					
+					data : { businessnumber : businessRegistrationNumber },					
 					success : function(data) {
-							//console.dir(data);							
-							eval("var list = " + data);
-							var r = [];
-							$.each(list, function(index, value) {
-								r.push({label : decodeURIComponent(value), value : decodeURIComponent(value) });							
-							});
-							response(r);
+							console.dir(data);							
+							if (data == 'unable') {
+								$("#businessnumberchecked").html("<div style='width: 0;overflow: visible;color:red'>&nbsp;&nbsp;사용불가<div>");
+								//$("#a").append('<div id="businessnumberchecked" style="color:red;width: 0;overflow: visible;float: right;word-break: keep-all">&nbsp;&nbsp;사용불가</div>');
+								 //$('input[type="submit"]').attr('disabled','disabled');
+								
+							} else {
+								$("#businessnumberchecked").html("<div>&nbsp;&nbsp;사용가능<div>");
+								//$('input[type="submit"]').attr('abled','abled');
+							}
 
 				       },				       
 				    error : function(error) {
 				    	console.log(error);
 				    }
-				})
-			}
+				}) 
+			});
 			
-		}); 
+		
 				
 		 
 	$("#address").on("click", function(event) {
@@ -246,8 +254,8 @@ function map(streetTarget) {
 		<div class="right-side" style="padding-top:25px;text-align:center">
 		<div class="inputsubtitle"><spring:message code="hq.clientInfo" /></div>
 		<br /><br />
-		        <form action="storeregister.action" method="post"><!-- 상대경로표시 -->
-		        <table style="margin: 0 auto;border: solid;">
+		        <form id="" action="clientregister.action" method="post"><!-- 상대경로표시 -->
+		        <table style="margin: 0 auto;border: solid;width: 500px">
 		             <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.clientmanagement.name" /></th>
 		                <td>		                    
@@ -256,16 +264,16 @@ function map(streetTarget) {
 		            </tr>
 		            <tr>
 		                <th style="background-color: #999999"><spring:message code="hq.clientmanagement.number" /></th>
-		                <td>
+		                <td id="a">
 		                    
 		                    <input type="text" id="businessRegistrationNumber" name="businessRegistrationNumber" style="width:280px" />
-		                    
+		                    <div id="businessnumberchecked" style="width: 0;overflow: visible;float: right;word-break: keep-all"></div>
 		                </td>
 		            </tr>
 		            <tr>
 		                <th class="thh"><spring:message code="hq.clientmanagement.phoneNo" /></th>
 		                <td>
-		                	<input type="text" id="phoneNo" name="phoneNo" style="width:280px" />
+		                	<input type="text" id="clientPhoneNo" name="clientPhoneNo" style="width:280px" />
 		                </td>
 		            </tr>
 		            <tr>
@@ -282,7 +290,7 @@ function map(streetTarget) {
 		            </tr>		            	            	            
 		        </table>
 		        <div class="buttons">
-		        	<input type="submit" value="등록" style="height:25px" />
+		        	<input id="register" type="submit" value="등록" style="height:25px" />
 		        	<input type="button" value="취소" style="height:25px"
 		        		onclick="location.href='/dobbywebpos/hq/clientmanagement.action';" />
 		        </div>
