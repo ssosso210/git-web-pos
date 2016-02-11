@@ -275,6 +275,10 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 		        <!-- /widget-content --> 
 	          </div>
 	          <!-- /widget -->
+	         
+	         </div>
+	         <!-- /span -->
+	         <div class="span12">
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
 	              <h3> <div id="attend-employee-name" > 근태 버튼 :</div></h3>
