@@ -127,7 +127,7 @@
 									<ul class="nav nav-tabs">
 										<li class="active"><a href="#employee" data-toggle="tab">직원
 												정보</a></li>
-										<li><a href="#salary" data-toggle="tab">급여 정보</a></li>
+										<!-- <li><a href="#salary" data-toggle="tab">급여 정보</a></li> -->
 									</ul>
 
 									<br>
@@ -140,9 +140,7 @@
 													<div class="control-group">
 														<label class="control-label" for="employeeNo">직원
 															코드번호</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled" id="employeeNo"
-																value=${ requestScope.employee.employeeNo } disabled>
+														<div class="controls">${ requestScope.employee.employeeNo }
 														</div>
 														<!-- /controls -->
 													</div>
@@ -151,10 +149,7 @@
 													<div class="control-group">
 														<label class="control-label" for="employeeName">직원
 															이름</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled"
-																id="employeeName"
-																value=${ requestScope.employee.employeeName } disabled>
+														<div class="controls">${ requestScope.employee.employeeName }
 														</div>
 														<!-- /controls -->
 													</div>
@@ -164,9 +159,7 @@
 													<div class="control-group">
 														<label class="control-label" for="employeeId">직원
 															아이디</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled" id="employeeId"
-																value=${ requestScope.employee.employeeId } disabled>
+														<div class="controls">${ requestScope.employee.employeeId }
 														</div>
 														<!-- /controls -->
 													</div>
@@ -186,9 +179,7 @@
 
 													<div class="control-group">
 														<label class="control-label" for="phoneNo">직원 전화번호</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled" id="phoneNo"
-																value=${ requestScope.employee.phoneNo } disabled>
+														<div class="controls">${ requestScope.employee.phoneNo }
 														</div>
 														<!-- /controls -->
 													</div>
@@ -197,9 +188,7 @@
 
 													<div class="control-group">
 														<label class="control-label" for="wage">직원 시급</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled" id="wage"
-																value=${ requestScope.employee.wage } disabled>
+														<div class="controls">${ requestScope.employee.wage }
 														</div>
 														<!-- /controls -->
 													</div>
@@ -209,9 +198,7 @@
 													<div class="control-group">
 														<label class="control-label" for="storeCode">직원
 															지점번호</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled" id="storeCode"
-																value=${ requestScope.employee.storeCode } disabled>
+														<div class="controls">${ requestScope.employee.storeCode }
 														</div>
 														<!-- /controls -->
 													</div>
@@ -221,10 +208,7 @@
 													<div class="control-group">
 														<label class="control-label" for="employeeType">직원
 															구분</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled"
-																id="employeeType"
-																value=${ requestScope.employee.employeeType } disabled>
+														<div class="controls">${ requestScope.employee.employeeType }
 														</div>
 														<!-- /controls -->
 													</div>
