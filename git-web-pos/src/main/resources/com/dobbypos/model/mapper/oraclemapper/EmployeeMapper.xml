@@ -29,7 +29,7 @@
 		SELECT em.employeeNo, em.employeeName, em.phoneNo,
 		em.passwd, em.storeCode,
 		em.wage, em.employeeType, em.employeeId
-		FROM store st JOIN employee em
+		FROM store st , employee em
 		where
 		em.storeCode = #{storeCode} and em.employeeId = #{employeeId}
 		and st.storeCode = em.storeCode and st.hqCode = #{hqCode}
