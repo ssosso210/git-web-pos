@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.dobbypos.model.dao.StockCodeDao;
 import com.dobbypos.model.dao.StockDao;
 import com.dobbypos.model.dto.Stock;
-import com.dobbypos.model.dto.StockCode;
 
 @Service("stockService")
 public class StockServiceImpl implements StockService {
@@ -20,6 +20,12 @@ public class StockServiceImpl implements StockService {
 	@Override
 	public List<Stock> getAllStocks() {
 		return stockDao.getList();
+	}
+
+	@Override
+	public List<Stock> getStocksByStockCodeNo(int stockCodeNo) {
+		
+		return StockCodeDao.getList2();
 	}
 
 	

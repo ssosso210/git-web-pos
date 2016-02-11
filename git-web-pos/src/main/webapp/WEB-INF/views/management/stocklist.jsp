@@ -44,6 +44,16 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
+
+						<div class="widget widget-plain">
+							<div class="widget-content">
+								<a href="stockrequire"
+									class="btn btn-large btn-success btn-support-ask">재고 신청</a>								
+							</div>
+							<!-- /widget-content -->
+						</div>
+						<!-- /widget -->
+
 						<div class="widget widget-table action-table">
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
@@ -69,10 +79,7 @@
 
 											<tr style="height: 30px; text-align: center">
 												<td style="width: 50px">${ stock.stockNo }</td>
-												<td style="width: 80px"><c:url
-														value="editstocknumber.action" var="viewUrl">
-														<c:param name="stockCodeNo" value="${ stock.stockCodeNo }" />
-													</c:url> <a href="${ viewUrl }">${ stock.stockCodeNo }</a></td>
+												<td style="width: 80px">${ stock.stockCodeNo }</td>
 												<td>${ stock.stockCode.stockName }</td>
 												<td>${ stock.stockCode.price }원</td>
 												<td>${ stock.stockNumber }${ stock.stockCode.standard }</td>

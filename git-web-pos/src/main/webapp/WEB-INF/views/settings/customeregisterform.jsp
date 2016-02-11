@@ -39,37 +39,7 @@
 
 <body>
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
-	<div class="navbar navbar-fixed-top">
-
-		<div class="navbar-inner">
-
-			<div class="container">
-
-			</div>
-			<!-- /container -->
-
-		</div>
-		<!-- /navbar-inner -->
-
-	</div>
-	<!-- /navbar -->
-
-
-
-
-
-	<div class="subnavbar">
-
-		<div class="subnavbar-inner">
-
-			<div class="container"></div>
-			<!-- /container -->
-
-		</div>
-		<!-- /subnavbar-inner -->
-
-	</div>
-	<!-- /subnavbar -->
+	
 
 
 

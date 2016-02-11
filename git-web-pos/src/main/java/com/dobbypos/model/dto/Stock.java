@@ -10,6 +10,8 @@ public class Stock implements Serializable {
 	private int stockNumber;
 	private int stockPrice;
 	private String storeCode;
+	private String stockType;	
+
 	private int stockCodeNo;	
 
 	private StockCode stockCode;
@@ -68,6 +70,14 @@ public class Stock implements Serializable {
 
 	public void setStockCode(StockCode stockCode) {
 		this.stockCode = stockCode;
+	}
+	
+	public String getStockType() {
+		return stockType;
+	}
+
+	public void setStockType(String stockType) {
+		this.stockType = stockType;
 	}
 
 }
