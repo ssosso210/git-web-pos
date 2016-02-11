@@ -3,6 +3,8 @@ package com.dobbypos.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -74,8 +76,13 @@ public class ManagementController {
 		} else {
 			return "redirect:/management/salarylist";
 		}
-
 	}
+	
+
+	// 급여보기
+	
+
+	
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// 재고관리
@@ -94,6 +101,16 @@ public class ManagementController {
 		model.addAttribute("stocks", stocks);
 		
 		return "management/stocklist";
+	}	
+	
+	@RequestMapping(value = "/stockrequire", method = RequestMethod.GET)
+	public String SettingMenu2(Model model) {
+
+		List<Stock> stocks = stockService.getAllStocks();
+		System.out.println("Controller");
+		model.addAttribute("stocks", stocks);		
+		
+		return "management/stockrequire";
 	}
 	
 }
