@@ -63,7 +63,7 @@
               		<i class="shortcut-icon icon-check" ></i>
               		<span class="shortcut-label"  >근태</span> 
               	</a>
-              	<a href="/dobbywebpos/sale/salehome_test.action" class="shortcut" style="background: #ec5948;  ">
+              	<a href="/dobbywebpos/sale/salehome_test.action?storeCode1=${sessionScope.loginuser.storeCode}" class="shortcut" style="background: #ec5948;  ">
               		<i class="shortcut-icon icon-shopping-cart" ></i>
               		<span class="shortcut-label" >판매</span> 
               	</a>
