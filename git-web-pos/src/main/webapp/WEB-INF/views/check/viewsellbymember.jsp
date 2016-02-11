@@ -12,30 +12,20 @@
 <head>
 <meta charset="utf-8" />
 <title>판매 실적</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link href="/dobbywebpos/resources/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="/dobbywebpos/resources/css/bootstrap-responsive.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="/dobbywebpos/resources/css/font-awesome.css"
-	rel="stylesheet">
-<link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
-	rel="stylesheet">
-<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet"
-	type="text/css">
-<link href="/dobbywebpos/resources/css/pages/signin.css"
-	rel="stylesheet" type="text/css">
-<link href="/dobbywebpos/resources/css/pages/dashboard.css"
-	rel="stylesheet">
-
-<link
-	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-	rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<meta name="viewport"	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link href="/dobbywebpos/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/font-awesome.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"	rel="stylesheet">
+	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
+	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
+	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
+	
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 </head>
 
@@ -49,7 +39,6 @@
 	     });
 	 });
 	
-	
 	function viewsell(typeval) {
 		$('#typeval').val(typeval);
 		
@@ -57,6 +46,7 @@
 		frm.submit(); 
 		
 	}
+	
 </script>
 
 <body>
@@ -97,7 +87,7 @@
 					<div class="widget widget-table action-table">
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
-							<h3>메뉴별 판매 실적</h3>
+							<h3>회원별 판매 실적</h3>
 							
 						</div>
 						<!-- /widget-header -->
@@ -108,15 +98,17 @@
 								<thead>
 									<tr>
 										<td>No</td>
-										<td>메뉴</td>
-										<td>누적판매량</td>
-										<td>메뉴당 가격</td>
-										<td>누적매출</td>
+										<td>이름</td>
+										<td>휴대폰 번호</td>
+										<td>나이</td>
+										<td>성별</td>
+										<td>포인트</td>
+										<td>회원등급</td>
 									</tr>
 								</thead>
 
 
-								<c:forEach var="menu" items="${ menus }">
+								<c:forEach var="customer" items="${ customers }">
 									<tbody>
 										<tr style="height: 30px; text-align: center">
 											<td style="width: 50px"><%-- <c:url value="view.action"
@@ -124,11 +116,15 @@
 													<c:param name="employeeNo" value="${ menu.employeeNo }" />
 												</c:url>  --%>
 												<%-- <a href="${ viewUrl }">${ employee.employeeNo }</a> --%>
-												${ menu.foodCode}</td>
-											<td style="width: 100px">${ menu.foodName }</td>
-											<td style="width: 100px">${ menu.totalcount }</td>
-											<td style="width: 50px">${ menu.orderDetailPrice }</td>
-											<td style="width: 50px">${ menu.totalprice }</td>
+												${ customer.customerNo}</td>
+											<td style="width: 100px">
+											<c:url value="/dobbywebpos/check/viewsellbycustomerdetail.action" var="viewUrl"> <c:param name="customerNo" value="${customer.customerNo }" /></c:url>
+		                    				<a href="${ viewUrl }">${ customer.c_name }</td></a>
+											<td style="width: 100px">${ customer.c_phoneNo }</td>
+											<td style="width: 100px">${ customer.c_gender }</td>
+											<td style="width: 50px">${ customer.c_age }</td>
+											<td style="width: 50px">${ customer.c_point }</td>
+											<td style="width: 50px">${ customer.c_level }</td>
 											<%--<td>${ employee.pay } </td>--%>
 										</tr>
 								</c:forEach>

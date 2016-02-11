@@ -26,7 +26,7 @@
 	</insert>
 	
 	<select id="selectMenuList" parameterType="String" resultType="Menu">
-		SELECT foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userfileName
+		SELECT foodCode, foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userfileName
 		FROM menu
 		WHERE hqCode = #{id}
 	</select>

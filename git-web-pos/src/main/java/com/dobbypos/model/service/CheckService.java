@@ -19,4 +19,6 @@ public interface CheckService {
 	List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday);
 
 	List<Menu> getMenuByDaySell(String todayDate, String storeCode);
+
+	List<Menu> getMenuByPeriodSell(String startday, String endday, String storeCode);
 }
