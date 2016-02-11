@@ -40,7 +40,7 @@
 			<div class="widget widget-plain">
 				<div class="widget-content">
 					<a href="salarylist"
-						class="btn btn-large btn-success btn-support-ask">인건비 관리</a>
+						class="btn btn-large btn-success btn-support-ask">직원 관리</a>
 				</div>
 				<br/><br/>
 				<div class="widget-content">

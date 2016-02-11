@@ -23,15 +23,24 @@
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
 <!-- <script src="//code.jquery.com/jquery-1.12.0.js"></script> -->
 <script type="text/javascript">
+  
+$(function() {
+	   var tNo = $("#totalno").text();
+	   $("div[id^=choosetable]").each(function(index,value) {
+		   var myWindow;
+		   $(this).on("click", function() {
+			   //var totalno= $("#totalno"+index).val();
+			   var totalno = $("#totalno"+index).text().split(':')[1].trim();
+			   myWindow = window.open("/dobbywebpos/sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
+		   });
+			/* function table_pos() { // 주문하기 팝업창
+				var totalno= $("#totalno"+index).val();
+				myWindow = window.open("../sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
+			}   */
+		   
+	   });
+   });
    
-	var myWindow;
-   
-	function table_pos() { // 주문하기 팝업창
-		myWindow = window.open("../sale/orderhome_test", "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
-	}
-
-	
-	
 </script>
 <body>
 	
@@ -44,15 +53,15 @@
           <div class="widget">
  		<div class="widget-content" style="border:0px;">
               <div class="shortcuts"> 
-		<c:forEach begin="0" end="${recentno}" step="1" var="st" items="${st}">
+		<c:forEach begin="0" varStatus="status" end="${recentno}" step="1" var="st" items="${st}">
 
 		
 		
-			<a href="javascript:table_pos();" class="shortcut" style="background: #7ddb9c; width:23%; ">
+			<!-- <a href="#" class="shortcut" style="background: #7ddb9c; width:23%; "> -->
              	
-			<div  > 
+			<div id="choosetable${ status.index }" class="shortcut" style="background: #7ddb9c; width:23%;cursor: pointer; "> 
 			 <span  >
-				 <span>고유값: ${st.getTotalTableNo() }</span> <br/>
+				 <span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
 				<span>테이블번호: ${st.getTableNo() }</span><br/>
 				<span>매장코드: ${st.getStoreCode() }</span><br/>
 							
@@ -60,7 +69,7 @@
 				
 				<a type="button" style="width: 200px; height: 100px; left: 500; top: 300" onclick="pay_pos()"/>판매</a>			 -->
 			</div> 
-			</a> 
+			<!-- </a>  -->
 			
 			<!-- <br /> -->
 		</c:forEach>
