@@ -92,18 +92,6 @@
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
 
 
-	<div class="subnavbar">
-
-		<div class="subnavbar-inner">
-
-			<div class="container"></div>
-			<!-- /container -->
-
-		</div>
-		<!-- /subnavbar-inner -->
-
-	</div>
-	<!-- /subnavbar -->
 
 
 

@@ -45,21 +45,6 @@
 
 
 
-	<div class="subnavbar">
-
-		<div class="subnavbar-inner">
-
-			<div class="container"></div>
-			<!-- /container -->
-
-		</div>
-		<!-- /subnavbar-inner -->
-
-	</div>
-	<!-- /subnavbar -->
-
-
-
 	<div class="main">
 
 		<div class="main-inner">

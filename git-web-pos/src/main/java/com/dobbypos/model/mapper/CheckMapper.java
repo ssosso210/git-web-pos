@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.dobbypos.model.dto.Balance;
+import com.dobbypos.model.dto.Menu;
 
 public interface CheckMapper {
 	
@@ -19,5 +20,7 @@ public interface CheckMapper {
 	List<Balance> getBalancebyPeriodAndPlus(HashMap<String, String> params);
 
 	List<Balance> getBalancebyPeriodAndMinus(HashMap<String, String> params);
+
+	List<Menu> selectMenuByDaySell(HashMap<String, String> params);
 
 }
