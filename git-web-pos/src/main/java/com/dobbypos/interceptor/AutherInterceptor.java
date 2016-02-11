@@ -35,7 +35,7 @@ public class AutherInterceptor extends HandlerInterceptorAdapter {
 		
 		
 		boolean redirect = false;	
-		String returnlogin = "login.action";
+		String returnlogin = "account/login.action";
 		if(!uri.equals("/dobbywebpos/") && !uri.contains("login") && !uri.contains("logout")){
 			if(uri.contains("/hq/")){ // 요청 경로에 /hq/가 포함된 경우 
 				//본사 페이지 

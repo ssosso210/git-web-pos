@@ -26,4 +26,5 @@ public class HomeController {
 		return "mainpage/main"; // /WEB-INF/views/ + mainpage/main + .jsp
 	}
 	
+	
 }

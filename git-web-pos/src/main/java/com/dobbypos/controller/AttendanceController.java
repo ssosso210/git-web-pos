@@ -172,7 +172,7 @@ public class AttendanceController {
 		passwd = Util.getHashedString(passwd, "SHA-1");
 		Employee employee = employeeService.searchEmployeeByNo(employeeNum);
 		
-		if((employee == null) || !(employee.getPasswd().equals(passwd)) ){
+		if(!(employee.getPasswd().equals(passwd)) ){
 			// employee 값이 없거나, 비밀번호가 일치하지 않을 때 
 			returnMsg = "비밀번호가 일치하지 않습니다.";
 			
@@ -256,7 +256,12 @@ public class AttendanceController {
 		return urlstr+"list";
 	}	
 	
-	
+	/**
+	 * 기간 조건에 따른 검색된 직원 리스트를 불러옴 
+	 * @param session
+	 * @param req
+	 * @return
+	 */
 	@RequestMapping(value = "searchlist.action", method = RequestMethod.POST)
 	public String attendanceSearchlist(HttpSession session, HttpServletRequest req) {
 		Employee employee = (Employee)session.getAttribute("loginuser");
@@ -296,6 +301,7 @@ public class AttendanceController {
 		//해당 직원들의 목록을 가져옴
 		List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
 		
+		//현재 로그인한 직원의 출근 데이터를 가져옴 
 		List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employee.getEmployeeNo(),todaymonth);
 		
 		long totalworktime = 0;
@@ -306,7 +312,7 @@ public class AttendanceController {
 			totalworktime +=Util.getDiffMinuteTimestamp(attendance.getStartWork(), attendance.getEndWork());
 		}
 		long workhours = (totalworktime/60);
-		String totalWorkTimeStr = workhours+ ":" + (totalworktime%60);
+		String totalWorkTimeStr = String.format("%02d:%02d", workhours, (totalworktime%60)) ;
 		long workwage = workhours*(employee.getWage());
 		System.out.println("workhours "+workhours );
 		
@@ -316,6 +322,7 @@ public class AttendanceController {
 		req.setAttribute("employees", employees);
 		req.setAttribute("totalworktime", totalWorkTimeStr);
 		req.setAttribute("workwage", workwage+"");
+		req.setAttribute("totalworkday", attendances.size());
 		
 		
 		
@@ -323,6 +330,57 @@ public class AttendanceController {
 		return urlstr+"employeelist";
 	}	
 	
+	
+	/**
+	 * 선택한 직원의 출근 목록 가져옴 
+	 * @param session
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping(value = "searchemployeelist.action", method = RequestMethod.POST)
+	public String attendanceSearchEmployeelist(HttpSession session, HttpServletRequest req) {
+//			Employee employeeSession = (Employee)session.getAttribute("loginuser");
+			
+			
+			String daymonth =  req.getParameter("datepicker-month");
+			if((daymonth == null) || (daymonth.length()  < 7)){
+				daymonth = Util.getTodayMonth();
+			}
+			int employeeNo = Integer.parseInt(req.getParameter("employee_select"));
+			
+			Employee employee = employeeService.searchEmployeeByNo(employeeNo);
+			
+			//해당 직원들의 목록을 가져옴
+			List<Employee> employees = attendanceService.getEmployeesByStoreCodeAndUser(employee.getStoreCode());
+			
+			
+			List<Attendance> attendances = attendanceService.getAttendanceByEmployeeAndMonth(employeeNo,daymonth);
+			
+			long totalworktime = 0;
+			
+		
+			for (Attendance attendance : attendances) {
+				attendance.setWorkTime(Util.getDiffTimestamp(attendance.getStartWork(), attendance.getEndWork()));
+				totalworktime +=Util.getDiffMinuteTimestamp(attendance.getStartWork(), attendance.getEndWork());
+			}
+			long workhours = (totalworktime/60);
+			String totalWorkTimeStr = String.format("%02d:%02d", workhours, (totalworktime%60));
+			long workwage = workhours*(employee.getWage());
+			System.out.println("workhours "+workhours );
+			
+			req.setAttribute("attendances", attendances);
+			req.setAttribute("selectEmployee", employee);
+			req.setAttribute("dateMonth", daymonth);
+			req.setAttribute("employees", employees);
+			req.setAttribute("totalworktime", totalWorkTimeStr);
+			req.setAttribute("workwage", workwage+"");
+			req.setAttribute("totalworkday", attendances.size());
+			
+			
+			
+		
+			return urlstr+"employeelist";
+		}	
 	
 	
 

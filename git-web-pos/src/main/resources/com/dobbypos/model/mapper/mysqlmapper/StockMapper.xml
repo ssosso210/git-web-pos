@@ -17,6 +17,7 @@
 		<result property="stockNumber" column="s_number" />
 		<result property="storeCode" column="storeCode" />
 		<result property="stockPrice" column="s_price" />
+		<result property="stockType" column="s_type" />
 		<result property="stockCodeNo" column="stockCodeNo" />
 		<collection property="stockCode" column="stockCodeNo"
 			resultMap="stockCodeMap" />

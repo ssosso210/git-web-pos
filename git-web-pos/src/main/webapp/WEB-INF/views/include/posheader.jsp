@@ -99,7 +99,7 @@ addLoadEvent(menuIconActive);
 				          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				          	<i class="icon-user"></i> ${ loginuser.employeeName } <b class="caret"></b></a>
 				            <ul class="dropdown-menu">
-				              <li><a href="javascript:;">Profile</a></li>
+				              <li><a href="/dobbywebpos/management/view.action?employeeNo=${loginuser.employeeNo }">Profile</a></li>
 				              <li><a href="/dobbywebpos/account/logout.action">Logout</a></li>
 				            </ul>
 				          </li>
@@ -138,8 +138,8 @@ addLoadEvent(menuIconActive);
 		        <li id="menu-icon-check" ><a href="/dobbywebpos/check/checkmain.action"><i class="icon-bar-chart"></i><span>조회</span> </a> </li>
 		        <li id="menu-icon-management" ><a href="/dobbywebpos/management/managementhome"><i class="icon-wrench"></i><span>관리</span> </a> </li>
 		        <li id="menu-icon-setting" ><a href="/dobbywebpos/settings/settinghome.action"><i class="icon-cogs"></i><span>설정</span> </a> </li>
-		        <li id="menu-icon-saletale" ><a href="/dobbywebpos/sale/salehome.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-code"></i><span>테이블클릭(주문할거야)</span> </a> </li>
-		        
+		       <%--  <li id="menu-icon-saletale" ><a href="/dobbywebpos/sale/salehome.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-code"></i><span>테이블클릭(주문할거야)</span> </a> </li>
+		         --%>
 		        
 		        
 		        

@@ -16,8 +16,8 @@
 	
 	
 	<insert id="insertMenu" parameterType="Menu">
-		INSERT INTO Menu (foodCode,foodName,regDate,hqCode , foodPrice)
-		VALUES (#{foodCode},#{foodName},#{regDate}, #{hqCode}, #{foodPrice})
+		INSERT INTO Menu (foodCode,foodName,foodPrice,regDate,hqCode)
+		VALUES (#{foodCode},#{foodName},#{foodPrice}, #{regDate}, #{hqCode})
 	</insert>
 	
 	<insert id="insertMenu2" parameterType="Menu">
