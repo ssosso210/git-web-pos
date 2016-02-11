@@ -147,11 +147,7 @@
 														<!-- /controls -->
 													</div>
 
-													<div class="form-actions">
-														<input type="submit" class="btn btn-primary" value="등록" />
-
-													</div>
-													<!-- /form-actions -->
+													
 												</fieldset>
 											</form>
 										</div>
