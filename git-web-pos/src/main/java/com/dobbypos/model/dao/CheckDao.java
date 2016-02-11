@@ -3,6 +3,7 @@ package com.dobbypos.model.dao;
 import java.util.List;
 
 import com.dobbypos.model.dto.Balance;
+import com.dobbypos.model.dto.Menu;
 
 public interface CheckDao {
 
@@ -19,6 +20,8 @@ public interface CheckDao {
 	List<Balance> getBalancebyPeriodAndPlus(String startday, String endday);
 
 	List<Balance> getBalancebyPeriodAndMinus(String startday, String endday);
+
+	List<Menu> selectMenuByDaySell(String todayDate, String storeCode);
 	
 
 //	void insert(Member member);

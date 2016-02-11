@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Employee;
+import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.mapper.CheckMapper;
 
 @Repository("checkDao")
@@ -90,6 +91,15 @@ public class MysqlCheckDao implements CheckDao {
 		List<Balance> balances = checkMapper.getBalancebyPeriodAndMinus(params);
 		
 		return balances;
+	}
+
+
+	@Override
+	public List<Menu> selectMenuByDaySell(String todayDate, String storeCode) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("todayDate", todayDate);
+		params.put("storeCode", storeCode);
+		return checkMapper.selectMenuByDaySell(params);
 	}
 
 }

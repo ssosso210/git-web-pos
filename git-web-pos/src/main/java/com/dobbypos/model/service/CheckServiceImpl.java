@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.CheckDao;
 import com.dobbypos.model.dto.Balance;
+import com.dobbypos.model.dto.Menu;
 
 
 @Service("checkService")
@@ -55,6 +56,12 @@ public class CheckServiceImpl implements CheckService {
 	public List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday) {
 		
 		return checkDao.getBalancebyPeriodAndMinus(startday, endday);
+	}
+
+	@Override
+	public List<Menu> getMenuByDaySell(String todayDate, String storeCode) {
+		// TODO Auto-generated method stub
+		return checkDao.selectMenuByDaySell(todayDate, storeCode);
 	}
 	
 //	public List<Balance> getBalances() {
