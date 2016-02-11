@@ -15,7 +15,7 @@
     
     <select id="selectMenus" parameterType="String" resultType="menu">
       SELECT foodCode, foodName, foodPrice, regDate, hqCode from menu
-      WHERE foodname = #{ id }
+      WHERE foodName = #{ id }
     </select>
     
 
