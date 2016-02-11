@@ -4,7 +4,17 @@ package com.dobbypos.model.dto;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
+	private int customerNo;
+    private String c_name;
+    private String c_phoneNo;
+    private int c_age;
+    private String c_gender;
+    private int c_point;
+    private String c_level;
+    private String storeCode;
    
+    private Store store;
+	
     public int getCustomerNo() {
         return customerNo;
     }
@@ -77,16 +87,7 @@ public class Customer implements Serializable {
         this.store = store;
     }
 
-    private int customerNo;
-    private String c_name;
-    private String c_phoneNo;
-    private int c_age;
-    private String c_gender;
-    private int c_point;
-    private String c_level;
-    private String storeCode;
-   
-    private Store store;
+    
    
    
    

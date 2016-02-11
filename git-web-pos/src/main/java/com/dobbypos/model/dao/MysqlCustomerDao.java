@@ -1,5 +1,7 @@
 package com.dobbypos.model.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -24,6 +26,14 @@ public class MysqlCustomerDao implements CustomerDao {
 	@Override
 	public void insertCustomer(Customer customer) {
 		customerMapper.insertCustomer(customer);
+	}
+
+	@Override
+	public List<Customer> getCustomers(String storeCode) {
+		
+		List<Customer> customers = customerMapper.getCustomers(storeCode);
+		
+		return customers;
 	}
 
 }

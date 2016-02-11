@@ -102,4 +102,15 @@ public class MysqlCheckDao implements CheckDao {
 		return checkMapper.selectMenuByDaySell(params);
 	}
 
+
+	@Override
+	public List<Menu> selectMenuByPeriodSell(String startday, String endday, String storeCode) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startday", startday);
+		params.put("endday", endday);
+		params.put("storeCode", storeCode);
+		
+		return checkMapper.selectMenuByPeriodSell(params);
+	}
+
 }

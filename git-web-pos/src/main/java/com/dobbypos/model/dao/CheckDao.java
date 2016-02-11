@@ -22,6 +22,8 @@ public interface CheckDao {
 	List<Balance> getBalancebyPeriodAndMinus(String startday, String endday);
 
 	List<Menu> selectMenuByDaySell(String todayDate, String storeCode);
+
+	List<Menu> selectMenuByPeriodSell(String startday, String endday, String storeCode);
 	
 
 //	void insert(Member member);
