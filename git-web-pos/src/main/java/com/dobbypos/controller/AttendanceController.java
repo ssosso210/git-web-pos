@@ -172,7 +172,7 @@ public class AttendanceController {
 		passwd = Util.getHashedString(passwd, "SHA-1");
 		Employee employee = employeeService.searchEmployeeByNo(employeeNum);
 		
-		if((employee == null) || !(employee.getPasswd().equals(passwd)) ){
+		if(!(employee.getPasswd().equals(passwd)) ){
 			// employee 값이 없거나, 비밀번호가 일치하지 않을 때 
 			returnMsg = "비밀번호가 일치하지 않습니다.";
 			
