@@ -92,6 +92,9 @@
 			border: 4px solid #c2e1f5;
 			z-index: 100;
 		}
+		div[id^=menus] {
+			background-size: cover;
+		}
 		/* div[id^=big]:after, #big:before {
 			right: 100%;
 			top: 20%;
@@ -147,7 +150,7 @@
         <!-- Director dashboard demo (This is only for demo purposes) -->
         <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
 
-		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>		
 
         <!-- Director for demo purposes -->
         <script type="text/javascript">
@@ -236,7 +239,56 @@ $(function() {
 		    }
 		 
 		    function addUser() {
-		      var valid = true;
+		    	//var params = $("#salemenuinfo").serialize();
+		    	/* $.ajax({
+		    		
+		    		url : "/dobbywebpos/hq/salemenuedit.action",
+		    		type : "POST",
+		    		async : true,
+		    		data : params,		    		
+		    		success : function(data, status, xhr) {
+		    			eval("salemenu = " + decodeURIComponent(data));
+		    			alert("정보가 수정되었습니다");
+		    			
+		    		}
+		    		
+		    	}); */
+		    	var form = $("#salemenuinfo");		    	
+		    	form.attr({action: "salemenuedit.action", enctype: "multipart/form-data", method: "post"});
+		    	var groups = $("#menuGroupss").val();
+		    	alert(groups);
+		    	 var form = $("#salemenuinfo")[0];
+		         var formData = new FormData(form);
+		             $.ajax({
+		                url: 'salemenuedit.action',
+		                processData: false,
+		                contentType: false,
+		                data: formData,
+		                type: 'POST',
+		                success: function(result){
+		                    alert("업로드 성공!!");
+		                }
+		            });
+		         
+		    	/* form.ajaxForm({
+		    		   //보내기전 validation check가 필요할경우
+		    	            beforeSubmit: function (data, frm, opt) {
+		    				                //alert("전송전!!");
+		    				                return true;
+		    				              },
+		    	            //submit이후의 처리
+		    	            success: function(data, status){
+		    	            	eval("salemenu = " + decodeURIComponent(data));
+				    			alert("정보가 수정되었습니다");
+		    	            },
+		    	            //ajax error
+		    	            error: function(xhr, status, data){
+		    	            	alert("에러발생!!");
+		    	            }                               
+		    	          });
+		    		 */
+		    	
+		      /* var valid = true;
 		      allFields.removeClass( "ui-state-error" );
 		 
 		      valid = valid && checkLength( name, "username", 3, 16 );
@@ -255,7 +307,7 @@ $(function() {
 		        "</tr>" );
 		        dialog.dialog( "close" );
 		      }
-		      return valid;
+		      return valid; */
 		    }
 		 
 		    dialog = $( "#dialog-form" ).dialog({
@@ -284,16 +336,49 @@ $(function() {
 		
 		//////////////////////////////////////////////////////////
 		$(this).on("mouseenter", function(event) {
-			$("#menus"+index).css({
+			var t = self.offset();
+			//alert(t.top);
+			var top = (t.top + 20) + 'px';
+			var left = (t.left + 10) + 'px'; 
+			$("#text"+index).html("클릭하시면<br />수정할 수<br />있습니다.");
+			$("#text"+index).css({top: top, left: left});
+			/* var imgSrc = $("#img"+index).attr("src");
+			 $("#img"+index).hide(); 
+			$("#menus"+index).css({backgroundImage: "url("+imgSrc+")"});*/ 
+			$("#menus"+index).css({				
                 'filter': 'blur(10px)',
                 '-webkit-filter': 'blur(10px)',
                 '-moz-filter': 'blur(10px)',
                 '-o-filter': 'blur(10px)',
                 '-ms-filter': 'blur(10px)'
-            });
+            }); 
+						
 		});
 		
+		$(this).on("mouseout", function(event) {
+			
+			$("#text"+index).html("");
+			$("#menus"+index).css({				
+                'filter': 'blur(0px)',
+                '-webkit-filter': 'blur(0px)',
+                '-moz-filter': 'blur(0px)',
+                '-o-filter': 'blur(0px)',
+                '-ms-filter': 'blur(0px)'
+            }); 
+						
+		}); 
+		
+		
+		
 		$(this).on("click", function(event) {
+			
+			var data = self.find("div").text().trim().split('/');			
+			
+			
+			$("#salemenuinfo").find("input").each(function(index, value) {
+				$(this).val(data[index]);
+			});
+			
 				//alert(index);  
 				dialog.dialog( "open" );
 			      
@@ -370,17 +455,19 @@ $(function() {
       
 		<!--  <div id="pageContainer">	 -->	
 		
-		<div class="right-side" style="padding-top:25px;text-align:center">
+		<div class="right-side" style="padding-top:25px;text-align:center;">
 			
-	<div class="masonry_container">
+	<div class="masonry_container" style="">
 	<c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">		
 					
     
     	
-        <div id="menus${ status.index }" class="item normal" style="display: inline-block;">
-        	<img id="img" alt="" src="/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }" style="width : 200px; height : 200px;margin-top: 2px;border;display: inline-block;">
-        	<%-- <button id="create-user${ status.index }" data-toggle="modal">Create new user</button> --%>
+        <div id="menus${ status.index }" class="item normal" style="display: inline-block;background-image: url('/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }');cursor: pointer;">
+        <div style="width: 0px;overflow: hidden;">
+        	${ menu.foodCode }/${ menu.foodName }/${ menu.menuGroups }/${ menu.foodPrice }/${ menu.savedFileName }
+        </div>        	
         </div>
+        <h4 id="text${ status.index }" style="position: absolute;font-weight: 900;font-size: 20pt"></h4>
         
         
         
@@ -414,33 +501,36 @@ $(document).ready(function () {
         	<img alt="" src="/dobbywebpos/resources/uploadfiles/스테이크_1.jpg" style="width : 300px; height : 300px;margin-top: 2px;border;display: inline-block;">
         	<div><h2><a>${menu.foodName }</a></h2><h3>${menu.menuGroups }</h3><h3>${menu.foodPrice }</h3></div>
         </div> --%>
-        
-        
-        
-        <c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">	
-        
-        <div id="dialog-form" title="Create new user">
+     
+      <div id="dialog-form" title="Create new user">
   <p class="validateTips">메뉴 정보 수정</p>
  
-  <form>
+  <form id="salemenuinfo">
     <fieldset>
     <label for="password">코드</label>
-      <input type="text" name="foodCode" id="password" value="${ menu.foodCode }" class="text ui-widget-content ui-corner-all">
+      <input type="text" name="foodCode" id="foodCode" class="text ui-widget-content ui-corner-all" readonly="readonly">
       <label for="name">이름</label>
-      <input type="text" name="foodName" id="name" value="${ menu.foodName }" class="text ui-widget-content ui-corner-all">
-      <label for="email">그룹</label>
-      <input type="text" name="foodGroups" id="email" value="${ menu.menuGroups }" class="text ui-widget-content ui-corner-all">
+      <input type="text" name="foodName" id="foodName" class="text ui-widget-content ui-corner-all">
+      <label for="name">그룹</label>
+      <input type="text" name="menuGroups" id="menuGroupss" class="text ui-widget-content ui-corner-all">
       <label for="password">가격</label>
-      <input type="number" name="foodPrice" id="password" value="${ menu.foodPrice }" class="text ui-widget-content ui-corner-all">
+      <input type="number" name="foodPrice" id="foodPrice" class="text ui-widget-content ui-corner-all">
       <label for="password">사진</label>
-      <input type="text" name="savedfilename" id="password" value="${ menu.savedFileName }" class="text ui-widget-content ui-corner-all" readonly="readonly">
-      <input type="file" name="savedfilename" id="choosePhoto" class="text ui-widget-content ui-corner-all">
+      <input type="text" name="photpfilename" id="savedFileName" class="text ui-widget-content ui-corner-all" readonly="readonly">
+      <input type="file" name="photo2filename" id="photo2filename" class="text ui-widget-content ui-corner-all">
  
       <!-- Allow form submission with keyboard without duplicating the dialog button -->
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </fieldset>
   </form>
 </div>
+     
+        
+        
+        
+        <c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">	
+        
+       
 </c:forEach> 
     <!-- <button id="create-user" data-toggle="modal">Create new user</button> -->
 
