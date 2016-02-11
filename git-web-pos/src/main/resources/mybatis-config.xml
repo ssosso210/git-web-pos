@@ -72,6 +72,7 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/CheckMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/StockMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/ClientMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/PayMapper.xml" />
 
 		
 		<!-- 윤수가추가 -->

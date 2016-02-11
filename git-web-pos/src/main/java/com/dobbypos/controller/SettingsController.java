@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
@@ -74,8 +75,8 @@ public class SettingsController {
 	
 	@RequestMapping(value = "/employeeregister.action", method = RequestMethod.POST)
 	public String EmployeeRegister(Employee employee) {
-	//	employee.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-1"));
-		//System.out.println(employee.toString());
+		employee.setPasswd(Util.getHashedString(employee.getPasswd(), "SHA-1"));
+		
 		employeeService.insertEmployee(employee);
 		System.out.println("employee register 성공  ");
 		return "redirect:/settings/settinghome.action";
