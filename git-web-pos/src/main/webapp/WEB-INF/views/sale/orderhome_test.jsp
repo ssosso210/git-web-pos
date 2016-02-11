@@ -170,25 +170,25 @@
             <td><input type="button" value="1" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="2" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="3" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="지움" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="현금" name="name" style="width:60px; height:30px"></td>
          </tr>
          <tr>
             <td><input type="button" value="4" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="5" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="6" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="내나" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="카드" name="name" style="width:60px; height:30px"></td>
          </tr>
          <tr>
             <td><input type="button" value="7" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="8" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="9" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="돈돈" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="" name="name" style="width:60px; height:30px"></td>
          </tr>
          <tr>
             <td><input type="button" value="0" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="확인" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="취소" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="계산" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="" name="name" style="width:60px; height:30px"></td>
 
          </tr>
          
