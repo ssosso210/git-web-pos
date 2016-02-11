@@ -92,18 +92,6 @@
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
 
 
-	<div class="subnavbar">
-
-		<div class="subnavbar-inner">
-
-			<div class="container"></div>
-			<!-- /container -->
-
-		</div>
-		<!-- /subnavbar-inner -->
-
-	</div>
-	<!-- /subnavbar -->
 
 
 
@@ -159,11 +147,7 @@
 														<!-- /controls -->
 													</div>
 
-													<div class="form-actions">
-														<input type="submit" class="btn btn-primary" value="등록" />
-
-													</div>
-													<!-- /form-actions -->
+													
 												</fieldset>
 											</form>
 										</div>

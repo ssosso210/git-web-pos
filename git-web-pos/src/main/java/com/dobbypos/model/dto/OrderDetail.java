@@ -9,7 +9,14 @@ public class OrderDetail implements Serializable {
 	private int quantity;
 	private int price;
 	private String foodCode;
+	private int totalTableNo;
 	
+	public int getTotalTableNo() {
+		return totalTableNo;
+	}
+	public void setTotalTableNo(int totalTableNo) {
+		this.totalTableNo = totalTableNo;
+	}
 	public int getOrderDetailNo() {
 		return orderDetailNo;
 	}
