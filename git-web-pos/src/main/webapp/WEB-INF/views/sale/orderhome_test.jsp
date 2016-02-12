@@ -194,7 +194,7 @@
       
       
       <input type="button" value="주문하기" style="margin: 10px 5px 10px 25px; width:80px; height:60px" onclick="closeWin()">
-      <input type="button" value="계산하기" style="width:80px; height:60px"> 
+      <input onclick="payform.action" type="button" value="계산하기" style="width:80px; height:60px"> 
       
       
 

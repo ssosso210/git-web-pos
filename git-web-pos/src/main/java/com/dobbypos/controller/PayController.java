@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.service.PayService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,13 +30,13 @@ public class PayController {
 	
 	
 	@RequestMapping(value="/payform.action", method=RequestMethod.GET)
-	public String PointForm(){
+	public String PayForm(){
 		return "sale/pay";
 	}
 	
 	@RequestMapping(value="/pay.action", method=RequestMethod.GET)
 	@ResponseBody
-	public String Point(HttpServletResponse resp,@RequestParam("writtenno")int CustomerNo){
+	public String Pay(HttpServletResponse resp,@RequestParam("writtenno")int CustomerNo){
 		Customer customer1=payService.getCustomerInfo(CustomerNo);
 		try {
 			customer1.setC_name((URLEncoder.encode(customer1.getC_name(), "utf-8").replace("+", "%20")));
@@ -50,7 +51,13 @@ public class PayController {
 	}
 	
 	@RequestMapping(value="/finalpay.action", method=RequestMethod.GET)
-	public String FinalPay(){
+	public String FinalPay(HttpServletResponse resp,@RequestParam("totalno") int totaltableno){
+		System.out.println("totaltableno 들어옴"+totaltableno);
+		
+		
+		Orders orders= new Orders();
+		orders.setTotalTableNo(totaltableno);
+		
 		
 		return "redirect:/sale/salehome_test.action";
 	}
