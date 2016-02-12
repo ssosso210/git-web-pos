@@ -123,4 +123,14 @@ public class ManagementController {
 		return "redirect:/management/stocklist";				
 	}
 	
+	@RequestMapping(value="/stockrequirelist",method = RequestMethod.GET)
+	public String stockrequirelist(Model model){
+		
+		List<Stock> stocks = stockService.getAllRequireStocks();
+		System.out.println(stocks);
+		model.addAttribute("stocks", stocks);		
+		
+		return "management/stockrequirelist";
+	}
+	
 }

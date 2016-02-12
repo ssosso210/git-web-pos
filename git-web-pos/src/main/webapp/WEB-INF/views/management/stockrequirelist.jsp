@@ -28,7 +28,7 @@
 	rel="stylesheet" type="text/css">
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
-<title>재고 리스트</title>
+<title>재고 신청 목록</title>
 
 </head>
 
@@ -45,23 +45,12 @@
 				<div class="row">
 					<div class="span12">
 
-						<div class="widget widget-plain">
-							<div class="widget-content">
-								<a href="stockrequire"
-									class="btn btn-large btn-success btn-support-ask">재고 신청</a> 
-								<a href="stockrequirelist"
-									class="btn btn-large btn-success btn-support-ask">신청 목록</a>
-							</div>
-							<!-- /widget-content -->
-
-
-						</div>
-						<!-- /widget -->
+						
 
 						<div class="widget widget-table action-table">
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
-								<h3>재고 목록</h3>
+								<h3>신청 목록</h3>
 							</div>
 							<!-- /widget-header -->
 							<div class="widget-content">
@@ -71,22 +60,20 @@
 									<thead>
 										<tr>
 											<td>No</td>
-											<td>재고번호</td>
-											<td>재고이름</td>
-											<td>원가</td>
-											<td>잔여량</td>
-											<td>확인날짜</td>
+											<td>재고 이름</td>
+											<td>신청 수량</td>
+											<td>구입비</td>
+											<td>신청 날짜</td>											
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach var="stock" items="${ stocks }">
 
 											<tr style="height: 30px; text-align: center">
-												<td style="width: 50px">${ stock.stockNo }</td>
-												<td style="width: 80px">${ stock.stockCodeNo }</td>
+												<td style="width: 50px">${ stock.stockNo }</td>											
 												<td>${ stock.stockCode.stockName }</td>
-												<td>${ stock.stockCode.price }원</td>
-												<td>${ stock.stockNumber }${ stock.stockCode.standard }</td>
+												<td>${ stock.stockNumber }</td>
+												<td>${ stock.stockPrice }</td>
 												<td style="width: 170px">${ stock.stockRegDate }</td>
 											</tr>
 										</c:forEach>

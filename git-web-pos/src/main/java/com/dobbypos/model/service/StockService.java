@@ -13,4 +13,6 @@ public interface StockService {
 
 	public void setStockrequire(String stockName, int snumber);
 
+	List<Stock> getAllRequireStocks();
+
 }
