@@ -266,7 +266,9 @@ $(function() {
 		                data: formData,
 		                type: 'POST',
 		                success: function(result){
-		                    alert("업로드 성공!!");
+		                    alert("수정되었습니다.");
+		                    alert(result);
+		                    dialog.dialog("close");
 		                }
 		            });
 		         
@@ -420,6 +422,59 @@ $(function() {
 		});*/
 		
 		
+		$("h4[id^=text]").each(function(index, value) {
+			//var self = $(this);
+			
+			$(this).on("mouseenter", function(event) {
+				//var t = self.offset();
+				//alert(t.top);
+				//var top = (t.top + 20) + 'px';
+				//var left = (t.left + 10) + 'px'; 
+				$("#text"+index).html("클릭하시면<br />수정할 수<br />있습니다.");
+				//$("#text"+index).css({top: top, left: left});
+				/* var imgSrc = $("#img"+index).attr("src");
+				 $("#img"+index).hide(); 
+				$("#menus"+index).css({backgroundImage: "url("+imgSrc+")"});*/ 
+				$("#menus"+index).css({				
+	                'filter': 'blur(10px)',
+	                '-webkit-filter': 'blur(10px)',
+	                '-moz-filter': 'blur(10px)',
+	                '-o-filter': 'blur(10px)',
+	                '-ms-filter': 'blur(10px)'
+	            }); 
+							
+			});
+			
+			$(this).on("mouseout", function(event) {
+				
+				$("#text"+index).html("");
+				$("#menus"+index).css({				
+	                'filter': 'blur(0px)',
+	                '-webkit-filter': 'blur(0px)',
+	                '-moz-filter': 'blur(0px)',
+	                '-o-filter': 'blur(0px)',
+	                '-ms-filter': 'blur(0px)'
+	            }); 
+							
+			}); 
+			
+			$(this).on("click", function(event) {
+				
+				var data = $("#menus"+index).find("div").text().trim().split('/');			
+				//alert(data);
+				
+				$("#salemenuinfo").find("input").each(function(index, value) {
+					$(this).val(data[index]);
+				});
+				
+					//alert(index);  
+					dialog.dialog( "open" );
+			});
+		});	
+		
+		
+		
+		
 	/* 	function getTop(t) {
 			
 			var	topPos = 0;
@@ -445,6 +500,8 @@ $(function() {
 			
 	});
 	
+	
+	
 });	
 
 </script>
@@ -467,7 +524,7 @@ $(function() {
         	${ menu.foodCode }/${ menu.foodName }/${ menu.menuGroups }/${ menu.foodPrice }/${ menu.savedFileName }
         </div>        	
         </div>
-        <h4 id="text${ status.index }" style="position: absolute;font-weight: 900;font-size: 20pt"></h4>
+        <h4 id="text${ status.index }" style="position: absolute;font-weight: 900;font-size: 20pt;cursor: pointer;'"></h4>
         
         
         
