@@ -189,6 +189,13 @@
 
 	
 	
+	function pagechange(){
+		
+		opener.location.href="../pay/payform.action?totaltableno="+${totaltableno};
+		close();
+		
+	}
+	
 	
 	
 </script>
@@ -293,11 +300,10 @@
          </tr>
          
       </table>
-      
+  
       <input type="button" id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" >
-      <input type="button" id="paymentbutton" value="계산하기" style="width:100px; height:60px"> 
-      
-      
+      <button onclick="javascript:pagechange()" value="계산하기" style="width:80px; height:60px">계산하기</button>
+
 
    </div>
 

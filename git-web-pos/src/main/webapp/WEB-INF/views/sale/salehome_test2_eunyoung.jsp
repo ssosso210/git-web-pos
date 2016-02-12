@@ -45,14 +45,25 @@ $(function() {
 			   myWindow = window.open("/dobbywebpos/sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
 			   
 		   });
+<<<<<<< HEAD
 
 		   
+=======
+			/* function table_pos() { // 주문하기 팝업창
+				var totalno= $("#totalno"+index).val();
+				myWindow = window.open("../sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
+			}   */
+>>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos
 	   });
 	   
+<<<<<<< HEAD
 	  
    });
    
    
+=======
+});
+>>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos
    
 </script>
 <body>
