@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.service.PayService;
 import com.google.gson.Gson;
@@ -51,12 +53,49 @@ public class PayController {
 	}
 	
 	@RequestMapping(value="/finalpay.action", method=RequestMethod.GET)
-	public String FinalPay(HttpServletResponse resp,@RequestParam("totalno") int totaltableno){
-		System.out.println("totaltableno 들어옴"+totaltableno);
+	public String FinalPay(HttpSession session,HttpServletResponse resp,
+			@RequestParam("CustomerNo")int customerno,
+			@RequestParam("dscrate")int dscrate,
+			@RequestParam("paycard")String paycard,
+			@RequestParam("totalno") int totaltableno,
+			@RequestParam("pointleft")int pointleft){
+	
+		//1.orders 테이블에 정보 넣음 
+		Employee employee = (Employee)session.getAttribute("loginuser");
+        String storeCode = employee.getStoreCode();
 		
+		System.out.println("totaltableno 들어옴"+totaltableno);
+		System.out.println("storeCode 들어옴"+storeCode);
 		
 		Orders orders= new Orders();
 		orders.setTotalTableNo(totaltableno);
+		orders.setStoreCode(storeCode);
+		orders.setCustomerNo(customerno);
+		orders.setDiscountRate(dscrate);
+		orders.setPayType(paycard);
+		orders.setTotalTableNo(totaltableno);
+		orders.setOrderStatus("complete");
+		//payService.insertOrders(orders);만들어야함
+		
+	//2.회원 포인트, 등급 조정
+		String c_level;
+		if(pointleft<1000){
+			c_level="basic";
+		}else if(pointleft>1000&&pointleft<2000){
+			c_level="vip";
+		}else {
+			c_level="vvip";
+		}
+		
+		Customer customer=new Customer();
+		customer.setC_point(pointleft);
+		customer.setC_level(c_level);
+		
+		
+		
+	//3.최종결제금액 balance 테이블에 넣음 
+		
+		
 		
 		
 		return "redirect:/sale/salehome_test.action";
