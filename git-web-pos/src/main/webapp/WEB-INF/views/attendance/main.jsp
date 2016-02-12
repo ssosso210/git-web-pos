@@ -22,20 +22,22 @@
 <style>
 .opacity_bg_layer {display:none;position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.5; filter:alpha(opacity=50); z-index:10;}
 .layer_pop_center {position:fixed;background:yellowgreen;padding: 10px;z-index:11;}
+
+.shortcuts .shortcut_active {
+ 	width: 22.50%;
+    display: inline-block;
+    padding: 12px 0;
+    margin: 0 .9% 1em;
+    vertical-align: top;
+    text-decoration: none;
+    //background: #f9f6f1;
+    border-radius: 5px;
+	background: #00ba8b;
+}
+
 </style>
 <script type="text/javascript">
-function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork) 
-{	
-	$("#employeeName").val(emName);
-	$("#employeeNo").val(emNo);
-	$("#attendanceNo").val(attendNo);
-	$("#attend-employee-name").text("근태 버튼  : "+emName);
-	$("#attendStartWork").val(startWork);
-	$("#attendEndWork").val(endWork);
-	
-	
-	//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
-}
+
 /**
  * ----------------------------------------------------------------- towork, offwork  start
  */
@@ -107,6 +109,7 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  var _ly;
  var ly_bg;
  $(document).ready(function() {
+	 
  	  ly = 'layer_pop_center';
  	  _ly;
  	  ly_bg = $('.opacity_bg_layer');
@@ -119,7 +122,23 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  		  alert(successMsg);
  	  }
  	  
- 	 
+ 	  $("a[id^=link_employee]").on('click',function (event ) {	
+ 		var data =  $(this).attr('data').split('/');
+ 		
+ 		var emName = data[0], emNo = data[1], attendNo = data[2], startWork = data[3], endWork = data[4];
+ 		$("#employeeName").val(emName);
+ 		$("#employeeNo").val(emNo);
+ 		$("#attendanceNo").val(attendNo);
+ 		$("#attend-employee-name").text("근태 버튼  : "+emName);
+ 		$("#attendStartWork").val(startWork);
+ 		$("#attendEndWork").val(endWork);
+ 		$('a.shortcut_active').removeClass('shortcut_active').addClass('shortcut')
+ 		$(this).addClass("shortcut_active");
+ 		
+ 		event.preventDefault();
+ 		
+ 		//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
+ 	});
  	  
  });
 
@@ -247,7 +266,8 @@ function alertphone(employeename, employeephone){
             		</c:when>
             		<c:otherwise>
 			            <c:forEach var="employee" items="${ employees }">	
-			              <a href="javascript:employeeAttendSetting('${ employee.employeeName}',${ employee.employeeNo}, ${ employee.attendanceone.attendanceNo},'${ employee.attendanceone.startWork}', '${ employee.attendanceone.endWork}' );" id="employee${employee.employeeNo}" class="shortcut">
+			              <a href="#" data='${ employee.employeeName}/${ employee.employeeNo}/${ employee.attendanceone.attendanceNo}/${ employee.attendanceone.startWork}/${ employee.attendanceone.endWork}' 
+			              	 id="link_employee${employee.employeeNo}" class="shortcut">
 			              	<span class="shortcut-label" >${ employee.employeeName}
 			              	<c:choose>
 			              		<c:when test="${  employee.attendanceone.attendanceNo == 0}">

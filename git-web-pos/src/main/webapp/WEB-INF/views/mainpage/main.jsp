@@ -80,8 +80,10 @@
               		<span class="shortcut-label" >설정</span> 
               	</a>
               	<a href="javascript:;" class="shortcut" style="background: #7da51c; ">
-              		<i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label" >관리자 페이지</span> 
+              	<i class="shortcut-icon"></i>
+              		<span class="shortcut-label" ></span> 
+              		<!-- <i class="shortcut-icon icon-list-alt"></i>
+              		<span class="shortcut-label" >관리자 페이지</span>  -->
               	</a>
               </div>
               <!-- /shortcuts --> 

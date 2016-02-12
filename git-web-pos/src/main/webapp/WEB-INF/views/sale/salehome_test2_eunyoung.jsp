@@ -52,14 +52,14 @@ $(function() {
         <div class="span12">
           <div class="widget">
  		<div class="widget-content" style="border:0px;">
-              <div class="shortcuts"> 
+              <div class="shortcuts" style="width: 1200px;"> 
 		<c:forEach begin="0" varStatus="status" end="${recentno}" step="1" var="st" items="${st}">
 
 		
 		
 			<!-- <a href="#" class="shortcut" style="background: #7ddb9c; width:23%; "> -->
              	
-			<div id="choosetable${ status.index }" class="shortcut" style="background: #7ddb9c; width:23%;cursor: pointer; "> 
+			<div id="choosetable${ status.index }" class="shortcut" style="background: #7ddb9c; width:15%;cursor: pointer; "> 
 			 <span  >
 				 <span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
 				<span>테이블번호: ${st.getTableNo() }</span><br/>
