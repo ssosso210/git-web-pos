@@ -7,16 +7,25 @@
 <mapper namespace="com.dobbypos.model.mapper.SaleMapper"><!-- 클래스 또는 인터페이스 역할 -->
 
 
-   <resultMap type="com.dobbypos.model.dto.Menu" id="menuMap" />
+   <!-- <resultMap type="com.dobbypos.model.dto.Menu" id="menuMap" /> -->
 
-   <select id="allMenus" resultMap="menuMap">
+
+	 <resultMap type="Menu" id="menuMap">
+		<id property="foodCode" column="foodCode" />
+		<result property="foodName" column="foodName" />
+		<result property="regDate" column="regDate" />
+		<result property="hqCode" column="hqCode" />
+		<result property="foodPrice" column="foodPrice" />
+	</resultMap>
+	
+   <select id="allMenus" resultType="Menu">
       SELECT foodCode, foodName, foodPrice, regDate, hqCode from menu
     </select>
     
-    <select id="selectMenus" parameterType="String" resultType="menu">
+    <select id="selectMenus" parameterType="String" resultType="Menu">
       SELECT foodCode, foodName, foodPrice, regDate, hqCode from menu
-      WHERE foodname = #{ id }
-    </select>
+      WHERE foodName = #{ id }
+    </select> 
     
 
 </mapper>

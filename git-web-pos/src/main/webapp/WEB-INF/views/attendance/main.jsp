@@ -110,13 +110,11 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  	  ly = 'layer_pop_center';
  	  _ly;
  	  ly_bg = $('.opacity_bg_layer');
- 	 /* 
- 	 var returnMsgAlert = '<%= request.getAttribute("returnMsg") %>';
- 	  */
+
  	 var returnMsgAlert = '${returnMsg}';
  	 var successMsg = '${successMsg}';
  	  if(returnMsgAlert != ""){
- 		  alert(returnMsg);
+ 		  alert(returnMsgAlert);
  	  }else if(successMsg != ""){
  		  alert(successMsg);
  	  }
@@ -157,7 +155,7 @@ function employeeAttend(attendType){ //attendType --> 축근 : towork, 퇴근 : 
 	
 	if(!ly_bg.length) opacity_bg_layer(); // 불투명 배경 레이어 띄우기
     var str_html = "<h1>비밀번호 입력</h1>"; // 레이어 팝업 내용
-    str_html+= '<input type="text" class="layer_pop_center_txt"></input>';
+    str_html+= '<input type="password" class="layer_pop_center_txt"></input>';
     str_html+= '<br/><input type="submit" class="layer_pop_center_btn" value="OK"/>';
     str_html+= '<input type="submit" style="width: 50px;" class="layer_pop_center_btn_cancel" value="Cancel"/>';
     if(layer_pop_crt(ly, str_html)) {
@@ -209,6 +207,11 @@ if(oj.length) layer_pop_center(oj); // 레이어 팝업이 실행된 상태에�
 if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이어가 실행된 상태에서만 진행
 });
 
+
+function alertphone(employeename, employeephone){
+	alert(employeename+"씨 연락처는 "+employeephone+"입니다.");
+}
+
 /**
  * ----------------------------------------------------------------- towork, offwork start
  */
@@ -229,6 +232,8 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 					<a href="/dobbywebpos/attendance/employeelist.action" class="btn btn-large btn-success btn-support-ask">직원별 출근 목록</a>	
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
+		 </div>
+		 <div class="span8">
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
 	              <h3>근태 현황 [ ${todayStr} ]</h3>
@@ -274,6 +279,56 @@ if($('.opacity_bg_layer').length) opacity_bg_layer(); // 불투명 배경 레이
 		        <!-- /widget-content --> 
 	          </div>
 	          <!-- /widget -->
+	         
+	         </div>
+	         <!-- /span -->
+	         
+	         <div class="span4">
+	         <!-- /widget -->
+          <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>직원 목록  </h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                  	<th class="td-actions"> 직원 번호 </th>
+                    <th> 직원 이름 </th>
+
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                <c:choose>
+		           <c:when test="${ empty employees}">
+		           <tr>
+		           		<td colspan="2" style="text-align: center; height: 300px;"> data가 없습니다. </td>
+		           		
+		           </tr>
+		           </c:when>
+		           <c:otherwise>
+			           	<c:forEach var="employee" items="${ employees }">	
+		                  <tr>
+		                  	<td class="td-actions">${employee.employeeNo }</td>
+		                    <td>  
+		                    	<a href="javascript:alertphone('${employee.employeeName }', '${employee.phoneNo }');">${employee.employeeName }</a>
+		                    </td>
+		                  </tr>
+	                  </c:forEach>
+		           </c:otherwise>
+		        </c:choose>
+                </tbody>
+              </table>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+
+	          <!-- /widget -->
+	         </div>
+	         <!-- /span -->
+	         <div class="span12">
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
 	              <h3> <div id="attend-employee-name" > 근태 버튼 :</div></h3>

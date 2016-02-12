@@ -16,8 +16,8 @@
 	
 	
 	<insert id="insertMenu" parameterType="Menu">
-		INSERT INTO Menu (foodCode,foodName,regDate,hqCode , foodPrice)
-		VALUES (#{foodCode},#{foodName},#{regDate}, #{hqCode}, #{foodPrice})
+		INSERT INTO Menu (foodCode,foodName,foodPrice,regDate,hqCode)
+		VALUES (#{foodCode},#{foodName},#{foodPrice}, #{regDate}, #{hqCode})
 	</insert>
 	
 	<insert id="insertMenu2" parameterType="Menu">
@@ -30,5 +30,17 @@
 		FROM menu
 		WHERE hqCode = #{id}
 	</select>
+	
+	<update id="updateSaleMenuInfo" parameterType="Menu">
+		UPDATE menu SET foodName = #{foodName}, foodPrice = #{foodPrice}, regDate = current_timestamp(), 
+		hqCode = #{hqCode}, menuGroups = #{menuGroups}, savedFileName = #{savedFileName}, userFileName = #{userFileName} 
+		WHERE foodCode = #{foodCode}
+	</update>
+	
+	<update id="updateSaleMenuInfoWithoutFile" parameterType="Menu">
+		UPDATE menu SET foodName = #{foodName}, foodPrice = #{foodPrice}, regDate = current_timestamp(), 
+		hqCode = #{hqCode}, menuGroups = #{menuGroups}
+		WHERE foodCode = #{foodCode}
+	</update>
 	
 </mapper>

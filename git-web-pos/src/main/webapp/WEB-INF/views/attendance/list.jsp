@@ -138,7 +138,10 @@ $(function() {
 			           	<c:forEach var="attendance" items="${ attendances }">	
 		                  <tr>
 		                  	<td class="td-actions">${attendance.attendanceNo }</td>
-		                    <td> ${attendance.employeeone.employeeName }</td>
+		                    <td> 
+		                    	<c:url value="/management/view.action" var="viewUrl"> <c:param name="employeeNo" value="${attendance.employeeone.employeeNo }" /></c:url>
+		                    	<a href="${ viewUrl }">${attendance.employeeone.employeeName }</a>
+		                    </td>
 		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="yyyy-MM-dd"/></td>
 		                    <td> <fmt:formatDate value="${attendance.startWork }" pattern="HH:mm"/></td>
 		                   <c:choose>

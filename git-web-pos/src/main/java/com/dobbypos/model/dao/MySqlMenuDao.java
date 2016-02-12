@@ -40,5 +40,19 @@ public class MySqlMenuDao implements MenuDao {
 		return menus;
 	}
 
+	@Override
+	public void updateSaleMenuInfo(Menu menu) {
+
+		menuMapper.updateSaleMenuInfo(menu);
+		
+	}
+
+	@Override
+	public void updateSaleMenuInfoWithoutFile(Menu menu) {
+
+		menuMapper.updateSaleMenuInfoWithoutFile(menu);
+		
+	}
+
 
 }

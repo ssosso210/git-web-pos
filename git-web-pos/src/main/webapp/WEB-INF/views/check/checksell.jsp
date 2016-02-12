@@ -48,6 +48,15 @@
 	 	   dateFormat:"yy-mm-dd"
 	     });
 	 });
+	
+	
+	function viewsell(typeval) {
+		$('#typeval').val(typeval);
+		
+		frm = document.getElementById("edit-profile");
+		frm.submit(); 
+		
+	}
 </script>
 
 <body>
@@ -61,15 +70,26 @@
 				<div class="row">
 					<div class="span12">
 
-						<form>
+						<form id="edit-profile" 
+								action="/dobbywebpos/check/viewsellbyperiod.action" method="post">
 
 
 							<input type="hidden" id="typeval" name="typeval" value="all" />
 							<p>
 								시작일: <input type="text" id="startday" name="startday" value="${startday}"> 
-								종료일: <input type="text" d="endday" name="endday" value="${endday}"> 
+								종료일: <input type="text" id="endday" name="endday" value="${endday}"> 
 								<input class="btn" style="margin-bottom: 9px;" type="submit"value="보기" />
+								
+								<span style="float: right;"> 
+								<!-- <input class="btn btn-middle"type="button" value="[메뉴별]" />&nbsp;&nbsp;&nbsp; --> 
+								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a> -->
+								<a href="javascript:viewsell('menu');" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp;
+								<!-- <input class="btn btn-middle" type="button" value="[회원별]" />&nbsp;&nbsp;&nbsp; -->
+								<a href="viewsellbymember.action" class="btn btn-middle">회원별</a> 
+								<!-- <a href="javascript:viewsell('customer');" class="btn btn-middle">회원별</a>&nbsp;&nbsp;&nbsp; -->
+							</span>
 							</p>
+							
 
 						</form>
 					</div>
@@ -77,22 +97,8 @@
 					<div class="widget widget-table action-table">
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
-							<h3>판매 실적</h3>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- 앜ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ혹시 누가 본다면 이거 쫌 도와 주세요 -->
-							<input class="btn btn-middle" type="button" value="[메뉴별]" />
-							&nbsp;&nbsp;&nbsp;&nbsp; <input class="btn btn-middle"
-								type="button" value="[회원별]" />
-							<!-- <button>[ + ]</button>
-									<button>[ - ]</button> -->
+							<h3>메뉴별 판매 실적</h3>
+							
 						</div>
 						<!-- /widget-header -->
 						<div class="widget-content">
@@ -104,23 +110,25 @@
 										<td>No</td>
 										<td>메뉴</td>
 										<td>누적판매량</td>
+										<td>메뉴당 가격</td>
 										<td>누적매출</td>
-										<!-- <td>축적시간</td>
-        									<td>급여</td> -->
 									</tr>
 								</thead>
 
 
-								<c:forEach var="employee" items="${ employees }">
+								<c:forEach var="menu" items="${ menus }">
 									<tbody>
 										<tr style="height: 30px; text-align: center">
-											<td style="width: 50px"><c:url value="view.action"
+											<td style="width: 50px"><%-- <c:url value="view.action"
 													var="viewUrl">
-													<c:param name="employeeNo" value="${ employee.employeeNo }" />
-												</c:url> <a href="${ viewUrl }">${ employee.employeeNo }</a></td>
-											<td style="width: 100px">${ employee.employeeName }</td>
-											<td style="width: 50px">${ employee.wage }</td>
-											<td style="width: 50px">${ employee.employeeType }</td>
+													<c:param name="employeeNo" value="${ menu.employeeNo }" />
+												</c:url>  --%>
+												<%-- <a href="${ viewUrl }">${ employee.employeeNo }</a> --%>
+												${ menu.foodCode}</td>
+											<td style="width: 100px">${ menu.foodName }</td>
+											<td style="width: 100px">${ menu.totalcount }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }</td>
+											<td style="width: 50px">${ menu.totalprice }</td>
 											<%--<td>${ employee.pay } </td>--%>
 										</tr>
 								</c:forEach>
@@ -139,4 +147,3 @@
 </body>
 </html>
 
-</html>

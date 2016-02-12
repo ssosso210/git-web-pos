@@ -15,10 +15,6 @@ import com.dobbypos.model.mapper.CheckMapper;
 
 @Repository("checkDao")
 public class MysqlCheckDao implements CheckDao {
-//
-//	@Autowired
-//	@Qualifier("sqlSession")
-//	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Autowired
 	@Qualifier("checkMapper")
@@ -100,6 +96,17 @@ public class MysqlCheckDao implements CheckDao {
 		params.put("todayDate", todayDate);
 		params.put("storeCode", storeCode);
 		return checkMapper.selectMenuByDaySell(params);
+	}
+
+
+	@Override
+	public List<Menu> selectMenuByPeriodSell(String startday, String endday, String storeCode) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startday", startday);
+		params.put("endday", endday);
+		params.put("storeCode", storeCode);
+		
+		return checkMapper.selectMenuByPeriodSell(params);
 	}
 
 }

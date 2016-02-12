@@ -1,6 +1,12 @@
 package com.dobbypos.model.dao;
 
-public interface CustomerDao {
+import java.util.List;
 
+import com.dobbypos.model.dto.Customer;
+
+public interface CustomerDao {
+	void insertCustomer(Customer customer);
 	int countTotalCustomers();
+	
+	List<Customer> getCustomers(String storeCode);
 }
