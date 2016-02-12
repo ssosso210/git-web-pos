@@ -31,4 +31,20 @@
 		WHERE hqCode = #{id}
 	</select>
 	
+	<update id="updateSaleMenuInfo" parameterType="Menu">
+		UPDATE menu SET foodName = #{foodName}, foodPrice = #{foodPrice}, regDate = current_timestamp(), 
+		hqCode = #{hqCode}, menuGroups = #{menuGroups}, savedFileName = #{savedFileName}, userFileName = #{userFileName} 
+		WHERE foodCode = #{foodCode}
+	</update>
+	
+	<update id="updateSaleMenuInfoWithoutFile" parameterType="Menu">
+		UPDATE menu SET foodName = #{foodName}, foodPrice = #{foodPrice}, regDate = current_timestamp(), 
+		hqCode = #{hqCode}, menuGroups = #{menuGroups}
+		WHERE foodCode = #{foodCode}
+	</update>
+	
+	<delete id="deleteSaleMenuByFoodCode" parameterType="String">
+		DELETE FROM menu WHERE foodCode = #{id}
+	</delete>
+	
 </mapper>

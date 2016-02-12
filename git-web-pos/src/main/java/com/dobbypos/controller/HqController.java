@@ -4,21 +4,17 @@ package com.dobbypos.controller;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Customer2;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.dto.Store;
@@ -88,7 +85,7 @@ public class HqController {
 	@RequestMapping(value = "/customermanagement.action", method = RequestMethod.GET)
 	public String customerManagementHome(HttpServletRequest req, Model model) {
 		String path = req.getRequestURI();		
-		List<Customer> customers = hqService.getAllCustomer();
+		List<Customer2> customers = hqService.getAllCustomer();
 		model.addAttribute("customers", customers);
 		model.addAttribute("path", path);
 		return "hq/customermanagement";
@@ -323,7 +320,7 @@ public class HqController {
 			MultipartFile file = req.getFile(fileName);
 			
 			if (file != null && file.getSize() > 0) {
-				String savedName = Util.getUniqueFileName(path, file.getOriginalFilename());
+				String savedName = Util.getUniqueFileName(path1, file.getOriginalFilename());
 				//menu.setFoodName(menu.getFoodName());
 				menu.setSavedFileName(savedName);
 				menu.setUserFileName(file.getOriginalFilename());
@@ -351,5 +348,90 @@ public class HqController {
 		mav.addObject("path", path );
 		mav.setViewName("redirect:/hq/salemenumanagement.action");
 		return mav;
+	}
+	
+	@RequestMapping(value = "/salemenuedit.action", method = RequestMethod.POST)
+	@ResponseBody
+	public String saleMenuEdit(Menu menu, HttpServletResponse resp, MultipartHttpServletRequest req) {
+		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
+		menu.setHqCode(hq.getHqCode());
+		System.out.println(menu);
+		String path = req.getSession().getServletContext().getRealPath("/resources/uploadfiles");
+		System.out.println(path);
+		Iterator<String> iterator = req.getFileNames();
+		while(iterator.hasNext()) {
+			String fileName = iterator.next();
+			System.out.println(fileName);
+			MultipartFile file = req.getFile(fileName);
+			if (file != null && file.getSize() > 0) {
+				String savedName = Util.getUniqueFileName(path, file.getOriginalFilename());
+				menu.setSavedFileName(savedName);
+				menu.setUserFileName(file.getOriginalFilename());
+				menuService.editSaleMenuInfo(menu);
+				System.out.println(menu);
+				try {
+					FileOutputStream ostream = new FileOutputStream(path + "/" + savedName);
+					InputStream istream = file.getInputStream();
+					byte[] buffer = new byte[512];
+					while(true) {
+						int count = istream.read(buffer, 0, buffer.length);
+						if (count == -1) break;
+						ostream.write(buffer, 0, count);						
+					}
+					istream.close();
+					ostream.close();	
+				} catch (Exception ex){
+					ex.printStackTrace();
+				}
+			
+			
+			} else {
+				System.out.println(menu);
+				menuService.editSaleMenuInfoWithoutFile(menu);
+			}
+		}
+		
+		
+		//System.out.println(menu);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.out.println(menu);
+		if (menu.getSavedFileName() != null) {
+			
+		
+		try {
+			menu.setFoodName(URLEncoder.encode(menu.getFoodName(), "utf-8").replace("+", "%20"));
+			menu.setMenuGroups(URLEncoder.encode(menu.getMenuGroups(), "utf-8").replace("+", "%20"));
+			menu.setSavedFileName(URLEncoder.encode(menu.getSavedFileName(), "utf-8").replace("+", "%20"));
+			menu.setUserFileName(URLEncoder.encode(menu.getUserFileName(), "utf-8").replace("+", "%20"));
+						
+		} catch (UnsupportedEncodingException e) {
+			
+			e.printStackTrace();
+		}
+		} else {
+		
+			try {
+				menu.setFoodName(URLEncoder.encode(menu.getFoodName(), "utf-8").replace("+", "%20"));
+				menu.setMenuGroups(URLEncoder.encode(menu.getMenuGroups(), "utf-8").replace("+", "%20"));				
+							
+			} catch (UnsupportedEncodingException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		String result = gson.toJson(menu);		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/salemenudelete.acton", method = RequestMethod.GET)	
+	public String saleMenuDelete(@RequestParam("foodcode") String foodCode) {
+		System.out.println(foodCode);
+		menuService.deleteSaleMenuByFoodCode(foodCode);
+		
+		return "redirect:/hq/salemenumanagement.action";
 	}
 }

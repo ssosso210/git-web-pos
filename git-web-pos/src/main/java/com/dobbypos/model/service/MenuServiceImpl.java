@@ -35,6 +35,27 @@ public class MenuServiceImpl implements MenuService {
 		
 		return menuDao.selectMenuList(hqCode);
 	}
+
+	@Override
+	public void editSaleMenuInfo(Menu menu) {
+
+		menuDao.updateSaleMenuInfo(menu);
+		
+	}
+
+	@Override
+	public void editSaleMenuInfoWithoutFile(Menu menu) {
+
+		menuDao.updateSaleMenuInfoWithoutFile(menu);
+		
+	}
+
+	@Override
+	public void deleteSaleMenuByFoodCode(String foodCode) {
+		
+		menuDao.deleteSaleMenuByFoodCode(foodCode);
+		
+	}
 	
 	
 
