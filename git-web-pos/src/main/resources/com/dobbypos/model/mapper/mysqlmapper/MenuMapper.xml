@@ -43,4 +43,8 @@
 		WHERE foodCode = #{foodCode}
 	</update>
 	
+	<delete id="deleteSaleMenuByFoodCode" parameterType="String">
+		DELETE FROM menu WHERE foodCode = #{id}
+	</delete>
+	
 </mapper>
