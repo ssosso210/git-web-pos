@@ -105,9 +105,9 @@
 	<input class="btn2" id="paycard" type="radio"  value="현금결제">현금계산</input>
 	<div id="casecard" style="display:none">
    <br/>
-      카드번호  <input type="number" id="cardno" style="width: 190px" value=<%=((int)(Math.random()*10000000))%>><br/>
-      유효기간   <input type="number" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*13))%>>월&nbsp;
-      		 <input type="text" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*31))%>>일<br/>
+      카드번호  <input type="number" id="cardno" style="width: 190px" value=<%=((int)(Math.random()*10000000)+1)%>><br/>
+      유효기간   <input type="number" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*13)+1)%>>월&nbsp;
+      		 <input type="text" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*31)+1)%>>일<br/>
    </div>
      
    <br /><br/>
@@ -122,7 +122,7 @@
          포인트: <input type="text" id="c_point" style="width: 280px"><br />
          등급: <input type="text" id="c_level" style="width: 280px"><br />
          할인율: <input type="text" id="discount_rate" style="width: 280px">%<br />
-         잔여포인트: <input type="text" id="pointleft" style="width: 280px">%<br /> 
+         잔여포인트: <input type="text" id="pointleft" style="width: 280px"><br /> 
    </div>
   
    <br/><br/><br/>
