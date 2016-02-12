@@ -44,9 +44,9 @@ $(function() {
 				var totalno= $("#totalno"+index).val();
 				myWindow = window.open("../sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
 			}   */
-		   
 	   });
-   });
+	   
+});
    
 </script>
 <body>
