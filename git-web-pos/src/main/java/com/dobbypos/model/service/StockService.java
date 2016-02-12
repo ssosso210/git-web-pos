@@ -9,7 +9,8 @@ public interface StockService {
 
 	List<Stock> getAllStocks();
 
-	List<Stock> getStocksByStockCodeNo(int stockCodeNo);	
-	
+	List<Stock> getStocksByStockCodeNo(int stockCodeNo);
+
+	public void setStockrequire(String stockName, int snumber);
 
 }
