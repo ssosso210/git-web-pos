@@ -39,13 +39,10 @@ public class PayController {
 		Customer customer1=payService.getCustomerInfo(CustomerNo);
 		try {
 			customer1.setC_name((URLEncoder.encode(customer1.getC_name(), "utf-8").replace("+", "%20")));
-			   
 	      } catch (UnsupportedEncodingException e) {
-	         
 	         e.printStackTrace();
 	      }
 
-		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();//PrettyPrining()		
 		String customer= gson.toJson(customer1);				
 		resp.setContentType("application/json;charset=utf-8");	
