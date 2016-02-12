@@ -63,7 +63,7 @@
 	<mappers>
 	<!-- Code에서 분리된 SQL문이 작성되고 객체와의 매핑 장보가 정1의되는 파일들  -->
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/HqMapper.xml" />
-		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/EmployeeMapper.xml" />
+		
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/TableMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/CustomerMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/MenuMapper.xml" />
@@ -72,11 +72,13 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/CheckMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/StockMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/ClientMapper.xml" />
-		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/PayMapper.xml" />
 
 		
 		<!-- 윤수가추가 -->
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/SaleMapper.xml" />
+		
+		<!-- oracle -->
+		<mapper resource="com/dobbypos/model/mapper/oraclemapper/EmployeeMapper.xml" />
 
 	
 	</mappers>

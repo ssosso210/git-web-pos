@@ -26,9 +26,21 @@
 	</insert>
 	
 	<select id="selectMenuList" parameterType="String" resultType="Menu">
-		SELECT foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userfileName
+		SELECT foodCode, foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userfileName
 		FROM menu
 		WHERE hqCode = #{id}
 	</select>
+	
+	<update id="updateSaleMenuInfo" parameterType="Menu">
+		UPDATE menu SET foodName = #{foodName}, foodPrice = #{foodPrice}, regDate = current_timestamp(), 
+		hqCode = #{hqCode}, menuGroups = #{menuGroups}, savedFileName = #{savedFileName}, userFileName = #{userFileName} 
+		WHERE foodCode = #{foodCode}
+	</update>
+	
+	<update id="updateSaleMenuInfoWithoutFile" parameterType="Menu">
+		UPDATE menu SET foodName = #{foodName}, foodPrice = #{foodPrice}, regDate = current_timestamp(), 
+		hqCode = #{hqCode}, menuGroups = #{menuGroups}
+		WHERE foodCode = #{foodCode}
+	</update>
 	
 </mapper>

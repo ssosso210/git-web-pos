@@ -22,5 +22,7 @@ public interface CheckMapper {
 	List<Balance> getBalancebyPeriodAndMinus(HashMap<String, String> params);
 
 	List<Menu> selectMenuByDaySell(HashMap<String, String> params);
+	
+	List<Menu> selectMenuByPeriodSell(HashMap<String, String> params);
 
 }

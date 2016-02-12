@@ -234,6 +234,7 @@
 	        </c:otherwise>
         </c:choose>
             <td><input type="button" name="name" style="width:100px; height:30px"></td>
+
         </tr>
 		</c:forEach>
 
@@ -267,7 +268,6 @@
             <td><input type="button" value="확인" name="name" style="width:70px; height:30px"></td>
             <td><input type="button" value="취소" name="name" style="width:70px; height:30px"></td>
             <td><input type="button" value="계산" name="name" style="width:70px; height:30px"></td>
-
          </tr>
          
       </table>
