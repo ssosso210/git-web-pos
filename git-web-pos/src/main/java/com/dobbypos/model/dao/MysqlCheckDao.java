@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.dobbypos.model.dto.AttendanceSearch;
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
@@ -107,6 +108,34 @@ public class MysqlCheckDao implements CheckDao {
 		params.put("storeCode", storeCode);
 		
 		return checkMapper.selectMenuByPeriodSell(params);
+	}
+
+
+
+
+	@Override
+	public List<Menu> selectMenuByCustomer(int customerNo, String storeCode, String startday, String endday) {
+		
+
+		AttendanceSearch searchParam = new AttendanceSearch();
+		searchParam.setCustomerNo(customerNo);
+		searchParam.setStoreCode(storeCode);
+		searchParam.setStartDay(startday);
+		searchParam.setEndDay(endday);
+
+		List<Menu> menus = checkMapper.selectMenuByCustomer(searchParam); 
+		
+		
+		return menus;
+	}
+
+
+	@Override
+	public String selectFirstOrderDate(int customerNo) {
+		
+		String firstOrderDate = checkMapper.getFirstOrderDate(customerNo);
+		
+		return firstOrderDate;
 	}
 
 }

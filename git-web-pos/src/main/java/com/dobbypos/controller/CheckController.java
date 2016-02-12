@@ -1,5 +1,6 @@
 package com.dobbypos.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -155,11 +156,11 @@ public class CheckController {
 		
 		Balance balance2 = checkService.getBalanceByNo(balanceno);		
 		if (balance2 != null) {
-			/*balance.setBalanceNo(balance2.getBalanceNo());
+			balance.setBalanceNo(balance2.getBalanceNo());
 			balance.setRegDate(balance2.getRegDate());
 			balance.setItemCode(balance2.getItemCode());
 			balance.setPlusMinus(balance2.getPlusMinus());
-			balance.setDescription(balance2.getDescription());*/
+			balance.setDescription(balance2.getDescription());
 			return "check/salesview";
 		} else {
 			return "redirect:/check/checksales.action";
@@ -282,5 +283,47 @@ public class CheckController {
 	
 		return "check/viewsellbymember"; 
 	}
+	
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	
+	@RequestMapping(value = "viewsellbycustomerdetail.action", method = RequestMethod.GET)
+	public String viewsellbycustomerdetail(HttpSession session, HttpServletRequest req,
+		@RequestParam("customerNo") int customerNo) {
+		
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
+		
+		//String startday = (String)req.getParameter("startday");
+		//String endday = (String)req.getParameter("endday");
+		
+		String startday = checkService.getFirstOrderDate(customerNo);
+		String endday = (Util.getTodayDate());
+		
+		Calendar cal = Calendar.getInstance( );  // 현재 날짜/시간 등의 각종 정보 얻기
 
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH) ;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+
+
+
+		//String startday = String.format("%04d-%02d-%02d",year,month, day );  
+		
+		
+
+		List<Menu> menus = checkService.getMenuByCustomer(customerNo ,employeeSession.getStoreCode(), startday, endday);
+		
+		if (menus != null) {
+			req.setAttribute("menus", menus);
+			req.setAttribute("startday",startday);
+			req.setAttribute("endday",endday);
+		
+			return "check/viewsellbycustomerdetail";
+		} else {
+			return "redirect:/check/viewsellbymember.action";
+		}
+		
+	}
+		
 }

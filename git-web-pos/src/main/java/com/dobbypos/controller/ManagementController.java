@@ -113,4 +113,14 @@ public class ManagementController {
 		return "management/stockrequire";
 	}
 	
+	@RequestMapping(value="/stockrequireinsert")
+	public String stockrequireinsert(Model model, HttpServletRequest req){
+		String stockName = req.getParameter("stockName");
+		int snumber = Integer.parseInt(req.getParameter("snumber"));
+
+		stockService.setStockrequire(stockName, snumber);
+		
+		return "redirect:/management/stocklist";				
+	}
+	
 }
