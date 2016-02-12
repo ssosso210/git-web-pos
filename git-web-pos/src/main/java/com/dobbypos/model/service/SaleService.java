@@ -10,5 +10,6 @@ public interface SaleService {
 
 	List<Menu> getSelectMenus(String foodName);
 	
-
+	void tableInsertMenu(Menu menu);
+	
 }

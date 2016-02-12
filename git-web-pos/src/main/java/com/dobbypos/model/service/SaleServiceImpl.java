@@ -41,5 +41,12 @@ public class SaleServiceImpl implements SaleService {
 		return saleDao.getSelectMenu(foodName);
 	}
 
+	@Override
+	public void tableInsertMenu(Menu menu) {
+		
+		saleDao.tableInsertMenu(menu);
+		
+	}
+
 	
 }
