@@ -59,10 +59,12 @@
    }
    function payresult(){
        //사용할 포인트가 내가 가진 포인트보다 많으면 안됨
-      if(document.getElementById("pointuse").value > document.getElementById("c_point").value){
-          alert("내가 가진포인트보다 많음 ");
-          document.getElementById("pointuse").value=0;
-      }else{
+       if(document.getElementById("pointuse").value > document.getElementById("c_point").value){
+          alert("포인트사용"+document.getElementById("pointuse").value);
+          alert("있는포인트"+document.getElementById("c_point").value);
+    	  alert("내가 가진포인트보다 많음 ");
+          document.getElementById("pointuse").value=null;
+      }else {
        document.getElementById("actualpay").value=
        document.getElementById("foodtotalcost").value-document.getElementById("leveldiscount").value
        -document.getElementById("pointuse").value
@@ -115,7 +117,7 @@
       - 등급별 할인금액 <input type="number" id="leveldiscount" style="width: 280px"></input><br />
       - 포인트사용  <input type="number" id="pointuse" style="width: 280px" ></input>
       <button onclick="javascript:payresult()">적용</button>
-      <br /> <!-- 디비에서 포인트 차감  해야됨, 등급도 조정해야됨 -->
+      <br /> <!-- 디비에서 포인트 차감  해야됨, 등급도 조정해야됨 /최종결제때만 하면되나?-->
       = 결제금액  <input type="number" id="actualpay" style="width: 280px"><br />
          <button id="finalpay">최종결제</button>  <!-- 최종결제시  디비에 들어갈때  회원 포인트, 등급 또 조정 -->
    </div>
