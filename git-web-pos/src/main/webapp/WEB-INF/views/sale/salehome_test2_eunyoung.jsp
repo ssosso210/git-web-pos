@@ -63,14 +63,11 @@ $(function() {
 		
 			<!-- <a href="#" class="shortcut" style="background: #7ddb9c; width:23%; "> -->
              	
-<<<<<<< HEAD
+
 			<div id="choosetable${ status.index }" class="shortcut" style="background: #7ddb9c; width:15%;cursor: pointer; "> 
 			 <span  >
 				 <span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
-=======
-			<div id="choosetable${st.getTotalTableNo() }" class="shortcut" style="background: #7ddb9c; width:23%;cursor: pointer; "> 
-				<span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos.git
+
 				<span>테이블번호: ${st.getTableNo() }</span><br/>
 				<span>매장코드: ${st.getStoreCode() }</span><br/>
 				<span id='order-detail'></span>
