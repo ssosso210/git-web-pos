@@ -48,7 +48,9 @@ $(function() {
 </script>
 <body>
 	
-		<br /> 은영<br />
+	<c:import url="/WEB-INF/views/include/posheader.jsp" />
+	
+		
 <div class="main">
   <div class="main-inner">
     <div class="container">
