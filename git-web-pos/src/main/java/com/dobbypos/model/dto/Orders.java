@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 
-public class Order implements Serializable {
+public class Orders implements Serializable {
 	
 	private int orderNo;
 	private Timestamp orderDate;
 	private String payType;
 	private int discountRate;
 	private String orderStatus;
-	private int tableNo;
+	private int totalTableNo;
 	private String storeCode;
 	private int customerNo;
 	
@@ -45,11 +45,12 @@ public class Order implements Serializable {
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	public int getTableNo() {
-		return tableNo;
+	
+	public int getTotalTableNo() {
+		return totalTableNo;
 	}
-	public void setTableNo(int tableNo) {
-		this.tableNo = tableNo;
+	public void setTotalTableNo(int totalTableNo) {
+		this.totalTableNo = totalTableNo;
 	}
 	public String getStoreCode() {
 		return storeCode;
