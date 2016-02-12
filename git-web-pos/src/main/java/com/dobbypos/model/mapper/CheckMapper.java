@@ -3,6 +3,7 @@ package com.dobbypos.model.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import com.dobbypos.model.dto.AttendanceSearch;
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Menu;
 
@@ -24,5 +25,12 @@ public interface CheckMapper {
 	List<Menu> selectMenuByDaySell(HashMap<String, String> params);
 	
 	List<Menu> selectMenuByPeriodSell(HashMap<String, String> params);
+
+
+	List<Menu> selectMenuByCustomer(AttendanceSearch searchParam);
+
+	String getFirstOrderDate(int customerNo);
+
+	
 
 }
