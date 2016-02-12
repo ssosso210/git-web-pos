@@ -25,7 +25,10 @@
 <script type="text/javascript">
 
 function setOrder(tableNo, order) {
-	$('#choosetable' + tableNo).find('#order-detail').text(order[0].price);
+	//$('#choosetable' + tableNo).find('order-detail').html(order[0].price);
+	var d = $('#choosetable' + tableNo).find('span[id=order-detail]');
+	d.text(order[0].price);
+	alert(order[0].price);
 }
   
 $(function() {
@@ -48,7 +51,9 @@ $(function() {
 </script>
 <body>
 	
-		<br /> 은영<br />
+	<c:import url="/WEB-INF/views/include/posheadertitle.jsp" />
+	
+		
 <div class="main">
   <div class="main-inner">
     <div class="container">
@@ -65,9 +70,7 @@ $(function() {
              	
 
 			<div id="choosetable${ status.index }" class="shortcut" style="background: #7ddb9c; width:15%;cursor: pointer; "> 
-			 <span  >
-				 <span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
-
+				<span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
 				<span>테이블번호: ${st.getTableNo() }</span><br/>
 				<span>매장코드: ${st.getStoreCode() }</span><br/>
 				<span id='order-detail'></span>
