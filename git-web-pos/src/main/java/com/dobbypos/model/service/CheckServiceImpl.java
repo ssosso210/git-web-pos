@@ -69,6 +69,20 @@ public class CheckServiceImpl implements CheckService {
 		// TODO Auto-generated method stub
 		return checkDao.selectMenuByPeriodSell(startday, endday, storeCode);
 	}
+
+	
+
+	@Override
+	public List<Menu> getMenuByCustomer(int customerNo, String storeCode, String startday, String endday) {
+		// TODO Auto-generated method stub
+		return checkDao.selectMenuByCustomer(customerNo, storeCode, startday, endday);
+	}
+
+	@Override
+	public String getFirstOrderDate(int customerNo) {
+		// TODO Auto-generated method stub
+		return checkDao.selectFirstOrderDate(customerNo);
+	}
 	
 //	public List<Balance> getBalances() {
 //		System.out.println("getBalances");
