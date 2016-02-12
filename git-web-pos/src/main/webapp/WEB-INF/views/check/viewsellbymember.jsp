@@ -120,7 +120,6 @@
 											<td style="width: 100px">
 												<c:url value="/check/viewsellbycustomerdetail.action" var="viewUrl"> 
 													<c:param name="customerNo" value="${customer.customerNo }" />
-													<c:param name="cust" value="${customer.customerNo }" />
 												</c:url>
 		                    				<a href="${ viewUrl }">${ customer.c_name }</a></td>
 											<td style="width: 100px">${ customer.c_phoneNo }</td>
@@ -136,7 +135,7 @@
 						</div>
 						<!-- /span -->
 					</div>
-					<!-- /row -->
+					<!-- /widget -->
 				</div>
 				<!-- /container -->
 			</div>
