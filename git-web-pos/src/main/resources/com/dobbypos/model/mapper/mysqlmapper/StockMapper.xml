@@ -39,6 +39,12 @@
 		where st.stockCodeNo = stcd.stockCodeNo
 	</select>
 	
+	<insert id="setStockrequire">
+		INSERT INTO BALANCE (PLUSMINUS,REGDATE,STORECODE,DESCRIPTION,ITEMCODE)
+		select  -(sc.price * #{snumber}) , SYSDATE(), 'outback001' , '재고구입', 'j001' FROM STOCKCODE SC
+		where  sc.stockname = #{stockName}
+	</insert>
+	
 	<!-- <select id="selectStocks" resultMap="stockMap"> select st.stockNo as 
 		stockNo, st.stockCodeNo as stockCodeNo, stcd.stockName as stockName, stcd.price 
 		as price, st.s_number as s_number, stcd.standard as standard, st.s_regDate 

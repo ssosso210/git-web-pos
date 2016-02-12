@@ -23,4 +23,9 @@ public class MySqlStockDao implements StockDao {
 
 	}
 
+	@Override
+	public void setStockrequire(String stockName, int snumber) {
+		stockMapper.setStockrequire(stockName, snumber);
+	}
+
 }
