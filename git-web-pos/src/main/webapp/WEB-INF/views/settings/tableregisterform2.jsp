@@ -15,7 +15,7 @@
 
 //var rt=$("#recentableNo").val();	
 //var sc= $("#storecode1").val();	
-$(function(){
+$(function(){;
 	$("#plusbutton").on("click", function(event){
 		var rt= $("#recentableNo").val();	
 		var sc= $("#storeCode1").val();	

@@ -36,18 +36,19 @@
 			
 			var self = $(this);
 			
-			$(this).on("click", function(event) {
+			/* $(this).on("click", function(event) {
 				
 				var param = self.val();
-					/* alert(param); */
+					alert(param);
 				
 				 $.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
 					url : "/dobbywebpos/sale/select",
 					type : "GET",
 					async : true,
 					data : { foodname : param },
-					success : function(data, status, xhr) {
-						/* alert(data); */
+					 success : function(data, status, xhr) {
+					
+						alert(data);
 						$("#result").html(data);
 						eval("var menus="+data);
 						for(var i = 0; i <menus.length; i++) {
@@ -65,14 +66,27 @@
 					error : function(xhr, status, error) {
 						alert(error);
 					}
-				});		 						
-			});
+				});		 					
+			});*/
 		})
 		
 		
 		
 		
 	});
+	
+	function clickbutton(foodCodeval, foodnameval, foodpriceval){
+		var tr = $("<tr></tr>");
+		var td1 = $("<td></td>").html(foodCodeval);
+		var td2 = $("<td></td>").html(foodnameval);
+		var td3 = $("<td></td>").html('1');
+		var td4 = $("<td></td>").html(foodpriceval);
+		tr.append([td1,td2,td3,td4]);
+		$("#orderMenuList").append(tr);
+		
+	}
+	
+	
 	
 	
 </script>
@@ -123,23 +137,7 @@
       <table style="float:right; margin: 10px 10px 0px 0px "  cellspacing='5' cellpadding='1'>
          
          
-         
-          <%-- <%for (int i = 0; i < 10; i++) {%>
-         <tr>
-            <td><input type="button" value="" name="name" style="width:80px; height:30px"></td>
-            <td><input type="button" name="name" style="width:80px; height:30px"></td>
-         </tr>
-         <%}%> --%> 
 
-		<%-- <c:forEach var="menus" items="${ menus }">
-			
-		<tr>
-            <td><input type="button" value="${ menus.foodName }" name="name" style="width:80px; height:30px"></td>
-            <td><input type="button" name="name" style="width:80px; height:30px"></td>
-         </tr>
-		</c:forEach> --%> 
-		
-		
 
 
 		<c:forEach begin="0" end="9" step="1" varStatus="stat">
@@ -148,14 +146,14 @@
 		<c:choose>
 			<c:when test="${ stat.index < fn:length(menus) }">
 	            <td class="chooseMenu${stat.index}">
-	            	<input type="button" id="menu${stat.index}"  value="${ menus[stat.index].foodName }" name="name" style="width:80px; height:30px">
+	            	<input type="button" onclick="javascript:clickbutton('${ menus[stat.index].foodCode }','${ menus[stat.index].foodName }','${ menus[stat.index].foodPrice }' );" id="menu${stat.index}"  value="${ menus[stat.index].foodName }" name="name" style="width:80px; height:30px">
 	            </td>
 	        </c:when> 
 	        <c:otherwise>
 	        	<td class="chooseMenu${stat.index}"><input type="button" value="" name="name" style="width:80px; height:30px"></td>
 	        </c:otherwise>
         </c:choose>
-            <td><input type="button" name="name" style="width:80px; height:30px"></td>
+            <td><input type="button" name="name" style="width:120px; height:60px"></td>
         </tr>
 		</c:forEach>
 
@@ -170,25 +168,25 @@
             <td><input type="button" value="1" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="2" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="3" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="지움" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="현금" name="name" style="width:60px; height:30px"></td>
          </tr>
          <tr>
             <td><input type="button" value="4" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="5" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="6" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="내나" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="카드" name="name" style="width:60px; height:30px"></td>
          </tr>
          <tr>
             <td><input type="button" value="7" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="8" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="9" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="돈돈" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="" name="name" style="width:60px; height:30px"></td>
          </tr>
          <tr>
             <td><input type="button" value="0" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="확인" name="name" style="width:60px; height:30px"></td>
             <td><input type="button" value="취소" name="name" style="width:60px; height:30px"></td>
-            <td><input type="button" value="계산" name="name" style="width:60px; height:30px"></td>
+            <td><input type="button" value="" name="name" style="width:60px; height:30px"></td>
 
          </tr>
          

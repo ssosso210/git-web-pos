@@ -16,4 +16,13 @@
          values
          (#{c_name},#{c_phoneNo},#{c_age},#{c_point}, #{c_level}, #{c_gender},#{storeCode})
     </insert> 
+    
+    
+    <select id="getCustomers" resultType="Customer">
+		SELECT customerNo, c_name, c_phoneNo, c_gender, c_age, c_point, c_level
+		FROM customer
+		WHERE storeCode = #{id}
+	</select>
+    
+    
 </mapper>
