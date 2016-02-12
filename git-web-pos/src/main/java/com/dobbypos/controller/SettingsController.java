@@ -63,7 +63,7 @@ public class SettingsController {
 	@RequestMapping(value = "/settinghome.action", method = RequestMethod.GET)
 	public String SettingMenu(Model model, String storeCode1) {
 		model.addAttribute("storeCode1", storeCode1);
-		return "settings/settinghome"; 
+		return "settings/settinghome";
 	}
 	
 	

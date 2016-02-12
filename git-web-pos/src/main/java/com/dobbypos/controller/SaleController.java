@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
@@ -106,62 +107,42 @@ public class SaleController {
 	}
 	
 	
+	// 팝업창에서 메뉴선택
 	/////////////////////////////////////
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	@ResponseBody
 	public String SelectMenu(HttpSession session, HttpServletResponse resp  ,HttpServletRequest req, Model model , @RequestParam("foodname") String foodName) {
-		
-//		;
-//		int foodCode = 1;
-//		List<Menu> menus = saleService.getSelectMenus(foodCode);
-//	    model.addAttribute("menus", menus);
-//		
+			
 		System.out.println(" [ 선택한 메뉴가져왔어 ]  ");
 		System.out.println(foodName);
 		
-		//String foodCode = "1";
+		
 		List<Menu> menus = saleService.getSelectMenus(foodName);
-		
-		
-		
+				
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		/*for (Menu menu : menus) {
-			System.out.println();
-		}*/
 		System.out.println(menus);
 		
 	    model.addAttribute("menus", menus);
-	
-		
-	    
-	    
-	    
-	    
-	   /* for (int i = 0; i < menus.size(); i++) {
-			try {
-//				menus.set(i, URLEncoder.encode(menus.get(i), "utf-8"));
-				menus.get(i).setFoodName( URLEncoder.encode(menus.get(i).getFoodName(), "utf-8"));
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		}*/
-	    
-	    
-	   /* HashMap<String, String> map = new HashMap<>();
 
-
-		map.put("menus", "한글");*/
-	    
 	    
 	    System.out.println(menus);
 	    String result = gson.toJson(menus);      
-	      System.out.println(result);
+	    System.out.println(result);
 	    resp.setContentType("application/json;charset=utf-8");
 	    
 	    return result;
 	}
 	
+	// 주문하기버튼 눌렀을때 데이터 넘겨주는거
+	@RequestMapping(value = "/tableinsertmenu.action", method = RequestMethod.POST)
+	public String Table_InsertMenu(Menu menu) {
 	
+		System.out.println("여기까지오니??");
+		
+		saleService.tableInsertMenu(menu);
+		System.out.println("insert menu 성공  ");
+		return "redirect:/sale/salehome_test2_eunyoung.action";
+	}
 	
 	
 	
