@@ -24,6 +24,10 @@ public interface CheckDao {
 	List<Menu> selectMenuByDaySell(String todayDate, String storeCode);
 
 	List<Menu> selectMenuByPeriodSell(String startday, String endday, String storeCode);
+
+	List<Menu> selectMenuByCustomer(int customerNo, String storeCode, String startday, String endday);
+
+	String selectFirstOrderDate(int customerNo);
 	
 
 //	void insert(Member member);
