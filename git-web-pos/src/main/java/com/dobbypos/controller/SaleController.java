@@ -92,7 +92,8 @@ public class SaleController {
 		
 		
 	@RequestMapping(value = "/orderhome_test", method = RequestMethod.GET)
-	public String OrderHome(HttpSession session, HttpServletRequest req, Model model) {
+	public String OrderHome(HttpSession session, HttpServletRequest req, Model model,
+			@RequestParam("totalno")int totaltableno) {
 		
 		List<Menu> menus = saleService.getAllMenus();
 	    model.addAttribute("menus", menus);
@@ -101,7 +102,7 @@ public class SaleController {
 //			
 		//int foodCode = (req.getParameter("foodCode"))
 
-
+		model.addAttribute("totaltableno", totaltableno);
 		return "sale/orderhome_test"; 
 	}
 	

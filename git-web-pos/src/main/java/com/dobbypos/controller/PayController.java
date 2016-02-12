@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Orders;
+import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.PayService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,6 +30,10 @@ public class PayController {
 	@Autowired
 	@Qualifier("payService")
 	private PayService payService;
+	
+	@Autowired
+	@Qualifier("customerService")
+	private CustomerService customerService;
 	
 	
 	@RequestMapping(value="/payform.action", method=RequestMethod.GET)
@@ -90,7 +95,7 @@ public class PayController {
 		Customer customer=new Customer();
 		customer.setC_point(pointleft);
 		customer.setC_level(c_level);
-		
+		//customerService.updateCustomer(customer);
 		
 		
 	//3.최종결제금액 balance 테이블에 넣음 

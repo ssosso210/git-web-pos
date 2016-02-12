@@ -39,15 +39,6 @@ $(function() {
 			}   */
 	   });
 	   
-	   //***추가(박은영)
-	   var tNo = $("#totalno").text();
-	   $("div[id^=choosetable]").each(function(index,value) {
-		   var myWindow;
-		   $(this).on("click", function() {
-			   var totalno = $("#totalno"+index).text().split(':')[1].trim();
-			   $(location).attr('href',"../pay/finalpay.action?totalno="+totalno);
-		   });
-	   });
 });
    
 </script>

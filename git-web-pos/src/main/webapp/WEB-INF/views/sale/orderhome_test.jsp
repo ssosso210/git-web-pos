@@ -87,6 +87,13 @@
 	}
 	
 	
+	function pagechange(){
+		
+		opener.location.href="../pay/payform.action?totaltableno="+${totaltableno};
+		close();
+		
+	}
+	
 	
 	
 </script>
@@ -192,9 +199,10 @@
          
       </table>
       
-      
+    ${totaltableno}
       <input type="button" value="주문하기" style="margin: 10px 5px 10px 25px; width:80px; height:60px" onclick="closeWin()">
-      <button onclick="/dobbywebpos/pay/payform.action" type="button" value="계산하기" style="width:80px; height:60px">계산하기</button>
+     <%--  <button href="payform.action?totaltableno="+${totaltableno} type="button" value="계산하기" style="width:80px; height:60px">계산하기</button> --%>
+      <button onclick="javascript:pagechange()" value="계산하기" style="width:80px; height:60px">계산하기</button>
       
       
 
