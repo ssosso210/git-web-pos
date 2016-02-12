@@ -89,9 +89,7 @@
 				var td3 = $("#price"+foodCodeval);
 				var price = parseInt(td3.text().trim())/count;
 				td3.text((count-1)*parseInt(price));	
-			}
-			
-			
+			}		
 		}
 		
 		
@@ -99,8 +97,7 @@
 			var data = $(this).attr('data').split('/');
 			var foodCodeval= data[0];
 			var foodnameval= data[1];
-			var foodpriceval= data[2];
-			
+			var foodpriceval= data[2];			
 			
 			var td = $("#code"+foodCodeval);
 			if(td.length > 0){
@@ -150,7 +147,32 @@
 				});
 			}
 			//1. db에 데이터저장(신규 또는 수정) - jQuery + ajax
-			
+			$.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
+					url : "/dobbywebpos/sale/select",
+					type : "GET",
+					async : true,
+					data : { foodname : param },
+					success : function(data, status, xhr) {
+					
+						alert(data); 
+						$("#result").html(data);
+						eval("var menus="+data);
+						for(var i = 0; i <menus.length; i++) {
+							var menu = menus[i];
+							var tr = $("<tr></tr>");
+							var td1 = $("<td></td>").html(menu.foodCode);
+							var td2 = $("<td></td>").html(menu.foodName);
+							var td3 = $("<td></td>").html('1');
+							var td4 = $("<td></td>").html(menu.foodPrice);
+							tr.append([td1,td2,td3,td4]);
+							$("#orderMenuList").append(tr);
+						}
+						
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});		 			
 			//2. 데이터를 부모화면에 전달
 			opener.window.setOrder('${ param.totalno }', order);
 			

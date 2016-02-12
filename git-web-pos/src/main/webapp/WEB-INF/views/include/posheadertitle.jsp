@@ -24,15 +24,7 @@
 							</li>
             			</c:when>
             			<c:otherwise>
-	            			<!-- 
-	            			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-	                            class="icon-cog"></i> Account <b class="caret"></b></a>
-				            <ul class="dropdown-menu">
-				              <li><a href="javascript:;">Settings</a></li>
-				              <li><a href="javascript:;">Help</a></li>
-				            </ul>
-				          </li> 
-				          -->
+	            			
 				          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				          	<i class="icon-user"></i> ${ loginuser.employeeName } <b class="caret"></b></a>
 				            <ul class="dropdown-menu">
