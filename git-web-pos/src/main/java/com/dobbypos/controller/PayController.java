@@ -47,6 +47,15 @@ public class PayController {
 		String customer= gson.toJson(customer1);				
 		resp.setContentType("application/json;charset=utf-8");	
 		return customer;
-	
 	}
+	
+	@RequestMapping(value="/finalpay.action", method=RequestMethod.GET)
+	public String FinalPay(){
+		
+		return "redirect:/sale/salehome_test.action";
+	}
+	
+
+
 }
+

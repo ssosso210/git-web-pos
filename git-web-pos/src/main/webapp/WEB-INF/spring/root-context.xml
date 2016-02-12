@@ -20,7 +20,8 @@
 	
 	
 	<!-- DataSource (Connection Pool) Bean Configuration -->
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbyposMysql" />
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbyposMysql" /> 
+	<!-- <jee:jndi-lookup id="dataSource" jndi-name="jdbc/dobbyposOracle" /> -->
 		
 	
 	<!--  JDBC Template Bean Configuration -->
@@ -31,7 +32,8 @@
 	<!-- new SqlSessionFactoryBean().getObject()을 호출해서 SqlSessionFactory 객체 만들기 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" /> 
+		<!-- <property name="configLocation" value="classpath:mybatis-oracle-config.xml" /> -->
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />

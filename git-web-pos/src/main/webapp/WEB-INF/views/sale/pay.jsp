@@ -59,9 +59,10 @@
    }
    function payresult(){
        //사용할 포인트가 내가 가진 포인트보다 많으면 안됨
-       if(document.getElementById("pointuse").value > document.getElementById("c_point").value){
-          alert("포인트사용"+document.getElementById("pointuse").value);
-          alert("있는포인트"+document.getElementById("c_point").value);
+       var pointuse1= +document.getElementById("pointuse").value;//숫자로 바꿈
+       var c_point1=+document.getElementById("c_point").value;
+       
+      if(pointuse1> c_point1){
     	  alert("내가 가진포인트보다 많음 ");
           document.getElementById("pointuse").value=null;
       }else {
@@ -70,15 +71,27 @@
        -document.getElementById("pointuse").value
       }
    }
-  
+   
+   $(document).ready(function(){
+	    $("#paycard").click(function(){
+	        $("#casecard").show();
+	    });
+	    $("#paycash").click(function(){
+	        $("#casecard").hide();
+	    });
+	});
   
 </script>
 <body>
-
-   [카드일경우]<br/>
-      카드번호  <input type="number" id="cardno" style="width: 280px" value="((int)( Math.random()*10))+1 "><br/>
-      유효기간   <input type="number" id="validmonth" style="width: 140px">월<input type="text" id="validmonth" style="width: 140px">일<br/>
-      할부개월  <input type="number" id="halbumonth" style="width: 140px">개월<br/>
+계산 화면 <br/><br/>
+	<input class="btn1" id="paycard" type="radio" name="c_gender" value="male" >카드계산</input>
+	<input class="btn2" id="paycash" type="radio" name="c_gender" value="female">현금계산</input>
+	<div id="casecard" style="display:none">
+   <br/>
+      카드번호  <input type="number" id="cardno" style="width: 190px" value=<%=((int)(Math.random()*10000000))%>><br/>
+      유효기간   <input type="number" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*13))%>>월&nbsp;
+      		 <input type="text" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*31))%>>일<br/>
+   </div>
      
    <br /><br/>
    <div>
@@ -119,7 +132,8 @@
       <button onclick="javascript:payresult()">적용</button>
       <br /> <!-- 디비에서 포인트 차감  해야됨, 등급도 조정해야됨 /최종결제때만 하면되나?-->
       = 결제금액  <input type="number" id="actualpay" style="width: 280px"><br />
-         <button id="finalpay">최종결제</button>  <!-- 최종결제시  디비에 들어갈때  회원 포인트, 등급 또 조정 -->
+      <br />
+      <a id="finalpay" href="finalpay.action" class="button">최종결제</a>  <!-- 최종결제시  디비에 들어갈때  회원 포인트, 등급 또 조정 -->
    </div>
 
 

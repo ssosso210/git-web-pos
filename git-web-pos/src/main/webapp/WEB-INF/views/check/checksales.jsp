@@ -100,7 +100,7 @@
 									<span style="float: right;">
 										<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('all');" value="[ all ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
 										<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('plus');" value="[ + ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
-										<input id="viewminus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('minus');" value="[ - ]" />
+										<input id="viewminus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('minus');" value="[ - ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
 									</span>
 								
 							</div>

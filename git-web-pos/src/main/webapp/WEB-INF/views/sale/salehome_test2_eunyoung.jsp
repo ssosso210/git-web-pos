@@ -37,9 +37,18 @@ $(function() {
 				var totalno= $("#totalno"+index).val();
 				myWindow = window.open("../sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
 			}   */
-		   
 	   });
-   });
+	   
+	   //***추가(박은영)
+	   $("div[id^=choosetable]").each(function(index,value) {
+		   var myWindow;
+		   $(this).on("click", function() {
+			   //var totalno= $("#totalno"+index).val();
+			   var totalno = $("#totalno"+index).text().split(':')[1].trim();
+			   myWindow = window.open("finalpay.action?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
+		   });
+	   });
+});
    
 </script>
 <body>

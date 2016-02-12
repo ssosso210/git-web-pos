@@ -12,4 +12,8 @@ public interface MenuService {
 	void insertMenu2(Menu menu);
 
 	List<Menu> getAllMenus(String hqCode);
+
+	void editSaleMenuInfo(Menu menu);
+
+	void editSaleMenuInfoWithoutFile(Menu menu);
 }

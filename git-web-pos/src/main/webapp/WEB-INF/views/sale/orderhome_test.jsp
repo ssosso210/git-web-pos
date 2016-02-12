@@ -153,7 +153,7 @@
 	        	<td class="chooseMenu${stat.index}"><input type="button" value="" name="name" style="width:80px; height:30px"></td>
 	        </c:otherwise>
         </c:choose>
-            <td><input type="button" name="name" style="width:80px; height:30px"></td>
+            <td><input type="button" name="name" style="width:120px; height:60px"></td>
         </tr>
 		</c:forEach>
 
