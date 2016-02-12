@@ -93,13 +93,17 @@ public class CheckController {
 		
 		String startday = (String)req.getParameter("startday");
 		String endday = (String)req.getParameter("endday");
-		String typeval = (String)req.getParameter("typeval");
+//		String typeval = (String)req.getParameter("typeval");
+		
+		System.out.println("startday : "+ startday+", endday : "+endday);
+		
 		
 		List<Menu> menus = null;
 		
-		if (typeval.equals("menu") ||typeval.equals("all")){
+		//if (typeval.equals("menu") ||typeval.equals("all")){
 			menus = checkService.getMenuByPeriodSell(startday, endday, employeeSession.getStoreCode());
-		}	
+		//}	
+			
 		
 //		else if(typeval.equals("plus") ){
 //
@@ -313,6 +317,7 @@ public class CheckController {
 		
 
 		List<Menu> menus = checkService.getMenuByCustomer(customerNo ,employeeSession.getStoreCode(), startday, endday);
+		
 		
 		if (menus != null) {
 			req.setAttribute("menus", menus);
