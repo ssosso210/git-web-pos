@@ -28,7 +28,7 @@
 	rel="stylesheet" type="text/css">
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
-<title>직원정보</title>
+<title>재고 신청</title>
 </head>
 
 <script type="text/javascript">
@@ -54,10 +54,10 @@
 							<!-- /widget-header -->
 							<div class="widget-content">
 								<div class="tabbable">
-									<ul class="nav nav-tabs">
+									<!-- <ul class="nav nav-tabs">
 										<li class="active"><a href="#employee" data-toggle="tab">정보
 												입력 </a></li>
-									</ul>
+									</ul> -->
 									<br>
 									<div class="tab-content">
 										<div class="tab-pane active" id="stock">
@@ -89,7 +89,7 @@
 
 
 													<div class="form-actions">
-														<button type="submit" class="btn btn-success">신청</button>
+														<button type="submit" class="btn btn-primary">신청</button>
 													</div>
 												</form>
 											</fieldset>

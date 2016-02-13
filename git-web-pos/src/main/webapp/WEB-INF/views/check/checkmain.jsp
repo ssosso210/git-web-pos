@@ -39,7 +39,10 @@
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
 								<h3>금일 매출-지출 내역 [ ${todayStr} ] </h3>
-									
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계금액 : ${sum}원</h3>
+								</span>
 								
 							</div>
 							<!-- /widget-header -->
@@ -49,11 +52,11 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<td>목차</td>
-						        			<td>시간</td>
-											<td>구분</td>
-											<td>금액</td>
-											<td>세부사항</td>
+											<th>목차</th>
+						        			<th>시간</th>
+											<th>구분</th>
+											<th>금액</th>
+											<th>세부사항</th>
 											<!-- <td>축적시간</td>
         										<td>급여</td> -->
 										</tr>
@@ -71,7 +74,7 @@
 												</td>
 												<td style="width: 70px"><fmt:formatDate value="${ balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												<td style="width: 25px">${ balance.itemCode }</td>
-												<td style="width: 50px">${ balance.plusMinus }</td>
+												<td style="width: 50px">${ balance.plusMinus }원</td>
 												<td style="width: 50px">${ balance.description }</td>
 												<%--<td>${ employee.pay } </td>--%>
 											</tr>
@@ -86,6 +89,10 @@
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
 							<h3>금일 판매 실적 [ ${todayStr} ]</h3>
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계매출 : ${total}원</h3>
+								</span>
 						</div>
 						
 						<!-- /widget-header -->
@@ -94,11 +101,11 @@
 							<table class="table table-striped table-bordered" border="1" align="center" width="600px">
 								<thead>
 									<tr>
-										<td>No</td>
-										<td>메뉴</td>
-										<td>누적판매량</td>
-										<td>메뉴당 가격</td>
-										<td>누적매출</td>
+										<th>No</th>
+										<th>메뉴</th>
+										<th>누적판매량</th>
+										<th>메뉴당 가격</th>
+										<th>누적매출</th>
 									</tr>
 								</thead>
 
@@ -114,8 +121,8 @@
 												${ menu.foodCode}</td>
 											<td style="width: 100px">${ menu.foodName }</td>
 											<td style="width: 100px">${ menu.totalcount }</td>
-											<td style="width: 50px">${ menu.orderDetailPrice }</td>
-											<td style="width: 50px">${ menu.totalprice }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }원</td>
+											<td style="width: 50px">${ menu.totalprice }원</td>
 											<%--<td>${ employee.pay } </td>--%>
 										</tr>
 								</c:forEach>
