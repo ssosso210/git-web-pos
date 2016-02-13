@@ -47,14 +47,12 @@
 
 						<div class="widget widget-plain">
 							<div class="widget-content">
-								<a href="stockrequire"
-									class="btn btn-large btn-success btn-support-ask">재고 신청</a> 
-								<a href="stockrequirelist"
-									class="btn btn-large btn-success btn-support-ask">신청 목록</a>
+								<a href="salarylist"
+									class="btn btn-large btn-success btn-support-ask">직원 관리</a> <a
+									href="stocklist"
+									class="btn btn-large btn-success btn-support-ask">재고 관리</a>
 							</div>
 							<!-- /widget-content -->
-
-
 						</div>
 						<!-- /widget -->
 
@@ -70,12 +68,12 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<td>No</td>
-											<td>재고번호</td>
-											<td>재고이름</td>
-											<td>원가</td>
-											<td>잔여량</td>
-											<td>확인날짜</td>
+											<th>No</th>
+											<th>재고번호</th>
+											<th>재고이름</th>
+											<th>원가</th>
+											<th>잔여량</th>
+											<th>확인날짜</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -96,10 +94,20 @@
 							<!-- /span -->
 						</div>
 						<!-- /row -->
+
+
 					</div>
 					<!-- /container -->
 				</div>
 				<!-- /main-inner -->
+
+				<div class="widget-content" style="text-align:center">
+					<a href="stockrequire"
+						class="btn btn-large btn-primary btn-support-ask">재고 신청</a>
+					<a href="stockrequirelist"
+						class="btn btn-large btn-primary btn-support-ask">신청 목록</a>
+				</div>
+				<!-- /widget-content -->
 			</div>
 </body>
 </html>

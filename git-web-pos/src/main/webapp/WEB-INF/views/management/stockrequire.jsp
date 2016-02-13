@@ -89,7 +89,7 @@
 
 
 													<div class="form-actions">
-														<button type="submit" class="btn btn-success">신청</button>
+														<button type="submit" class="btn btn-primary">신청</button>
 													</div>
 												</form>
 											</fieldset>

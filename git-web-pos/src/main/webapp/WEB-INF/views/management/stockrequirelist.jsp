@@ -44,6 +44,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
+					
+					<div class="widget widget-plain">
+				<div class="widget-content">
+					<a href="salarylist"
+						class="btn btn-large btn-success btn-support-ask">직원 관리</a>
+					<a href="stocklist"
+						class="btn btn-large btn-success btn-support-ask">재고 관리</a>
+				</div> <!-- /widget-content -->
+			</div> <!-- /widget -->
 
 						
 
@@ -59,11 +68,11 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<td>No</td>
-											<td>재고 이름</td>
-											<td>신청 수량</td>
-											<td>구입비</td>
-											<td>신청 날짜</td>											
+											<th>No</th>
+											<th>재고 이름</th>
+											<th>신청 수량</th>
+											<th>구입비</th>
+											<th>신청 날짜</th>											
 										</tr>
 									</thead>
 									<tbody>
