@@ -84,6 +84,7 @@
 
         .big { width : 210px; height : 500px; }
         .normal { width : 210px; height : 210px; }
+        .middle { width : 120px; height : 120px;}
         .small { width : 100px; height : 100px; }
         
        div[id^=big] {
@@ -119,6 +120,15 @@
 			margin-top: -36px;
 		}
  */
+ 
+ 
+ 		/*   ------------------------------------ 글자 테두리        */	
+ 		.text_border {
+				text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;
+				-moz-text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;
+				-webkit-text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;
+			}
+ 
         </style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -333,7 +343,7 @@ function deleteMenu() {
 	
 	//////////////////////////////////////////////////////////
 	var currentIndex = -1;
-	$("div[id^=menus]").each(function(index, value) {
+	/* $("div[id^=menus]").each(function(index, value) {
 		var self = $(this);		
 
 		$(this).on("mouseenter", function(event) {
@@ -343,9 +353,7 @@ function deleteMenu() {
 			var left = (t.left + 10) + 'px'; 
 			$("#text"+index).html("클릭하시면<br />수정할 수<br />있습니다.");
 			$("#text"+index).css({top: top, left: left});
-			/* var imgSrc = $("#img"+index).attr("src");
-			 $("#img"+index).hide(); 
-			$("#menus"+index).css({backgroundImage: "url("+imgSrc+")"});*/ 
+
 			$("#menus"+index).css({				
                 'filter': 'blur(10px)',
                 '-webkit-filter': 'blur(10px)',
@@ -383,7 +391,7 @@ function deleteMenu() {
 			currentIndex = index;
 			dialog.dialog( "open" );
 		});	
-	});
+	}); */
 	
 	$("h4[id^=text]").each(function(index, value) {
 		//var self = $(this);
@@ -438,18 +446,20 @@ function deleteMenu() {
       </head>
       <body class="skin-black">
 
-      <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
+    
       
 		<!--  <div id="pageContainer">	 -->	
 		
 		<div class="right-side" style="padding-top:25px;text-align:center;">
-			<div style="font-size: 20pt; font-weight: bold;text-align: left;" >&nbsp;판매중인 메뉴</div>
+			<div style="font-size: 20pt; font-weight: bold;text-align: left;" >&nbsp;메뉴</div>
 	<div class="masonry_container" style="">
 	<c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">		
 					
     
     	
-        <div id="menus${ status.index }" class="item normal" style="display: inline-block;background-image: url('/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }');cursor: pointer;">
+        <div id="menus${ status.index }" class="item middle" style="display: inline-block;background-image: url('/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }');cursor: pointer;">
+        <div class='text_border'> ${ menu.foodName }</div>
+        <div class='text_border'>${ menu.foodPrice }</div>
         <div id="textdata${ status.index }" style="width: 0px;overflow: hidden;">
         	${ menu.foodCode }/${ menu.foodName }/${ menu.menuGroups }/${ menu.foodPrice }/${ menu.savedFileName }
         </div>        	
