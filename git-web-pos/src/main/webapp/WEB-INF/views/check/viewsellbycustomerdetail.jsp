@@ -180,8 +180,8 @@
 												${ menu.foodCode}</td> --%>
 											<td style="width: 100px">${ menu.foodName }</td>
 											<td style="width: 100px">${ menu.totalcount }</td>
-											<td style="width: 50px">${ menu.orderDetailPrice }</td>
-											<td style="width: 50px">${ menu.totalprice }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }원</td>
+											<td style="width: 50px">${ menu.totalprice }원</td>
 											<%--<td>${ employee.pay } </td>--%>
 										</tr>
 								</c:forEach>

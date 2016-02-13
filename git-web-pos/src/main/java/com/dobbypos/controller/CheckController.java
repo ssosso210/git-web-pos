@@ -60,12 +60,20 @@ public class CheckController {
 			sum += balances.get(i).getPlusMinus();
 		}
 		
+		
+		int total = 0;
+		for(int i=0;i<menus.size();i++){
+			total += menus.get(i).getTotalprice();
+		}
+		System.out.println(total);
+		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
 		model.addAttribute("todayStr", Util.getTodayDate());
-		model.addAttribute("sum",sum);
+		model.addAttribute("sum", sum);
+		model.addAttribute("total", total);
 		
 		return "check/checkmain"; 
 	}
@@ -83,10 +91,16 @@ public class CheckController {
 		for (Menu menu : menus) {
 			System.out.println(menu.toString());
 		}
+		
+		int total = 0;
+		for(int i=0;i<menus.size();i++){
+			total += menus.get(i).getTotalprice();
+		}
 
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
+		model.addAttribute("total",total);
 
 		return "check/checksell"; 
 		
@@ -106,9 +120,15 @@ public class CheckController {
 	
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
 		
+		int total = 0;
+		for(int i=0;i<menus.size();i++){
+			total += menus.get(i).getTotalprice();
+		}
+		
 		req.setAttribute("menus", menus);
 		req.setAttribute("startday",startday);
 		req.setAttribute("endday",endday);
+		req.setAttribute("total",total);
 		
 		System.out.println(menus);
 

@@ -74,7 +74,7 @@
 												</td>
 												<td style="width: 70px"><fmt:formatDate value="${ balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												<td style="width: 25px">${ balance.itemCode }</td>
-												<td style="width: 50px">${ balance.plusMinus }</td>
+												<td style="width: 50px">${ balance.plusMinus }원</td>
 												<td style="width: 50px">${ balance.description }</td>
 												<%--<td>${ employee.pay } </td>--%>
 											</tr>
@@ -89,6 +89,10 @@
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
 							<h3>금일 판매 실적 [ ${todayStr} ]</h3>
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계매출 : ${total}원</h3>
+								</span>
 						</div>
 						
 						<!-- /widget-header -->
@@ -117,8 +121,8 @@
 												${ menu.foodCode}</td>
 											<td style="width: 100px">${ menu.foodName }</td>
 											<td style="width: 100px">${ menu.totalcount }</td>
-											<td style="width: 50px">${ menu.orderDetailPrice }</td>
-											<td style="width: 50px">${ menu.totalprice }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }원</td>
+											<td style="width: 50px">${ menu.totalprice }원</td>
 											<%--<td>${ employee.pay } </td>--%>
 										</tr>
 								</c:forEach>
