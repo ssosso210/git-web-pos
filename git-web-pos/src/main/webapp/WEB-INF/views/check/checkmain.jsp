@@ -49,11 +49,11 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<td>목차</td>
-						        			<td>시간</td>
-											<td>구분</td>
-											<td>금액</td>
-											<td>세부사항</td>
+											<th>목차</th>
+						        			<th>시간</th>
+											<th>구분</th>
+											<th>금액</th>
+											<th>세부사항</th>
 											<!-- <td>축적시간</td>
         										<td>급여</td> -->
 										</tr>
@@ -94,11 +94,11 @@
 							<table class="table table-striped table-bordered" border="1" align="center" width="600px">
 								<thead>
 									<tr>
-										<td>No</td>
-										<td>메뉴</td>
-										<td>누적판매량</td>
-										<td>메뉴당 가격</td>
-										<td>누적매출</td>
+										<th>No</th>
+										<th>메뉴</th>
+										<th>누적판매량</th>
+										<th>메뉴당 가격</th>
+										<th>누적매출</th>
 									</tr>
 								</thead>
 

@@ -234,9 +234,32 @@ function alertphone(employeename, employeephone){
 /**
  * ----------------------------------------------------------------- towork, offwork start
  */
+ 
+ 
+ 
+ function startTime() {
+	    var today = new Date();
+	    
+	    var h = today.getHours();
+	    var m = today.getMinutes();
+	    var s = today.getSeconds();
+	   
+	    m = checkTime(m);
+	    s = checkTime(s);
+	    document.getElementById('realtime').innerHTML =
+	    +h + ":" + m + ":" + s;
+	    var t = setTimeout(startTime, 500);
+	}
+	function checkTime(i) {
+	    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+	    return i;
+	}
+	
+/* real time  */
+ 
 </script>
 </head>
-<body>
+<body onload="startTime()">
 
 <div id="wrap">
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
@@ -249,13 +272,16 @@ function alertphone(employeename, employeephone){
 				<div class="widget-content">
 					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">날짜별 출근 목록</a>	
 					<a href="/dobbywebpos/attendance/employeelist.action" class="btn btn-large btn-success btn-support-ask">직원별 출근 목록</a>	
+					
+					
+					
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
 		 </div>
 		 <div class="span8">
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
-	              <h3>근태 현황 [ ${todayStr} ]</h3>
+	              <h3>근태 현황 [ ${todayStr} <span id="realtime"></span>]   </h3>
 	            </div>
 	             <!-- /widget-header -->
 			      <div class="widget-content">
