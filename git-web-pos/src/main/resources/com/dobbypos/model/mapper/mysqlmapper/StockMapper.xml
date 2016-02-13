@@ -36,7 +36,7 @@
 		st.stockNo, st.stockCodeNo, stcd.stockName,
 		stcd.price, st.s_number, stcd.standard ,st.s_regDate
 		from stock st join stockcode stcd
-		where st.stockCodeNo = stcd.stockCodeNo
+		where st.stockCodeNo = stcd.stockCodeNo and s_type = 'remain'
 	</select>
 	
 	<insert id="setStockrequire">
@@ -44,6 +44,13 @@
 		select  -(sc.price * #{snumber}) , SYSDATE(), 'outback001' , '재고구입', 'j001' FROM STOCKCODE SC
 		where  sc.stockname = #{stockName}
 	</insert>
+	
+	<select id="selectRequireStocks" resultMap="stockMap">
+		select
+		st.stockNo, stcd.stockName,st.s_number, st.s_price, st.s_regDate
+		from stock st join stockcode stcd
+		where s_type= 'require'	
+	</select>
 	
 	<!-- <select id="selectStocks" resultMap="stockMap"> select st.stockNo as 
 		stockNo, st.stockCodeNo as stockCodeNo, stcd.stockName as stockName, stcd.price 

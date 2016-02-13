@@ -22,10 +22,20 @@ public class MySqlStockDao implements StockDao {
 		return stocks;
 
 	}
+	
+	
 
 	@Override
 	public void setStockrequire(String stockName, int snumber) {
 		stockMapper.setStockrequire(stockName, snumber);
+	}
+
+
+
+	@Override
+	public List<Stock> getList2() {
+		List<Stock> stocks = stockMapper.selectRequireStocks();
+		return stocks;
 	}
 
 }

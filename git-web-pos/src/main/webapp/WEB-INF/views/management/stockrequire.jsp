@@ -28,7 +28,7 @@
 	rel="stylesheet" type="text/css">
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
-<title>직원정보</title>
+<title>재고 신청</title>
 </head>
 
 <script type="text/javascript">
@@ -89,7 +89,7 @@
 
 
 													<div class="form-actions">
-														<button type="submit" class="btn btn-success">신청</button>
+														<button type="submit" class="btn btn-primary">신청</button>
 													</div>
 												</form>
 											</fieldset>
