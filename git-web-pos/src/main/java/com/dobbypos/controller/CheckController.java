@@ -87,7 +87,7 @@ public class CheckController {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	@RequestMapping(value = "viewsellbyperiod.action", method = RequestMethod.POST)
+	@RequestMapping(value = "viewsellbyperiod.action", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewsellbyperiod(HttpSession session, HttpServletRequest req) {
 		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		

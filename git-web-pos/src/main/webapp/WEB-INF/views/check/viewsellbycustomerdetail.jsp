@@ -75,8 +75,8 @@
 								
 								<span style="float: right;"> 
 								<!-- <input class="btn btn-middle"type="button" value="[메뉴별]" />&nbsp;&nbsp;&nbsp; --> 
-								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a> -->
-								<a href="javascript:viewsell('menu');" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp;
+								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a> --> 
+								<a href="javascript:viewsell('menu');" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp; 
 								<!-- <input class="btn btn-middle" type="button" value="[회원별]" />&nbsp;&nbsp;&nbsp; -->
 								<a href="viewsellbymember.action" class="btn btn-middle">회원별</a> 
 								<!-- <a href="javascript:viewsell('customer');" class="btn btn-middle">회원별</a>&nbsp;&nbsp;&nbsp; -->
