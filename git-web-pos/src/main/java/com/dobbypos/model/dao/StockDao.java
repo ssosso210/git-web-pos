@@ -12,4 +12,6 @@ public interface StockDao {
 
 	List<Stock> getList2();
 
+	List<Stock> selectStocksByStockType(String stockType);
+
 }	
