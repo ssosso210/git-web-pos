@@ -54,10 +54,10 @@
 							<!-- /widget-header -->
 							<div class="widget-content">
 								<div class="tabbable">
-									<ul class="nav nav-tabs">
+									<!-- <ul class="nav nav-tabs">
 										<li class="active"><a href="#employee" data-toggle="tab">정보
 												입력 </a></li>
-									</ul>
+									</ul> -->
 									<br>
 									<div class="tab-content">
 										<div class="tab-pane active" id="stock">

@@ -38,4 +38,12 @@ public class MySqlStockDao implements StockDao {
 		return stocks;
 	}
 
+
+
+	@Override
+	public List<Stock> selectStocksByStockType(String stockType) {
+		// TODO Auto-generated method stub
+		return stockMapper.selectStocksByStockType(stockType);
+	}
+
 }

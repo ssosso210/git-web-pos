@@ -130,7 +130,7 @@ public class ManagementController {
 	@RequestMapping(value="/stockrequirelist",method = RequestMethod.GET)
 	public String stockrequirelist(Model model){
 		
-		List<Stock> stocks = stockService.getAllRequireStocks();
+		List<Stock> stocks = stockService.getStocksByStockType("require");
 		System.out.println(stocks);
 		model.addAttribute("stocks", stocks);		
 		

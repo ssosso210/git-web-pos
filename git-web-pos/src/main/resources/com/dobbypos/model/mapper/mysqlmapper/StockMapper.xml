@@ -45,11 +45,11 @@
 		where  sc.stockname = #{stockName}
 	</insert>
 	
-	<select id="selectRequireStocks" resultMap="stockMap">
+	<select id="selectStocksByStockType" parameterType="String" resultMap="stockMap">
 		select
 		st.stockNo, stcd.stockName,st.s_number, st.s_price, st.s_regDate
-		from stock st join stockcode stcd
-		where s_type= 'require'	
+		from stock st join stockcode stcd on st.stockcodeNo = stcd.stockcodeNo
+		where s_type= #{stockType}
 	</select>
 	
 	<!-- <select id="selectStocks" resultMap="stockMap"> select st.stockNo as 
