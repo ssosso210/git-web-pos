@@ -18,4 +18,6 @@ public interface StoreMapper {
 
 	void deleteStoreByStoreCode(String storeCode);
 
+	Store selectStoreByStoreCode(String storeCode);
+
 }

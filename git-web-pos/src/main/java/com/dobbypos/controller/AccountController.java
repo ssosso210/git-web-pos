@@ -1,5 +1,7 @@
 package com.dobbypos.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Hq;
+import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.service.EmployeeService;
 import com.dobbypos.model.service.HqService;
+import com.dobbypos.model.service.MenuService;
+import com.dobbypos.model.service.StoreService;
 
 @Controller
 @RequestMapping("/account")
@@ -29,6 +35,13 @@ public class AccountController {
 	@Qualifier("hqService")
 	private HqService hqService;
 	
+	@Autowired
+	@Qualifier("menuService")
+	private MenuService menuService;
+	
+	@Autowired
+	@Qualifier("storeService")
+	private StoreService storeService;
 	
 	
 
@@ -149,6 +162,26 @@ public class AccountController {
 		
 		return "redirect:/account/hqlogin.action";
 	}
+	
+	
+	
+	@RequestMapping(value ="/menulist.action", method = RequestMethod.GET)
+	public String saleMenuManagement(HttpServletRequest req,  Model model) {
+		String path = req.getRequestURI();
+				
+		Employee employeeSession = (Employee)req.getSession().getAttribute("loginuser");
+		Store store = storeService.getStoreByStoreCode(employeeSession.getStoreCode());
+		List<Menu> menus = menuService.getAllMenus(store.getHqCode());
+		model.addAttribute("path", path);
+		System.out.println(path);
+		model.addAttribute("menus", menus);
+		return "account/menulist";
+	}
+	
+	
+	
+	
+	
 	
 }
 

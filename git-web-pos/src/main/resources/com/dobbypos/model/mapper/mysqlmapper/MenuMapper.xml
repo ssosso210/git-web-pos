@@ -46,5 +46,6 @@
 	<delete id="deleteSaleMenuByFoodCode" parameterType="String">
 		DELETE FROM menu WHERE foodCode = #{id}
 	</delete>
+
 	
 </mapper>

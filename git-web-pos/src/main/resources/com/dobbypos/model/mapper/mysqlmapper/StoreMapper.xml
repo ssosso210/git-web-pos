@@ -37,6 +37,12 @@
 	<delete id="deleteStoreByStoreCode" parameterType="String">
 		DELETE FROM store WHERE storeCode = #{id}
 	</delete>
+	
+	<select id="selectStoreByStoreCode" parameterType="String" resultType="Store">
+		select storecode, address, storename, managername, email, phoneno, hqcode
+		from store
+		where storecode = #{id}
+	</select>
 		
 </mapper>
 
