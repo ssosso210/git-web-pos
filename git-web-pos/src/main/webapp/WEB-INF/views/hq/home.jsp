@@ -111,10 +111,26 @@
 </script>
 <script type="text/javascript">
     $(function() {
+    	var d = new Date();
+    	var month = d.getMonth() + 1;
+    	var nextMonth = null;
+    	var lastMonth = null;
+    	if (month == 12) {
+    		nextMonth = 1;
+    	} else {
+    		nextMonth = month + 1;
+    	}
+    	
+    	
+    	var currentMonth = month + "월";
+    	var currentNextMonth = nextMonth + "월"
+        //alert(currentMonth);
                 "use strict";
                 //BAR CHART
+                
+                
                 var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: ["1월", "2월", "3월", "4월", "5월", currentMonth, currentNextMonth, "8월", "9월", "10월", "11월", "12월"],
                     datasets: [
                         {
                             label: "My First dataset",
@@ -124,7 +140,7 @@
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40]
+                            data: [11165, 11159, 11180, 11181, 11156, 11155, 11140]
                         },
                         {
                             label: "My Second dataset",
@@ -134,7 +150,7 @@
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [28, 48, 40, 19, 86, 27, 90]
+                            data: [11128, 11148, 11140, 11119, 11186, 11127, 11190]
                         }
                     ]
                 };
