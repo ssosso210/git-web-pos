@@ -28,7 +28,7 @@
 	<select id="selectMenuList" parameterType="String" resultType="Menu">
 		SELECT foodCode, foodName, foodPrice, regDate, hqCode, menuGroups, savedFileName, userfileName
 		FROM menu
-		WHERE hqCode = #{id}
+		WHERE hqCode = #{id} and isDeleted = 0
 	</select>
 	
 	<update id="updateSaleMenuInfo" parameterType="Menu">
@@ -43,8 +43,9 @@
 		WHERE foodCode = #{foodCode}
 	</update>
 	
-	<delete id="deleteSaleMenuByFoodCode" parameterType="String">
-		DELETE FROM menu WHERE foodCode = #{id}
-	</delete>
+	<update id="deleteSaleMenuByFoodCode" parameterType="String">
+		UPDATE menu SET isDeleted = 1
+		WHERE foodCode = #{id}
+	</update>
 	
 </mapper>

@@ -443,7 +443,7 @@ function deleteMenu() {
 		<!--  <div id="pageContainer">	 -->	
 		
 		<div class="right-side" style="padding-top:25px;text-align:center;">
-			
+			<div style="font-size: 20pt; font-weight: bold;text-align: left;" >&nbsp;판매중인 메뉴</div>
 	<div class="masonry_container" style="">
 	<c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">		
 					
