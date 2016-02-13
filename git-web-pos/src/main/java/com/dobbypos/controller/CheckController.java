@@ -1,5 +1,6 @@
 package com.dobbypos.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,11 +55,25 @@ public class CheckController {
 			System.out.println(menu.toString());
 		}
 		
+		int sum = 0;
+		for(int i=0;i<balances.size();i++){
+			sum += balances.get(i).getPlusMinus();
+		}
+		
+		
+		int total = 0;
+		for(int i=0;i<menus.size();i++){
+			total += menus.get(i).getTotalprice();
+		}
+		System.out.println(total);
+		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
 		model.addAttribute("todayStr", Util.getTodayDate());
+		model.addAttribute("sum", sum);
+		model.addAttribute("total", total);
 		
 		return "check/checkmain"; 
 	}
@@ -76,57 +91,47 @@ public class CheckController {
 		for (Menu menu : menus) {
 			System.out.println(menu.toString());
 		}
+		
+		int total = 0;
+		for(int i=0;i<menus.size();i++){
+			total += menus.get(i).getTotalprice();
+		}
 
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
+		model.addAttribute("total",total);
 
 		return "check/checksell"; 
 		
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	@RequestMapping(value = "viewsellbyperiod.action", method = RequestMethod.POST)
+	@RequestMapping(value = "viewsellbyperiod.action", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewsellbyperiod(HttpSession session, HttpServletRequest req) {
 		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		
 		String startday = (String)req.getParameter("startday");
 		String endday = (String)req.getParameter("endday");
-		String typeval = (String)req.getParameter("typeval");
+
+		System.out.println("startday : "+ startday+", endday : "+endday);
 		
-		List<Menu> menus = null;
-		
-		if (typeval.equals("menu") ||typeval.equals("all")){
-			menus = checkService.getMenuByPeriodSell(startday, endday, employeeSession.getStoreCode());
-		}	
-		
-//		else if(typeval.equals("plus") ){
-//
-//		}
-//		
-//		List<Balance> balances = null;
-//		if (typeval.equals("all") ){
-//			balances = checkService.getBalancesbyPeriod(startday, endday);
-//		}else if(typeval.equals("plus") ){
-//			balances = checkService.getBalancesbyPeriodAndPlus(startday, endday);
-//		}else if(typeval.equals("minus") ){
-//			balances = checkService.getBalancesbyPeriodAndMinus(startday, endday);
-//		}
+		List<Menu> menus = checkService.getMenuByPeriodSell(startday, endday, employeeSession.getStoreCode());
 	
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
 		
+		int total = 0;
+		for(int i=0;i<menus.size();i++){
+			total += menus.get(i).getTotalprice();
+		}
 		
 		req.setAttribute("menus", menus);
 		req.setAttribute("startday",startday);
 		req.setAttribute("endday",endday);
+		req.setAttribute("total",total);
 		
 		System.out.println(menus);
 
-		//List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
-//		req.setAttribute("datestr", yearStr+"-"+monthStr);
-//		req.setAttribute("attendances", attendances);
-	
-		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return "check/checksell";
 	}	
 
@@ -134,15 +139,29 @@ public class CheckController {
 	
 	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
 	public String Checksales(Model model) {
-		System.out.println("Controller");
-
-		//		List<Balance> balances = checkService.getBalances();
+		
+		
+		
 		String todayDate = Util.getTodayDate();
 		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
+		
+		
+		int sum = 0;
+		for(int i=0;i<balances.size();i++){
+			sum += balances.get(i).getPlusMinus();
+		}
+		//balances list를 빠른 for을 돌린다 (Balance를 알게 됨)
+		
+		//Balance에서 plusMinus값을 추출
+		
+		//임의의변수 sum에 plusMinus 값을 더해준다 (sum += plusminus)
+		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
-
+		
+		//sum을 전송
+		model.addAttribute("sum",sum);
 
 		return "check/checksales"; 
 	}
@@ -155,11 +174,11 @@ public class CheckController {
 		
 		Balance balance2 = checkService.getBalanceByNo(balanceno);		
 		if (balance2 != null) {
-			/*balance.setBalanceNo(balance2.getBalanceNo());
+			balance.setBalanceNo(balance2.getBalanceNo());
 			balance.setRegDate(balance2.getRegDate());
 			balance.setItemCode(balance2.getItemCode());
 			balance.setPlusMinus(balance2.getPlusMinus());
-			balance.setDescription(balance2.getDescription());*/
+			balance.setDescription(balance2.getDescription());
 			return "check/salesview";
 		} else {
 			return "redirect:/check/checksales.action";
@@ -237,7 +256,12 @@ public class CheckController {
 		
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
 		
+		int sum = 0;
+		for(int i=0;i<balances.size();i++){
+			sum += balances.get(i).getPlusMinus();
+		}
 		
+		req.setAttribute("sum", sum);
 		req.setAttribute("balances", balances);
 		req.setAttribute("startday",startday);
 		req.setAttribute("endday",endday);
@@ -282,5 +306,81 @@ public class CheckController {
 	
 		return "check/viewsellbymember"; 
 	}
+	
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	
+	@RequestMapping(value = "viewsellbycustomerdetail.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String viewsellbycustomerdetail(HttpSession session, HttpServletRequest req,
+		@RequestParam("customerNo") int customerNo) {
+		
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
+		
+		//String startday = (String)req.getParameter("startday");
+		//String endday = (String)req.getParameter("endday");
+		Customer customer = customerService.getCustomersByCustomerNo(customerNo);
+		String startday = checkService.getFirstOrderDate(customerNo);
+		String endday = (Util.getTodayDate());
+		
+		Calendar cal = Calendar.getInstance( );  // 현재 날짜/시간 등의 각종 정보 얻기
 
-}
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH) ;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+
+
+
+		//String startday = String.format("%04d-%02d-%02d",year,month, day );  
+		
+		
+
+		List<Menu> menus = checkService.getMenuByCustomer(customerNo ,employeeSession.getStoreCode(), startday, endday);
+		int sum = 0;
+		for(int i=0;i<menus.size();i++){
+			sum += menus.get(i).getTotalprice();
+		}
+		
+		
+		if (menus != null) {
+			req.setAttribute("menus", menus);
+			req.setAttribute("startday",startday);
+			req.setAttribute("endday",endday);
+			req.setAttribute("customer", customer);
+			req.setAttribute("sum", sum);
+			
+			return "check/viewsellbycustomerdetail";
+		} else {
+			return "redirect:/check/viewsellbymember.action";
+		}
+		
+	}
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	@RequestMapping(value = "viewsellbycustomerdetailandperiod.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String viewsellbycustomerdetailandperiod(HttpSession session, HttpServletRequest req, int customerNoVal) {
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
+		
+		String startday = (String)req.getParameter("startday");
+		String endday = (String)req.getParameter("endday");
+		Customer customer = customerService.getCustomersByCustomerNo(customerNoVal);
+		
+		System.out.println("startday : "+ startday+", endday : "+endday);
+		
+		List<Menu> menus = checkService.getMenuByCustomer(customerNoVal ,employeeSession.getStoreCode(), startday, endday);
+		
+		int sum = 0;
+		for(int i=0;i<menus.size();i++){
+			sum += menus.get(i).getTotalprice();
+		}
+		
+			req.setAttribute("menus", menus);
+			req.setAttribute("startday",startday);
+			req.setAttribute("endday",endday);
+			req.setAttribute("customer", customer);
+			req.setAttribute("sum", sum);
+		
+			return "check/viewsellbycustomerdetail";
+		} 
+	}	
+		

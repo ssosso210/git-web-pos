@@ -27,5 +27,9 @@
       WHERE foodName = #{ id }
     </select> 
     
+    <insert id="tableInsertMenu" parameterType="Menu">
+		<!-- 여기에 선택한 메뉴에 대한 insert sql구문들어가야되는데 -->
+	</insert>
+    
 
 </mapper>

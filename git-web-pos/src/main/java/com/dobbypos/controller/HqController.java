@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Customer2;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Menu;
 import com.dobbypos.model.dto.Store;
@@ -84,7 +85,7 @@ public class HqController {
 	@RequestMapping(value = "/customermanagement.action", method = RequestMethod.GET)
 	public String customerManagementHome(HttpServletRequest req, Model model) {
 		String path = req.getRequestURI();		
-		List<Customer> customers = hqService.getAllCustomer();
+		List<Customer2> customers = hqService.getAllCustomer();
 		model.addAttribute("customers", customers);
 		model.addAttribute("path", path);
 		return "hq/customermanagement";
@@ -367,6 +368,7 @@ public class HqController {
 				menu.setSavedFileName(savedName);
 				menu.setUserFileName(file.getOriginalFilename());
 				menuService.editSaleMenuInfo(menu);
+				System.out.println(menu);
 				try {
 					FileOutputStream ostream = new FileOutputStream(path + "/" + savedName);
 					InputStream istream = file.getInputStream();
@@ -392,10 +394,12 @@ public class HqController {
 		
 		//System.out.println(menu);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		
+		System.out.println(menu);
+		if (menu.getSavedFileName() != null) {
+			
 		
 		try {
-			menu.setFoodName(URLEncoder.encode(menu.getFoodCode(), "utf-8").replace("+", "%20"));
+			menu.setFoodName(URLEncoder.encode(menu.getFoodName(), "utf-8").replace("+", "%20"));
 			menu.setMenuGroups(URLEncoder.encode(menu.getMenuGroups(), "utf-8").replace("+", "%20"));
 			menu.setSavedFileName(URLEncoder.encode(menu.getSavedFileName(), "utf-8").replace("+", "%20"));
 			menu.setUserFileName(URLEncoder.encode(menu.getUserFileName(), "utf-8").replace("+", "%20"));
@@ -404,10 +408,30 @@ public class HqController {
 			
 			e.printStackTrace();
 		}
+		} else {
+		
+			try {
+				menu.setFoodName(URLEncoder.encode(menu.getFoodName(), "utf-8").replace("+", "%20"));
+				menu.setMenuGroups(URLEncoder.encode(menu.getMenuGroups(), "utf-8").replace("+", "%20"));				
+							
+			} catch (UnsupportedEncodingException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
 		
 		String result = gson.toJson(menu);		
 		resp.setContentType("application/json;charset=utf-8");
 		
 		return result;
+	}
+	
+	@RequestMapping(value = "/salemenudelete.acton", method = RequestMethod.GET)	
+	public String saleMenuDelete(@RequestParam("foodcode") String foodCode) {
+		System.out.println(foodCode);
+		menuService.deleteSaleMenuByFoodCode(foodCode);
+		
+		return "redirect:/hq/salemenumanagement.action";
 	}
 }

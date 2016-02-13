@@ -28,139 +28,91 @@
 	rel="stylesheet" type="text/css">
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
-<title>직원정보</title>
+<title>재고 신청</title>
 </head>
 
+<script type="text/javascript">
+	$(function() {
+		$('.stockrequireinsert').on('change', function(event) {
+			$('#selectFollowForm').submit();
+		});
+	});
+</script>
+
 <body>
-
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
-
 	<div class="main">
-
 		<div class="main-inner">
-
 			<div class="container">
-
 				<div class="row">
-
 					<div class="span12">
-
 						<div class="widget ">
-
 							<div class="widget-header">
 								<i class="icon-user"></i>
 								<h3>재고 신청</h3>
 							</div>
 							<!-- /widget-header -->
-
 							<div class="widget-content">
 								<div class="tabbable">
-									<ul class="nav nav-tabs">
+									<!-- <ul class="nav nav-tabs">
 										<li class="active"><a href="#employee" data-toggle="tab">정보
 												입력 </a></li>
-									</ul>
-
+									</ul> -->
 									<br>
-
 									<div class="tab-content">
 										<div class="tab-pane active" id="stock">
-											<form id="edit-profile" class="form-horizontal">
-												<fieldset>
 
+											<fieldset>
+												<form id="edit-profile" class="selectFollowForm"
+													action="/dobbywebpos/management/stockrequireinsert"
+													method="get">
 													<div class="control-group">
 														<label class="control-label" for="stockCodeNo">재고
 															선택</label>
 														<div class="controls">
-															<form id="edit-profile" class="form-horizontal"
-																action="/dobbywebpos/management/searchstocklist.action"
-																method="post">
-																<p>
-																	<select>
-																		<c:forEach var="stock" items="${ stocks }">
-																			<option>${ stock.stockCode.stockName }</option>
-																		</c:forEach>
-																	</select>
-																</p>
-
-
-															</form>
+															<select name="stockName" class="stockrequireinsert">
+																<c:forEach var="stock" items="${ stocks }">
+																	<option>${ stock.stockCode.stockName }</option>
+																</c:forEach>
+															</select>
 														</div>
 													</div>
-
-
-
-												
-
 													<div class="control-group">
 														<label class="control-label" for="stockCodeNo">수량</label>
 														<div class="controls">
-															<input type="text" class="span6 disabled"
-																id="stockCodeNo" value="">
+															<input type="text" class="span6 disabled" name="snumber" id="stockCodeNo" value="">
 															<!-- <p class="help-block">ex) 2015년 3월 → 201503</p> -->
 														</div>
 														<!-- /controls -->
 													</div>
 													<!-- /control-group -->
 
-												
 
-													<form id="edit-profile3" class="form-vertical">
-														<fieldset>
-															<div class="form-actions">
-																<button type="submit" class="btn btn-success">신청</button>
-															</div>
-														</fieldset>
-													</form>
+													<div class="form-actions">
+														<button type="submit" class="btn btn-primary">신청</button>
+													</div>
+												</form>
+											</fieldset>
 
-												</fieldset>
-											</form>
 										</div>
 
 										<!-- ------------------------------------------------------------------------------------------------ -->
 									</div>
-
-
 								</div>
-
-
-
-
-
 							</div>
 							<!-- /widget-content -->
-
 						</div>
 						<!-- /widget -->
-
 					</div>
 					<!-- /span8 -->
-
-
-
-
 				</div>
 				<!-- /row -->
-
 			</div>
 			<!-- /container -->
-
 		</div>
 		<!-- /main-inner -->
-
 	</div>
 	<!-- /main -->
-
-
-
-
-
-
-
-
-
-
-
-
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
 
 	<script src="/dobbywebpos/resources/jsui//bootstrap.js"></script>

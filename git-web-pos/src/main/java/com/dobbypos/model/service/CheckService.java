@@ -21,4 +21,8 @@ public interface CheckService {
 	List<Menu> getMenuByDaySell(String todayDate, String storeCode);
 
 	List<Menu> getMenuByPeriodSell(String startday, String endday, String storeCode);
+
+	List<Menu> getMenuByCustomer(int customerNo, String storeCode, String startday, String endday);
+
+	String getFirstOrderDate(int customerNo);
 }

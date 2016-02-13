@@ -185,156 +185,157 @@
 <script type="text/javascript">
 
 $(function() {
-	/* var handled = false;
-	$("div[id^=big]").hide(); */
 	
-	
-		
-	$("div[id^=menus]").each(function(index, value) {
-		var self = $(this);
-		
-		/* var top = (getTop(this) - 10) + 'px';
-		var left = (getLeft(this) - 10) + 'px'; */
-		
 ///////////////////////////////////////////////////////
+	
+	var dialog, form; 
+	 
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+	 
+    function checkLength( o, n, min, max ) {
+      if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+          min + " and " + max + "." );
+        return false;
+      } else {
+        return true;
+      }
+    }
+	 
+    function checkRegexp( o, regexp, n ) {
+      if ( !( regexp.test( o.val() ) ) ) {
+        o.addClass( "ui-state-error" );
+        updateTips( n );
+        return false;
+      } else {
+        return true;
+      }
+    }
+	 
+	function updateMenu() {
 		
-		var dialog, form,
-		 
-		      // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-		      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-		      name = $( "#name" ),
-		      email = $( "#email" ),
-		      password = $( "#password" ),
-		      allFields = $( [] ).add( name ).add( email ).add( password ),
-		      tips = $( ".validateTips" );
-		 
-		    function updateTips( t ) {
-		      tips
-		        .text( t )
-		        .addClass( "ui-state-highlight" );
-		      setTimeout(function() {
-		        tips.removeClass( "ui-state-highlight", 1500 );
-		      }, 500 );
-		    }
-		 
-		    function checkLength( o, n, min, max ) {
-		      if ( o.val().length > max || o.val().length < min ) {
-		        o.addClass( "ui-state-error" );
-		        updateTips( "Length of " + n + " must be between " +
-		          min + " and " + max + "." );
-		        return false;
-		      } else {
-		        return true;
-		      }
-		    }
-		 
-		    function checkRegexp( o, regexp, n ) {
-		      if ( !( regexp.test( o.val() ) ) ) {
-		        o.addClass( "ui-state-error" );
-		        updateTips( n );
-		        return false;
-		      } else {
-		        return true;
-		      }
-		    }
-		 
-		    function addUser() {
-		    	//var params = $("#salemenuinfo").serialize();
-		    	/* $.ajax({
-		    		
-		    		url : "/dobbywebpos/hq/salemenuedit.action",
-		    		type : "POST",
-		    		async : true,
-		    		data : params,		    		
-		    		success : function(data, status, xhr) {
-		    			eval("salemenu = " + decodeURIComponent(data));
-		    			alert("정보가 수정되었습니다");
-		    			
-		    		}
-		    		
-		    	}); */
-		    	var form = $("#salemenuinfo");		    	
-		    	form.attr({action: "salemenuedit.action", enctype: "multipart/form-data", method: "post"});
-		    	var groups = $("#menuGroupss").val();
-		    	alert(groups);
-		    	 var form = $("#salemenuinfo")[0];
-		         var formData = new FormData(form);
-		             $.ajax({
-		                url: 'salemenuedit.action',
-		                processData: false,
-		                contentType: false,
-		                data: formData,
-		                type: 'POST',
-		                success: function(result){
-		                    alert("업로드 성공!!");
-		                }
-		            });
-		         
-		    	/* form.ajaxForm({
-		    		   //보내기전 validation check가 필요할경우
-		    	            beforeSubmit: function (data, frm, opt) {
-		    				                //alert("전송전!!");
-		    				                return true;
-		    				              },
-		    	            //submit이후의 처리
-		    	            success: function(data, status){
-		    	            	eval("salemenu = " + decodeURIComponent(data));
-				    			alert("정보가 수정되었습니다");
-		    	            },
-		    	            //ajax error
-		    	            error: function(xhr, status, data){
-		    	            	alert("에러발생!!");
-		    	            }                               
-		    	          });
-		    		 */
-		    	
-		      /* var valid = true;
-		      allFields.removeClass( "ui-state-error" );
-		 
-		      valid = valid && checkLength( name, "username", 3, 16 );
-		      valid = valid && checkLength( email, "email", 6, 80 );
-		      valid = valid && checkLength( password, "password", 5, 16 );
-		 
-		      valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
-		      valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
-		      valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
-		 
-		      if ( valid ) {
-		        $( "#users tbody" ).append( "<tr>" +
-		          "<td>" + name.val() + "</td>" +
-		          "<td>" + email.val() + "</td>" +
-		          "<td>" + password.val() + "</td>" +
-		        "</tr>" );
-		        dialog.dialog( "close" );
-		      }
-		      return valid; */
-		    }
-		 
-		    dialog = $( "#dialog-form" ).dialog({
-		      autoOpen: false,
-		      height: 500,
-		      width: 500,
-		      modal: true,
-		      buttons: {
-		        "수정": addUser,
-		        "취소": function() {
-		          dialog.dialog( "close" );
-		        }
-		      },
-		      close: function() {
-		        form[ 0 ].reset();
-		        allFields.removeClass( "ui-state-error" );
-		      }
-		    });
-		 
-		    form = dialog.find( "form" ).on( "submit", function( event ) {
-		      event.preventDefault();
-		      //addUser();
-		      
-		    });
+		//var form = $("#salemenuinfo");		    	
+		form.attr({action: "salemenuedit.action", enctype: "multipart/form-data", method: "post"});
+		var groups = $("#menuGroupss").val();
+		//alert(groups);
+     	var formData = new FormData(form[0]);
+	     $.ajax({
+	        url: 'salemenuedit.action',
+	        processData: false,
+	        contentType: false,
+	        data: formData,
+	        type: 'POST',
+	        success: function(result){
+	            alert("수정되었습니다.");
+	            //alert(self2.index);
+	            //alert(result);
+	            eval("menu = " + decodeURIComponent(result));
+	            var menus = $("#menus"+currentIndex);
+	            //menus
+	            var bgImg = menus.css("background-image").replace('url(','').replace(')','').replace('"', '');;	            
+	            var savedName = menu.savedFileName;
+	            var savedFileName;
+	            if (savedName != null) {
+	            	savedFileName = "/dobbywebpos/resources/uploadfiles/" + savedName;
+	            } else {
+	            	savedFileName = bgImg;
+	            }
+	            //alert(savedFileName);
+	            var data = menu.foodCode + "/" + menu.foodName + "/" + menu.menuGroups + "/" + menu.foodPrice + "/" + menu.savedFileName;	            
+	            $("#menus"+currentIndex).css({backgroundImage: "url("+savedFileName+")"});
+	            $("#textdata"+currentIndex).html(data);
+	           
+	            dialog.dialog("close");
+	            
+	            
+	        }
+	    });
+	}
+	
+function deleteMenu() {
+		if (confirm("삭제하시겠습니까?")){
+			var foodCode = $("#foodCode").val();
+			location.href="/dobbywebpos/hq/salemenudelete.acton?foodcode="+foodCode;
+			dialog.dialog("close");
+		};
+		//var form = $("#salemenuinfo");		    	
+		//form.attr({action: "salemenuedit.action", enctype: "multipart/form-data", method: "post"});
 		
-		
-		//////////////////////////////////////////////////////////
+		//alert(groups);
+     	//var formData = new FormData(form[0]);
+	     /* $.ajax({
+	        url: 'salemenudelete.action',
+	        //processData: false,
+	        //contentType: false,
+	        data: formData,
+	        type: 'POST',
+	        success: function(result){
+	            alert("수정되었습니다.");
+	            //alert(self2.index);
+	            //alert(result);
+	            eval("menu = " + decodeURIComponent(result));
+	            var menus = $("#menus"+currentIndex);
+	            //menus
+	            var bgImg = menus.css("background-image").replace('url(','').replace(')','').replace('"', '');;	            
+	            var savedName = menu.savedFileName;
+	            var savedFileName;
+	            if (savedName != null) {
+	            	savedFileName = "/dobbywebpos/resources/uploadfiles/" + savedName;
+	            } else {
+	            	savedFileName = bgImg;
+	            }
+	            //alert(savedFileName);
+	            var data = menu.foodCode + "/" + menu.foodName + "/" + menu.menuGroups + "/" + menu.foodPrice + "/" + menu.savedFileName;	            
+	            $("#menus"+currentIndex).css({backgroundImage: "url("+savedFileName+")"});
+	            $("#textdata"+currentIndex).html(data);
+	           
+	            dialog.dialog("close");
+	            
+	            
+	        }
+	    }); */
+	}
+	
+	         
+    dialog = $( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 500,
+      width: 500,
+      modal: true,		      
+      buttons: {
+        "수정": updateMenu,
+        "삭제": deleteMenu,
+        "취소": function() {
+          dialog.dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();  
+        currentIndex = -1;
+       
+      } 
+    });
+ 
+    form = dialog.find( "form" ).on( "submit", function( event ) {
+      event.preventDefault();
+      //addUser();
+      
+    });
+	
+	
+	//////////////////////////////////////////////////////////
+	var currentIndex = -1;
+	$("div[id^=menus]").each(function(index, value) {
+		var self = $(this);		
+
 		$(this).on("mouseenter", function(event) {
 			var t = self.offset();
 			//alert(t.top);
@@ -379,73 +380,59 @@ $(function() {
 				$(this).val(data[index]);
 			});
 			
-				//alert(index);  
-				dialog.dialog( "open" );
-			      
-			    
-			
-			
-			/* 			if (handled) return;
-			$("#big").css({left: left, top: top});
-			$("#big").show();
- 			$("#menus"+index).css({
+			currentIndex = index;
+			dialog.dialog( "open" );
+		});	
+	});
+	
+	$("h4[id^=text]").each(function(index, value) {
+		//var self = $(this);
+		
+		$(this).on("mouseenter", function(event) {
+			//var t = self.offset();
+			//alert(t.top);
+			//var top = (t.top + 20) + 'px';
+			//var left = (t.left + 10) + 'px'; 
+			$("#text"+index).html("클릭하시면<br />수정할 수<br />있습니다.");
+			//$("#text"+index).css({top: top, left: left});
+			/* var imgSrc = $("#img"+index).attr("src");
+			 $("#img"+index).hide(); 
+			$("#menus"+index).css({backgroundImage: "url("+imgSrc+")"});*/ 
+			$("#menus"+index).css({				
                 'filter': 'blur(10px)',
                 '-webkit-filter': 'blur(10px)',
                 '-moz-filter': 'blur(10px)',
                 '-o-filter': 'blur(10px)',
                 '-ms-filter': 'blur(10px)'
-            });
-			$("#menus"+index).hide(); */
-			
+            }); 
+						
 		});
 		
-		/* $( "#create-user"+index ).button().on( "click", function() {
-		      dialog.dialog( "open" );
-		    }); */
-		
-		    /*$("#menus"+index).on("mouseleave", function(event) {
-			if (handled) return;
-			console.log('mouse out');
-			$("#big").hide();
- 			 $("#menus"+index).css({
+		$(this).on("mouseout", function(event) {
+			
+			$("#text"+index).html("");
+			$("#menus"+index).css({				
                 'filter': 'blur(0px)',
                 '-webkit-filter': 'blur(0px)',
                 '-moz-filter': 'blur(0px)',
                 '-o-filter': 'blur(0px)',
-                '-ms-filter': 'blur(0px)',
-                'position': 'relative'
-            });
-            $('#menus' + index).show(); 
-			
-		});*/
+                '-ms-filter': 'blur(0px)'
+            }); 
+						
+		}); 
 		
-		
-	/* 	function getTop(t) {
+		$(this).on("click", function(event) {
 			
-			var	topPos = 0;
-			while(t.tagName.toLowerCase() != "body" && 
-				  t.tagName.toLowerCase() != "html") {
-				topPos += t.offsetTop;//offsetTop : 상위 요소와의 거리
-				t = t.offsetParent;	//상위 요소를 현재 요소에 대입
-			}
-			return topPos;
-		}
-		
-		function getLeft(t) {	
-
-			var	leftPos	= 0;
-			while(t.tagName.toLowerCase() != "body" && 
-				  t.tagName.toLowerCase() != "html")
-			{
-				leftPos += t.offsetLeft;
-				t	= t.offsetParent;
-			}
-			return leftPos;
-		} */
+			var data = $("#menus"+index).find("div").text().trim().split('/');			
 			
-	});
-	
-});	
+			$("#salemenuinfo").find("input").each(function(index, value) {
+				$(this).val(data[index]);
+			});
+							
+				dialog.dialog( "open" );
+		});
+	});	
+});
 
 </script>
       </head>
@@ -456,18 +443,18 @@ $(function() {
 		<!--  <div id="pageContainer">	 -->	
 		
 		<div class="right-side" style="padding-top:25px;text-align:center;">
-			
+			<div style="font-size: 20pt; font-weight: bold;text-align: left;" >&nbsp;판매중인 메뉴</div>
 	<div class="masonry_container" style="">
 	<c:forEach begin="0" varStatus="status" var="menu" items="${ menus }">		
 					
     
     	
         <div id="menus${ status.index }" class="item normal" style="display: inline-block;background-image: url('/dobbywebpos/resources/uploadfiles/${ menu.savedFileName }');cursor: pointer;">
-        <div style="width: 0px;overflow: hidden;">
+        <div id="textdata${ status.index }" style="width: 0px;overflow: hidden;">
         	${ menu.foodCode }/${ menu.foodName }/${ menu.menuGroups }/${ menu.foodPrice }/${ menu.savedFileName }
         </div>        	
         </div>
-        <h4 id="text${ status.index }" style="position: absolute;font-weight: 900;font-size: 20pt"></h4>
+        <h4 id="text${ status.index }" style="position: absolute;font-weight: 900;font-size: 20pt;cursor: pointer;'"></h4>
         
         
         
@@ -502,8 +489,8 @@ $(document).ready(function () {
         	<div><h2><a>${menu.foodName }</a></h2><h3>${menu.menuGroups }</h3><h3>${menu.foodPrice }</h3></div>
         </div> --%>
      
-      <div id="dialog-form" title="Create new user">
-  <p class="validateTips">메뉴 정보 수정</p>
+      <div id="dialog-form" title="메뉴 정보 수정">
+  <p class="validateTips"></p>
  
   <form id="salemenuinfo">
     <fieldset>

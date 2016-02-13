@@ -23,6 +23,12 @@
 		FROM customer
 		WHERE storeCode = #{id}
 	</select>
+	
+	<select id="selectCustomersByCustomerNo" parameterType="int" resultType="Customer">
+		SELECT customerNo, c_name, c_phoneNo, c_gender, c_age, c_point, c_level
+		FROM customer
+		WHERE customerNo = #{id}
+	</select>
     
     
 </mapper>

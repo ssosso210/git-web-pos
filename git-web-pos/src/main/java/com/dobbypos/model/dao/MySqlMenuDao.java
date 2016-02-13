@@ -54,5 +54,12 @@ public class MySqlMenuDao implements MenuDao {
 		
 	}
 
+	@Override
+	public void deleteSaleMenuByFoodCode(String foodCode) {
+		
+		menuMapper.deleteSaleMenuByFoodCode(foodCode);
+		
+	}
+
 
 }

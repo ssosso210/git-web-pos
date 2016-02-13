@@ -10,4 +10,6 @@ public interface SaleMapper {
 	
 	List<Menu> selectMenus(String foodName);
 
+	void tableInsertMenu(Menu menu);
+
 }

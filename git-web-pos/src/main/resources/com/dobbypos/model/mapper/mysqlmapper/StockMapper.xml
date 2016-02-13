@@ -36,7 +36,20 @@
 		st.stockNo, st.stockCodeNo, stcd.stockName,
 		stcd.price, st.s_number, stcd.standard ,st.s_regDate
 		from stock st join stockcode stcd
-		where st.stockCodeNo = stcd.stockCodeNo
+		where st.stockCodeNo = stcd.stockCodeNo and s_type = 'remain'
+	</select>
+	
+	<insert id="setStockrequire">
+		INSERT INTO BALANCE (PLUSMINUS,REGDATE,STORECODE,DESCRIPTION,ITEMCODE)
+		select  -(sc.price * #{snumber}) , SYSDATE(), 'outback001' , '재고구입', 'j001' FROM STOCKCODE SC
+		where  sc.stockname = #{stockName}
+	</insert>
+	
+	<select id="selectStocksByStockType" parameterType="String" resultMap="stockMap">
+		select
+		st.stockNo, stcd.stockName,st.s_number, st.s_price, st.s_regDate
+		from stock st join stockcode stcd on st.stockcodeNo = stcd.stockcodeNo
+		where s_type= #{stockType}
 	</select>
 	
 	<!-- <select id="selectStocks" resultMap="stockMap"> select st.stockNo as 

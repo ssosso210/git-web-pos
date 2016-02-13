@@ -11,5 +11,6 @@ public interface MenuDao {
 	List<Menu> selectMenuList(String hqCode);
 	void updateSaleMenuInfo(Menu menu);
 	void updateSaleMenuInfoWithoutFile(Menu menu);
+	void deleteSaleMenuByFoodCode(String foodCode);
 
 }

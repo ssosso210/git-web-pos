@@ -47,7 +47,7 @@
 		<result column="hqcode" property="hqCode" />
 	</resultMap>
 	
-	<resultMap type="Customer" id="customerMap">
+	<resultMap type="Customer2" id="customerMap">
 		<id column="customerno" property="customerNo"/>
 		<result column="c_name" property="customerName" />
 		<result column="c_phoneno" property="customerPhoneNo" />

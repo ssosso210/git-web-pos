@@ -12,6 +12,7 @@ import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.mapper.HqMapper;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Customer2;
 
 @Repository("hqDao")
 public class MySqlHqDao implements HqDao {
@@ -41,9 +42,9 @@ public class MySqlHqDao implements HqDao {
 	}
 
 	@Override
-	public List<Customer> getCustomerList() {
+	public List<Customer2> getCustomerList() {
 
-		List<Customer> customers = hqMapper.selectCustomerList();
+		List<Customer2> customers = hqMapper.selectCustomerList();
 		
 		return customers;
 	}

@@ -39,6 +39,13 @@ public class MySqlSaleDao implements SaleDao {
 		return menus;
 	}
 
+	@Override
+	public void tableInsertMenu(Menu menu) {
+		
+		saleMapper.tableInsertMenu(menu);
+		
+	}
+
 
 
 }

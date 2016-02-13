@@ -16,4 +16,6 @@ public interface MenuService {
 	void editSaleMenuInfo(Menu menu);
 
 	void editSaleMenuInfoWithoutFile(Menu menu);
+
+	void deleteSaleMenuByFoodCode(String foodCode);
 }

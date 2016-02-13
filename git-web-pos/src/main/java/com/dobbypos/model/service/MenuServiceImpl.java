@@ -49,6 +49,13 @@ public class MenuServiceImpl implements MenuService {
 		menuDao.updateSaleMenuInfoWithoutFile(menu);
 		
 	}
+
+	@Override
+	public void deleteSaleMenuByFoodCode(String foodCode) {
+		
+		menuDao.deleteSaleMenuByFoodCode(foodCode);
+		
+	}
 	
 	
 

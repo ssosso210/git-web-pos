@@ -22,20 +22,22 @@
 <style>
 .opacity_bg_layer {display:none;position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.5; filter:alpha(opacity=50); z-index:10;}
 .layer_pop_center {position:fixed;background:yellowgreen;padding: 10px;z-index:11;}
+
+.shortcuts .shortcut_active {
+ 	width: 22.50%;
+    display: inline-block;
+    padding: 12px 0;
+    margin: 0 .9% 1em;
+    vertical-align: top;
+    text-decoration: none;
+    //background: #f9f6f1;
+    border-radius: 5px;
+	background: #00ba8b;
+}
+
 </style>
 <script type="text/javascript">
-function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork) 
-{	
-	$("#employeeName").val(emName);
-	$("#employeeNo").val(emNo);
-	$("#attendanceNo").val(attendNo);
-	$("#attend-employee-name").text("근태 버튼  : "+emName);
-	$("#attendStartWork").val(startWork);
-	$("#attendEndWork").val(endWork);
-	
-	
-	//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
-}
+
 /**
  * ----------------------------------------------------------------- towork, offwork  start
  */
@@ -107,6 +109,7 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  var _ly;
  var ly_bg;
  $(document).ready(function() {
+	 
  	  ly = 'layer_pop_center';
  	  _ly;
  	  ly_bg = $('.opacity_bg_layer');
@@ -119,7 +122,23 @@ function employeeAttendSetting(emName, emNo, attendNo, startWork, endWork)
  		  alert(successMsg);
  	  }
  	  
- 	 
+ 	  $("a[id^=link_employee]").on('click',function (event ) {	
+ 		var data =  $(this).attr('data').split('/');
+ 		
+ 		var emName = data[0], emNo = data[1], attendNo = data[2], startWork = data[3], endWork = data[4];
+ 		$("#employeeName").val(emName);
+ 		$("#employeeNo").val(emNo);
+ 		$("#attendanceNo").val(attendNo);
+ 		$("#attend-employee-name").text("근태 버튼  : "+emName);
+ 		$("#attendStartWork").val(startWork);
+ 		$("#attendEndWork").val(endWork);
+ 		$('a.shortcut_active').removeClass('shortcut_active').addClass('shortcut')
+ 		$(this).addClass("shortcut_active");
+ 		
+ 		event.preventDefault();
+ 		
+ 		//alert($("#startem"+emNo).text()+', ' +$("#employee"+emNo).text() );
+ 	});
  	  
  });
 
@@ -215,9 +234,32 @@ function alertphone(employeename, employeephone){
 /**
  * ----------------------------------------------------------------- towork, offwork start
  */
+ 
+ 
+ 
+ function startTime() {
+	    var today = new Date();
+	    
+	    var h = today.getHours();
+	    var m = today.getMinutes();
+	    var s = today.getSeconds();
+	   
+	    m = checkTime(m);
+	    s = checkTime(s);
+	    document.getElementById('realtime').innerHTML =
+	    +h + ":" + m + ":" + s;
+	    var t = setTimeout(startTime, 500);
+	}
+	function checkTime(i) {
+	    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+	    return i;
+	}
+	
+/* real time  */
+ 
 </script>
 </head>
-<body>
+<body onload="startTime()">
 
 <div id="wrap">
 <c:import url="/WEB-INF/views/include/posheader.jsp" />
@@ -230,13 +272,16 @@ function alertphone(employeename, employeephone){
 				<div class="widget-content">
 					<a href="/dobbywebpos/attendance/list.action" class="btn btn-large btn-success btn-support-ask">날짜별 출근 목록</a>	
 					<a href="/dobbywebpos/attendance/employeelist.action" class="btn btn-large btn-success btn-support-ask">직원별 출근 목록</a>	
+					
+					
+					
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
 		 </div>
 		 <div class="span8">
 	          <div class="widget">
 	            <div class="widget-header"> <i class="icon-bookmark"></i>
-	              <h3>근태 현황 [ ${todayStr} ]</h3>
+	              <h3>근태 현황 [ ${todayStr} <span id="realtime"></span>]   </h3>
 	            </div>
 	             <!-- /widget-header -->
 			      <div class="widget-content">
@@ -247,7 +292,8 @@ function alertphone(employeename, employeephone){
             		</c:when>
             		<c:otherwise>
 			            <c:forEach var="employee" items="${ employees }">	
-			              <a href="javascript:employeeAttendSetting('${ employee.employeeName}',${ employee.employeeNo}, ${ employee.attendanceone.attendanceNo},'${ employee.attendanceone.startWork}', '${ employee.attendanceone.endWork}' );" id="employee${employee.employeeNo}" class="shortcut">
+			              <a href="#" data='${ employee.employeeName}/${ employee.employeeNo}/${ employee.attendanceone.attendanceNo}/${ employee.attendanceone.startWork}/${ employee.attendanceone.endWork}' 
+			              	 id="link_employee${employee.employeeNo}" class="shortcut">
 			              	<span class="shortcut-label" >${ employee.employeeName}
 			              	<c:choose>
 			              		<c:when test="${  employee.attendanceone.attendanceNo == 0}">
@@ -290,7 +336,7 @@ function alertphone(employeename, employeephone){
               <h3>직원 목록  </h3>
             </div>
             <!-- /widget-header -->
-            <div class="widget-content">
+            <div class="widget-content" style="overflow-y:scroll;height:450px;">
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>

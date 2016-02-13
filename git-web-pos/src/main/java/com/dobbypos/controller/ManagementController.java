@@ -30,9 +30,13 @@ public class ManagementController {
 
 	// 관리를 눌렀을 경우 이동
 	@RequestMapping(value = "/managementhome", method = RequestMethod.GET)
-	public String SettingMenu1() {
+	public String SettingMenu1(Model model) {
+		List<Employee> employees = employeeService.getAllEmployees();
+		// System.out.println("Controller");
+		model.addAttribute("employees", employees);
 
-		return "management/managementhome";
+		
+		return "management/salarylist";
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -111,6 +115,26 @@ public class ManagementController {
 		model.addAttribute("stocks", stocks);		
 		
 		return "management/stockrequire";
+	}
+	
+	@RequestMapping(value="/stockrequireinsert")
+	public String stockrequireinsert(Model model, HttpServletRequest req){
+		String stockName = req.getParameter("stockName");
+		int snumber = Integer.parseInt(req.getParameter("snumber"));
+
+		stockService.setStockrequire(stockName, snumber);
+		
+		return "redirect:/management/stocklist";				
+	}
+	
+	@RequestMapping(value="/stockrequirelist",method = RequestMethod.GET)
+	public String stockrequirelist(Model model){
+		
+		List<Stock> stocks = stockService.getStocksByStockType("require");
+		System.out.println(stocks);
+		model.addAttribute("stocks", stocks);		
+		
+		return "management/stockrequirelist";
 	}
 	
 }

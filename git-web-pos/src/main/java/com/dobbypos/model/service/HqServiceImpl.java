@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.dobbypos.model.dao.HqDao;
 import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Customer2;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
@@ -37,7 +38,7 @@ public class HqServiceImpl implements HqService {
 	}
 
 	@Override
-	public List<Customer> getAllCustomer() {
+	public List<Customer2> getAllCustomer() {
 		
 		return hqDao.getCustomerList();
 	}

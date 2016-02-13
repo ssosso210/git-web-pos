@@ -36,4 +36,10 @@ public class MysqlCustomerDao implements CustomerDao {
 		return customers;
 	}
 
+	@Override
+	public Customer selectCustomersByCustomerNo(int customerNo) {
+		// TODO Auto-generated method stub
+		return customerMapper.selectCustomersByCustomerNo(customerNo);
+	}
+
 }

@@ -42,6 +42,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
+					<div class="widget widget-plain">
+				<div class="widget-content">
+					<a href="salarylist"
+						class="btn btn-large btn-success btn-support-ask">직원 관리</a>
+					<a href="stocklist"
+						class="btn btn-large btn-success btn-support-ask">재고 관리</a>
+				</div> <!-- /widget-content -->
+			</div> <!-- /widget -->
+					
 						<div class="widget widget-table action-table">
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
@@ -54,26 +63,26 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<td>직원번호</td>
-											<td>직원이름</td>
-											<td>시급</td>
-											<td>직급</td>
-											<!-- <td>축적시간</td>
-        			<td>급여</td> -->
+											<th>직원번호</th>
+											<th>직원이름</th>
+											<th>시급</th>
+											<th>직급</th>
+											<!-- <th>축적시간</th>
+        			<th>급여</th> -->
 										</tr>
 									</thead>
 									<%-- <c:forEach var="member" items="${ member }">
         		<tr style="height:30px">
-        			<td>
+        			<th>
         				<c:url value="view.action" var="viewUrl">
         					<c:param name="memberid" value="${ member.memberId }" />
         				</c:url>
         				<a href="${ viewUrl }">${ member.memberId }</a>
-        			</td>
-        			<td>${ member.email }</td>
-        			<td>${ member.userType }</td>
-        			<td>${ member.active }</td>
-        			<td>${ member.regDate }</td>
+        			</th>
+        			<th>${ member.email }</th>
+        			<th>${ member.userType }</th>
+        			<th>${ member.active }</th>
+        			<th>${ member.regDate }</th>
         		</tr>
  			</c:forEach> --%>
 
@@ -88,7 +97,7 @@
 												<td style="width: 100px">${ employee.employeeName }</td>
 												<td style="width: 50px">${ employee.wage }</td>
 												<td style="width: 50px">${ employee.employeeType }</td>
-												<%--<td>${ employee.pay } </td>--%>
+												<%--<th>${ employee.pay } </th>--%>
 											</tr>
 									</c:forEach>
 									</tbody>

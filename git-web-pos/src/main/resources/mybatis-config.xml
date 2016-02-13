@@ -31,6 +31,7 @@
 		<typeAlias type="com.dobbypos.model.dto.Menu" alias="Menu"/>
 		<typeAlias type="com.dobbypos.model.dto.Store" alias="Store" />
 		<typeAlias type="com.dobbypos.model.dto.Customer" alias="Customer" />
+		<typeAlias type="com.dobbypos.model.dto.Customer2" alias="Customer2" />
 		<typeAlias type="com.dobbypos.model.dto.Client" alias="Client" />
 		<typeAlias type="com.dobbypos.model.dto.Attendance" alias="Attendance" />
 		<typeAlias type="com.dobbypos.model.dto.Balance" alias="Balance" />
