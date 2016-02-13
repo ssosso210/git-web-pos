@@ -97,13 +97,13 @@
 								align="center" width="600px">
 								<thead>
 									<tr>
-										<td>No</td>
-										<td>이름</td>
-										<td>휴대폰 번호</td>
-										<td>나이</td>
-										<td>성별</td>
-										<td>포인트</td>
-										<td>회원등급</td>
+										<th>No</th>
+										<th>이름</th>
+										<th>휴대폰 번호</th>
+										<th>나이</th>
+										<th>성별</th>
+										<th>포인트</th>
+										<th>회원등급</th>
 									</tr>
 								</thead>
 

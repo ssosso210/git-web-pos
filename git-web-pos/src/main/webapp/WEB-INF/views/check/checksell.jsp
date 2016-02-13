@@ -107,11 +107,11 @@
 								align="center" width="600px">
 								<thead>
 									<tr>
-										<td>No</td>
-										<td>메뉴</td>
-										<td>누적판매량</td>
-										<td>메뉴당 가격</td>
-										<td>누적매출</td>
+										<th>No</th>
+										<th>메뉴</th>
+										<th>누적판매량</th>
+										<th>메뉴당 가격</th>
+										<th>누적매출</th>
 									</tr>
 								</thead>
 
