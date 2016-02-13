@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %><!--  태그를 spring으로 수정  -->
+<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 
 function addLoadEvent(func){
@@ -53,7 +54,7 @@ function menuIconActive(){
 		$("#menu-icon-check").addClass('active');
 	}else if(mainpage == 'management'){
 		$("#menu-icon-management").addClass('active');
-	}else if(mainpage == 'setting'){
+	}else if(mainpage == 'settings'){
 		$("#menu-icon-setting").addClass('active');
 	}else {
 		$("#menu-icon-main").addClass('active');
@@ -74,7 +75,11 @@ addLoadEvent(menuIconActive);
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/dobbywebpos/main.action"> Dobby web pos </a>
+				</a> <a class="brand" href="/dobbywebpos/main.action"> Dobby web pos 
+					<c:if test="${ not empty sessionScope.loginuser }">
+					  [${ loginuser.storeName } ]
+					</c:if>
+					</a>
 				<div class="nav-collapse">
 					<ul class="nav pull-right">
 					 <c:choose>

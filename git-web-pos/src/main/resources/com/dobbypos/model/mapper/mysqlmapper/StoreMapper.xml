@@ -43,6 +43,13 @@
 		from store
 		where storecode = #{id}
 	</select>
+	
+	
+	<select id="selectStoreNameByStoreCode" parameterType="String" resultType="String">
+		select concat(hq.hqName,' ', store.storeName) as storename
+		from store join hq on store.hqCode = hq.hqCode
+		where storecode = #{id}
+	</select>
 		
 </mapper>
 

@@ -19,4 +19,6 @@ public interface StoreDao {
 	void deleteStoreByStoreCode(String storeCode);
 
 	Store selectStoreByStoreCode(String storeCode);
+
+	String selectStoreNameByStoreCode(String storeCode);
 }

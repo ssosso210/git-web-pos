@@ -20,4 +20,6 @@ public interface StoreMapper {
 
 	Store selectStoreByStoreCode(String storeCode);
 
+	String selectStoreNameByStoreCode(String storeCode);
+
 }

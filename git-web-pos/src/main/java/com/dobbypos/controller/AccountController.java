@@ -82,7 +82,9 @@ public class AccountController {
 	
 		//조회 결과에 따라 이동 처리
 		if (resultValue) {
-			System.out.println(employee.toString());
+			//store 이름 가져오기 
+			String storeName = storeService.getStoreNameByStoreCode(employee.getStoreCode());
+			employee.setStoreName(storeName);
 			session.setAttribute("loginuser", employee);//로그인 처리
 			if (returnUrl != null && returnUrl.length() > 0) {
 				//spring mvc에서 redirect 경로는 application이름을 포함할 수 없습니다.
