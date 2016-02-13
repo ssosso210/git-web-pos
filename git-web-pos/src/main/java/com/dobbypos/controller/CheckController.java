@@ -87,7 +87,7 @@ public class CheckController {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	@RequestMapping(value = "viewsellbyperiod.action", method = RequestMethod.POST)
+	@RequestMapping(value = "viewsellbyperiod.action", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewsellbyperiod(HttpSession session, HttpServletRequest req) {
 		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		
@@ -300,7 +300,7 @@ public class CheckController {
 		
 		//String startday = (String)req.getParameter("startday");
 		//String endday = (String)req.getParameter("endday");
-		
+		Customer customer = customerService.getCustomersByCustomerNo(customerNo);
 		String startday = checkService.getFirstOrderDate(customerNo);
 		String endday = (Util.getTodayDate());
 		
@@ -323,6 +323,7 @@ public class CheckController {
 			req.setAttribute("menus", menus);
 			req.setAttribute("startday",startday);
 			req.setAttribute("endday",endday);
+			req.setAttribute("customer", customer);
 		
 			return "check/viewsellbycustomerdetail";
 		} else {

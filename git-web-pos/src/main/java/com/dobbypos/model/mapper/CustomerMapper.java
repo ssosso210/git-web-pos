@@ -10,4 +10,5 @@ public interface CustomerMapper {
     void insertCustomer(Customer customer);
 	
     List<Customer> getCustomers(String storeCode);
+	Customer selectCustomersByCustomerNo(int customerNo);
 }

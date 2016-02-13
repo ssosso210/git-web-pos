@@ -72,7 +72,7 @@
 								
 								<span style="float: right;"> 
 								<!-- <input class="btn btn-middle"type="button" value="[메뉴별]" />&nbsp;&nbsp;&nbsp; --> 
-								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a> -->
+								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp; --> 
 								<a href="javascript:viewsell('menu');" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp;
 								<!-- <input class="btn btn-middle" type="button" value="[회원별]" />&nbsp;&nbsp;&nbsp; -->
 								<a href="viewsellbymember.action" class="btn btn-middle">회원별</a> 
@@ -120,7 +120,6 @@
 											<td style="width: 100px">
 												<c:url value="/check/viewsellbycustomerdetail.action" var="viewUrl"> 
 													<c:param name="customerNo" value="${customer.customerNo }" />
-													<c:param name="cust" value="${customer.customerNo }" />
 												</c:url>
 		                    				<a href="${ viewUrl }">${ customer.c_name }</a></td>
 											<td style="width: 100px">${ customer.c_phoneNo }</td>
@@ -136,7 +135,7 @@
 						</div>
 						<!-- /span -->
 					</div>
-					<!-- /row -->
+					<!-- /widget -->
 				</div>
 				<!-- /container -->
 			</div>
