@@ -147,7 +147,10 @@
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
 							 <h3>${ customer.c_name}님 판매 내역</h3>
-							
+							<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계매출 : ${sum}원</h3>
+								</span>
 						</div>
 						<!-- /widget-header -->
 						<div class="widget-content">

@@ -82,11 +82,17 @@
 							<!-- <input class="btn btn-large" type="button" value="기간 선택" onclick="choose_period()"> -->
 							<form id="edit-profile" class="form-horizontla"
 								action="/dobbywebpos/check/viewbyperiod.action" method="post">
+								
 								<input type="hidden" id="typeval" name="typeval" value="all" />
 								<p>
 									시작일: <input type="text" id="startday" name="startday"value="${startday}"> 
 									종료일: <input type="text" id="endday" name="endday" value="${endday}"> 
 									<input class="btn" style="margin-bottom: 9px;" type="submit" value="보기" />
+									<span style="float: right;">
+										<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('all');" value="[ 모두보기 ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
+										<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('plus');" value="[ 매출보기 ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
+										<input id="viewminus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('minus');" value="[ 지출보기 ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
+									</span>
 								</p>
 
 							</form>
@@ -96,13 +102,10 @@
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
 								<h3>매출-지출 내역  </h3>
-									
-									<span style="float: right;">
-										<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('all');" value="[ all ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
-										<input id="viewplus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('plus');" value="[ + ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
-										<input id="viewminus" class="btn btn-middle" type="button" onclick="javascript:checkPlusMinus('minus');" value="[ - ]" /> &nbsp;&nbsp;&nbsp;&nbsp;
-									</span>
-								
+								<span style="float: right;">
+								<i class="icon-money"></i>
+								<h3> 합계금액 : ${sum}원</h3>
+								</span>
 							</div>
 							<!-- /widget-header -->
 							<div class="widget-content">
@@ -111,11 +114,11 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<td>목차</td>
-						        			<td>시간</td>
-											<td>구분</td>
-											<td>금액</td>
-											<td>세부사항</td>
+											<th>목차</th>
+						        			<th>시간</th>
+											<th>구분</th>
+											<th>금액</th>
+											<th>세부사항</th>
 											<!-- <td>축적시간</td>
         										<td>급여</td> -->
 										</tr>
@@ -133,7 +136,7 @@
 												</td>
 												<td style="width: 70px"><fmt:formatDate value="${ balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												<td style="width: 25px">${ balance.itemCode }</td>
-												<td style="width: 50px">${ balance.plusMinus }</td>
+												<td style="width: 50px">${ balance.plusMinus } 원</td>
 												<td style="width: 50px">${ balance.description }</td>
 												<%--<td>${ employee.pay } </td>--%>
 											</tr>
