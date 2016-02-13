@@ -107,7 +107,7 @@
 
 
 	<a href="orderform.action">주문하기</a><br />
-	<a href="paymentform.action">결제하기</a><br/>
+	<a href="payform.action">결제하기</a><br/>
 	
 	<script type="text/javascript">
 

@@ -6,6 +6,7 @@ import com.dobbypos.model.dto.Client;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.Customer;
+import com.dobbypos.model.dto.Customer2;
 
 public interface HqDao {
 
@@ -13,7 +14,7 @@ public interface HqDao {
 
 	List<Store> getStoreList();
 
-	List<Customer> getCustomerList();
+	List<Customer2> getCustomerList();
 	
 	List<Client> getClientList();
 	

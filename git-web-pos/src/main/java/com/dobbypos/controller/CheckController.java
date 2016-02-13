@@ -87,35 +87,18 @@ public class CheckController {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	@RequestMapping(value = "viewsellbyperiod.action", method = RequestMethod.POST)
+	@RequestMapping(value = "viewsellbyperiod.action", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewsellbyperiod(HttpSession session, HttpServletRequest req) {
 		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		
 		String startday = (String)req.getParameter("startday");
 		String endday = (String)req.getParameter("endday");
-		String typeval = (String)req.getParameter("typeval");
+
+		System.out.println("startday : "+ startday+", endday : "+endday);
 		
-		List<Menu> menus = null;
-		
-		if (typeval.equals("menu") ||typeval.equals("all")){
-			menus = checkService.getMenuByPeriodSell(startday, endday, employeeSession.getStoreCode());
-		}	
-		
-//		else if(typeval.equals("plus") ){
-//
-//		}
-//		
-//		List<Balance> balances = null;
-//		if (typeval.equals("all") ){
-//			balances = checkService.getBalancesbyPeriod(startday, endday);
-//		}else if(typeval.equals("plus") ){
-//			balances = checkService.getBalancesbyPeriodAndPlus(startday, endday);
-//		}else if(typeval.equals("minus") ){
-//			balances = checkService.getBalancesbyPeriodAndMinus(startday, endday);
-//		}
+		List<Menu> menus = checkService.getMenuByPeriodSell(startday, endday, employeeSession.getStoreCode());
 	
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
-		
 		
 		req.setAttribute("menus", menus);
 		req.setAttribute("startday",startday);
@@ -123,11 +106,6 @@ public class CheckController {
 		
 		System.out.println(menus);
 
-		//List<Attendance> attendances = attendanceService.getAttendanceByStoreCodeAndMonth(employee.getStoreCode(),yearStr+"-"+monthStr);
-//		req.setAttribute("datestr", yearStr+"-"+monthStr);
-//		req.setAttribute("attendances", attendances);
-	
-		//return "account/loginform"; // /WEB-INF/views/ + account/loginform + .jsp
 		return "check/checksell";
 	}	
 
@@ -288,7 +266,7 @@ public class CheckController {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	
-	@RequestMapping(value = "viewsellbycustomerdetail.action", method = RequestMethod.GET)
+	@RequestMapping(value = "viewsellbycustomerdetail.action", method = {RequestMethod.GET, RequestMethod.POST})
 	public String viewsellbycustomerdetail(HttpSession session, HttpServletRequest req,
 		@RequestParam("customerNo") int customerNo) {
 		
@@ -296,7 +274,7 @@ public class CheckController {
 		
 		//String startday = (String)req.getParameter("startday");
 		//String endday = (String)req.getParameter("endday");
-		
+		Customer customer = customerService.getCustomersByCustomerNo(customerNo);
 		String startday = checkService.getFirstOrderDate(customerNo);
 		String endday = (Util.getTodayDate());
 		
@@ -314,10 +292,12 @@ public class CheckController {
 
 		List<Menu> menus = checkService.getMenuByCustomer(customerNo ,employeeSession.getStoreCode(), startday, endday);
 		
+		
 		if (menus != null) {
 			req.setAttribute("menus", menus);
 			req.setAttribute("startday",startday);
 			req.setAttribute("endday",endday);
+			req.setAttribute("customer", customer);
 		
 			return "check/viewsellbycustomerdetail";
 		} else {
@@ -325,5 +305,26 @@ public class CheckController {
 		}
 		
 	}
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	@RequestMapping(value = "viewsellbycustomerdetailandperiod.action", method = {RequestMethod.GET, RequestMethod.POST})
+	public String viewsellbycustomerdetailandperiod(HttpSession session, HttpServletRequest req, int customerNoVal) {
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		
-}
+		String startday = (String)req.getParameter("startday");
+		String endday = (String)req.getParameter("endday");
+		Customer customer = customerService.getCustomersByCustomerNo(customerNoVal);
+		
+		System.out.println("startday : "+ startday+", endday : "+endday);
+		
+		List<Menu> menus = checkService.getMenuByCustomer(customerNoVal ,employeeSession.getStoreCode(), startday, endday);
+
+		req.setAttribute("menus", menus);
+			req.setAttribute("startday",startday);
+			req.setAttribute("endday",endday);
+			req.setAttribute("customer", customer);
+		
+			return "check/viewsellbycustomerdetail";
+		} 
+	}	
+		
