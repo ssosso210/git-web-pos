@@ -139,7 +139,7 @@ addLoadEvent(menuIconActive);
 		      
 		        <li id="menu-icon-main" > <!-- class="active" >--> <a href="/dobbywebpos/main.action"><i class="icon-home"></i><span>mainpage</span> </a> </li>	        
 		        <li id="menu-icon-attendance" ><a href="/dobbywebpos/attendance/main.action"><i class=" icon-check"></i><span>근태</span> </a> </li>
-		        <li id="menu-icon-sale" ><a href="/dobbywebpos/sale/salehome_test.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-shopping-cart"></i><span>판매--윤수</span> </a></li>
+		        <li id="menu-icon-sale" ><a href="/dobbywebpos/sale/salehome_test.action?storeCode1=${sessionScope.loginuser.storeCode}"><i class="icon-shopping-cart"></i><span>판매</span> </a></li>
 		        <li id="menu-icon-check" ><a href="/dobbywebpos/check/checkmain.action"><i class="icon-bar-chart"></i><span>조회</span> </a> </li>
 		        <li id="menu-icon-management" ><a href="/dobbywebpos/management/managementhome"><i class="icon-wrench"></i><span>관리</span> </a> </li>
 		        <li id="menu-icon-setting" ><a href="/dobbywebpos/settings/settinghome.action"><i class="icon-cogs"></i><span>설정</span> </a> </li>
