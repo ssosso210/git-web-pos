@@ -55,11 +55,17 @@ public class CheckController {
 			System.out.println(menu.toString());
 		}
 		
+		int sum = 0;
+		for(int i=0;i<balances.size();i++){
+			sum += balances.get(i).getPlusMinus();
+		}
+		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
 		model.addAttribute("todayStr", Util.getTodayDate());
+		model.addAttribute("sum",sum);
 		
 		return "check/checkmain"; 
 	}
@@ -113,15 +119,29 @@ public class CheckController {
 	
 	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
 	public String Checksales(Model model) {
-		System.out.println("Controller");
-
-		//		List<Balance> balances = checkService.getBalances();
+		
+		
+		
 		String todayDate = Util.getTodayDate();
 		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
+		
+		
+		int sum = 0;
+		for(int i=0;i<balances.size();i++){
+			sum += balances.get(i).getPlusMinus();
+		}
+		//balances list를 빠른 for을 돌린다 (Balance를 알게 됨)
+		
+		//Balance에서 plusMinus값을 추출
+		
+		//임의의변수 sum에 plusMinus 값을 더해준다 (sum += plusminus)
+		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
-
+		
+		//sum을 전송
+		model.addAttribute("sum",sum);
 
 		return "check/checksales"; 
 	}
@@ -216,7 +236,12 @@ public class CheckController {
 		
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);
 		
+		int sum = 0;
+		for(int i=0;i<balances.size();i++){
+			sum += balances.get(i).getPlusMinus();
+		}
 		
+		req.setAttribute("sum", sum);
 		req.setAttribute("balances", balances);
 		req.setAttribute("startday",startday);
 		req.setAttribute("endday",endday);
@@ -291,6 +316,10 @@ public class CheckController {
 		
 
 		List<Menu> menus = checkService.getMenuByCustomer(customerNo ,employeeSession.getStoreCode(), startday, endday);
+		int sum = 0;
+		for(int i=0;i<menus.size();i++){
+			sum += menus.get(i).getTotalprice();
+		}
 		
 		
 		if (menus != null) {
@@ -298,7 +327,8 @@ public class CheckController {
 			req.setAttribute("startday",startday);
 			req.setAttribute("endday",endday);
 			req.setAttribute("customer", customer);
-		
+			req.setAttribute("sum", sum);
+			
 			return "check/viewsellbycustomerdetail";
 		} else {
 			return "redirect:/check/viewsellbymember.action";
@@ -318,11 +348,17 @@ public class CheckController {
 		System.out.println("startday : "+ startday+", endday : "+endday);
 		
 		List<Menu> menus = checkService.getMenuByCustomer(customerNoVal ,employeeSession.getStoreCode(), startday, endday);
-
-		req.setAttribute("menus", menus);
+		
+		int sum = 0;
+		for(int i=0;i<menus.size();i++){
+			sum += menus.get(i).getTotalprice();
+		}
+		
+			req.setAttribute("menus", menus);
 			req.setAttribute("startday",startday);
 			req.setAttribute("endday",endday);
 			req.setAttribute("customer", customer);
+			req.setAttribute("sum", sum);
 		
 			return "check/viewsellbycustomerdetail";
 		} 

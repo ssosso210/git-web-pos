@@ -39,7 +39,10 @@
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
 								<h3>금일 매출-지출 내역 [ ${todayStr} ] </h3>
-									
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계금액 : ${sum}원</h3>
+								</span>
 								
 							</div>
 							<!-- /widget-header -->
