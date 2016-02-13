@@ -21,18 +21,31 @@ public class StockServiceImpl implements StockService {
 	public List<Stock> getAllStocks() {
 		return stockDao.getList();
 	}
-
-	@Override
-	public List<Stock> getStocksByStockCodeNo(int stockCodeNo) {
-		
-		return StockCodeDao.getList2();
-	}
+	
 
 	@Override
 	public void setStockrequire(String stockName, int snumber) {
 		stockDao.setStockrequire(stockName, snumber);
 		
 	}
+
+	@Override
+	public List<Stock> getAllRequireStocks() {		
+		return stockDao.getList();
+	}
+
+
+	
+
+
+	@Override
+	public List<Stock> getStocksByStockType(String stockType) {
+		// TODO Auto-generated method stub
+		return stockDao.selectStocksByStockType(stockType);
+	}
+
+
+
 
 	
 }

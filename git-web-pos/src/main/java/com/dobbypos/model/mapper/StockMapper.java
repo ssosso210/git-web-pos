@@ -12,6 +12,10 @@ public interface StockMapper {
 	List<Stock> selectStocks() ;
 
 	public void setStockrequire(@Param("stockName") String stockName,@Param("snumber")  int snumber);
+
+	List<Stock> selectRequireStocks();
+
+	List<Stock> selectStocksByStockType(String stockType);
 	
 
 }

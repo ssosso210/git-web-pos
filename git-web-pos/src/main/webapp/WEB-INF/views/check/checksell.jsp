@@ -98,6 +98,10 @@
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
 							<h3>메뉴별 판매 실적</h3>
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계매출 : ${total}원</h3>
+								</span>
 							
 						</div>
 						<!-- /widget-header -->
@@ -107,11 +111,11 @@
 								align="center" width="600px">
 								<thead>
 									<tr>
-										<td>No</td>
-										<td>메뉴</td>
-										<td>누적판매량</td>
-										<td>메뉴당 가격</td>
-										<td>누적매출</td>
+										<th>No</th>
+										<th>메뉴</th>
+										<th>누적판매량</th>
+										<th>메뉴당 가격</th>
+										<th>누적매출</th>
 									</tr>
 								</thead>
 
@@ -127,8 +131,8 @@
 												${ menu.foodCode}</td>
 											<td style="width: 100px">${ menu.foodName }</td>
 											<td style="width: 100px">${ menu.totalcount }</td>
-											<td style="width: 50px">${ menu.orderDetailPrice }</td>
-											<td style="width: 50px">${ menu.totalprice }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }원</td>
+											<td style="width: 50px">${ menu.totalprice }원</td>
 											<%--<td>${ employee.pay } </td>--%>
 										</tr>
 								</c:forEach>

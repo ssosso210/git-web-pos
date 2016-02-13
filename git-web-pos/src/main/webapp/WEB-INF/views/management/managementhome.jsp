@@ -41,12 +41,9 @@
 				<div class="widget-content">
 					<a href="salarylist"
 						class="btn btn-large btn-success btn-support-ask">직원 관리</a>
-				</div>
-				<br/><br/>
-				<div class="widget-content">
 					<a href="stocklist"
 						class="btn btn-large btn-success btn-support-ask">재고 관리</a>
-				</div>			
+				</div>					
 			</div><!-- /widget -->
 			
 
