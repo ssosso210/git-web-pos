@@ -125,9 +125,12 @@
 		var dscrate = document.getElementById("discount_rate").value;
 		var paycard = $("input[type=radio][name=paycard]:checked").val();
 		var pointleft = document.getElementById("pointleft").value;
+		var actualpay=document.getElementById("actualpay").value;
+		
 		location.href = "/dobbywebpos/pay/finalpay.action?CustomerNo="
 				+ CustomerNo + "&dscrate=" + dscrate + "&paycard=" + paycard
-				+ "&pointleft=" + pointleft + "&totaltableno=" + ${totaltableno};
+				+ "&pointleft=" + pointleft + "&totaltableno=" + ${totaltableno}
+				+ "&actualpay="+actualpay;
 	}
 
 	function RemoveAll() {

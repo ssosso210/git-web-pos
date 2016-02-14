@@ -65,7 +65,8 @@ public class PayController {
          @RequestParam("dscrate")int dscrate,
          @RequestParam("paycard")String paycard,
          @RequestParam("totaltableno") int totaltableno,
-         @RequestParam("pointleft")int pointleft){
+         @RequestParam("pointleft")int pointleft,
+         @RequestParam("actualpay")int actualpay ){
    
       System.out.println("customerno"+customerno);
       
@@ -86,17 +87,21 @@ public class PayController {
       payService.updateOrders(orders);
       
    //2.회원 포인트, 등급 조정
+      int resultpoint=(int)(pointleft+actualpay*(0.05));
+      //포인트쓰고 남은거+실제 결제금액의 5% 또 적립
+      
       String c_level=null;
-      if(pointleft<1000){
+      
+      if(resultpoint<1000){
          c_level="basic";
-      }else if(1000<=pointleft&& pointleft<2000){
+      }else if(1000<=resultpoint&& resultpoint<2000){
          c_level="vip";
-      }else if(2000<=pointleft){
+      }else if(2000<=resultpoint){
          c_level="vvip";
       }
       
       Customer customer=new Customer();
-      customer.setC_point(pointleft);
+      customer.setC_point(resultpoint);
       customer.setC_level(c_level);
       customer.setCustomerNo(customerno);
       customerService.updateCustomer(customer);
