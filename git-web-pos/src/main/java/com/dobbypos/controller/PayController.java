@@ -84,6 +84,7 @@ public class PayController {
       orders.setTotalTableNo(totaltableno);
       orders.setOrderStatus("complete");
       payService.updateOrders(orders);
+      System.out.println("orders테이블 update");
       
    //2.회원 포인트, 등급 조정
       String c_level;
