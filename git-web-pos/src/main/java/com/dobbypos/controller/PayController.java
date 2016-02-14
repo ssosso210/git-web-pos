@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Orders;
+import com.dobbypos.model.service.BalanceService;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.PayService;
 import com.google.gson.Gson;
@@ -35,6 +37,10 @@ public class PayController {
    @Autowired
    @Qualifier("customerService")
    private CustomerService customerService;
+   
+   @Autowired
+   @Qualifier("balanceService")
+   private BalanceService balanceService;
    
    
    @RequestMapping(value="/payform.action", method=RequestMethod.GET)
@@ -83,7 +89,7 @@ public class PayController {
       orders.setDiscountRate(dscrate);
       orders.setPayType(paycard);
       orders.setTotalTableNo(totaltableno);
-      orders.setOrderStatus("complete");
+      orders.setOrderStatus("completion");
       payService.updateOrders(orders);
       
    //2.회원 포인트, 등급 조정
@@ -107,8 +113,24 @@ public class PayController {
       customerService.updateCustomer(customer);
       System.out.println("updateCustomer  done");
       
-   //3.최종결제금액 balance 테이블에 넣음 
+   //3.최종결제금액 balance 테이블에 넣음 - 나중에 음식 이름, 몇인분인지도 넣어야함 
+     /* 최종 결제금액, storecode, itemcode- ss001현금 02카드*/
       
+      String itemcode=null;
+      
+      if(paycard.equals("credit")){
+    	  itemcode="s001";
+      }else if (paycard.equals("cash")){
+    	  itemcode="s002";
+      }
+      
+      System.out.println("itemcode:  "+itemcode);
+      
+      Balance balance =new Balance();
+      balance.setPlusMinus(actualpay);
+      balance.setStoreCode(storeCode);
+      balance.setItemCode(itemcode);
+      balanceService.insertBalanceFromPay(balance);
       
       
       
