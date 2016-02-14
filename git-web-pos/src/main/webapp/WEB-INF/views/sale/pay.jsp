@@ -1,4 +1,3 @@
-
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -68,48 +67,58 @@
        var c_point1=+document.getElementById("c_point").value;
        
       if(pointuse1> c_point1){
-    	  alert("내가 가진포인트보다 많음 ");
+         alert("가진포인트보다 많습니다 ");
           document.getElementById("pointuse").value=null;
+          
+          document.getElementById("pointleft").value=null;
       }else {
        document.getElementById("actualpay").value=
        document.getElementById("foodtotalcost").value-document.getElementById("leveldiscount").value
-       -document.getElementById("pointuse").value
+       -document.getElementById("pointuse").value;
+       
+       //잔여포인트계산->디비로 들어가야 함 
+       var pointleft=c_point1-pointuse1
+          document.getElementById("pointleft").value=pointleft;
+       
+       
       }
-      
-      //잔여포인트계산->디비로 들어가야 함 
-      var pointleft=c_point1-pointuse1
-    	  document.getElementById("pointleft").value=pointleft;
+   
       
    }
    
-   $(document).ready(function(){
-	    $("#paycard").click(function(){
-	        $("#casecard").show();
-	    });
-	    $("#paycash").click(function(){
-	        $("#casecard").hide();
-	    });
-	});
+    $(document).ready(function(){
+       $("#paycard").click(function(){
+           $("#case_cashcard").show();
+       });
+       $("#paycash").click(function(){
+           $("#case_cashcard").hide();
+       });
+   }); 
    
    function finalpay1(){
-	   var CustomerNo=document.getElementById("CustomerNo").value;
-	   var dscrate=document.getElementById("discount_rate").value;
-	   var paycard=document.getElementById("paycard").value;
-	   var pointleft=document.getElementById("pointleft").value;
-	   location.href="finalpay.action?CustomerNo"+CustomerNo+"&dscrate"+dscrate+"&paycard"+paycard+"&pointleft"+pointleft;
+      var CustomerNo=document.getElementById("CustomerNo").value;
+      var dscrate=document.getElementById("discount_rate").value;
+      var paycard=$("input[type=radio][name=paycard]:checked").val();
+   
+      var pointleft=document.getElementById("pointleft").value;
+      location.href="/dobbywebpos/pay/finalpay.action?CustomerNo="+CustomerNo+"&dscrate="
+            +dscrate+"&paycard="+paycard+"&pointleft="+pointleft+"&totaltableno="+${totaltableno};
    }
   
 </script>
 <body>
 계산 화면 <br/><br/>
-	<input class="btn1" id="paycard" type="radio"  value="카드결제" >카드계산</input>
-	<input class="btn2" id="paycard" type="radio"  value="현금결제">현금계산</input>
-	<div id="casecard" style="display:none">
+	<form>
+   <input  name="paycard" type="radio" id="paycard" value="credit" >카드계산</input>
+   <input  name="paycard" type="radio" id="paycash" value="cash">현금계산</input>
+   </form>
+   
+    <div id="case_cashcard" style="display:none">
    <br/>
       카드번호  <input type="number" id="cardno" style="width: 190px" value=<%=((int)(Math.random()*10000000)+1)%>><br/>
       유효기간   <input type="number" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*13)+1)%>>월&nbsp;
-      		 <input type="text" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*31)+1)%>>일<br/>
-   </div>
+      <input type="text" id="validmonth" style="width: 80px" value=<%=((int)(Math.random()*31)+1)%>>일<br/>
+   </div> 
      
    <br /><br/>
    <div>
@@ -149,10 +158,10 @@
       - 등급별 할인금액 <input type="number" id="leveldiscount" style="width: 280px"></input><br />
       - 포인트사용  <input type="number" id="pointuse" style="width: 280px" ></input><br/>
       <button onclick="javascript:payresult()">적용</button>
-      <br /> <!-- 디비에서 포인트 차감  해야됨, 등급도 조정해야됨 /최종결제때만 하면되나?-->
+      <br /> 
       = 결제금액  <input type="number" id="actualpay" style="width: 280px"><br />
       <br />
-      <a id="finalpay" onclick="javascript:finalpay1()" href="finalpay.action" class="button">최종결제</a>  <!-- 최종결제시  디비에 들어갈때  회원 포인트, 등급 또 조정 -->
+      <button id="finalpay" onclick="javascript:finalpay1()" class="button">최종결제</button> 
  
    </div>
 

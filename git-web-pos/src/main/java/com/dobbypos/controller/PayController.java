@@ -106,7 +106,7 @@ public class PayController {
       
       
       
-      return "redirect:/sale/salehome_test.action";
+      return "redirect:/sale/salehome_test.action?storeCode1="+storeCode;
    }
    
 
