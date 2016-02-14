@@ -294,11 +294,28 @@
 														<label
 															class="control-label"> - 포인트사용</label>
 															<div class="controls">
-																<input type="number" id="pointuse" style="width: 280px" ></input>
+																<input type="number" id="pointuse" style="width: 280px" ></input><br/>
+																 <tr>
+      <button onclick="javascript:pointnumber(1);" style="width:85px">1</button>
+      <button onclick="javascript:pointnumber(2);" style="width:85px">2</button>
+      <button onclick="javascript:pointnumber(3);" style="width:85px">3</button><br/>
+      <button onclick="javascript:pointnumber(4);" style="width:85px">4</button>
+      <button onclick="javascript:pointnumber(5);" style="width:85px">5</button>
+      <button onclick="javascript:pointnumber(6);" style="width:85px">6</button><br/>
+      <button onclick="javascript:pointnumber(7);" style="width:85px">7</button>
+      <button onclick="javascript:pointnumber(8);" style="width:85px">8</button>
+      <button onclick="javascript:pointnumber(9);" style="width:85px">9</button><br/>
+      <button onclick="javascript:RemoveOne();" style="width:85px">#</button>
+      <button onclick="javascript:pointnumber(0);" style="width:85px">0</button>
+      <button onclick="javascript:RemoveAll();" style="width:85px">모두지우기</button><br/>
+   </tr>
+																
 																
 															</div>									
 														</label>
 													</div>
+													
+													
 													 <button onclick="javascript:payresult()">적용</button> <br />
 													 
 													  <div class="control-group">

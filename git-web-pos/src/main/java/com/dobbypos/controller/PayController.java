@@ -89,9 +89,9 @@ public class PayController {
       String c_level=null;
       if(pointleft<1000){
          c_level="basic";
-      }else if(pointleft>=1000&& pointleft<2000){
+      }else if(1000<=pointleft&& pointleft<2000){
          c_level="vip";
-      }else if(pointleft>=2000){
+      }else if(2000<=pointleft){
          c_level="vvip";
       }
       
@@ -99,8 +99,8 @@ public class PayController {
       customer.setC_point(pointleft);
       customer.setC_level(c_level);
       customer.setCustomerNo(customerno);
-     // customerService.updateCustomer(customer);
-      
+      customerService.updateCustomer(customer);
+      System.out.println("updateCustomer  done");
       
    //3.최종결제금액 balance 테이블에 넣음 
       
