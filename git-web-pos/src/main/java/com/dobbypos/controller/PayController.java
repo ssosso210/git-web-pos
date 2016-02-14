@@ -84,22 +84,22 @@ public class PayController {
       orders.setTotalTableNo(totaltableno);
       orders.setOrderStatus("complete");
       payService.updateOrders(orders);
-      System.out.println("orders테이블 update");
       
    //2.회원 포인트, 등급 조정
-      String c_level;
+      String c_level=null;
       if(pointleft<1000){
          c_level="basic";
-      }else if(pointleft>1000&&pointleft<2000){
+      }else if(pointleft>=1000&& pointleft<2000){
          c_level="vip";
-      }else {
+      }else if(pointleft>=2000){
          c_level="vvip";
       }
       
       Customer customer=new Customer();
       customer.setC_point(pointleft);
       customer.setC_level(c_level);
-      //customerService.updateCustomer(customer);
+      customer.setCustomerNo(customerno);
+     // customerService.updateCustomer(customer);
       
       
    //3.최종결제금액 balance 테이블에 넣음 

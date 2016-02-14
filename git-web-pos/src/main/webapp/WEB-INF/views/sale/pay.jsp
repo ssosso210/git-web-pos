@@ -121,7 +121,6 @@
 	});
 
 	function finalpay1() {
-	
 		var CustomerNo = document.getElementById("CustomerNo").value;
 		var dscrate = document.getElementById("discount_rate").value;
 		var paycard = $("input[type=radio][name=paycard]:checked").val();
@@ -173,7 +172,7 @@
 
 									<div class="tab-content">
 										<div>
-											
+										<!-- 	<form class="form-horizontal" > -->
 												<fieldset>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[결제수단]</a>
 													<div class="control-group">
@@ -311,13 +310,13 @@
 															</div>									
 														</label>
 													</div> 
-													
-													
-													<button  id="finalpay" onclick="javascript:finalpay1()"  class="btn btn-primary">최종결제</button>
-													
-													
+													<div >
+														<button  id="finalpay" onclick="javascript:finalpay1()"  class="btn btn-primary">최종결제</button>
+
+													</div>
+													<!-- /form-actions -->
 												</fieldset>
-											
+											<!-- </form> -->
 										</div>
 
 
