@@ -192,10 +192,10 @@
 						<div class="widget-header">
 							<i class="icon-th-list"></i>
 							<h3>금일 메뉴별 판매 실적 [ ${todayStr} ]</h3>
-								<%-- <span style="float: right;">
+								 <span style="float: right;">
 									<i class="icon-money"></i>
 									<h3> 합계 실매출 : ${total}원</h3>
-								</span> --%>
+								</span> 
 						</div>
 						
 						<!-- /widget-header -->
