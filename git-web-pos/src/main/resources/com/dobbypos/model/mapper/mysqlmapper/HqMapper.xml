@@ -68,9 +68,134 @@
 		FROM client
 	</select>
 	
-	<select id="selectCurrentMonthRevenue" parameterType="String" resultType="Integer">
-		SELECT SUM(plusMinus) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%Y-%m') in (#{id})
+	<select id="selectCurrentMonthRevenue" resultType="Integer">		
+		SELECT ifnull(SUM(plusMinus), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(current_timestamp))	
+	</select>
+	
+	<select id="selectLastMonthRevenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0)
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -1 month)))	
+	</select>
+	
+	<select id="selectLastMonth2Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0)
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -2 month)))
+	</select>
+	
+	<select id="selectLastMonth3Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0)
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -3 month)))
+	</select>
+	
+	<select id="selectLastMonth4Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -4 month)))
+	</select>
+	
+	<select id="selectLastMonth5Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0)
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -5 month)))
+	</select>
+	
+	<select id="selectLastMonth6Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -6 month)))
+	</select>
+	
+	<select id="selectLastMonth7Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -7 month)))
+	</select>
+	
+	<select id="selectLastMonth8Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -8 month)))
+	</select>
+	
+	<select id="selectLastMonth9Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0)
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -9 month)))
+	</select>
+	
+	<select id="selectLastMonth10Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0)
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -10 month)))
+	</select>
+	
+	<select id="selectLastMonth11Revenue" resultType="Integer">
+		SELECT ifnull(SUM(plusMinus), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -11 month)))
+	</select>
+	
+	<select id="selectCurrentMonthPurchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(current_timestamp))	
+	</select>
+	
+	<select id="selectLastMonth1Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -1 month)))
+	</select>
+	
+	<select id="selectLastMonth2Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0)
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -2 month)))
+	</select>
+	
+	<select id="selectLastMonth3Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0)
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -3 month)))
+	</select>
+	
+	<select id="selectLastMonth4Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -4 month)))
+	</select>
+	
+	<select id="selectLastMonth5Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -5 month)))
+	</select>
+	
+	<select id="selectLastMonth6Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -6 month)))
+	</select>
+	
+	<select id="selectLastMonth7Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -7 month)))
+	</select>
+	
+	<select id="selectLastMonth8Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -8 month)))
+	</select>
+	
+	<select id="selectLastMonth9Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -9 month)))
+	</select>
+	
+	<select id="selectLastMonth10Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0)
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -10 month)))
+	</select>
+	
+	<select id="selectLastMonth11Purchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -11 month)))
+	</select>
+	
+	<select id="selectLastYearRevenues" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%Y') in (year(date_add(now(), interval -1 year)))
+	</select>
+	
+	<select id="selectLastYearPurchases" resultType="Integer">
+		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
+		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%Y') in (year(date_add(now(), interval -1 year)))
 	</select>
 	
 </mapper>
