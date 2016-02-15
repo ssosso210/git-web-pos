@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dobbypos.model.mapper.PayMapper">
+
+
+	<resultMap type="Customer" id="customerMap">
+		<id property="customerNo" column="customerNo" />
+		<result property="c_name" column="plusMinus" />
+		<result property="c_phoneNo" column="regDate" />
+		<result property="c_age" column="storeCode" />
+		<result property="c_gender" column="description" />
+		<result property="c_point" column="itemCode" />
+		<result property="storeCode" column="storeCode" />
+	</resultMap>
+
+	<select id="getCustomerInfo" parameterType="int" resultType="Customer">
+		select * from Customer where CustomerNo=#{customerNo}
+	</select>
+
+	<update id="updateOrders" parameterType="Orders">
+		update Orders
+		set
+		orderDate=SYSDATE(),
+		storeCode= #{storeCode},
+		customerNo=#{customerNo} ,
+		payType=#{payType},
+		discountRate= #{discountRate},
+		orderStatus=#{orderStatus}
+		where totalTableNo=#{totalTableNo} 
+		order by orderNo DESC limit 1;
+
+
+	</update>
+
+
+
+</mapper>

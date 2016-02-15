@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dobbypos.model.mapper.HqMapper"><!-- 클래스 또는 인터페이스 역할 -->
+
+<!-- 	private String hqCode;
+	private String hqName;
+	private String phoneNo;
+	private String address;
+	private String hqId;
+	private String hqPasswd; -->
+
+	<sql id="HqColumns">
+		hqCode, hqName, phoneNo, address, hqId, hqPasswd
+	</sql>
+	
+	<resultMap type="Hq" id="hqMap">
+		<id property="hqCode" column="hqCode" />
+		<result property="hqName" column="hqName" />
+		<result property="phoneNo" column="phoneNo" />
+		<result property="address" column="address" />
+		<result property="hqId" column="hqId" />
+		<result property="hqPasswd" column="hqPasswd" />
+	</resultMap>
+	
+	<select id="selectHqByHqId" parameterType="String" resultType="Hq">
+		SELECT <include refid="HqColumns" /> 
+		FROM hq
+		WHERE hqId = #{id}
+	</select>
+	
+	<select id="selectStoreList" resultType="Store">
+		SELECT storecode, storename, managername, email, phoneno, address
+		FROM store 
+	</select>
+	
+	<resultMap type="Store" id="storeMap">
+		<id column="storecode" property="storeCode" />
+		<result column="address" property="address" />
+		<result column="storename" property="storeName" />
+		<result column="managername" property="managerName" />
+		<result column="email" property="email" />
+		<result column="phoneno" property="phoneNo" />
+		<result column="hqcode" property="hqCode" />
+	</resultMap>
+	
+	<resultMap type="Customer2" id="customerMap">
+		<id column="customerno" property="customerNo"/>
+		<result column="c_name" property="customerName" />
+		<result column="c_phoneno" property="customerPhoneNo" />
+		<result column="c_age" property="customerAge" />
+		<result column="c_gender" property="customerGender" />
+		<result column="c_point" property="customerPoint" />
+		<result column="c_level" property="customerLevel" />
+		<association column="storecode" property="store" resultMap="storeMap" />
+	</resultMap>
+	<select id="selectCustomerList" resultMap="customerMap">
+		SELECT c.customerno, c.c_name, c.c_phoneno, c.c_age, c.c_gender, c.c_point, c.c_level, s.storename
+		FROM customer c, store s
+		WHERE c.storecode = s.storecode 
+	</select>
+	
+	<select id="selectClientList" resultType="Client">
+		SELECT clientname, businessregistrationnumber, clientphoneno, email, address, regdate
+		FROM client
+	</select>
+	
+	<select id="selectCurrentMonthRevenue" parameterType="String" resultType="Integer">
+		SELECT SUM(plusMinus) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%Y-%m') in (#{id})
+	</select>
+	
+</mapper>

@@ -57,13 +57,11 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public Store getStoreByStoreCode(String storeCode) {
-		// TODO Auto-generated method stub
 		return storeDao.selectStoreByStoreCode(storeCode);
 	}
 
 	@Override
 	public String getStoreNameByStoreCode(String storeCode) {
-		// TODO Auto-generated method stub
 		return storeDao.selectStoreNameByStoreCode(storeCode);
 	}
 	

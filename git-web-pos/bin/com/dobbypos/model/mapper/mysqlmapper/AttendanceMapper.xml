@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dobbypos.model.mapper.AttendanceMapper"><!-- 클래스 또는 인터페이스 역할 -->
+
+<!-- 	private int attendanceNo;
+	private Date startWork;
+	private Date endWork;
+	private int employeeNo; -->
+
+
+	<sql id="AttendanceColumns">
+		attendanceNo, startWork, endWork, employeeNo
+	</sql>
+	
+<!-- 	<resultMap type="Attendance" id="attendanceMap">
+		<id property="attendanceNo" column="attendanceNo" />
+		<result property="startWork" column="startWork" />
+		<result property="endWork" column="endWork" />
+		<result property="employeeNo" column="employeeNo" />
+	</resultMap>
+	
+	<resultMap type="Employee" id="employeeMap">
+		<id property="employeeNo" column="employeeNo" />
+		<result property="employeeName" column="employeeName" />
+		<result property="phoneNo" column="phoneNo" />
+		<result property="passwd" column="passwd" />
+		<result property="storeCode" column="storeCode" />
+		<result property="wage" column="wage" />
+		<result property="employeeType" column="employeeType" />
+		<result property="employeeId" column="employeeId" />
+		<collection property="attendances" column="employeeNo" resultMap="attendanceMap" />
+	</resultMap>
+	
+	
+	
+	<select id="selectAttendanceAllByStoreCode" parameterType="string" resultMap="employeeMap">
+		SELECT 
+			at.attendanceNo, at.startWork, at.endWork,
+			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em
+		LEFT OUTER JOIN attendance at
+		ON em.employeeNo = at.employeeNo
+		WHERE em.storeCode = #{id} AND em.employeeType = 'user'
+	</select> -->
+	
+	<resultMap type="Attendance" id="attendanceMap">
+		<id property="attendanceNo" column="attendanceNo" />
+		<result property="startWork" column="startWork" />
+		<result property="endWork" column="endWork" />
+		<result property="employeeNo" column="employeeNo" />
+		<association property="employeeone" column="employeeNo" resultMap="employeeMap" />
+	</resultMap>
+	
+	<resultMap type="Employee" id="employeeMap">
+		<id property="employeeNo" column="employeeNo" />
+		<result property="employeeName" column="employeeName" />
+		<result property="phoneNo" column="phoneNo" />
+		<result property="passwd" column="passwd" />
+		<result property="storeCode" column="storeCode" />
+		<result property="wage" column="wage" />
+		<result property="employeeType" column="employeeType" />
+		<result property="employeeId" column="employeeId" />
+		
+	</resultMap>
+	
+	<select id="selectAttendanceAllByStoreCode" parameterType="string" resultMap="attendanceMap">
+		SELECT 
+			at.attendanceNo, at.startWork, at.endWork,
+			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em,  attendance at
+		WHERE em.storeCode = #{id} AND em.employeeType = 'user' AND em.employeeNo = at.employeeNo
+		order by at.attendanceNo 
+	</select>
+	
+	<insert id="insertAttendanceByEmployeeNo" parameterType="int" useGeneratedKeys="true">
+		insert into attendance(employeeNo) values( #{id});
+	</insert>
+	
+	<select id="selectAttendancByEmployeeNoDate" parameterType="AttendanceSearch" resultMap="attendanceMap">
+		SELECT <include refid="AttendanceColumns" /> 
+		FROM attendance 
+		where employeeNo = #{employeeNo} and DATE_FORMAT(startWork, '%Y-%m-%d') = #{dateStr}
+		
+	</select>
+	
+	<update id="updateAttendanceEndWorkByAttendanceNo" parameterType="int" >
+		UPDATE attendance
+		SET endWork = now()
+		where attendanceNo = #{id}
+	</update>
+	
+	<select id="selectAttendanceByStoreCodeAndMonth" parameterType="string" resultMap="attendanceMap">
+		SELECT at.attendanceNo, at.startWork, at.endWork, 
+		em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em,  attendance at
+		where em.storeCode = #{storeCode} AND em.employeeType = 'user' 
+			and DATE_FORMAT(at.startWork, '%Y-%m') = #{monthDateStr} 
+			and em.employeeNo = at.employeeNo
+		order by at.attendanceNo 
+	
+	</select>
+	
+	
+	<select id="selectAttendanceAllByStoreCodeAndDate" parameterType="hashMap" resultMap="attendanceMap">
+		SELECT 
+			at.attendanceNo, at.startWork, at.endWork,
+			em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
+		FROM employee em,  attendance at
+		WHERE em.storeCode = #{storeCode} AND em.employeeType = 'user' AND em.employeeNo = at.employeeNo
+		AND at.startWork &gt;= date(#{startdaystr}) and at.startWork &lt; date(#{enddaystr}) + interval 1 day
+		order by at.attendanceNo 
+	</select>
+	
+	
+	<select id="selectAttendanceByEmployeeAndMonth" parameterType="AttendanceSearch" resultMap="attendanceMap">
+		SELECT <include refid="AttendanceColumns" /> 
+		FROM attendance 
+		where employeeNo = #{employeeNo} and DATE_FORMAT(startWork, '%Y-%m') = #{dateStr}
+		
+	</select>
+	
+</mapper>
