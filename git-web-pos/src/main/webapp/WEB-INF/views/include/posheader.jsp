@@ -75,7 +75,9 @@ addLoadEvent(menuIconActive);
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/dobbywebpos/main.action"> Dobby web pos 
+				</a> <a class="brand" href="/dobbywebpos/main.action">
+				<img src="/dobbywebpos/resources/img/icon/dobby_icon2.png" style="height:17px ;" />
+				<!--  Dobby web pos  -->
 					<c:if test="${ not empty sessionScope.loginuser }">
 					  [${ loginuser.storeName } ]
 					</c:if>
@@ -86,7 +88,7 @@ addLoadEvent(menuIconActive);
             			<c:when test="${ empty sessionScope.loginuser }">
 							<li class="">
 								<a href="/dobbywebpos/account/hqlogin.action" class=""> 
-									<i class="icon-chevron-left"></i> go to 본사page
+									<i class="icon-chevron-left"></i> go to Headquarter page
 								</a>
 							</li>
             			</c:when>

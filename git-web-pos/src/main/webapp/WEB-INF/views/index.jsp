@@ -33,7 +33,7 @@
 				<!-- input type="hidden" : 사용자에게 보이지 않지만 서버로 전송되는 입력 요소 -->
 		        <input type="hidden" name="returnurl" value='${ empty requestScope.returnurl ? "" : requestScope.returnurl }' />
 				
-					<h1>Dobby pos</h1>		
+					<h1>Dobby Web Pos</h1>		
 				
 					
 					<div class="login-fields">
