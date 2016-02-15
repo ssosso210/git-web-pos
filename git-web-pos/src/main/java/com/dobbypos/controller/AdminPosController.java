@@ -46,6 +46,7 @@ public class AdminPosController {
 		Date date = new Date();
 		Employee employee = (Employee)req.getSession().getAttribute("loginuser");
 		Hq hq = (Hq) storeService.getHqByStoreCode(employee.getStoreCode());
+		System.out.println(hq.toString());
 				
 		int revenue = hqService.getCurrentMonthRevenue();
 		int lastRevenue1 = hqService.getLastMonthRevenue();
