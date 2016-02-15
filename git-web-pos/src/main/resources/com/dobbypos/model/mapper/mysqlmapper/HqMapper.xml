@@ -196,6 +196,6 @@
 	<select id="selectLastYearPurchases" resultType="Integer">
 		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
 		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%Y') in (year(date_add(now(), interval -1 year)))
-	</select>
-	
+	</select>	
+
 </mapper>

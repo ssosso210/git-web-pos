@@ -54,6 +54,16 @@ public class StoreServiceImpl implements StoreService {
 		storeDao.deleteStoreByStoreCode(storeCode);
 		
 	}
+
+	@Override
+	public Store getStoreByStoreCode(String storeCode) {
+		return storeDao.selectStoreByStoreCode(storeCode);
+	}
+
+	@Override
+	public String getStoreNameByStoreCode(String storeCode) {
+		return storeDao.selectStoreNameByStoreCode(storeCode);
+	}
 	
 	
 

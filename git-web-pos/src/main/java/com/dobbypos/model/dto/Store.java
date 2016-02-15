@@ -12,6 +12,10 @@ public class Store implements Serializable {
 	private String phoneNo;
 	private String hqCode;
 	
+	//Store 테이블과 store hq 사이의 Many:1 관계를 구현한 필드(변수)
+	
+	private Hq hqone;
+	
 	public String getStoreCode() {
 		return storeCode;
 	}
@@ -54,6 +58,14 @@ public class Store implements Serializable {
 	}
 	public void setHqCode(String hqCode) {
 		this.hqCode = hqCode;
+	}
+	
+	
+	public Hq getHqone() {
+		return hqone;
+	}
+	public void setHqone(Hq hqone) {
+		this.hqone = hqone;
 	}
 	@Override
 	public String toString() {

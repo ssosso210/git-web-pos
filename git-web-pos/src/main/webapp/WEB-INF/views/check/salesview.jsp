@@ -75,7 +75,7 @@
 												<fieldset>
 
 													<div class="control-group">
-														<label class="control-label" for="balanceNo">목차</label>
+														<label class="control-label" for="balanceNo">No</label>
 														<div class="controls">
 															<input type="text" class="span6 disabled" id="balanceNo"
 																value=${ requestScope.balance.balanceNo } disabled>
@@ -93,13 +93,33 @@
 														<!-- /controls -->
 													</div>
 													<!-- /control-group -->
-
-
+													
 													<div class="control-group">
-														<label class="control-label" for="itemCode">구분</label>
+														<label class="control-label" for="itemCode">분류</label>
 														<div class="controls">
 															<input type="text" class="span6 disabled" id="itemCode"
 																value=${ requestScope.balance.itemCode } disabled>
+														</div>
+														<!-- /controls -->
+													</div>
+													<!-- /control-group -->
+
+
+													<div class="control-group">
+														<label class="control-label" for="itemname">구분</label>
+														<div class="controls">
+															<input type="text" class="span6 disabled" id="itemname"
+																value=${ requestScope.balance.itemname } disabled>
+														</div>
+														<!-- /controls -->
+													</div>
+													<!-- /control-group -->
+													
+													<div class="control-group">
+														<label class="control-label" for="description">세부사항</label>
+														<div class="controls">
+															<input type="text" class="span6 disabled" id="description"
+																value=${ requestScope.balance.description } disabled>
 														</div>
 														<!-- /controls -->
 													</div>
@@ -117,15 +137,7 @@
 													<!-- /control-group -->
 
 
-													<div class="control-group">
-														<label class="control-label" for="description">세부사항</label>
-														<div class="controls">
-															<input type="text" class="span6 disabled" id="description"
-																value=${ requestScope.balance.description } disabled>
-														</div>
-														<!-- /controls -->
-													</div>
-													<!-- /control-group -->
+													
 
 
 													

@@ -1,7 +1,5 @@
-=\=\=\=\=\=\=
-<<<<<<<=HEAD
->>>>>>>=branch 'master' of https\://github.com/ssosso210/git-web-pos.git
 eclipse.preferences.version=1
+encoding//src/main/java/com/dobbypos/model/dto/Employee.java=UTF-8
 encoding//src/main/resources/message/hq_message.properties=UTF-8
 encoding//src/main/resources/message/tags.properties=UTF-8
 encoding//src/main/resources/message/tags_en.properties=UTF-8
@@ -10,12 +8,6 @@ encoding//src/main/resources/message/webpos_message.properties=UTF-8
 encoding//src/main/webapp/WEB-INF/views/hq/clientregisterform.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/hq/storemanagement.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/hq/storeregisterform.jsp=UTF-8
-<<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/views/sale/salehome_test2_eunyoung.jsp=UTF-8
-=======
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos
 encoding//src/main/webapp/WEB-INF/views/settings/customeregisterform.jsp=UTF-8
-<<<<<<< HEAD
 encoding/<project>=UTF-8
-=======
->>>>>>> branch 'master' of https://github.com/ssosso210/git-web-pos

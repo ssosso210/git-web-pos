@@ -34,29 +34,10 @@ public class CheckServiceImpl implements CheckService {
 		return checkDao.getBalances();
 	}
 
-	@Override
-	public Balance getBalanceByNo(int balanceNo) {
-		
-		return checkDao.getBalanceByNo(balanceNo);
-	}
+	
 
-	@Override
-	public List<Balance> getBalancesbyPeriod(String startday, String endday) {
-		
-		return checkDao.getBalancebyPeriod(startday, endday);
-	}
-
-	@Override
-	public List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday) {
-		
-		return checkDao.getBalancebyPeriodAndPlus(startday, endday);
-	}
-
-	@Override
-	public List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday) {
-		
-		return checkDao.getBalancebyPeriodAndMinus(startday, endday);
-	}
+	
+	
 
 	@Override
 	public List<Menu> getMenuByDaySell(String todayDate, String storeCode) {
@@ -82,6 +63,55 @@ public class CheckServiceImpl implements CheckService {
 	public String getFirstOrderDate(int customerNo) {
 		// TODO Auto-generated method stub
 		return checkDao.selectFirstOrderDate(customerNo);
+	}
+	
+	@Override
+	public List<Balance> getBalancesbyPeriod(String startday, String endday) {
+		
+		return checkDao.getBalancebyPeriod(startday, endday);
+	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriod2(String startday, String endday, String storeCode) {
+		
+		return checkDao.getBalancebyPeriod2(startday, endday, storeCode);
+	}
+	
+	@Override
+	public List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday) {
+		
+		return checkDao.getBalancebyPeriodAndPlus(startday, endday);
+	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday) {
+		
+		return checkDao.getBalancebyPeriodAndMinus(startday, endday);
+	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriodAndPlus2(String startday, String endday, String storeCode) {
+		
+		return checkDao.getBalancebyPeriodAndPlus2(startday, endday, storeCode);
+	}
+
+	@Override
+	public List<Balance> getBalancesbyPeriodAndMinus2(String startday, String endday, String storeCode) {
+		
+		return checkDao.getBalancebyPeriodAndMinus2(startday, endday, storeCode);
+	}
+	
+
+	@Override
+	public Balance getBalanceByNo2(Balance balance3) {
+		
+		return checkDao.getBalanceByNo2(balance3);
+	}
+
+	@Override
+	public Balance getBalanceByNo(int balanceNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 //	public List<Balance> getBalances() {
