@@ -109,6 +109,8 @@
 			var pointleft = c_point1 - pointuse1
 			document.getElementById("pointleft").value = pointleft;
 		}
+		
+		return ;
 	}
 
 	$(document).ready(function() {
@@ -175,7 +177,7 @@
 
 									<div class="tab-content">
 										<div>
-											<!-- 	<form class="form-horizontal" > -->
+												<form class="form-horizontal" > 
 											<fieldset>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[결제수단]</a>
 												<div class="control-group">
@@ -290,32 +292,32 @@
 													<div class="controls">
 														<input type="number" id="pointuse" style="width: 280px"></input><br />
 														<tr>
-															<button onclick="javascript:pointnumber(1);"
+															<button type="button" onclick="javascript:pointnumber(1);"
 																style="width: 85px">1</button>
-															<button onclick="javascript:pointnumber(2);"
+															<button type="button" onclick="javascript:pointnumber(2);"
 																style="width: 85px">2</button>
 															<button onclick="javascript:pointnumber(3);"
-																style="width: 85px">3</button>
+																style="width: 85px" type="button">3</button>
 															<br />
 															<button onclick="javascript:pointnumber(4);"
-																style="width: 85px">4</button>
+																style="width: 85px" type="button">4</button>
 															<button onclick="javascript:pointnumber(5);"
-																style="width: 85px">5</button>
+																style="width: 85px" type="button">5</button>
 															<button onclick="javascript:pointnumber(6);"
-																style="width: 85px">6</button>
+																style="width: 85px" type="button">6</button>
 															<br />
 															<button onclick="javascript:pointnumber(7);"
-																style="width: 85px">7</button>
+																style="width: 85px" type="button">7</button>
 															<button onclick="javascript:pointnumber(8);"
-																style="width: 85px">8</button>
+																style="width: 85px" type="button">8</button>
 															<button onclick="javascript:pointnumber(9);"
-																style="width: 85px">9</button>
+																style="width: 85px" type="button">9</button>
 															<br />
 															<button onclick="javascript:RemoveOne();"
-																style="width: 85px">#</button>
+																style="width: 85px" type="button">#</button>
 															<button onclick="javascript:pointnumber(0);"
-																style="width: 85px">0</button>
-															<button onclick="javascript:RemoveAll();"
+																style="width: 85px" type="button">0</button>
+															<button type="button" onclick="javascript:RemoveAll();"
 																style="width: 85px">모두지우기</button>
 															<br />
 														</tr>
@@ -326,7 +328,7 @@
 												</div>
 
 
-												<button onclick="javascript:payresult()">적용</button>
+												<button type="button" id="applybtn" onclick="javascript:payresult();">적용</button>
 												<br />
 
 												<div class="control-group">
@@ -335,16 +337,16 @@
 														<input type="number" id="actualpay" style="width: 280px"><br />
 														<br />
 													</div>
-													</label>
+													
 												</div>
-												<div>
-													<button id="finalpay" onclick="javascript:finalpay1()"
-														class="btn btn-primary">최종결제</button>
-
+											
+												<div class="form-actions">
+													<button type="button" id="finalpay" onclick="javascript:finalpay1()" class="btn btn-primary">최종결제</button>
 												</div>
+											
 												<!-- /form-actions -->
 											</fieldset>
-											<!-- </form> -->
+											 </form>
 										</div>
 									</div>
 								</div>
