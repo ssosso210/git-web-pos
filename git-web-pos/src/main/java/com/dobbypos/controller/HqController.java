@@ -5,14 +5,12 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Client;
-import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Customer2;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Menu;

@@ -20,6 +20,7 @@ import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Orders;
+import com.dobbypos.model.service.BalanceService;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.PayService;
 import com.google.gson.Gson;
@@ -36,6 +37,10 @@ public class PayController {
    @Autowired
    @Qualifier("customerService")
    private CustomerService customerService;
+  
+   @Autowired
+   @Qualifier("balanceService")
+   private BalanceService balanceService;
          
    @RequestMapping(value="/payform.action", method=RequestMethod.GET)
    public String PayForm(Model model, @RequestParam("totaltableno")int totaltableno){
@@ -66,13 +71,15 @@ public class PayController {
          @RequestParam("paycard")String paycard,
          @RequestParam("totaltableno") int totaltableno,
          @RequestParam("pointleft")int pointleft,
-         @RequestParam("actualpay")int actualpay ){
+         @RequestParam("actualpay")int actualpay
+         
+		   ){
    
       System.out.println("customerno"+customerno);
       
       //1.orders 테이블에 정보 넣음 
       Employee employee = (Employee)session.getAttribute("loginuser");
-        String storeCode = employee.getStoreCode();
+      String storeCode = employee.getStoreCode();
       
       System.out.println("totaltableno 들어옴"+totaltableno);
       System.out.println("storeCode 들어옴"+storeCode);
@@ -87,25 +94,30 @@ public class PayController {
       payService.updateOrders(orders);
       
    //2.회원 포인트, 등급 조정
-      int resultpoint=(int)(pointleft+actualpay*(0.05));
-      //포인트쓰고 남은거+실제 결제금액의 5% 또 적립
+      if(customerno!=-1){
+    	  int resultpoint=(int)(pointleft+actualpay*(0.05));
+          //포인트쓰고 남은거+실제 결제금액의 5% 또 적립
+          String c_level=null;
+          if(resultpoint<1000){
+             c_level="basic";
+          }else if(1000<=resultpoint&& resultpoint<2000){
+             c_level="vip";
+          }else if(2000<=resultpoint){
+             c_level="vvip";
+          }
+                
+          Customer customer=new Customer();
+          customer.setC_point(resultpoint);
+          customer.setC_level(c_level);
+          customer.setCustomerNo(customerno);
+          customerService.updateCustomer(customer);
+          System.out.println("updateCustomer  done");
       
-      String c_level=null;
-      
-      if(resultpoint<1000){
-         c_level="basic";
-      }else if(1000<=resultpoint&& resultpoint<2000){
-         c_level="vip";
-      }else if(2000<=resultpoint){
-         c_level="vvip";
+      }else if(customerno==-1){
+    	 System.out.println("비회원");
       }
+    
       
-      Customer customer=new Customer();
-      customer.setC_point(resultpoint);
-      customer.setC_level(c_level);
-      customer.setCustomerNo(customerno);
-      customerService.updateCustomer(customer);
-      System.out.println("updateCustomer  done");
       
    //3.최종결제금액 balance 테이블에 넣음 - 나중에 음식 이름, 몇인분인지도 넣어야함 
   
@@ -123,7 +135,8 @@ public class PayController {
       balance.setPlusMinus(actualpay);
       balance.setStoreCode(storeCode);
       balance.setItemCode(itemcode);
-            
+      balanceService.insertBalanceFromPay(balance);
+
       return "redirect:/sale/salehome_test.action?storeCode1="+storeCode;
    }
    

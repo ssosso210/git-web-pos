@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.mapper.StoreMapper;
 
@@ -75,6 +76,12 @@ public class MySqlStoreDao implements StoreDao {
 	public String selectStoreNameByStoreCode(String storeCode) {
 		// TODO Auto-generated method stub
 		return storeMapper.selectStoreNameByStoreCode(storeCode);
+	}
+
+	@Override
+	public Hq selectHqByStoreCode(String storeCode) {
+		// TODO Auto-generated method stub
+		return storeMapper.selectHqByStoreCode(storeCode);
 	}
 
 }

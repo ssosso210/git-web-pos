@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.OrderDetail;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.mapper.HqMapper;
 import com.dobbypos.model.mapper.SaleMapper;
 
@@ -46,17 +48,22 @@ public class MySqlSaleDao implements SaleDao {
 		
 	}
 
+	@Override
+	public void insertOrder(Orders order) {
+		saleMapper.insertOrder(order);
+		
+	}
+
+	@Override
+	public void insertOrderDetail(OrderDetail orderDetail) {
+		saleMapper.insertOrderDetail(orderDetail);
+		
+		
+	}
+
 
 
 }
-
-
-
-
-
-
-
-
 
 
 

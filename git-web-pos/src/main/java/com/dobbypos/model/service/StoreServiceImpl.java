@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.StoreDao;
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 @Service("storeService")
@@ -63,6 +64,12 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public String getStoreNameByStoreCode(String storeCode) {
 		return storeDao.selectStoreNameByStoreCode(storeCode);
+	}
+
+	@Override
+	public Hq getHqByStoreCode(String storeCode) {
+		// TODO Auto-generated method stub
+		return storeDao.selectHqByStoreCode(storeCode);
 	}
 	
 	
