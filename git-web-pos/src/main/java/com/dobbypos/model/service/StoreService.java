@@ -2,6 +2,7 @@ package com.dobbypos.model.service;
 
 import java.util.List;
 
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 public interface StoreService {
@@ -14,5 +15,6 @@ public interface StoreService {
 	void deleteStoreByStoreCode(String storeCode);
 	Store getStoreByStoreCode(String storeCode);
 	String getStoreNameByStoreCode(String storeCode);
+	Hq getHqByStoreCode(String storeCode);
 		
 }

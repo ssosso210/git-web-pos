@@ -2,6 +2,7 @@ package com.dobbypos.model.mapper;
 
 import java.util.List;
 
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 public interface StoreMapper {
@@ -21,5 +22,7 @@ public interface StoreMapper {
 	Store selectStoreByStoreCode(String storeCode);
 
 	String selectStoreNameByStoreCode(String storeCode);
+
+	Hq selectHqByStoreCode(String storeCode);
 
 }

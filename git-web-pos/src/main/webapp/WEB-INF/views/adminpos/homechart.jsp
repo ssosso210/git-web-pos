@@ -77,6 +77,7 @@
         <!-- Director dashboard demo (This is only for demo purposes) -->
         <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
 
+		<script src="/dobbywebpos/resources/js/jquery.number.js"></script>
 
         <!-- Director for demo purposes -->
         <script type="text/javascript">
@@ -112,6 +113,38 @@
 <script type="text/javascript">
     $(function() {
     	var currentMonthSales = ${ revenue };
+    	var lastMonthSales = ${ lastRevenue };
+    	var lastMonthSales2 = ${ lastRevenue2 };
+    	var lastMonthSales3 = ${ lastRevenue3 };
+    	var lastMonthSales4 = ${ lastRevenue4};
+    	var lastMonthSales5 = ${ lastRevenue5 };
+    	var lastMonthSales6 = ${ lastRevenue6 };
+    	var lastMonthSales7 = ${ lastRevenue7 };
+    	var lastMonthSales8 = ${ lastRevenue8 };
+    	var lastMonthSales9 = ${ lastRevenue9 };
+    	var lastMonthSales10 = ${ lastRevenue10 };
+    	var lastMonthSales11 = ${ lastRevenue11 };
+    	
+    	var currentPurchases = ${ currentPurchases };
+    	var lastMonthPurchases1 = ${ lastMonthPurchases1 };
+    	var lastMonthPurchases2 = ${ lastMonthPurchases2 };
+    	var lastMonthPurchases3 = ${ lastMonthPurchases3 };
+    	var lastMonthPurchases4 = ${ lastMonthPurchases4 };
+    	var lastMonthPurchases5 = ${ lastMonthPurchases5 };
+    	var lastMonthPurchases6 = ${ lastMonthPurchases6 };
+    	var lastMonthPurchases7 = ${ lastMonthPurchases7 };
+    	var lastMonthPurchases8 = ${ lastMonthPurchases8 };
+    	var lastMonthPurchases9 = ${ lastMonthPurchases9 };
+    	var lastMonthPurchases10 = ${ lastMonthPurchases10 };
+    	var lastMonthPurchases11 = ${ lastMonthPurchases11 };
+    	
+    	var lastYearProfits = ${ lastYearProfits };
+    	var lastYearProfitsWithComma = $.number(lastYearProfits) + "원";
+    	$("#profits").html(lastYearProfitsWithComma);
+    	
+    	var totalCustomers = ${ totalCustomers };
+    	var totalCustomersWithComma = $.number(totalCustomers) + "명";
+    	$("#totalCustomers").html(totalCustomersWithComma);
     	
     	var d = new Date();
     	var month = d.getMonth() + 1;
@@ -220,8 +253,8 @@
                             pointColor: "rgba(220,220,220,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [11165, 11159, 11180, 11181, 11156, 11155, 11140, 11456, 11355, 11493, 11487, 11044]
+                            pointHighlightStroke: "rgba(220,220,220,1)",                            
+                            data: [lastMonthPurchases11, lastMonthPurchases10, lastMonthPurchases9, lastMonthPurchases8, lastMonthPurchases7, lastMonthPurchases6, lastMonthPurchases5, lastMonthPurchases4, lastMonthPurchases3, lastMonthPurchases2, lastMonthPurchases1, currentPurchases]
                         },
                         {
                             label: "My Second dataset",
@@ -230,14 +263,14 @@
                             pointColor: "rgba(151,187,205,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [11128, 11148, 11140, 11119, 11186, 11127, 11190, 11165, 11159, 11180, 11181, currentMonthSales]
+                            pointHighlightStroke: "rgba(151,187,205,1)",                            
+                            data: [lastMonthSales11, lastMonthSales10, lastMonthSales9, lastMonthSales8, lastMonthSales7, lastMonthSales6, lastMonthSales5, lastMonthSales4, lastMonthSales3, lastMonthSales2, lastMonthSales, currentMonthSales]
                         }
                     ]
                 };
             new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
                 responsive : true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,                
             });
 
             });
@@ -247,7 +280,7 @@
       <body class="skin-black">
 
 
-               <%--  <c:import url="/WEB-INF/views/include/hqHeader.jsp" /> --%>
+                <%-- <c:import url="/WEB-INF/views/include/hqHeader.jsp" /> --%>
                     <aside class="right-side">
 
                 <!-- Main content -->
@@ -260,7 +293,7 @@
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
                                 <div class="sm-st-info">
-                                    <span>${ requestScope.totalCustomers }<spring:message code="hq.person" /></span>
+                                    <span id="totalCustomers"></span>
                                     <spring:message code="hq.totalCustomer" />
                                 </div>
                             </div>
@@ -278,7 +311,7 @@
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
                                 <div class="sm-st-info">
-                                    <span>100,320<spring:message code="hq.won" /></span>
+                                    <span id="profits"></span>
                                     <spring:message code="hq.profit" />
                                 </div>
                             </div>

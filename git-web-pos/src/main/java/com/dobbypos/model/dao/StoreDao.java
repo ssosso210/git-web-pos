@@ -2,6 +2,7 @@ package com.dobbypos.model.dao;
 
 import java.util.List;
 
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 public interface StoreDao {
@@ -21,4 +22,6 @@ public interface StoreDao {
 	Store selectStoreByStoreCode(String storeCode);
 
 	String selectStoreNameByStoreCode(String storeCode);
+
+	Hq selectHqByStoreCode(String storeCode);
 }
