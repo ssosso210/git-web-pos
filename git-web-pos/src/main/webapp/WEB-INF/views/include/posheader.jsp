@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %><!--  태그를 spring으로 수정  -->
-<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
+<!-- <script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> -->
 <script type="text/javascript">
 
 function addLoadEvent(func){
@@ -84,7 +84,6 @@ addLoadEvent(menuIconActive);
 					<ul class="nav pull-right">
 					 <c:choose>
             			<c:when test="${ empty sessionScope.loginuser }">
-            				<!-- <li class=""><a href="signup.html" class=""> Don't have an account? </a></li> -->
 							<li class="">
 								<a href="/dobbywebpos/account/hqlogin.action" class=""> 
 									<i class="icon-chevron-left"></i> go to 본사page
@@ -92,15 +91,7 @@ addLoadEvent(menuIconActive);
 							</li>
             			</c:when>
             			<c:otherwise>
-	            			<!-- 
-	            			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-	                            class="icon-cog"></i> Account <b class="caret"></b></a>
-				            <ul class="dropdown-menu">
-				              <li><a href="javascript:;">Settings</a></li>
-				              <li><a href="javascript:;">Help</a></li>
-				            </ul>
-				          </li> 
-				          -->
+	            			
 				          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				          	<i class="icon-user"></i> ${ loginuser.employeeName } <b class="caret"></b></a>
 				            <ul class="dropdown-menu">
