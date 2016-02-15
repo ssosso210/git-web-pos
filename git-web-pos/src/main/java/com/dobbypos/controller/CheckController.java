@@ -53,7 +53,9 @@ public class CheckController {
 		
 		//menu 별 메출 오늘 
 		List<Menu> menus = checkService.getMenuByDaySell(todayDate, employeeSession.getStoreCode());
+	//	System.out.println("pay type0000000000"+menus.get(0).getPaytype());
 		
+		System.out.println("menus.get(i).getTotalprice()"+menus.get(0).getTotalprice());
 		for (Menu menu : menus) {
 			System.out.println(menu.toString());
 		}
@@ -74,16 +76,38 @@ public class CheckController {
 			all += menus.get(i).getOrderDetailPrice() * menus.get(i).getTotalcount();
 		}
 		
-		System.out.println(total);
-		System.out.println(all);
-		System.out.println("안나옴?");
+		int cash = 0;
+		int credit = 0;
+		int j = 0;
+//		if (menus.get(j).getPaytype() == "cash" ) {
+//		for (int i=0; i<menus.size(); i++) {
+//			cash += menus.get(i).getTotalprice();
+//		}
+//			} else if(menus.get(j).getPaytype() == "credit") {
+//				for (int i=0; i<menus.size(); i++) {
+//					credit += menus.get(i).getTotalprice();
+//			}
+//		}
 		
+		
+		for (int i=0; i<menus.size(); i++) {
+		
+			
+
+			if (menus.get(i).getPaytype().equals("cash") ) {
+				cash += menus.get(i).getTotalprice(); 
+			
+			} else if (menus.get(i).getPaytype().equals("credit")) {
+		
+			credit += menus.get(i).getTotalprice();
+			}
+		}
+		
+		System.out.println(menus);
+		System.out.println(cash);
+		System.out.println(credit);
+
 		int discountPrice = all - total;
-		
-		System.out.println(discountPrice);
-		
-		
-		
 		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
@@ -94,7 +118,8 @@ public class CheckController {
 		model.addAttribute("total",total);
 		model.addAttribute("all",all);
 		model.addAttribute("discountPrice", discountPrice);
-		
+		model.addAttribute("cash",cash);
+		model.addAttribute("credit", credit);
 		
 		System.out.println(balances);
 		
@@ -406,8 +431,8 @@ public class CheckController {
 			return "check/viewsellbycustomerdetail";
 		} else {
 			return "redirect:/check/viewsellbymember.action";
-		}
 		
+		}
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	

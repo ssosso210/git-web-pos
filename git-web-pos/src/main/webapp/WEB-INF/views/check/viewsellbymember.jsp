@@ -109,6 +109,7 @@
 
 
 								<c:forEach var="customer" items="${ customers }">
+								
 									<tbody>
 										<tr style="height: 30px; text-align: center">
 											<td style="width: 50px"><%-- <c:url value="view.action"

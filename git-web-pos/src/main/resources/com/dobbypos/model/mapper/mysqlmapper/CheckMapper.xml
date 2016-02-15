@@ -142,10 +142,12 @@
 		<result property="foodPrice" column="foodPrice" />
 		<result property="totalprice" column="totalprice" />
 		<result property="totalcount" column="totalcount" />
+		<result property="paytype" column="paytype" />
 		<result property="orderDetailPrice" column="orderDetailPrice" />
 	</resultMap>
+	
 	<select id="selectMenuByDaySell" parameterType="hashMap" resultMap="menuMap">
-		select me.foodCode as foodCode, me.foodName as foodName, 
+		select me.foodCode as foodCode, me.foodName as foodName, od.paytype,
 			sum(odt.quantity) as totalcount, odt.price as orderDetailPrice , sum((odt.price *(1-(od.discountRate/100))) *odt.quantity) as totalprice
 		from orders od, orderdetail odt, menu me
 		where od.orderNo = odt.orderNo and odt.foodCode = me.foodCode 
@@ -157,7 +159,7 @@
 	
 	<select id="selectMenuByPeriodSell" parameterType="hashMap" resultMap="menuMap">
 	
-	select me.foodCode as foodCode, me.foodName as foodName, 
+	select me.foodCode as foodCode, me.foodName as foodName, od.paytype,
 			sum(odt.quantity) as totalcount, odt.price as orderDetailPrice , sum((odt.price *(1-(od.discountRate/100))) *odt.quantity) as totalprice
 		from orders od, orderdetail odt, menu me
 		where od.orderNo = odt.orderNo and odt.foodCode = me.foodCode 
@@ -176,7 +178,7 @@
 	 
 	 
 	<select id="selectMenuByCustomer" parameterType="AttendanceSearch" resultMap="menuMap">
-		select me.foodCode as foodCode, me.foodName as foodName, 
+		select me.foodCode as foodCode, me.foodName as foodName, od.paytype,
 			sum(odt.quantity) as totalcount, odt.price as orderDetailPrice , sum((odt.price *(1-(od.discountRate/100))) *odt.quantity) as totalprice
 		from orders od, orderdetail odt, menu me
 		where od.orderNo = odt.orderNo and odt.foodCode = me.foodCode 
