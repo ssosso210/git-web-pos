@@ -17,9 +17,9 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDao customerDao;
 	
 	@Override
-	public int countTotalCustomers(String hqCode) {
+	public int countTotalCustomers() {
 				
-		return customerDao.countTotalCustomers(hqCode);
+		return customerDao.countTotalCustomers();
 	}
 
 	@Override

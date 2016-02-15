@@ -6,7 +6,7 @@ import com.dobbypos.model.dto.Customer;
 
 public interface CustomerDao {
 	void insertCustomer(Customer customer);
-	int countTotalCustomers(String hqCode);
+	int countTotalCustomers();
 	
 	List<Customer> getCustomers(String storeCode);
 	Customer selectCustomersByCustomerNo(int customerNo);

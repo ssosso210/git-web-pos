@@ -100,7 +100,7 @@ public class HqController {
 		
 		int lastYearProfits = lastYearRevenues - lastYearPurchases;
 		
-		int totalCustomers = customerService.countTotalCustomers(hq.getHqCode());
+		int totalCustomers = customerService.countTotalCustomers();
 		model.addAttribute("totalCustomers", totalCustomers);
 		model.addAttribute("path", path);
 		model.addAttribute("date", date);

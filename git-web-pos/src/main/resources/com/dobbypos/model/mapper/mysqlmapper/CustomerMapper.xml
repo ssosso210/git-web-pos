@@ -6,10 +6,9 @@
   
 <mapper namespace="com.dobbypos.model.mapper.CustomerMapper">
 
-	<select id="countTotalCustomers" parameterType="String" resultType="int">
+	<select id="countTotalCustomers" resultType="int">
 		SELECT COUNT(c_name)
-		FROM customer
-		WHERE hqCode = #{id}
+		FROM customer		
 	</select>
 <insert id="insertCustomer" parameterType="Customer">
         insert into Customer

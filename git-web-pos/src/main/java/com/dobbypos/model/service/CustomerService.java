@@ -6,7 +6,7 @@ import com.dobbypos.model.dto.Customer;
 
 public interface CustomerService {
 	
-	int countTotalCustomers(String hqCode);
+	int countTotalCustomers();
 	   void insertCustomer(Customer customer);
 	
 	   
