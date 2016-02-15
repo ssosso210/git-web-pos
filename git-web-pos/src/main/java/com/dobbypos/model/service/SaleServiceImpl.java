@@ -9,7 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dobbypos.model.dao.SaleDao;
+import com.dobbypos.model.dao.TableDao;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.OrderDetail;
+import com.dobbypos.model.dto.Orders;
+import com.dobbypos.model.dto.StoreTable;
 
 
 @Service("saleService")
@@ -27,6 +31,10 @@ public class SaleServiceImpl implements SaleService {
 	@Autowired
 	@Qualifier("saleDao")
 	private SaleDao saleDao;
+	
+	@Autowired
+	@Qualifier("tableDao")
+	private TableDao tableDao;
 
 
 	@Override
@@ -47,6 +55,32 @@ public class SaleServiceImpl implements SaleService {
 		saleDao.tableInsertMenu(menu);
 		
 	}
+	
+	@Override
+	public List<Orders> getOnProcessingOrderByTotalTableNo(int totalTableNo) {
+	
+		List<Orders> orders = tableDao.orderStatus(totalTableNo);
+				
+		if (orders.size() > 0) {		
+			List<OrderDetail> orderDetails = 
+					tableDao.selectOrdering(orders.get(0).getOrderNo());
+			
+			orders.get(0).setOrderDetails(orderDetails);
+		}
+		
+		return orders;
+		
+		
+	}
+
+	@Override
+	public void createOrUpdateOrder(Orders order) {
+		
+		
+	}
+	
+	
+	
 
 	
 }
