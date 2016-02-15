@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.dobbypos.model.dto.OrderDetail;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
 import com.dobbypos.model.mapper.TableMapper;
@@ -58,6 +60,20 @@ public class MySqlTableDao implements TableDao {
 	public List<StoreTable> selectCurrentTables(String storeCode1) {
 		List<StoreTable> st=tableMapper.selectCurrentTables(storeCode1);
 		return st;
+	}
+
+
+	@Override
+	public List<Orders> orderStatus(int totalTableNo) {
+		List<Orders> orderStatus = tableMapper.orderStatus(totalTableNo);
+		return orderStatus;
+	}
+
+
+	@Override
+	public List<OrderDetail> selectOrdering(int orderNo) {
+		List<OrderDetail> selectOrderding = tableMapper.selectOrdering(orderNo);
+		return selectOrderding;
 	}
 
 }

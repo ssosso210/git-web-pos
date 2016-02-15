@@ -13,9 +13,11 @@
 		<result property="storeCode" column="storeCode" />
 		<result property="description" column="description" />
 		<result property="itemCode" column="itemCode" />
+		<result property="itemname" column="itemname" />
 		<collection property="accountCode" column="itemCode"
 			resultMap="accountCodeMap" />
 	</resultMap>
+	
 	<resultMap type="AccountCode" id="accountCodeMap">
 		<id property="itemCode" column="itemCode"/>
 		<result property="itemName" column="itemName"/>
@@ -51,18 +53,18 @@
 	</select>
 	
 	<select id="getBalancebyPeriodAndPlus2" parameterType="hashMap" resultMap="balanceMap">		
-		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
-		FROM balance 
+		SELECT ba.balanceNo, ba.plusMinus, ba.regDate, ba.storeCode, ba.description, ba.itemCode ,ac.itemname
+		FROM balance ba ,accountcode ac
 		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
-		and ba.itemCode = ac.itemCode
-		and plusMinus >= 0
+        and ba.itemCode = ac.itemCode
+		and plusMinus &gt;= 0
 	</select>
 	
 	<select id="getBalancebyPeriodAndMinus2" parameterType="hashMap" resultMap="balanceMap">		
-		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
-		FROM balance 
+		SELECT ba.balanceNo, ba.plusMinus, ba.regDate, ba.storeCode, ba.description, ba.itemCode ,ac.itemname
+		FROM balance ba ,accountcode ac
 		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
-		and ba.itemCode = ac.itemCode
+        and ba.itemCode = ac.itemCode
 		and plusMinus &lt; 0
 	</select>
 	

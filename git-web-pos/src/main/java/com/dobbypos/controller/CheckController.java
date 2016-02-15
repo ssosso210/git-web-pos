@@ -49,6 +49,7 @@ public class CheckController {
 		
 		List<Balance> balances = checkService.getBalancesbyPeriod2(todayDate, todayDate, employeeSession.getStoreCode());
 		
+		List<Balance> balances2 = checkService.getBalancesbyPeriodAndPlus2(todayDate, todayDate, employeeSession.getStoreCode());
 		
 		//menu 별 메출 오늘 
 		List<Menu> menus = checkService.getMenuByDaySell(todayDate, employeeSession.getStoreCode());
@@ -67,7 +68,22 @@ public class CheckController {
 		for(int i=0;i<menus.size();i++){
 			total += menus.get(i).getTotalprice();
 		}
+		
+		int all = 0;
+		for (int i=0; i<menus.size(); i++) {
+			all += menus.get(i).getOrderDetailPrice() * menus.get(i).getTotalcount();
+		}
+		
 		System.out.println(total);
+		System.out.println(all);
+		System.out.println("안나옴?");
+		
+		int discountPrice = all - total;
+		
+		System.out.println(discountPrice);
+		
+		
+		
 		
 		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
@@ -75,7 +91,10 @@ public class CheckController {
 		model.addAttribute("menus",menus);
 		model.addAttribute("todayStr", Util.getTodayDate());
 		model.addAttribute("sum", sum);
-		model.addAttribute("total", total);
+		model.addAttribute("total",total);
+		model.addAttribute("all",all);
+		model.addAttribute("discountPrice", discountPrice);
+		
 		
 		System.out.println(balances);
 		
@@ -100,11 +119,26 @@ public class CheckController {
 		for(int i=0;i<menus.size();i++){
 			total += menus.get(i).getTotalprice();
 		}
-
+		
+		int all = 0;
+		for (int i=0; i<menus.size(); i++) {
+			all += menus.get(i).getOrderDetailPrice() * menus.get(i).getTotalcount();
+		}
+		
+		System.out.println(total);
+		System.out.println(all);
+		System.out.println("안나옴?");
+		
+		int discountPrice = all - total;
+		
+		System.out.println(discountPrice);
+		
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
 		model.addAttribute("total",total);
+		model.addAttribute("all",all);
+		model.addAttribute("discountPrice", discountPrice);
 
 		return "check/checksell"; 
 		

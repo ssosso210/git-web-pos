@@ -38,6 +38,11 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
+    
+    
+    <!--  main title bar -->
+    	<link href="/dobbywebpos/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,9 +51,29 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
           <![endif]-->
 
-          <style type="text/css">
+<style type="text/css">
 
-          </style>
+.navbar-inner {
+    padding: 7px 0;
+    background: #00ba8b !important;
+    }
+    .navbar .nav>li>a {
+    color: #fff !important;
+}
+.navbar .nav>li>a:hover {
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+}
+.navbar .nav>li>a {
+    float: none;
+    padding: 10px 10px 11px;
+    line-height: 19px;
+    color: #999999;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+</style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
@@ -276,15 +301,44 @@
             });
             // Chart.defaults.global.responsive = true;
 </script>
-      </head>
-      <body class="skin-black">
-
+ </head>
+<body class="skin-black">
+<div id="header">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="/dobbywebpos/main.action">admin page  </a>
+				<div class="nav-collapse">
+					<ul class="nav pull-right">
+					
+	            			
+				         <li class="">
+								<a href="/dobbywebpos/main.action" class=""> 
+									<i class="icon-chevron-left"></i> 취소
+								</a>
+							</li>
+            			
+            	
+						
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /navbar-inner -->
+	</div>
+	<!-- /navbar -->			
+</div>   
 
                <%--  <c:import url="/WEB-INF/views/include/hqHeader.jsp" /> --%>
                    <!--  <aside class="right-side"> -->
 
                 <!-- Main content -->
-                <section class="content">
+                <section class="content" style="padding: 70px 15px;">
 
                     <div class="row" style="margin-bottom:5px;">
 
