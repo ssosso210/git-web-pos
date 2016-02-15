@@ -125,7 +125,7 @@ public class ManagementController {
 		stockService.setStockrequire(stockName, snumber);
 		stockService.setStockrequire2(stockName,snumber);
 		
-		return "redirect:/management/stocklist";				
+		return "redirect:/management/stockrequirelist";				
 	}
 	
 	
