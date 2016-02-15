@@ -17,15 +17,15 @@ public class StoreServiceImpl implements StoreService {
 	private StoreDao storeDao;
 	
 	@Override
-	public List<String> getStoreNameListById(String storeName) {
+	public List<String> getStoreNameListById(String storeName, String hqCode) {
 				
-		return storeDao.getStoreNameListByid(storeName);
+		return storeDao.getStoreNameListByid(storeName, hqCode);
 	}
 
 	@Override
-	public List<String> getStoreCodeListByStoreCode(String storeCode) {
+	public List<String> getStoreCodeListByStoreCode(String storeCode, String hqCode) {
 		
-		return storeDao.getStoreCodeListByStoreCode(storeCode);
+		return storeDao.getStoreCodeListByStoreCode(storeCode, hqCode);
 	}
 
 	@Override
@@ -36,9 +36,9 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public Store getStoreByStoreName(String storeName) {
+	public Store getStoreByStoreName(String storeName, String hqCode) {
 		
-		return storeDao.getStoreByStoreName(storeName);
+		return storeDao.getStoreByStoreName(storeName, hqCode);
 	}
 
 	@Override
@@ -49,9 +49,9 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public void deleteStoreByStoreCode(String storeCode) {
+	public void deleteStoreByStoreCode(String storeCode, String hqCode) {
 
-		storeDao.deleteStoreByStoreCode(storeCode);
+		storeDao.deleteStoreByStoreCode(storeCode, hqCode);
 		
 	}
 

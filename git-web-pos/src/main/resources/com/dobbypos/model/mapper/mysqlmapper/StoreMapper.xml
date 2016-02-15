@@ -6,16 +6,16 @@
 
 <mapper namespace="com.dobbypos.model.mapper.StoreMapper"><!-- 클래스 또는 인터페이스 역할 -->
 	
-	<select id="selectStoreNameListById" parameterType="String" resultType="String">
+	<select id="selectStoreNameListById" parameterType="HashMap" resultType="String">
 		SELECT storename
 		FROM store
-		WHERE storename LIKE concat(#{ id }, '%')
+		WHERE storename LIKE concat(#{ storeName }, '%') AND hqCode = #{hqCode}
 	</select>
 	
-	<select id="selectStoreCodeListByStoreCode" parameterType="String" resultType="String">
+	<select id="selectStoreCodeListByStoreCode" parameterType="HashMap" resultType="String">
 		SELECT storecode
 		FROM store
-		WHERE storecode LIKE concat(#{ id }, '%')
+		WHERE storecode LIKE concat(#{ storeCode }, '%') AND hqCode = #{hqCode}
 	</select>
 	
 	<insert id="insertStore" parameterType="Store">
@@ -23,10 +23,10 @@
 		VALUES (#{storeCode}, #{address}, #{storeName}, #{managerName}, #{email}, #{phoneNo}, #{hqCode})
 	</insert>
 	
-	<select id="selectStoreByStoreName" parameterType="String" resultType="Store">
+	<select id="selectStoreByStoreName" parameterType="HashMap" resultType="Store">
 		SELECT storecode, address, storename, managername, email, phoneno, hqcode
 		FROM store
-		WHERE storename = #{id}
+		WHERE storename = #{storeName} AND hqcode = #{hqCode}
 	</select>
 	
 	<update id="updateStoreInfo" parameterType="Store">
@@ -34,8 +34,8 @@
 		email = #{email}, phoneno = #{phoneNo}, hqcode = #{hqCode} WHERE storecode = #{storeCode} 
 	</update>
 	
-	<delete id="deleteStoreByStoreCode" parameterType="String">
-		DELETE FROM store WHERE storeCode = #{id}
+	<delete id="deleteStoreByStoreCode" parameterType="HashMap">
+		DELETE FROM store WHERE storeCode = #{storeCode} AND hqCode = #{hqCode}
 	</delete>
 	
 	<select id="selectStoreByStoreCode" parameterType="String" resultType="Store">

@@ -6,17 +6,17 @@ import com.dobbypos.model.dto.Store;
 
 public interface StoreDao {
 
-	List<String> getStoreNameListByid(String storeName);
+	List<String> getStoreNameListByid(String storeName, String hqCode);
 
-	List<String> getStoreCodeListByStoreCode(String storeCode);
+	List<String> getStoreCodeListByStoreCode(String storeCode, String hqCode);
 
 	void insertStore(Store store);
 
-	Store getStoreByStoreName(String storeName);
+	Store getStoreByStoreName(String storeName, String hqCode);
 
 	void updateStoreInfo(Store store);
 
-	void deleteStoreByStoreCode(String storeCode);
+	void deleteStoreByStoreCode(String storeCode, String hqCode);
 
 	Store selectStoreByStoreCode(String storeCode);
 

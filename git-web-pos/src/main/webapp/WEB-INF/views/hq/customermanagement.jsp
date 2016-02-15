@@ -162,7 +162,7 @@
                <td>${ customer.customerAge }</td>               
                <td>${ customer.customerPoint }</td>
                <td>${ customer.customerLevel }</td>
-               <td>${ customer.store.storeName }</td>               
+               <td>${ customer.store.storeCode }</td>               
             </tr>
             </c:forEach>
             
