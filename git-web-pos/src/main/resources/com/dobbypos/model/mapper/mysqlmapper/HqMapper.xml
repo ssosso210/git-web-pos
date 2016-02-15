@@ -68,10 +68,10 @@
 		FROM client
 	</select>
 	
+	<select id="selectCurrentMonthRevenue" parameterType="String" resultType="Integer">
+		SELECT SUM(plusMinus) 
+		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%Y-%m') in (#{id})
+	</select>
+	
 </mapper>
-
-
-
-
-
 

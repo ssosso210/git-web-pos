@@ -111,52 +111,133 @@
 </script>
 <script type="text/javascript">
     $(function() {
+    	var currentMonthSales = ${ revenue };
+    	
     	var d = new Date();
     	var month = d.getMonth() + 1;
     	var nextMonth = null;
     	var lastMonth = null;
+    	var lastMonth2 = null;
+    	var lastMonth3 = null;
+    	var lastMonth4 = null;
+    	var lastMonth5 = null;
+    	var lastMonth6 = null;
+    	var lastMonth7 = null;
+    	var lastMonth8 = null;
+    	var lastMonth9 = null;
+    	var lastMonth10 = null;
+    	var lastMonth11 = null;
+    	
+    	if (month == 0) {
+    		lastMonth = 12;
+    	} else {
+    		lastMonth = month - 1;
+    	}
+    	lastMonth2 = lastMonth - 1;    	
+    	if (lastMonth2 == 0) {
+    		lastMonth2 = 12;
+    	} 
+    	lastMonth3 = lastMonth2 - 1;
+    	if (lastMonth3 == 0) {
+    		lastMonth3 = 12;
+    	} 
+    	lastMonth4 = lastMonth3 - 1;
+    	if (lastMonth4 == 0) {
+    		lastMonth4 = 12;
+    	} 
+    	lastMonth5 = lastMonth4 - 1;
+    	if (lastMonth5 == 0) {
+    		lastMonth5 = 12;
+    	} 
+    	lastMonth6 = lastMonth5 - 1;
+    	if (lastMonth6 == 0) {
+    		lastMonth6 = 12;
+    	} 
+    	lastMonth7 = lastMonth6 - 1;
+    	if (lastMonth7 == 0) {
+    		lastMonth7 = 12;
+    	} 
+    	lastMonth8 = lastMonth7 - 1;
+    	if (lastMonth8 == 0) {
+    		lastMonth8 = 12;
+    	} 
+    	lastMonth9 = lastMonth8 - 1;
+    	if (lastMonth9 == 0) {
+    		lastMonth9 = 12;
+    	} 
+    	lastMonth10 = lastMonth9 - 1;
+    	if (lastMonth10 == 0) {
+    		lastMonth10= 12;
+    	} 
+    	lastMonth11 = lastMonth10 - 1;
+    	if (lastMonth11 == 0) {
+    		lastMonth11 = 12;
+    	} 
+    	
     	if (month == 12) {
     		nextMonth = 1;
     	} else {
     		nextMonth = month + 1;
     	}
     	
+    	var nextMonth2 = nextMonth + 1;
+    	var nextMonth3 = nextMonth2 + 1;
+    	var nextMonth4 = nextMonth3 + 1;
+    	var nextMonth5 = nextMonth4 + 1;
+    	var nextMonth6 = nextMonth5 + 1;
+    	
     	
     	var currentMonth = month + "월";
     	var currentNextMonth = nextMonth + "월"
+    	var currentNextMonth2 = nextMonth2 + "월"
+    	var currentNextMonth3 = nextMonth3 + "월"
+    	var currentNextMonth4 = nextMonth4 + "월"
+    	var currentNextMonth5 = nextMonth5 + "월"
+    	var currentNextMonth6 = nextMonth6 + "월"
+    	
+    	var currentLastMonth = lastMonth + "월";
+    	var currentLastMonth2 = lastMonth2 + "월";
+    	var currentLastMonth3 = lastMonth3 + "월";
+    	var currentLastMonth4 = lastMonth4 + "월";
+    	var currentLastMonth5 = lastMonth5 + "월";
+    	var currentLastMonth6 = lastMonth6 + "월";
+    	var currentLastMonth7 = lastMonth7 + "월";
+    	var currentLastMonth8 = lastMonth8 + "월";
+    	var currentLastMonth9 = lastMonth9 + "월";
+    	var currentLastMonth10 = lastMonth10 + "월";
+    	var currentLastMonth11 = lastMonth11 + "월";
         //alert(currentMonth);
                 "use strict";
                 //BAR CHART
-                
-                
+                                
                 var data = {
-                    labels: ["1월", "2월", "3월", "4월", "5월", currentMonth, currentNextMonth, "8월", "9월", "10월", "11월", "12월"],
+                    labels: [currentLastMonth11, currentLastMonth10, currentLastMonth9, currentLastMonth8, currentLastMonth7, currentLastMonth6, currentLastMonth5, currentLastMonth4, currentLastMonth3, currentLastMonth2, currentLastMonth, currentMonth],
                     datasets: [
                         {
                             label: "My First dataset",
                             fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            strokeColor: "red",
                             pointColor: "rgba(220,220,220,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [11165, 11159, 11180, 11181, 11156, 11155, 11140]
+                            data: [11165, 11159, 11180, 11181, 11156, 11155, 11140, 11456, 11355, 11493, 11487, 11044]
                         },
                         {
                             label: "My Second dataset",
                             fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
+                            strokeColor: "blue",
                             pointColor: "rgba(151,187,205,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [11128, 11148, 11140, 11119, 11186, 11127, 11190]
+                            data: [11128, 11148, 11140, 11119, 11186, 11127, 11190, 11165, 11159, 11180, 11181, currentMonthSales]
                         }
                     ]
                 };
             new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
                 responsive : true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: false
             });
 
             });
@@ -224,6 +305,28 @@
                                 </header>
                                 <div class="panel-body">
                                     <canvas id="linechart" width="600" height="330"></canvas>
+                                    <div class="legend"><div style="position: absolute; width: 60px; height: 60px; top: 14px; right: 13px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div>
+                                    	<table style="position:absolute;top:14px;right:13px;;font-size:smaller;color:#545454">
+                                    		<tbody>
+                                    			<tr>
+                                    				<td class="legendColorBox">
+                                    					<div style="border:1px solid #ccc;padding:1px">
+                                    						<div style="width:4px;height:0;border:5px solid rgb(250,88,51);overflow:hidden"></div>
+                                    					</div>
+                                    				</td>
+                                    				<td class="legendLabel">매입액</td>
+                                    			</tr>
+                                    			<tr>
+                                    				<td class="legendColorBox">
+                                    					<div style="border:1px solid #ccc;padding:1px">
+                                    						<div style="width:4px;height:0;border:5px solid rgb(47,171,233);overflow:hidden"></div>
+                                    					</div>
+                                    				</td>
+                                    				<td class="legendLabel">매출액</td>
+                                    			</tr>
+                                    		</tbody>
+                                    	</table>
+                                    </div>
                                 </div>
                                         </section>
                                         <!--earning graph end-->

@@ -17,4 +17,6 @@ public interface HqMapper {
 
 	List<Client> selectClientList();
 
+	int selectCurrentMonthRevenue(String date2);
+
 }

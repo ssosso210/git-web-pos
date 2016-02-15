@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,9 +68,16 @@ public class HqController {
 	@RequestMapping(value = { "/home.action" }, method = RequestMethod.GET)
 	public String home(HttpServletRequest req, Model model) {
 		String path = req.getRequestURI();
+		Date date = new Date();
+		String date2 = Util.getTodayMonth();
+		String date3 = date2.substring(5);
+		System.out.println(date3);
+		int revenue = hqService.getCurrentMonthRevenue(date2);
 		int totalCustomers = customerService.countTotalCustomers();
 		model.addAttribute("totalCustomers", totalCustomers);
 		model.addAttribute("path", path);
+		model.addAttribute("date", date);
+		model.addAttribute("revenue", revenue);
 		return "hq/home";
 		//return "hq/salemenumanagement";
 	}

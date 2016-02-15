@@ -49,6 +49,12 @@ public class HqServiceImpl implements HqService {
 		return hqDao.getClientList();
 	}
 
+	@Override
+	public int getCurrentMonthRevenue(String date2) {
+		
+		return hqDao.getCurrentMonthRevenue(date2);
+	}
+
 	
 	
 	
