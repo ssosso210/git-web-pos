@@ -20,9 +20,7 @@
 	<link href="/dobbywebpos/resources/css/pages/signin.css" rel="stylesheet" type="text/css">
 	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet">
 	<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script> 
-	
 	 <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
- <!--      <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
       <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
       
 <script type="text/javascript">

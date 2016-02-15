@@ -72,7 +72,7 @@
 								
 								<span style="float: right;"> 
 								<!-- <input class="btn btn-middle"type="button" value="[메뉴별]" />&nbsp;&nbsp;&nbsp; --> 
-								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a> -->
+								<!-- <a href="viewsellbyperiod.action" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp; --> 
 								<a href="javascript:viewsell('menu');" class="btn btn-middle">메뉴별</a>&nbsp;&nbsp;&nbsp;
 								<!-- <input class="btn btn-middle" type="button" value="[회원별]" />&nbsp;&nbsp;&nbsp; -->
 								<a href="viewsellbymember.action" class="btn btn-middle">회원별</a> 
@@ -97,13 +97,13 @@
 								align="center" width="600px">
 								<thead>
 									<tr>
-										<td>No</td>
-										<td>이름</td>
-										<td>휴대폰 번호</td>
-										<td>나이</td>
-										<td>성별</td>
-										<td>포인트</td>
-										<td>회원등급</td>
+										<th>No</th>
+										<th>이름</th>
+										<th>휴대폰 번호</th>
+										<th>나이</th>
+										<th>성별</th>
+										<th>포인트</th>
+										<th>회원등급</th>
 									</tr>
 								</thead>
 
@@ -120,7 +120,6 @@
 											<td style="width: 100px">
 												<c:url value="/check/viewsellbycustomerdetail.action" var="viewUrl"> 
 													<c:param name="customerNo" value="${customer.customerNo }" />
-													<c:param name="cust" value="${customer.customerNo }" />
 												</c:url>
 		                    				<a href="${ viewUrl }">${ customer.c_name }</a></td>
 											<td style="width: 100px">${ customer.c_phoneNo }</td>
@@ -136,7 +135,7 @@
 						</div>
 						<!-- /span -->
 					</div>
-					<!-- /row -->
+					<!-- /widget -->
 				</div>
 				<!-- /container -->
 			</div>

@@ -9,4 +9,6 @@ public interface CustomerDao {
 	int countTotalCustomers();
 	
 	List<Customer> getCustomers(String storeCode);
+	Customer selectCustomersByCustomerNo(int customerNo);
+	void updateCustomer(Customer customer);
 }

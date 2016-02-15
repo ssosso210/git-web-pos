@@ -10,4 +10,8 @@ public interface StockDao {
 	
 	public void setStockrequire(String stockName, int snumber);
 
+	List<Stock> getList2();
+
+	List<Stock> selectStocksByStockType(String stockType);
+
 }	

@@ -33,6 +33,18 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return customerDao.getCustomers(storeCode);
 	}
+
+	@Override
+	public Customer getCustomersByCustomerNo(int customerNo) {
+		// TODO Auto-generated method stub
+		return customerDao.selectCustomersByCustomerNo(customerNo);
+	}
+
+	@Override
+	public void updateCustomer(Customer customer) {
+		customerDao.updateCustomer( customer);
+		
+	}
 	
 
 }

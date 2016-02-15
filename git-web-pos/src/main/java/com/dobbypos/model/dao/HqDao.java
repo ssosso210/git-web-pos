@@ -17,7 +17,7 @@ public interface HqDao {
 	List<Customer2> getCustomerList();
 	
 	List<Client> getClientList();
+
+	int getCurrentMonthRevenue(String date2);
 	
-
-
 }

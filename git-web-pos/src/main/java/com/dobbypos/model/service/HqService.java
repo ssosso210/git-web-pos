@@ -18,4 +18,6 @@ public interface HqService {
 
 	List<Client> getAllClient();
 
+	int getCurrentMonthRevenue(String date2);
+
 }

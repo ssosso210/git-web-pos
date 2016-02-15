@@ -8,13 +8,15 @@ import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 
 public interface HqMapper {
-	
-	Hq selectHqByHqId(String hqId);
-	
-	List<Store> selectStoreList();
-	
+
 	List<Customer2> selectCustomerList();
 
 	List<Client> selectClientList();
 
+	int selectCurrentMonthRevenue(String date2);
+
+	Hq selectHqByHqId(String hqId);
+	
+	List<Store> selectStoreList();
+	
 }
