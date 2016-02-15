@@ -302,11 +302,36 @@ $(function() {
 			}); */
 			
 		});
-	 		
+	   function pageChange(totalTableNo, totalPrice) {
+	         location.href='../pay/payform.action?totaltableno=' + totalTableNo + '&price=' + totalPrice   
+	      }
+	      
+	      $('#paymentbutton').on('click', function(event) {
+	         var totalTableNo = $('#orderbutton').attr('data2');
+	         var totalPrice = 0;
+	         $('td[id^=price]').each(function(index, value) {
+	            totalPrice += parseInt(value.innerText.trim());
+	         })
+	         pageChange(totalTableNo, totalPrice)
+	      });
+	          
 
    
  });
+  //박은영 추가 
+ function pagechange(totalCost, totalTableNo){
+	 
+	 // "../pay/payform.action";
+	location.href="../pay/payform.action?totalcost=" + totalCost + "&totaltableno=" + totalTableNo;
+	//location.href="../pay/payform.action?totalcost="+${total};
 
+	//$(location).attr('href',"../pay/payform.action?totalcost="+${total}+"&totaltableno="+${table.getTotalTableNo()};
+	  
+	
+	
+
+  
+  } 
 
 
 
@@ -359,7 +384,9 @@ $(function() {
 
 			<div id="choosetable${ status.index }" class="shortcut" style="background: #f9f6f1; width:15%;cursor: pointer; "> 
 				<span id="totalno${ status.index }">고유값: ${table.getTotalTableNo() }</span> <br/>				
+			
 				<c:forEach var="orders" items="${ table.orders }">
+				
 					<span class='orderno' data='${ orders.orderNo }'>주문번호: ${ orders.orderNo }</span><br />
 					<c:set var="total" value="0" />
 					<c:forEach var="orderDetails" items="${ orders.orderDetails }">
@@ -367,11 +394,9 @@ $(function() {
 					</c:forEach>
 					
 				<%-- <span>테이블번호: ${st.getTableNo() }</span><br/> --%>
-				<span>가  격: ${ total }</span><br/>
+				<span>가  격: ${ total }</span><br/>				
 				</c:forEach>
-
 			</div> 
-
 		</c:forEach>
 		</div>
 		</div>
@@ -425,14 +450,11 @@ $(function() {
             	<input type="button" id="menu${menu.foodCode}"
             		value="${ menu.foodName }" style="width:120px; height:40px; float:left; margin: 10px" data="${ menu.foodCode }/${ menu.foodName }/${ menu.foodPrice }">
 			</c:forEach>
-			
-			
-			
-
 		</div>
-		<button id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" ></button>
-      	<button onclick="javascript:pagechange()" value="계산하기" style="width:80px; height:60px">계산하기</button>
 		
+		
+		<button id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" ></button>
+      	<button id="paymentbutton" value="계산하기" style="width:80px; height:60px">계산하기</button>
 	</div>
 
 	<!-- 부모창 -->
