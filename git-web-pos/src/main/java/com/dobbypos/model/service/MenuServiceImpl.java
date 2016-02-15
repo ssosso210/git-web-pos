@@ -56,6 +56,8 @@ public class MenuServiceImpl implements MenuService {
 		menuDao.deleteSaleMenuByFoodCode(foodCode);
 		
 	}
+
+
 	
 	
 

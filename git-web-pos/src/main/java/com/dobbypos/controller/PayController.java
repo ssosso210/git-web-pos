@@ -20,7 +20,6 @@ import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Orders;
-import com.dobbypos.model.service.BalanceService;
 import com.dobbypos.model.service.CustomerService;
 import com.dobbypos.model.service.PayService;
 import com.google.gson.Gson;
@@ -37,12 +36,7 @@ public class PayController {
    @Autowired
    @Qualifier("customerService")
    private CustomerService customerService;
-   
-   @Autowired
-   @Qualifier("balanceService")
-   private BalanceService balanceService;
-   
-   
+         
    @RequestMapping(value="/payform.action", method=RequestMethod.GET)
    public String PayForm(Model model, @RequestParam("totaltableno")int totaltableno){
       model.addAttribute("totaltableno", totaltableno);
@@ -129,10 +123,7 @@ public class PayController {
       balance.setPlusMinus(actualpay);
       balance.setStoreCode(storeCode);
       balance.setItemCode(itemcode);
-      balanceService.insertBalanceFromPay(balance);
-      
-      
-      
+            
       return "redirect:/sale/salehome_test.action?storeCode1="+storeCode;
    }
    

@@ -52,4 +52,16 @@ public class MySqlStoreDao implements StoreDao {
 		
 	}
 
+	@Override
+	public Store selectStoreByStoreCode(String storeCode) {
+		// TODO Auto-generated method stub
+		return storeMapper.selectStoreByStoreCode(storeCode);
+	}
+
+	@Override
+	public String selectStoreNameByStoreCode(String storeCode) {
+		// TODO Auto-generated method stub
+		return storeMapper.selectStoreNameByStoreCode(storeCode);
+	}
+
 }

@@ -16,9 +16,18 @@ public class Employee implements Serializable {
 	private String employeeType;
 	private String employeeId;
 	
+	
+	
 	//Employee 테이블과 Attendance 테이블 사이의 1:Many 관계를 구현한 필드(변수)
 	private List<Attendance> attendances;
 	private Attendance attendanceone;
+	
+	
+	private Store storeone;
+	
+	private String storeName ;
+	
+	
 	
 	public int getEmployeeNo() {
 		return employeeNo;
@@ -81,6 +90,24 @@ public class Employee implements Serializable {
 		this.attendanceone = attendanceone;
 	}
 	
+	
+	
+
+
+	public Store getStoreone() {
+		return storeone;
+	}
+	public void setStoreone(Store storeone) {
+		this.storeone = storeone;
+	}
+	
+	
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
 	@Override
 	public String toString() {
 		return "Employee [employeeNo=" + employeeNo + ", employeeName=" + employeeName + ", phoneNo=" + phoneNo
