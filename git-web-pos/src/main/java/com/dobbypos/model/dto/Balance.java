@@ -12,6 +12,7 @@ public class Balance implements Serializable {
 	private String description;
 	private String itemCode;
 	private AccountCode accountCode;
+	private String itemname;
 	
 	public int getBalanceNo() {
 		return balanceNo;
@@ -54,6 +55,12 @@ public class Balance implements Serializable {
 	}
 	public void setAccountCode(AccountCode accountCode) {
 		this.accountCode = accountCode;
+	}
+	public String getItemname() {
+		return itemname;
+	}
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
 	}
 	
 	

@@ -16,6 +16,8 @@ public interface StockMapper {
 	List<Stock> selectRequireStocks();
 
 	List<Stock> selectStocksByStockType(String stockType);
+
+	public void setStockrequire2(@Param("stockName") String stockName,@Param("snumber") int snumber);
 	
 
 }

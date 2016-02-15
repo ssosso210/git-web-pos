@@ -123,9 +123,13 @@ public class ManagementController {
 		int snumber = Integer.parseInt(req.getParameter("snumber"));
 
 		stockService.setStockrequire(stockName, snumber);
+		stockService.setStockrequire2(stockName,snumber);
 		
 		return "redirect:/management/stocklist";				
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/stockrequirelist",method = RequestMethod.GET)
 	public String stockrequirelist(Model model){

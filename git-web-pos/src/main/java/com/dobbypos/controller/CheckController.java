@@ -45,7 +45,9 @@ public class CheckController {
 		
 		
 		String todayDate = Util.getTodayDate();
-		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
+		//List<Balance> balances2 = checkService.getBalancesbyPeriod(todayDate, todayDate);
+		
+		List<Balance> balances = checkService.getBalancesbyPeriod2(todayDate, todayDate, employeeSession.getStoreCode());
 		
 		
 		//menu 별 메출 오늘 
@@ -74,6 +76,8 @@ public class CheckController {
 		model.addAttribute("todayStr", Util.getTodayDate());
 		model.addAttribute("sum", sum);
 		model.addAttribute("total", total);
+		
+		System.out.println(balances);
 		
 		return "check/checkmain"; 
 	}
@@ -138,13 +142,13 @@ public class CheckController {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	@RequestMapping(value = "/checksales.action", method = RequestMethod.GET)
-	public String Checksales(Model model) {
-		
+	public String Checksales(HttpSession session, Model model) {
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 		
 		
 		String todayDate = Util.getTodayDate();
-		List<Balance> balances = checkService.getBalancesbyPeriod(todayDate, todayDate);
-		
+		//List<Balance> balances2 = checkService.getBalancesbyPeriod(todayDate, todayDate);
+		List<Balance> balances = checkService.getBalancesbyPeriod2(todayDate, todayDate, employeeSession.getStoreCode());
 		
 		int sum = 0;
 		for(int i=0;i<balances.size();i++){
@@ -169,16 +173,31 @@ public class CheckController {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	@RequestMapping(value = "salesview.action", method = RequestMethod.GET)
-	public String salesView(
+	public String salesView(HttpSession session,
 		@RequestParam("balanceno") int balanceno, @ModelAttribute("balance") Balance balance) {
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
+	
+		System.out.println("balanceno ="+balanceno);
 		
-		Balance balance2 = checkService.getBalanceByNo(balanceno);		
+		Balance balance3 = new Balance();
+		balance3.setBalanceNo(balanceno);
+		balance3.setStoreCode(employeeSession.getStoreCode());
+		
+		Balance balance2 = checkService.getBalanceByNo2(balance3);		
+		
+		
+		
 		if (balance2 != null) {
 			balance.setBalanceNo(balance2.getBalanceNo());
 			balance.setRegDate(balance2.getRegDate());
 			balance.setItemCode(balance2.getItemCode());
+			balance.setItemname(balance2.getItemname());
 			balance.setPlusMinus(balance2.getPlusMinus());
 			balance.setDescription(balance2.getDescription());
+			
+			
+			
+			
 			return "check/salesview";
 		} else {
 			return "redirect:/check/checksales.action";
@@ -241,17 +260,18 @@ public class CheckController {
 	
 	@RequestMapping(value = "viewbyperiod.action", method = RequestMethod.POST)
 	public String attendanceSearchlist(HttpSession session, HttpServletRequest req) {
+		Employee employeeSession = (Employee)session.getAttribute("loginuser");
 
 		String startday = (String)req.getParameter("startday");
 		String endday = (String)req.getParameter("endday");
 		String typeval = (String)req.getParameter("typeval");
 		List<Balance> balances = null;
 		if (typeval.equals("all") ){
-			balances = checkService.getBalancesbyPeriod(startday, endday);
+			balances = checkService.getBalancesbyPeriod2(startday, endday,employeeSession.getStoreCode());
 		}else if(typeval.equals("plus") ){
-			balances = checkService.getBalancesbyPeriodAndPlus(startday, endday);
+			balances = checkService.getBalancesbyPeriodAndPlus2(startday, endday,employeeSession.getStoreCode());
 		}else if(typeval.equals("minus") ){
-			balances = checkService.getBalancesbyPeriodAndMinus(startday, endday);
+			balances = checkService.getBalancesbyPeriodAndMinus2(startday, endday,employeeSession.getStoreCode());
 		}
 		
 		System.out.println("attendanceSearchlist : dateStr="+startday+"endStr="+endday);

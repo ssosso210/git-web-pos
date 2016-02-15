@@ -57,18 +57,10 @@ public class MySqlHqDao implements HqDao {
 		return clients;
 	}
 
-	
-	
+	@Override
+	public int getCurrentMonthRevenue(String date2) {
+		int revenue = hqMapper.selectCurrentMonthRevenue(date2);
+		return revenue;
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
-

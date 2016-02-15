@@ -61,7 +61,7 @@
 					<div class="span12">
 
 						<form id="edit-profile" 
-								action="/dobbywebpos/check/viewsellbyperiod.action" method="post">
+								action="/dobbywebpos/check/viewsellbymember.action" method="post">
 
 
 							<input type="hidden" id="typeval" name="typeval" value="all" />

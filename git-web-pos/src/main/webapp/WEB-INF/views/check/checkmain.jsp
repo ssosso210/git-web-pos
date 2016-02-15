@@ -35,6 +35,105 @@
 					<a href="checksell.action" class="btn btn-large btn-success btn-support-ask">판매 실적</a>	
 				</div> <!-- /widget-content -->
 			</div> <!-- /widget -->
+			
+			<p>
+			<div class="span6">
+			<div class="widget widget-table action-table">
+						<div class="widget-header">
+							<i class="icon-th-list"></i>
+							<h3>금일 판매 실적 [ ${todayStr} ]</h3>
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계매출 : ${total}원</h3>
+								</span>
+						</div>
+						
+						<div class="widget-content">
+
+							<table class="table table-striped table-bordered" border="1" align="center" width="600px">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>메뉴</th>
+										<th>누적판매량</th>
+										<th>메뉴당 가격</th>
+										<th>누적매출</th>
+									</tr>
+								</thead>
+
+
+								<c:forEach var="menu" items="${ menus }">
+									<tbody>
+										<tr style="height: 30px; text-align: center">
+											<td style="width: 50px"><%-- <c:url value="view.action"
+													var="viewUrl">
+													<c:param name="employeeNo" value="${ menu.employeeNo }" />
+												</c:url>  --%>
+												<%-- <a href="${ viewUrl }">${ employee.employeeNo }</a> --%>
+												${ menu.foodCode}</td>
+											<td style="width: 100px">${ menu.foodName }</td>
+											<td style="width: 100px">${ menu.totalcount }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }원</td>
+											<td style="width: 50px">${ menu.totalprice }원</td>
+											
+										</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<!-- /span -->
+					</div>
+				</div>
+				
+				<div class="span6">
+			<div class="widget widget-table action-table">
+						<div class="widget-header">
+							<i class="icon-th-list"></i>
+							<h3>금일 판매 실적 [ ${todayStr} ]</h3>
+								<span style="float: right;">
+									<i class="icon-money"></i>
+									<h3> 합계매출 : ${total}원</h3>
+								</span>
+						</div>
+						
+						<div class="widget-content">
+
+							<table class="table table-striped table-bordered" border="1" align="center" width="600px">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>메뉴</th>
+										<th>누적판매량</th>
+										<th>메뉴당 가격</th>
+										<th>누적매출</th>
+									</tr>
+								</thead>
+
+
+								<c:forEach var="menu" items="${ menus }">
+									<tbody>
+										<tr style="height: 30px; text-align: center">
+											<td style="width: 50px"><%-- <c:url value="view.action"
+													var="viewUrl">
+													<c:param name="employeeNo" value="${ menu.employeeNo }" />
+												</c:url>  --%>
+												<%-- <a href="${ viewUrl }">${ employee.employeeNo }</a> --%>
+												${ menu.foodCode}</td>
+											<td style="width: 100px">${ menu.foodName }</td>
+											<td style="width: 100px">${ menu.totalcount }</td>
+											<td style="width: 50px">${ menu.orderDetailPrice }원</td>
+											<td style="width: 50px">${ menu.totalprice }원</td>
+											
+										</tr>
+								</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						<!-- /span -->
+					</div>
+				</div>
+	  		</p>
+	        
 	        <div class="widget widget-table action-table">
 							<div class="widget-header">
 								<i class="icon-th-list"></i>
@@ -52,11 +151,12 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<th>목차</th>
+											<th>NO</th>
 						        			<th>시간</th>
+											<th>분류</th>
 											<th>구분</th>
-											<th>금액</th>
 											<th>세부사항</th>
+											<th>금액</th>
 											<!-- <td>축적시간</td>
         										<td>급여</td> -->
 										</tr>
@@ -74,8 +174,9 @@
 												</td>
 												<td style="width: 70px"><fmt:formatDate value="${ balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												<td style="width: 25px">${ balance.itemCode }</td>
-												<td style="width: 50px">${ balance.plusMinus }원</td>
+												<td style="width: 25px">${ balance.itemname }</td>
 												<td style="width: 50px">${ balance.description }</td>
+												<td style="width: 50px">${ balance.plusMinus }원</td>
 												<%--<td>${ employee.pay } </td>--%>
 											</tr>
 									</c:forEach>

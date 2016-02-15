@@ -31,6 +31,14 @@ public interface CheckMapper {
 
 	String getFirstOrderDate(int customerNo);
 
+	List<Balance> getBalancebyPeriod2(HashMap<String, String> params);
+
+	List<Balance> getBalancebyPeriodAndPlus2(HashMap<String, String> params);
+
+	List<Balance> getBalancebyPeriodAndMinus2(HashMap<String, String> params);
+
+	Balance getBalanceByNo2(Balance balance3);
+
 	
 
 }
