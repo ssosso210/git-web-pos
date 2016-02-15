@@ -14,6 +14,7 @@ public class Orders implements Serializable {
 	private int totalTableNo;
 	private String storeCode;
 	private int customerNo;
+
 	
 	public int getOrderNo() {
 		return orderNo;

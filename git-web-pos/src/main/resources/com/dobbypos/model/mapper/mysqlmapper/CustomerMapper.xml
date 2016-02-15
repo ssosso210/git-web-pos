@@ -29,6 +29,14 @@
 		FROM customer
 		WHERE customerNo = #{id}
 	</select>
+	
+	
+	<update id="updateCustomer" parameterType="Customer">
+		update customer 
+		set c_point=#{c_point}, c_level=#{c_level} 
+		where customerNo=#{customerNo};
+	</update>
+	
     
     
 </mapper>

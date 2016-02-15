@@ -10,6 +10,7 @@ import com.dobbypos.model.dao.EmployeeDao;
 import com.dobbypos.model.dao.PayDao;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
+import com.dobbypos.model.dto.Orders;
 
 @Service("payService")
 public class PayServiceImpl implements PayService {
@@ -24,6 +25,11 @@ public class PayServiceImpl implements PayService {
 	public Customer getCustomerInfo(int customerno) {
 		
 		return payDao.getCustomerInfo(customerno);
+	}
+
+	@Override
+	public void updateOrders(Orders orders) {
+		payDao.updateOrders(orders);
 	}
 
 	

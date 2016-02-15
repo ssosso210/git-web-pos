@@ -6,7 +6,7 @@
 
 <mapper namespace="com.dobbypos.model.mapper.PayMapper">
 
-	
+
 	<resultMap type="Customer" id="customerMap">
 		<id property="customerNo" column="customerNo" />
 		<result property="c_name" column="plusMinus" />
@@ -16,11 +16,26 @@
 		<result property="c_point" column="itemCode" />
 		<result property="storeCode" column="storeCode" />
 	</resultMap>
-	
+
 	<select id="getCustomerInfo" parameterType="int" resultType="Customer">
 		select * from Customer where CustomerNo=#{customerNo}
 	</select>
-	
-	
-	
+
+	<update id="updateOrders" parameterType="Orders">
+		update Orders
+		set
+		orderDate=SYSDATE(),
+		storeCode= #{storeCode},
+		customerNo=#{customerNo} ,
+		payType=#{payType},
+		discountRate= #{discountRate},
+		orderStatus=#{orderStatus}
+		where totalTableNo=#{totalTableNo} 
+		order by orderNo DESC limit 1;
+
+
+	</update>
+
+
+
 </mapper>

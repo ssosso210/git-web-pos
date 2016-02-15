@@ -12,6 +12,7 @@ import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.mapper.CheckMapper;
 import com.dobbypos.model.mapper.PayMapper;
 
@@ -28,6 +29,13 @@ public class MysqlPayDao implements PayDao {
 	public Customer getCustomerInfo(int customerno) {
 		Customer customers=payMapper.getCustomerInfo(customerno);
 		return customers;
+	}
+
+
+
+	@Override
+	public void updateOrders(Orders orders) {
+		payMapper.updateOrders(orders);
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.dobbypos.model.service;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +47,10 @@ public class HqServiceImpl implements HqService {
 		return hqDao.getClientList();
 	}
 
-	
-	
+	@Override
+	public int getCurrentMonthRevenue(String date2) {
+		
+		return hqDao.getCurrentMonthRevenue(date2);
+	}
 	
 }

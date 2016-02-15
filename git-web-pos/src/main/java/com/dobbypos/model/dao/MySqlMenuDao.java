@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.StoreTable;
 import com.dobbypos.model.mapper.MenuMapper;
+import com.dobbypos.model.mapper.TableMapper;
 
 @Repository("menuDao")
 public class MySqlMenuDao implements MenuDao {
@@ -58,7 +60,6 @@ public class MySqlMenuDao implements MenuDao {
 		menuMapper.deleteSaleMenuByFoodCode(foodCode);
 		
 	}
-
 
 
 }

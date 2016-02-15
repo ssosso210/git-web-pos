@@ -44,7 +44,8 @@
 	</update>
 	
 	<delete id="deleteSaleMenuByFoodCode" parameterType="String">
-		DELETE FROM menu WHERE foodCode = #{id}
+		UPDATE menu SET isDeleted = 1
+		WHERE foodCode = #{id}
 	</delete>
 
 	

@@ -22,7 +22,7 @@ public class Employee implements Serializable {
 	private List<Attendance> attendances;
 	private Attendance attendanceone;
 	
-	//Employee 테이블과 store 테이블 사이의 Many:1 관계를 구현한 필드(변수)
+	
 	private Store storeone;
 	
 	private String storeName ;
