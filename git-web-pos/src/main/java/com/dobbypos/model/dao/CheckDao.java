@@ -28,6 +28,16 @@ public interface CheckDao {
 	List<Menu> selectMenuByCustomer(int customerNo, String storeCode, String startday, String endday);
 
 	String selectFirstOrderDate(int customerNo);
+
+	List<Balance> getBalancebyPeriod2(String startday, String endday, String storeCode);
+
+	List<Balance> getBalancebyPeriodAndPlus2(String startday, String endday, String storeCode);
+
+	List<Balance> getBalancebyPeriodAndMinus2(String startday, String endday, String storeCode);
+
+	Balance getBalanceByNo2(Balance balance3);
+
+	
 	
 
 //	void insert(Member member);

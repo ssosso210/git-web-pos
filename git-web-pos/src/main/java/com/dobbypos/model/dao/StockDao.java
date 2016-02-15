@@ -14,4 +14,6 @@ public interface StockDao {
 
 	List<Stock> selectStocksByStockType(String stockType);
 
+	public void setStockrequire2(String stockName, int snumber);
+
 }	

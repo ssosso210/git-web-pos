@@ -14,10 +14,6 @@ public interface CheckService {
 
 	List<Balance> getBalancesbyPeriod(String startday, String endday);
 
-	List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday);
-
-	List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday);
-
 	List<Menu> getMenuByDaySell(String todayDate, String storeCode);
 
 	List<Menu> getMenuByPeriodSell(String startday, String endday, String storeCode);
@@ -25,4 +21,14 @@ public interface CheckService {
 	List<Menu> getMenuByCustomer(int customerNo, String storeCode, String startday, String endday);
 
 	String getFirstOrderDate(int customerNo);
+
+	List<Balance> getBalancesbyPeriod2(String startday, String endday, String storeCode);
+	
+	List<Balance> getBalancesbyPeriodAndPlus(String startday, String endday);
+	List<Balance> getBalancesbyPeriodAndPlus2(String startday, String endday, String storeCode);
+	
+	List<Balance> getBalancesbyPeriodAndMinus(String startday, String endday);
+	List<Balance> getBalancesbyPeriodAndMinus2(String startday, String endday, String storeCode);
+
+	Balance getBalanceByNo2(Balance balance3);
 }
