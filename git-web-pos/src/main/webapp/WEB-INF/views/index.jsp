@@ -75,6 +75,10 @@
 							<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
 							<label class="choice" for="Field">Keep me signed in</label>
 						</span> -->
+						
+						<span class="login-checkbox">
+							<label class="choice" for="Field" style="color : red;">${ empty failMessage ? "" : failMessage}</label>
+						</span>
 											
 						<button class="button btn btn-success btn-large" type="submit" ><spring:message code="account.login"/></button>
 						

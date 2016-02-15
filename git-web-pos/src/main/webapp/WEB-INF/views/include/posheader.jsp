@@ -73,11 +73,15 @@ addLoadEvent(menuIconActive);
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/dobbywebpos/main.action">
-				<img src="/dobbywebpos/resources/img/icon/dobby_icon2.png" style="height:17px ;" />
-				<!--  Dobby web pos  -->
+					data-target=".nav-collapse"> <span class="icon-bar"></span> 
+					<span class="icon-bar"></span> <span class="icon-bar">
+					
+					</span>
+				</a> 
+				
+				<a class="brand" href="/dobbywebpos/main.action">
+				<img src="/dobbywebpos/resources/img/icon/icon-pos.png" style="height:18px ;" />
+				Dobby web pos 
 					<c:if test="${ not empty sessionScope.loginuser }">
 					  [${ loginuser.storeName } ]
 					</c:if>
