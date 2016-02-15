@@ -111,7 +111,5 @@ public class Menu implements Serializable {
 				+ regDate + ", hqCode=" + hqCode + ", menuGroups=" + menuGroups + ", savedFileName=" + savedFileName
 				+ ", userFileName=" + userFileName + ", totalprice=" + totalprice + "]";
 	}
-	
-	
 
 }

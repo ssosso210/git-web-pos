@@ -20,6 +20,4 @@ public interface HqDao {
 
 	int getCurrentMonthRevenue(String date2);
 	
-
-
 }

@@ -38,6 +38,7 @@
 		<typeAlias type="com.dobbypos.model.dto.Stock" alias="Stock" />
 		<typeAlias type="com.dobbypos.model.dto.StockCode" alias="StockCode" />
 		<typeAlias type="com.dobbypos.model.dto.AccountCode" alias="AccountCode" />
+		<typeAlias type="com.dobbypos.model.dto.Orders" alias="Orders" />
 		
 		<typeAlias type="com.dobbypos.model.dto.AttendanceSearch" alias="AttendanceSearch" />
 		
@@ -74,6 +75,7 @@
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/StockMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/ClientMapper.xml" />
 		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/PayMapper.xml" />
+		<mapper resource="com/dobbypos/model/mapper/mysqlmapper/BalanceMapper.xml" />
 
 		
 		<!-- 윤수가추가 -->

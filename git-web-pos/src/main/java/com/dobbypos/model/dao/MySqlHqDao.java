@@ -63,18 +63,4 @@ public class MySqlHqDao implements HqDao {
 		return revenue;
 	}
 
-	
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
