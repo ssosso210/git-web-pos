@@ -46,8 +46,7 @@ public class AdminPosController {
 		Date date = new Date();
 		Employee employee = (Employee)req.getSession().getAttribute("loginuser");
 		Hq hq = (Hq) storeService.getHqByStoreCode(employee.getStoreCode());
-		System.out.println(hq.toString());
-				
+		
 		int revenue = hqService.getCurrentMonthRevenue();
 		int lastRevenue1 = hqService.getLastMonthRevenue();
 		int lastRevenue2 = hqService.getLastMonth2Revenue();
@@ -79,7 +78,7 @@ public class AdminPosController {
 		
 		int lastYearProfits = lastYearRevenues - lastYearPurchases;
 		
-		int totalCustomers = customerService.countTotalCustomers(hq.getHqCode());
+		int totalCustomers = customerService.countTotalCustomers();
 		model.addAttribute("totalCustomers", totalCustomers);
 		model.addAttribute("path", path);
 		model.addAttribute("date", date);
@@ -108,7 +107,6 @@ public class AdminPosController {
 		model.addAttribute("lastMonthPurchases10", lastMonthPurchases10);
 		model.addAttribute("lastMonthPurchases11", lastMonthPurchases11);
 		model.addAttribute("lastYearProfits", lastYearProfits);
-		
 		
 		return urlstr+"homechart";
 	}	

@@ -280,8 +280,8 @@
       <body class="skin-black">
 
 
-                <%-- <c:import url="/WEB-INF/views/include/hqHeader.jsp" /> --%>
-                    <aside class="right-side">
+               <%--  <c:import url="/WEB-INF/views/include/hqHeader.jsp" /> --%>
+                   <!--  <aside class="right-side"> -->
 
                 <!-- Main content -->
                 <section class="content">
@@ -778,7 +778,7 @@
                 <div class="footer-main">
                     Copyright &copy Director, 2014
                 </div>
-            </aside><!-- /.right-side -->
+            <!-- </aside> --><!-- /.right-side -->
 
         </div><!-- ./wrapper -->
 
