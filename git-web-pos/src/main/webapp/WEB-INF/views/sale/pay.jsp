@@ -121,6 +121,15 @@
 			$("#case_cashcard").hide();
 		});
 	});
+	//회원/비회원 체크할떄
+	$(document).ready(function() {
+		$("#isregistered").click(function() {
+			$("#ifregistered").show();
+		});
+		$("#notregistered").click(function() {
+			$("#ifregistered").hide();
+		});
+	});
 
 	function finalpay1() {
 		var CustomerNo = document.getElementById("CustomerNo").value;
@@ -128,11 +137,22 @@
 		var paycard = $("input[type=radio][name=paycard]:checked").val();
 		var pointleft = document.getElementById("pointleft").value;
 		var actualpay = document.getElementById("actualpay").value;
+		var CustomerOrNot = $("input[type=radio][name=CustomerOrNot]:checked").val();
 
-		location.href = "/dobbywebpos/pay/finalpay.action?CustomerNo="
+		if(CustomerOrNot=="isregistered"){//회원일경우
+			location.href = "/dobbywebpos/pay/finalpay.action?CustomerNo="
 				+ CustomerNo + "&dscrate=" + dscrate + "&paycard=" + paycard
 				+ "&pointleft=" + pointleft + "&totaltableno=" + ${totaltableno}
-		+"&actualpay=" + actualpay;
+				+"&actualpay=" + actualpay
+				
+		}else if(CustomerOrNot=="notregistered"){//비회원일경우
+			location.href = "/dobbywebpos/pay/finalpay.action?CustomerNo="
+				+ (-1) + "&dscrate=" + (0) + "&paycard=" + paycard
+				+ "&pointleft=" + (0) + "&totaltableno=" + ${totaltableno}
+				+"&actualpay=" + actualpay
+		}
+		
+		
 	}
 
 	function RemoveAll() {
@@ -185,10 +205,11 @@
 
 
 													<div class="controls">
-														<label class="radio inline"> <input name="paycard"
-															type="radio" id="paycard" value="credit">카드계산</input>
-														</label> <label class="radio inline"> <input
-															name="paycard" type="radio" id="paycash" value="cash">현금계산</input>
+														<label class="radio inline"> 
+														<input name="paycard" type="radio" id="paycard" value="credit">카드계산</input>
+														</label> 
+														<label class="radio inline"> 
+														<input name="paycard" type="radio" id="paycash" value="cash">현금계산</input>
 														</label>
 													</div>
 													<div id="case_cashcard" style="display: none">
@@ -203,9 +224,25 @@
 														</label>
 													</div>
 
-													<!-- /controls -->
 												</div>
+												
+												<!-- 회원/비회원 체크  -->
+												<div class="controls">
+														<label class="radio inline"> 
+														<input name="CustomerOrNot" type="radio" id="isregistered" value="isregistered">회원</input>
+														</label> 
+														<label class="radio inline"> 
+														<input name="CustomerOrNot" type="radio" id="notregistered" value="notregistered">비회원</input>
+														</label>
+												</div>
+												
+												
 
+
+
+
+												<div id="ifregistered"  style="display: none"><!-- 회원일경우 -->
+												
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[회원정보불러오기]</a>
 
 												<div class="control-group">
@@ -213,6 +250,9 @@
 													<div class="controls">
 														<input type="number" id="writtenno" style="width: 140px" />
 														<input type="button" id="customerinfo" value="고객정보조회" />
+														&nbsp;&nbsp;
+														<!-- <input name="notregistered" type="radio" id="notregistered" value="notregistered">비회원</input>
+														 -->
 														<br />
 													</div>
 													</label>
@@ -270,6 +310,11 @@
 													</div>
 													</label>
 												</div>
+												</div>
+											
+												
+												
+												
 												<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[계산]</a>
 												<div class="control-group">
 													<label class="control-label">금액:</label>
