@@ -108,8 +108,7 @@ public class PayController {
       System.out.println("updateCustomer  done");
       
    //3.최종결제금액 balance 테이블에 넣음 - 나중에 음식 이름, 몇인분인지도 넣어야함 
-     /* 최종 결제금액, storecode, itemcode- ss001현금 02카드*/
-      
+  
       String itemcode=null;
       
       if(paycard.equals("credit")){

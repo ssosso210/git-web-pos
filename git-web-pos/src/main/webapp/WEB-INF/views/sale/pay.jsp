@@ -125,12 +125,12 @@
 		var dscrate = document.getElementById("discount_rate").value;
 		var paycard = $("input[type=radio][name=paycard]:checked").val();
 		var pointleft = document.getElementById("pointleft").value;
-		var actualpay=document.getElementById("actualpay").value;
-		
+		var actualpay = document.getElementById("actualpay").value;
+
 		location.href = "/dobbywebpos/pay/finalpay.action?CustomerNo="
 				+ CustomerNo + "&dscrate=" + dscrate + "&paycard=" + paycard
 				+ "&pointleft=" + pointleft + "&totaltableno=" + ${totaltableno}
-				+ "&actualpay="+actualpay;
+		+"&actualpay=" + actualpay;
 	}
 
 	function RemoveAll() {
@@ -175,181 +175,179 @@
 
 									<div class="tab-content">
 										<div>
-										<!-- 	<form class="form-horizontal" > -->
-												<fieldset>
+											<!-- 	<form class="form-horizontal" > -->
+											<fieldset>
 												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[결제수단]</a>
-													<div class="control-group">
-														<label class="control-label">결제수단</label>
+												<div class="control-group">
+													<label class="control-label">결제수단</label>
 
 
-														<div class="controls">
-															<label class="radio inline"> <input
-																name="paycard" type="radio" id="paycard" value="credit">카드계산</input>
-															</label> <label class="radio inline"> <input
-																name="paycard" type="radio" id="paycash" value="cash">현금계산</input>
-															</label>
-														</div>
-														<div id="case_cashcard" style="display: none">
-															<label class="radio inline"> <br /> 카드번호 <input
-																type="number" id="cardno" style="width: 190px"
-																value=<%=((int) (Math.random() * 10000000) + 1)%>><br />
-																유효기간 <input type="number" id="validmonth"
-																style="width: 80px"
-																value=<%=((int) (Math.random() * 13) + 1)%>>월&nbsp;
-																<input type="text" id="validmonth" style="width: 80px"
-																value=<%=((int) (Math.random() * 31) + 1)%>>일<br />
-															</label>
-														</div>
+													<div class="controls">
+														<label class="radio inline"> <input name="paycard"
+															type="radio" id="paycard" value="credit">카드계산</input>
+														</label> <label class="radio inline"> <input
+															name="paycard" type="radio" id="paycash" value="cash">현금계산</input>
+														</label>
+													</div>
+													<div id="case_cashcard" style="display: none">
+														<label class="radio inline"> <br /> 카드번호 <input
+															type="number" id="cardno" style="width: 190px"
+															value=<%=((int) (Math.random() * 10000000) + 1)%>><br />
+															유효기간 <input type="number" id="validmonth"
+															style="width: 80px"
+															value=<%=((int) (Math.random() * 13) + 1)%>>월&nbsp;
+															<input type="text" id="validmonth" style="width: 80px"
+															value=<%=((int) (Math.random() * 31) + 1)%>>일<br />
+														</label>
+													</div>
 
-														<!-- /controls -->
+													<!-- /controls -->
+												</div>
+
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[회원정보불러오기]</a>
+
+												<div class="control-group">
+													<label class="control-label">고객 번호 입력</label>
+													<div class="controls">
+														<input type="number" id="writtenno" style="width: 140px" />
+														<input type="button" id="customerinfo" value="고객정보조회" />
+														<br />
 													</div>
-													
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[회원정보불러오기]</a>
-													
-													<div class="control-group">
-														<label
-															class="control-label">고객 번호 입력</label>
-															<div class="controls">
-																<input type="number" id="writtenno" style="width: 140px"/>
-																<input type="button" id="customerinfo" value="고객정보조회" /> <br />
-															</div>									
-														</label>
-													</div>
-													<br/>
-													 
+													</label>
+												</div>
+												<br />
 
 
-													<div class="control-group">
-														<label
-															class="control-label">고객 번호:</label>
-															<div class="controls">
-																<input type="text" id="CustomerNo" style="width: 280px"><br />
-															</div>									
-														</label>
+
+												<div class="control-group">
+													<label class="control-label">고객 번호:</label>
+													<div class="controls">
+														<input type="text" id="CustomerNo" style="width: 280px"><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">이름:</label>
-															<div class="controls">
-																<input type="text" id="c_name" style="width: 280px"><br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">이름:</label>
+													<div class="controls">
+														<input type="text" id="c_name" style="width: 280px"><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">전화번호:</label>
-															<div class="controls">
-																<input type="text" id="c_phoneNo" style="width: 280px"><br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">전화번호:</label>
+													<div class="controls">
+														<input type="text" id="c_phoneNo" style="width: 280px"><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">포인트:</label>
-															<div class="controls">
-																<input type="text" id="c_point" style="width: 280px"><br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">포인트:</label>
+													<div class="controls">
+														<input type="text" id="c_point" style="width: 280px"><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">등급:</label>
-															<div class="controls">
-																<input type="text" id="c_level" style="width: 280px"><br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">등급:</label>
+													<div class="controls">
+														<input type="text" id="c_level" style="width: 280px"><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">할인율:</label>
-															<div class="controls">
-																<input type="text" id="discount_rate" style="width: 280px">%<br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">할인율:</label>
+													<div class="controls">
+														<input type="text" id="discount_rate" style="width: 280px">%<br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">잔여포인트:</label>
-															<div class="controls">
-																<input type="text" id="pointleft" style="width: 280px"><br /> 
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">잔여포인트:</label>
+													<div class="controls">
+														<input type="text" id="pointleft" style="width: 280px"><br />
 													</div>
-													<br/>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[계산]</a>
-													<div class="control-group">
-														<label
-															class="control-label">금액:</label>
-															<div class="controls">
-																<input value=20000 type="number" id="foodtotalcost" style="width: 280px"><br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>[계산]</a>
+												<div class="control-group">
+													<label class="control-label">금액:</label>
+													<div class="controls">
+														<input value=20000 type="number" id="foodtotalcost"
+															style="width: 280px"><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label">- 등급별 할인금액</label>
-															<div class="controls">
-																<input type="number" id="leveldiscount" style="width: 280px"></input><br />
-															</div>									
-														</label>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label">- 등급별 할인금액</label>
+													<div class="controls">
+														<input type="number" id="leveldiscount"
+															style="width: 280px"></input><br />
 													</div>
-													<div class="control-group">
-														<label
-															class="control-label"> - 포인트사용</label>
-															<div class="controls">
-																<input type="number" id="pointuse" style="width: 280px" ></input><br/>
-																 <tr>
-      <button onclick="javascript:pointnumber(1);" style="width:85px">1</button>
-      <button onclick="javascript:pointnumber(2);" style="width:85px">2</button>
-      <button onclick="javascript:pointnumber(3);" style="width:85px">3</button><br/>
-      <button onclick="javascript:pointnumber(4);" style="width:85px">4</button>
-      <button onclick="javascript:pointnumber(5);" style="width:85px">5</button>
-      <button onclick="javascript:pointnumber(6);" style="width:85px">6</button><br/>
-      <button onclick="javascript:pointnumber(7);" style="width:85px">7</button>
-      <button onclick="javascript:pointnumber(8);" style="width:85px">8</button>
-      <button onclick="javascript:pointnumber(9);" style="width:85px">9</button><br/>
-      <button onclick="javascript:RemoveOne();" style="width:85px">#</button>
-      <button onclick="javascript:pointnumber(0);" style="width:85px">0</button>
-      <button onclick="javascript:RemoveAll();" style="width:85px">모두지우기</button><br/>
-   </tr>
-																
-																
-															</div>									
-														</label>
-													</div>
-													
-													
-													 <button onclick="javascript:payresult()">적용</button> <br />
-													 
-													  <div class="control-group">
-														<label
-															class="control-label">  = 결제금액 </label>
-															<div class="controls">
-																 <input type="number" id="actualpay" style="width: 280px"><br />
-      <br />
-															</div>									
-														</label>
-													</div> 
-													<div >
-														<button  id="finalpay" onclick="javascript:finalpay1()"  class="btn btn-primary">최종결제</button>
+													</label>
+												</div>
+												<div class="control-group">
+													<label class="control-label"> - 포인트사용</label>
+													<div class="controls">
+														<input type="number" id="pointuse" style="width: 280px"></input><br />
+														<tr>
+															<button onclick="javascript:pointnumber(1);"
+																style="width: 85px">1</button>
+															<button onclick="javascript:pointnumber(2);"
+																style="width: 85px">2</button>
+															<button onclick="javascript:pointnumber(3);"
+																style="width: 85px">3</button>
+															<br />
+															<button onclick="javascript:pointnumber(4);"
+																style="width: 85px">4</button>
+															<button onclick="javascript:pointnumber(5);"
+																style="width: 85px">5</button>
+															<button onclick="javascript:pointnumber(6);"
+																style="width: 85px">6</button>
+															<br />
+															<button onclick="javascript:pointnumber(7);"
+																style="width: 85px">7</button>
+															<button onclick="javascript:pointnumber(8);"
+																style="width: 85px">8</button>
+															<button onclick="javascript:pointnumber(9);"
+																style="width: 85px">9</button>
+															<br />
+															<button onclick="javascript:RemoveOne();"
+																style="width: 85px">#</button>
+															<button onclick="javascript:pointnumber(0);"
+																style="width: 85px">0</button>
+															<button onclick="javascript:RemoveAll();"
+																style="width: 85px">모두지우기</button>
+															<br />
+														</tr>
+
 
 													</div>
-													<!-- /form-actions -->
-												</fieldset>
+													</label>
+												</div>
+
+
+												<button onclick="javascript:payresult()">적용</button>
+												<br />
+
+												<div class="control-group">
+													<label class="control-label"> = 결제금액 </label>
+													<div class="controls">
+														<input type="number" id="actualpay" style="width: 280px"><br />
+														<br />
+													</div>
+													</label>
+												</div>
+												<div>
+													<button id="finalpay" onclick="javascript:finalpay1()"
+														class="btn btn-primary">최종결제</button>
+
+												</div>
+												<!-- /form-actions -->
+											</fieldset>
 											<!-- </form> -->
 										</div>
-
-
-
 									</div>
-
-
 								</div>
-
-
-
-
-
 							</div>
 							<!-- /widget-content -->
 
