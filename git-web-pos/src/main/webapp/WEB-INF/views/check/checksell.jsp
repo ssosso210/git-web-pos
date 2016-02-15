@@ -40,7 +40,7 @@
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <!-- chart  -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="/dobbywebpos/resources/jsui/amcharts/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <%
