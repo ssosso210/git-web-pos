@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
 import com.dobbypos.model.service.SaleService;
@@ -50,10 +51,14 @@ public class SaleController {
 	public String SaleHome(Model model, String storeCode1,HttpSession session, HttpServletRequest req) {
 		System.out.println("salehome.test  storecode "+storeCode1);
 		List<StoreTable> st= tableService.selectCurrentTables(storeCode1);
+
 		model.addAttribute("st", st);
+		
+		List<Menu> menus = saleService.getAllMenus();
+	    model.addAttribute("menus", menus);
 	
-		Integer recentableNo=tableService.selectRecentTableNo(storeCode1);
-		model.addAttribute("recentno", recentableNo);
+//		Integer recentableNo=tableService.selectRecentTableNo(storeCode1);
+//		model.addAttribute("recentno", recentableNo);
 		return "sale/salehome_test2_eunyoung"; 
 	}
 	
@@ -66,7 +71,7 @@ public class SaleController {
 	}*/
 	
 	
-	@RequestMapping(value = "/salehome.action", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/salehome.action", method = RequestMethod.GET)
 	public String SettingMenu(String storeCode1,  Model model) {
 		
 		model.addAttribute("storeCode1", storeCode1);
@@ -75,7 +80,7 @@ public class SaleController {
 		model.addAttribute("recentno", recentableNo);
 		System.out.println("recentno"+recentableNo);
 		return "sale/salehome"; 
-	}
+	}*/
 	
 	
 	/*주문하기버튼*/
@@ -108,6 +113,24 @@ public class SaleController {
 	}
 	
 	
+	
+	@RequestMapping(value = "/pos_popup.action", method = RequestMethod.GET)
+	@ResponseBody
+	public String PosOrderHome(HttpSession session, HttpServletRequest req, Model model,
+			@RequestParam("totalno")int totaltableno) {
+		
+		
+
+	    List<Orders> orders = saleService.getOnProcessingOrderByTotalTableNo(totaltableno);
+	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	    
+	    String json = gson.toJson(orders);
+	    
+	   
+		return json; 
+	}
+	
+	
 	// 팝업창에서 메뉴선택
 	/////////////////////////////////////
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
@@ -134,6 +157,7 @@ public class SaleController {
 	    return result;
 	}
 	
+	
 	// 주문하기버튼 눌렀을때 데이터 넘겨주는거
 	@RequestMapping(value = "/tableinsertmenu.action", method = RequestMethod.POST)
 	public String Table_InsertMenu(Menu menu) {
@@ -144,6 +168,14 @@ public class SaleController {
 		System.out.println("insert menu 성공  ");
 		return "redirect:/sale/salehome_test2_eunyoung.action";
 	}
+	
+	
+	@RequestMapping(value = "/insertOrder.action", method = RequestMethod.GET)
+	public String InsertOrder() {
+		
+		
+		return "sale/salehome_test2_eunyoung"; 
+	}	
 	
 	
 	
@@ -183,9 +215,5 @@ public class SaleController {
 	}
 
 	
-	
-	
-	
-	
-	
+
 }

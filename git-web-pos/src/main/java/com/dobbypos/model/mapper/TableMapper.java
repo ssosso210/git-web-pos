@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.dobbypos.model.dto.OrderDetail;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.dto.StoreTable;
 
 public interface TableMapper {
@@ -17,4 +19,10 @@ public interface TableMapper {
 	void setIsDeleted(StoreTable st);
 
 	List<StoreTable> selectCurrentTables(String storeCode1);
+	
+	List<Orders> orderStatus(int totalTableNo);
+	
+	List<OrderDetail> selectOrdering(int orderNo);
+	
+	
 }

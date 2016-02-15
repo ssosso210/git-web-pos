@@ -1,10 +1,21 @@
 package com.dobbypos.model.dto;
 
+import java.util.List;
+
 public class StoreTable {
 	private int tableNo;
 	private String storeCode;
 	private String totalTableNo;
 	private int isDeleted;
+	
+	private List<Orders> orders;	
+	
+	public List<Orders> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
 	public int getTableNo() {
 		return tableNo;
 	}

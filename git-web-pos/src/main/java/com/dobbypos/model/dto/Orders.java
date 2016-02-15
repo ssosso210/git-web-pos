@@ -2,6 +2,7 @@ package com.dobbypos.model.dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 public class Orders implements Serializable {
@@ -14,8 +15,15 @@ public class Orders implements Serializable {
 	private int totalTableNo;
 	private String storeCode;
 	private int customerNo;
-
 	
+	private List<OrderDetail> orderDetails;
+	
+	public List<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}

@@ -42,6 +42,23 @@
 		where isDeleted = 0
 		and storeCode=#{storeCode}
 	</select>
-
+	
+	
+	
+	<select id="orderStatus" resultType="Orders">
+		select orderNo 
+		from Orders
+		where orderStatus = 'processing' and totalTableNo = #{id}
+		
+	</select>
+	
+	<select id="selectOrdering" resultType="OrderDetail">
+		select * 
+		from orderDetail 
+		where orderNo = #{id};
+	</select>
+	
 
 </mapper>
+
+

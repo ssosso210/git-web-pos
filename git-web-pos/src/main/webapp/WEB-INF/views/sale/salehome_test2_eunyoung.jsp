@@ -1,4 +1,3 @@
-
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -35,17 +34,58 @@
 
 
 <style>
-    body { font-size: 62.5%; }
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
-    div#users-contain { width: 350px; margin: 20px 0; }
-    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-    .ui-dialog .ui-state-error { padding: .3em; }
-    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-  </style>
+
+body {
+	font-size: 62.5%;
+}
+
+label, input {
+	display: block;
+}
+
+input.text {
+	margin-bottom: 12px;
+	width: 95%;
+	padding: .4em;
+}
+
+fieldset {
+	padding: 0;
+	border: 0;
+	margin-top: 25px;
+}
+
+h1 {
+	font-size: 1.2em;
+	margin: .6em 0;
+}
+
+div#table-form {
+	width: 350px;
+	margin: 20px 0;
+}
+
+div#table-form table {
+	margin: 1em 0;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+div#table-form table td, div#table-form table th {
+	border: 1px solid #eee;
+	padding: .6em 10px;
+	text-align: left;
+}
+
+.ui-dialog .ui-state-error {
+	padding: .3em;
+}
+
+.validateTips {
+	border: 1px solid transparent;
+	padding: 0.3em;
+}
+</style>
 
 
 
@@ -57,115 +97,217 @@ function setOrder(tableNo, order) {
 	d.text(order[0].price);
 	alert(order[0].price);
 }
-  
+
 $(function() {
-	   var tNo = $("#totalno").text();
-	   $("div[id^=choosetable]").each(function(index,value) {
-		   var myWindow;
+	
+	function increaseOrderCount(event){
+		
+		var foodCodeval = $(this).attr('id').substring(4);
+		var td2 = $("#count"+foodCodeval);
+		var count = td2.text().trim();
+		count = parseInt(count);
+		td2.text(count+1);
+		var td3 = $("#price"+foodCodeval);
+		var price = parseInt(td3.text().trim())/count;
+		td3.text((count+1)*parseInt(price));
+		
+	}
+	
+	function decreaseOrderCount(event){
+		
+		var foodCodeval = $(this).attr('id').substring(5);
+		var td2 = $("#count"+foodCodeval);
+		var count = td2.text().trim();
+		
+		count = parseInt(count);
+		if(count == 1) {
+			$(this).parents('tr').remove();
+		} else {
+			td2.text(count-1);
+			var td3 = $("#price"+foodCodeval);
+			var price = parseInt(td3.text().trim())/count;
+			td3.text((count-1)*parseInt(price));	
+		}		
+	}
+	
+    var dialog, form,
+
+    dialog = $("#pos-form").dialog({
+       autoOpen : false,
+       height : 600,
+       width : 1000,
+       modal : true
+       /* buttons : {
+          "Test Order" : addUser,
+          Cancel : function() {
+             dialog.dialog("close");
+          }
+       },
+       close : function() {
+          form[0].reset();
+          allFields.removeClass("ui-state-error");
+       } */
+    });
+
+    form = dialog.find("form").on("submit", function(event) {
+       event.preventDefault();
+       addUser();
+    });
+    
+        
+	   $("div[id^=choosetable]").each(function(index,value) {  
 		   $(this).on("click", function() {
-			   //var totalno= $("#totalno"+index).val();
+			   
 			   var totalno = $("#totalno"+index).text().split(':')[1].trim();
-			   myWindow = window.open("/dobbywebpos/sale/orderhome_test?totalno="+totalno, "myWindow", "width=1200, height=550, left=20, top=20, menubar=no, toolbar=no, location=no, status=no, resizable=yes");
+			   
+			   $.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
+					url : "/dobbywebpos/sale/pos_popup.action",
+					type : "GET",
+					async : true,
+					data : { totalno : totalno },
+					success : function(data, status, xhr) {
+						
+						$("#orderMenuList tbody").empty();
+						
+						eval("var orders = "+data);
+						
+						if(orders.length > 0) {
+							var details = orders[0].orderDetails;
+							for(var i = 0; i <details.length; i++) {
+								var detail = details[i];
+								var tr = $("<tr></tr>");
+								var td1 = $("<td></td>").html(detail.foodCode).attr("id","code"+detail.foodCode);
+								var td2 = $("<td></td>").html(detail.foodCode).attr("id","name"+detail.foodCode);
+								var td3 = $("<td></td>").html(detail.quantity).attr("id","count"+detail.foodCode);
+								var td4 = $("<td></td>").html(detail.price).attr("id","price"+detail.foodCode);
+								var td5 = $("<td></td>").attr("id","plusminus"+detail.foodCode);
+								var plus = $("<input/>").attr({id:"plus"+detail.foodCode, type:'button',value:'추가'});
+								var minus = $("<input/>").attr({id:"minus"+detail.foodCode, type:'button', value:'감소'});
+								plus.on('click', increaseOrderCount);
+								minus.on('click', decreaseOrderCount);
+								td5.append([plus,minus]);
+								tr.append([td1,td2,td3,td4,td5]);
+								$("#orderMenuList").append(tr);
+							}
+							
+							$('#orderbutton').attr('data', orders[0].orderNo);							
+						
+						} else {
+							$('#orderbutton').attr('data', -1);
+						}
+						
+						$('#orderbutton').attr('data2',totalno);
+						
+						dialog.dialog("open");
+						
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});		 				
+			   
 			   
 		   });
 
 	   });
+	   
+	   $('input[id^=menu]').on('click', function(event){
+			var data = $(this).attr('data').split('/');
+			var foodCodeval= data[0];
+			var foodnameval= data[1];
+			var foodpriceval= data[2];			
+			
+			var td = $("#code"+foodCodeval);
+			if(td.length > 0){
+				var td2 = $("#count"+foodCodeval);
+				var count = td2.text().trim();
+				count = parseInt(count)+1;
+				td2.text(count);
+				var td3 = $("#price"+foodCodeval);
+				td3.text(count*parseInt(foodpriceval));
+			}else {
+				var tr = $("<tr></tr>");
+				var td1 = $("<td></td>").html(foodCodeval).attr("id","code"+foodCodeval);
+				var td2 = $("<td></td>").html(foodnameval).attr("id","name"+foodCodeval);
+				var td3 = $("<td></td>").html('1').attr("id","count"+foodCodeval);
+				var td4 = $("<td></td>").html(foodpriceval).attr("id","price"+foodCodeval);
+				var td5 = $("<td></td>").attr("id","plusminus"+foodCodeval);
+				var plus = $("<input/>").attr({id:"plus"+foodCodeval,type:'button',value:'추가'});
+				var minus = $("<input/>").attr({id:"minus"+foodCodeval,type:'button', value:'감소'});
+				plus.on('click', increaseOrderCount);
+				minus.on('click', decreaseOrderCount);
+				td5.append([plus,minus]);
+				tr.append([td1,td2,td3,td4,td5]);
+				$("#orderMenuList").append(tr);
+			}
+		
+		});
+	   
+	   $('#orderbutton').on('click', function(event){
 
-});
+		   var orderNo = $(this).attr('data');
+		   var totalTableNo = $(this).attr('data2');
+		   
+		 //0. 테이블에있는 주문내역데이터 읽기(json배열)
+			var order = {
+			 storecode : '${ param.storeCode1 }',
+			 totaltableno : totalTableNo,
+			 orderdetails : []
+		 	};
+		 	
+			var names = ['code', 'name', 'count', 'price'];
+			var trs = $('#orderMenuList tbody tr');
+			if (trs.length == 0) {
+				//alert('주문 항목이 없습니다.');
+			} else {
+				trs.each(function(index, data) {
+					var order_detail = {code:'', name:'', count:'', price:''};
+						$(this).find('td').each(function(index2, data2) {
+							if (index2 < 4) {
+								order_detail[names[index2]] = data2.innerText.trim();
+							}
+						});
+						order.orderdetails.push(order_detail);
+					
+				});
+			}
+		   
+
+		   var sUrl = '';
+		   if (orderNo) {//update
+			   sUrl : "/dobbywebpos/sale/updateOrder.action";
+		   } else {//insert
+			   sUrl : "/dobbywebpos/sale/insertOrder.action";
+		   }
+			
+		   alert(order);
+			
+			//1. db에 데이터저장(신규 또는 수정) - jQuery + ajax
+			/* $.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
+				url : sUrl,
+				type : "POST",
+				async : true,
+				data : { order : order },				
+				success : function(data, status, xhr) {
+				
+					setOrder('${ param.totalno }', order);
+					
+					//창닫기
+					dialog.dialog('close');
+					
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}); */
+			
+		});
+	 		
+
+   
+ });
 
 
-
-
-$(function() {
-    var dialog, form,
- 
-      // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-      name = $( "#name" ),
-      email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
-      tips = $( ".validateTips" );
- 
-    function updateTips( t ) {
-      tips
-        .text( t )
-        .addClass( "ui-state-highlight" );
-      setTimeout(function() {
-        tips.removeClass( "ui-state-highlight", 1500 );
-      }, 500 );
-    }
- 
-    function checkLength( o, n, min, max ) {
-      if ( o.val().length > max || o.val().length < min ) {
-        o.addClass( "ui-state-error" );
-        updateTips( "Length of " + n + " must be between " +
-          min + " and " + max + "." );
-        return false;
-      } else {
-        return true;
-      }
-    }
- 
-    function checkRegexp( o, regexp, n ) {
-      if ( !( regexp.test( o.val() ) ) ) {
-        o.addClass( "ui-state-error" );
-        updateTips( n );
-        return false;
-      } else {
-        return true;
-      }
-    }
- 
-    function addUser() {
-      var valid = true;
-      allFields.removeClass( "ui-state-error" );
- 
-      valid = valid && checkLength( name, "username", 3, 16 );
-      valid = valid && checkLength( email, "email", 6, 80 );
-      valid = valid && checkLength( password, "password", 5, 16 );
- 
-      valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
-      valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
-      valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
- 
-      if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
-          "<td>" + name.val() + "</td>" +
-          "<td>" + email.val() + "</td>" +
-          "<td>" + password.val() + "</td>" +
-        "</tr>" );
-        dialog.dialog( "close" );
-      }
-      return valid;
-    }
- 
-    dialog = $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      height: 300,
-      width: 350,
-      modal: true,
-      buttons: {
-        "Create an account": addUser,
-        Cancel: function() {
-          dialog.dialog( "close" );
-        }
-      },
-      close: function() {
-        form[ 0 ].reset();
-        allFields.removeClass( "ui-state-error" );
-      }
-    });
- 
-    form = dialog.find( "form" ).on( "submit", function( event ) {
-      event.preventDefault();
-      addUser();
-    });
- 
-    $( "#create-user" ).button().on( "click", function() {
-      dialog.dialog( "open" );
-    });
-  });
 
 
    
@@ -213,26 +355,23 @@ $(function() {
           <div class="widget">
  		<div class="widget-content" style="border:0px;">
               <div class="shortcuts" style="width: 1200px;"> 
-		<c:forEach begin="0" varStatus="status" end="${recentno}" step="1" var="st" items="${st}">
-
-		
-		
-			<!-- <a href="#" class="shortcut" style="background: #7ddb9c; width:23%; "> -->
-             	
+		<c:forEach varStatus="status" var="table" items="${st}">
 
 			<div id="choosetable${ status.index }" class="shortcut" style="background: #f9f6f1; width:15%;cursor: pointer; "> 
-				<span id="totalno${ status.index }">고유값: ${st.getTotalTableNo() }</span> <br/>
-				<span>테이블번호: ${st.getTableNo() }</span><br/>
-				<span>매장코드: ${st.getStoreCode() }</span><br/>
-				<span id='order-detail'></span>
-							
-				<!-- <a  style="width: 200px; height: 100px; left: 500; top: 300"  onclick="table_pos()">[주문누르셈]</a>
-				
-				<a type="button" style="width: 200px; height: 100px; left: 500; top: 300" onclick="pay_pos()"/>판매</a>			 -->
+				<span id="totalno${ status.index }">고유값: ${table.getTotalTableNo() }</span> <br/>				
+				<c:forEach var="orders" items="${ table.orders }">
+					<span class='orderno' data='${ orders.orderNo }'>주문번호: ${ orders.orderNo }</span><br />
+					<c:set var="total" value="0" />
+					<c:forEach var="orderDetails" items="${ orders.orderDetails }">
+						<c:set var="total" value="${ total + (orderDetails.price * orderDetails.quantity)}" />
+					</c:forEach>
+					
+				<%-- <span>테이블번호: ${st.getTableNo() }</span><br/> --%>
+				<span>가  격: ${ total }</span><br/>
+				</c:forEach>
+
 			</div> 
-			<!-- </a>  -->
-			
-			<!-- <br /> -->
+
 		</c:forEach>
 		</div>
 		</div>
@@ -247,53 +386,62 @@ $(function() {
   </div>
   <!-- /main-inner --> 
 </div>
-<!-- /main -->	
+<!-- /main -->
 
 
-	
-	<div id="dialog-form" title="Create new user">
-  <p class="validateTips">All form fields are required.</p>
- 
-  <form>
-    <fieldset>
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
- 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-    </fieldset>
-  </form>
-</div>
- 
- 
-<div id="users-contain" class="ui-widget">
-  <h1>Existing Users:</h1>
-  <table id="users" class="ui-widget ui-widget-content">
-    <thead>
-      <tr class="ui-widget-header ">
-        <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John Doe</td>
-        <td>john.doe@example.com</td>
-        <td>johndoe1</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<button id="create-user">Create new user</button>
-	
-	
-	
-	
-	
+
+	<!-- 자식창 -->
+	<div id="pos-form" title="Pos System">
+		<!-- 선택한 메뉴나올부분 -->
+		<div id="table-form" class="ui-widget"
+			style="float: left; width: 550px; height: 500px; margin: 0 auto">
+
+			<table class="ui-widget ui-widget-content"
+				style="width: 500px; margin: 20px 20px 0px 20px" id="orderMenuList">
+				<thead>
+					<tr class="ui-widget-header " style="height: 40px">
+						<th style="text-align: center; font-size: 10pt;">No
+						</td>
+						<th style="text-align: center; font-size: 10pt;">OrderName
+						</td>
+						<th style="text-align: center; font-size: 10pt;">Volume
+						</td>
+						<th style="text-align: center; font-size: 10pt;">Price
+						</td>
+						<th style="text-align: center; font-size: 10pt;">Vigo
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- 메뉴리스트 뿌려주는데 -->
+		<div style="float: right; width: 400px; border: 1px solid;   height: 500px; margin: 0 auto">				
+			<c:forEach var="menu" items="${ menus }">
+            	<input type="button" id="menu${menu.foodCode}"
+            		value="${ menu.foodName }" style="width:120px; height:40px; float:left; margin: 10px" data="${ menu.foodCode }/${ menu.foodName }/${ menu.foodPrice }">
+			</c:forEach>
+			
+			
+			
+
+		</div>
+		<button id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" ></button>
+      	<button onclick="javascript:pagechange()" value="계산하기" style="width:80px; height:60px">계산하기</button>
+		
+	</div>
+
+	<!-- 부모창 -->
+	<!-- <button id="clicktable">table</button> -->
+	<input type="button" value="Table1" id="clicktable"
+		style="clear:both; margin: 10px 5px 10px 25px; width: 100px; height: 50px">
+
+
+
 </body>
+
 </html>
