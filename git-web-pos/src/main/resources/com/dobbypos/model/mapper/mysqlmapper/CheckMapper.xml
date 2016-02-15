@@ -28,10 +28,12 @@
 	</select>
 	
 	
-	<select id="getBalanceByNo" parameterType="int" resultType="Balance">		
-		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
-		FROM balance
-		WHERE balanceNo = #{balanceNo}
+	<select id="getBalanceByNo2" parameterType="Balance" resultType="Balance">		
+		SELECT ba.balanceNo, ba.plusMinus, ba.regDate, ba.storeCode, ba.description, ba.itemCode, ac.itemname 
+		FROM balance ba, accountcode ac
+		WHERE ba.balanceNo = #{balanceNo}
+		AND ba.storeCode = #{storeCode}
+		and ba.itemCode = ac.itemCode
 	</select>
 	
 	<select id="getBalancebyPeriod" parameterType="hashMap" resultMap="balanceMap">		
@@ -40,17 +42,27 @@
 		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
 	</select>
 	
-	<select id="getBalancebyPeriodAndPlus" parameterType="hashMap" resultMap="balanceMap">		
+	<select id="getBalancebyPeriod2" parameterType="hashMap" resultMap="balanceMap">
+	SELECT ba.balanceNo, ba.plusMinus, ba.regDate, ba.storeCode, ba.description, ba.itemCode, ac.itemname 
+	FROM balance ba, accountcode ac 
+	where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
+	and ba.itemCode = ac.itemCode
+	and ba.storeCode = #{storeCode}
+	</select>
+	
+	<select id="getBalancebyPeriodAndPlus2" parameterType="hashMap" resultMap="balanceMap">		
 		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
 		FROM balance 
 		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
+		and ba.itemCode = ac.itemCode
 		and plusMinus >= 0
 	</select>
 	
-	<select id="getBalancebyPeriodAndMinus" parameterType="hashMap" resultMap="balanceMap">		
+	<select id="getBalancebyPeriodAndMinus2" parameterType="hashMap" resultMap="balanceMap">		
 		SELECT balanceNo, plusMinus, regDate, storeCode, description, itemCode 
 		FROM balance 
 		where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day
+		and ba.itemCode = ac.itemCode
 		and plusMinus &lt; 0
 	</select>
 	

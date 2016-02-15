@@ -45,6 +45,13 @@ public class StockServiceImpl implements StockService {
 	}
 
 
+	@Override
+	public void setStockrequire2(String stockName, int snumber) {
+		stockDao.setStockrequire2(stockName, snumber);
+		
+	}
+
+
 
 
 	

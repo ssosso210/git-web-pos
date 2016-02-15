@@ -45,12 +45,21 @@
 		where  sc.stockname = #{stockName}
 	</insert>
 	
+	<insert id="setStockrequire2">
+				INSERT INTO STOCK (s_regDate, s_number, storeCode, s_price, stockCodeNo, s_type)
+		select SYSDATE(), #{snumber}, "outback001", sc.price *#{snumber} ,stockCodeNo , "require"
+        FROM STOCKCODE SC
+		where sc.stockname = #{stockName}
+	</insert>
+	
 	<select id="selectStocksByStockType" parameterType="String" resultMap="stockMap">
 		select
 		st.stockNo, stcd.stockName,st.s_number, st.s_price, st.s_regDate
 		from stock st join stockcode stcd on st.stockcodeNo = stcd.stockcodeNo
 		where s_type= #{stockType}
 	</select>
+	
+	
 	
 	<!-- <select id="selectStocks" resultMap="stockMap"> select st.stockNo as 
 		stockNo, st.stockCodeNo as stockCodeNo, stcd.stockName as stockName, stcd.price 
