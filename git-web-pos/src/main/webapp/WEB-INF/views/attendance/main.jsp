@@ -336,7 +336,7 @@ function alertphone(employeename, employeephone){
               <h3>직원 목록  </h3>
             </div>
             <!-- /widget-header -->
-            <div class="widget-content" style="overflow-y:scroll;height:450px;">
+            <div class="widget-content" style="overflow-y:scroll;height:340px;">
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>

@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.dobbypos.model.dao.MenuDao;
-import com.dobbypos.model.dao.TableDao;
 import com.dobbypos.model.dto.Menu;
-import com.dobbypos.model.dto.StoreTable;
 
 @Repository("menuService")
 public class MenuServiceImpl implements MenuService {
@@ -56,6 +54,8 @@ public class MenuServiceImpl implements MenuService {
 		menuDao.deleteSaleMenuByFoodCode(foodCode);
 		
 	}
+
+
 	
 	
 
