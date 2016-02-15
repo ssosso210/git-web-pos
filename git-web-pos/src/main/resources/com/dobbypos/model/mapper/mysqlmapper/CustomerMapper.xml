@@ -8,7 +8,7 @@
 
 	<select id="countTotalCustomers" resultType="int">
 		SELECT COUNT(c_name)
-		FROM customer
+		FROM customer		
 	</select>
 <insert id="insertCustomer" parameterType="Customer">
         insert into Customer
