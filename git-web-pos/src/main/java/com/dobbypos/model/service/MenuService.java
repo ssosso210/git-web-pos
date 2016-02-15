@@ -3,7 +3,6 @@ package com.dobbypos.model.service;
 import java.util.List;
 
 import com.dobbypos.model.dto.Menu;
-import com.dobbypos.model.dto.StoreTable;
 
 public interface MenuService {
 
@@ -18,4 +17,5 @@ public interface MenuService {
 	void editSaleMenuInfoWithoutFile(Menu menu);
 
 	void deleteSaleMenuByFoodCode(String foodCode);
+
 }

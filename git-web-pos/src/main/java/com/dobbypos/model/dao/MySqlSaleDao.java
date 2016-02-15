@@ -67,11 +67,3 @@ public class MySqlSaleDao implements SaleDao {
 
 
 
-
-
-
-
-
-
-
-

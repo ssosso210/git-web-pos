@@ -118,6 +118,10 @@
 		<property name="mapperInterface" value="com.dobbypos.model.mapper.PayMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="balanceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dobbypos.model.mapper.BalanceMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
 	
 	<!-- <bean id="uploadMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">

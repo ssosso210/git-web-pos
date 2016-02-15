@@ -14,6 +14,4 @@ public interface TableService {
 	void setIsDeleted(StoreTable st);
 	List<StoreTable> selectCurrentTables(String storeCode1);
 	
-	
-	
 }

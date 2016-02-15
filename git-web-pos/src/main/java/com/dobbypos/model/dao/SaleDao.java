@@ -16,4 +16,5 @@ public interface SaleDao {
 	void insertOrder(Orders order);
 	
 	void insertOrderDetail(OrderDetail orderDetail);
+
 }

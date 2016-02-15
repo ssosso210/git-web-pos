@@ -77,6 +77,7 @@
         <!-- Director dashboard demo (This is only for demo purposes) -->
         <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
 
+		<script src="/dobbywebpos/resources/js/jquery.number.js"></script>
 
         <!-- Director for demo purposes -->
         <script type="text/javascript">
@@ -111,36 +112,165 @@
 </script>
 <script type="text/javascript">
     $(function() {
+    	var currentMonthSales = ${ revenue };
+    	var lastMonthSales = ${ lastRevenue };
+    	var lastMonthSales2 = ${ lastRevenue2 };
+    	var lastMonthSales3 = ${ lastRevenue3 };
+    	var lastMonthSales4 = ${ lastRevenue4};
+    	var lastMonthSales5 = ${ lastRevenue5 };
+    	var lastMonthSales6 = ${ lastRevenue6 };
+    	var lastMonthSales7 = ${ lastRevenue7 };
+    	var lastMonthSales8 = ${ lastRevenue8 };
+    	var lastMonthSales9 = ${ lastRevenue9 };
+    	var lastMonthSales10 = ${ lastRevenue10 };
+    	var lastMonthSales11 = ${ lastRevenue11 };
+    	
+    	var currentPurchases = ${ currentPurchases };
+    	var lastMonthPurchases1 = ${ lastMonthPurchases1 };
+    	var lastMonthPurchases2 = ${ lastMonthPurchases2 };
+    	var lastMonthPurchases3 = ${ lastMonthPurchases3 };
+    	var lastMonthPurchases4 = ${ lastMonthPurchases4 };
+    	var lastMonthPurchases5 = ${ lastMonthPurchases5 };
+    	var lastMonthPurchases6 = ${ lastMonthPurchases6 };
+    	var lastMonthPurchases7 = ${ lastMonthPurchases7 };
+    	var lastMonthPurchases8 = ${ lastMonthPurchases8 };
+    	var lastMonthPurchases9 = ${ lastMonthPurchases9 };
+    	var lastMonthPurchases10 = ${ lastMonthPurchases10 };
+    	var lastMonthPurchases11 = ${ lastMonthPurchases11 };
+    	
+    	var lastYearProfits = ${ lastYearProfits };
+    	var lastYearProfitsWithComma = $.number(lastYearProfits) + "원";
+    	$("#profits").html(lastYearProfitsWithComma);
+    	
+    	var totalCustomers = ${ totalCustomers };
+    	var totalCustomersWithComma = $.number(totalCustomers) + "명";
+    	$("#totalCustomers").html(totalCustomersWithComma);
+    	
+    	var d = new Date();
+    	var month = d.getMonth() + 1;
+    	var nextMonth = null;
+    	var lastMonth = null;
+    	var lastMonth2 = null;
+    	var lastMonth3 = null;
+    	var lastMonth4 = null;
+    	var lastMonth5 = null;
+    	var lastMonth6 = null;
+    	var lastMonth7 = null;
+    	var lastMonth8 = null;
+    	var lastMonth9 = null;
+    	var lastMonth10 = null;
+    	var lastMonth11 = null;
+    	
+    	if (month == 0) {
+    		lastMonth = 12;
+    	} else {
+    		lastMonth = month - 1;
+    	}
+    	lastMonth2 = lastMonth - 1;    	
+    	if (lastMonth2 == 0) {
+    		lastMonth2 = 12;
+    	} 
+    	lastMonth3 = lastMonth2 - 1;
+    	if (lastMonth3 == 0) {
+    		lastMonth3 = 12;
+    	} 
+    	lastMonth4 = lastMonth3 - 1;
+    	if (lastMonth4 == 0) {
+    		lastMonth4 = 12;
+    	} 
+    	lastMonth5 = lastMonth4 - 1;
+    	if (lastMonth5 == 0) {
+    		lastMonth5 = 12;
+    	} 
+    	lastMonth6 = lastMonth5 - 1;
+    	if (lastMonth6 == 0) {
+    		lastMonth6 = 12;
+    	} 
+    	lastMonth7 = lastMonth6 - 1;
+    	if (lastMonth7 == 0) {
+    		lastMonth7 = 12;
+    	} 
+    	lastMonth8 = lastMonth7 - 1;
+    	if (lastMonth8 == 0) {
+    		lastMonth8 = 12;
+    	} 
+    	lastMonth9 = lastMonth8 - 1;
+    	if (lastMonth9 == 0) {
+    		lastMonth9 = 12;
+    	} 
+    	lastMonth10 = lastMonth9 - 1;
+    	if (lastMonth10 == 0) {
+    		lastMonth10= 12;
+    	} 
+    	lastMonth11 = lastMonth10 - 1;
+    	if (lastMonth11 == 0) {
+    		lastMonth11 = 12;
+    	} 
+    	
+    	if (month == 12) {
+    		nextMonth = 1;
+    	} else {
+    		nextMonth = month + 1;
+    	}
+    	
+    	var nextMonth2 = nextMonth + 1;
+    	var nextMonth3 = nextMonth2 + 1;
+    	var nextMonth4 = nextMonth3 + 1;
+    	var nextMonth5 = nextMonth4 + 1;
+    	var nextMonth6 = nextMonth5 + 1;
+    	
+    	
+    	var currentMonth = month + "월";
+    	var currentNextMonth = nextMonth + "월"
+    	var currentNextMonth2 = nextMonth2 + "월"
+    	var currentNextMonth3 = nextMonth3 + "월"
+    	var currentNextMonth4 = nextMonth4 + "월"
+    	var currentNextMonth5 = nextMonth5 + "월"
+    	var currentNextMonth6 = nextMonth6 + "월"
+    	
+    	var currentLastMonth = lastMonth + "월";
+    	var currentLastMonth2 = lastMonth2 + "월";
+    	var currentLastMonth3 = lastMonth3 + "월";
+    	var currentLastMonth4 = lastMonth4 + "월";
+    	var currentLastMonth5 = lastMonth5 + "월";
+    	var currentLastMonth6 = lastMonth6 + "월";
+    	var currentLastMonth7 = lastMonth7 + "월";
+    	var currentLastMonth8 = lastMonth8 + "월";
+    	var currentLastMonth9 = lastMonth9 + "월";
+    	var currentLastMonth10 = lastMonth10 + "월";
+    	var currentLastMonth11 = lastMonth11 + "월";
+        //alert(currentMonth);
                 "use strict";
                 //BAR CHART
+                                
                 var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: [currentLastMonth11, currentLastMonth10, currentLastMonth9, currentLastMonth8, currentLastMonth7, currentLastMonth6, currentLastMonth5, currentLastMonth4, currentLastMonth3, currentLastMonth2, currentLastMonth, currentMonth],
                     datasets: [
                         {
                             label: "My First dataset",
                             fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            strokeColor: "red",
                             pointColor: "rgba(220,220,220,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40]
+                            pointHighlightStroke: "rgba(220,220,220,1)",                            
+                            data: [lastMonthPurchases11, lastMonthPurchases10, lastMonthPurchases9, lastMonthPurchases8, lastMonthPurchases7, lastMonthPurchases6, lastMonthPurchases5, lastMonthPurchases4, lastMonthPurchases3, lastMonthPurchases2, lastMonthPurchases1, currentPurchases]
                         },
                         {
                             label: "My Second dataset",
                             fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
+                            strokeColor: "blue",
                             pointColor: "rgba(151,187,205,1)",
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [28, 48, 40, 19, 86, 27, 90]
+                            pointHighlightStroke: "rgba(151,187,205,1)",                            
+                            data: [lastMonthSales11, lastMonthSales10, lastMonthSales9, lastMonthSales8, lastMonthSales7, lastMonthSales6, lastMonthSales5, lastMonthSales4, lastMonthSales3, lastMonthSales2, lastMonthSales, currentMonthSales]
                         }
                     ]
                 };
             new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
                 responsive : true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: false,                
             });
 
             });
@@ -163,7 +293,7 @@
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
                                 <div class="sm-st-info">
-                                    <span>${ requestScope.totalCustomers }<spring:message code="hq.person" /></span>
+                                    <span id="totalCustomers"></span>
                                     <spring:message code="hq.totalCustomer" />
                                 </div>
                             </div>
@@ -181,7 +311,7 @@
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
                                 <div class="sm-st-info">
-                                    <span>100,320<spring:message code="hq.won" /></span>
+                                    <span id="profits"></span>
                                     <spring:message code="hq.profit" />
                                 </div>
                             </div>
@@ -208,6 +338,28 @@
                                 </header>
                                 <div class="panel-body">
                                     <canvas id="linechart" width="600" height="330"></canvas>
+                                    <div class="legend"><div style="position: absolute; width: 60px; height: 60px; top: 14px; right: 13px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div>
+                                    	<table style="position:absolute;top:14px;right:13px;;font-size:smaller;color:#545454">
+                                    		<tbody>
+                                    			<tr>
+                                    				<td class="legendColorBox">
+                                    					<div style="border:1px solid #ccc;padding:1px">
+                                    						<div style="width:4px;height:0;border:5px solid rgb(250,88,51);overflow:hidden"></div>
+                                    					</div>
+                                    				</td>
+                                    				<td class="legendLabel">매입액</td>
+                                    			</tr>
+                                    			<tr>
+                                    				<td class="legendColorBox">
+                                    					<div style="border:1px solid #ccc;padding:1px">
+                                    						<div style="width:4px;height:0;border:5px solid rgb(47,171,233);overflow:hidden"></div>
+                                    					</div>
+                                    				</td>
+                                    				<td class="legendLabel">매출액</td>
+                                    			</tr>
+                                    		</tbody>
+                                    	</table>
+                                    </div>
                                 </div>
                                         </section>
                                         <!--earning graph end-->

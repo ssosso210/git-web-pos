@@ -13,4 +13,5 @@ public interface CustomerService {
    List<Customer> getCustomers(String storeCode);
 
    Customer getCustomersByCustomerNo(int customerNo);
+void updateCustomer(Customer customer);
 }

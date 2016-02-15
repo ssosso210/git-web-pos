@@ -42,4 +42,10 @@ public class MysqlCustomerDao implements CustomerDao {
 		return customerMapper.selectCustomersByCustomerNo(customerNo);
 	}
 
+	@Override
+	public void updateCustomer(Customer customer) {
+		customerMapper.updateCustomer( customer);
+		
+	}
+
 }

@@ -114,11 +114,13 @@
 									align="center" width="600px">
 									<thead>
 										<tr>
-											<th>목차</th>
+											<th>NO</th>
 						        			<th>시간</th>
+											<th>분류</th>
 											<th>구분</th>
-											<th>금액</th>
 											<th>세부사항</th>
+											<th>금액</th>
+											
 											<!-- <td>축적시간</td>
         										<td>급여</td> -->
 										</tr>
@@ -136,8 +138,9 @@
 												</td>
 												<td style="width: 70px"><fmt:formatDate value="${ balance.regDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 												<td style="width: 25px">${ balance.itemCode }</td>
-												<td style="width: 50px">${ balance.plusMinus } 원</td>
+												<td style="width: 25px">${ balance.itemname }</td>
 												<td style="width: 50px">${ balance.description }</td>
+												<td style="width: 50px">${ balance.plusMinus } 원</td>
 												<%--<td>${ employee.pay } </td>--%>
 											</tr>
 									</c:forEach>

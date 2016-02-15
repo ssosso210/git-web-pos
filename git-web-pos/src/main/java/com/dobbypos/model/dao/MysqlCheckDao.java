@@ -46,9 +46,9 @@ public class MysqlCheckDao implements CheckDao {
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public Balance getBalanceByNo(int balanceNo) {
+	public Balance getBalanceByNo2(Balance balance3) {
 
-		Balance balance = checkMapper.getBalanceByNo(balanceNo);
+		Balance balance = checkMapper.getBalanceByNo2(balance3);
 		
 		return balance;
 	}
@@ -67,31 +67,7 @@ public class MysqlCheckDao implements CheckDao {
 	}
 
 
-	@Override
-	public List<Balance> getBalancebyPeriodAndPlus(String startday, String endday) {
-		HashMap<String, String> params = new HashMap<>();
-		params.put("startdaystr", startday);
-		params.put("enddaystr", endday);
-		
-		List<Balance> balances = checkMapper.getBalancebyPeriodAndPlus(params);
-		
-		return balances;
-	}
-
-
-	@Override
-	public List<Balance> getBalancebyPeriodAndMinus(String startday, String endday) {
-		HashMap<String, String> params = new HashMap<>();
-		params.put("startdaystr", startday);
-		params.put("enddaystr", endday);
-		
-		List<Balance> balances = checkMapper.getBalancebyPeriodAndMinus(params);
-		
-		return balances;
-	}
-
-
-	@Override
+		@Override
 	public List<Menu> selectMenuByDaySell(String todayDate, String storeCode) {
 		HashMap<String, String> params = new HashMap<>();
 		params.put("todayDate", todayDate);
@@ -136,6 +112,79 @@ public class MysqlCheckDao implements CheckDao {
 		String firstOrderDate = checkMapper.getFirstOrderDate(customerNo);
 		
 		return firstOrderDate;
+	}
+
+
+	@Override
+	public List<Balance> getBalancebyPeriod2(String startday, String endday, String storeCode) {
+		
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		params.put("storeCode", storeCode);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriod2(params);
+		
+		return balances;
+		
+		
+	}
+	
+	@Override
+	public List<Balance> getBalancebyPeriodAndPlus(String startday, String endday) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriodAndPlus(params);
+		
+		return balances;
+	}
+
+
+	@Override
+	public List<Balance> getBalancebyPeriodAndMinus(String startday, String endday) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriodAndMinus(params);
+		
+		return balances;
+	}
+
+
+	@Override
+	public List<Balance> getBalancebyPeriodAndPlus2(String startday, String endday, String storeCode) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		params.put("storeCode", storeCode);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriodAndPlus2(params);
+		
+		return balances;
+	}
+
+
+	@Override
+	public List<Balance> getBalancebyPeriodAndMinus2(String startday, String endday, String storeCode) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startdaystr", startday);
+		params.put("enddaystr", endday);
+		params.put("storeCode", storeCode);
+		
+		List<Balance> balances = checkMapper.getBalancebyPeriodAndMinus2(params);
+		
+		return balances;
+	}
+
+
+	@Override
+	public Balance getBalanceByNo(int balanceNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

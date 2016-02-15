@@ -14,6 +14,7 @@ public class Menu implements Serializable {
 	private String menuGroups;
 	private String savedFileName;
 	private String userFileName;
+	private int isDeleted;
 	
 	/**
 	 * 계산된 가격의 함계
@@ -98,13 +99,17 @@ public class Menu implements Serializable {
 	public void setOrderDetailPrice(int orderDetailPrice) {
 		this.orderDetailPrice = orderDetailPrice;
 	}
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
 	@Override
 	public String toString() {
 		return "Menu [foodCode=" + foodCode + ", foodName=" + foodName + ", foodPrice=" + foodPrice + ", regDate="
 				+ regDate + ", hqCode=" + hqCode + ", menuGroups=" + menuGroups + ", savedFileName=" + savedFileName
 				+ ", userFileName=" + userFileName + ", totalprice=" + totalprice + "]";
 	}
-	
-	
 
 }
