@@ -40,8 +40,11 @@
 	</select>
 	
 	<insert id="setStockrequire">
-		INSERT INTO BALANCE (PLUSMINUS,REGDATE,STORECODE,DESCRIPTION,ITEMCODE)
+		<!-- INSERT INTO BALANCE (PLUSMINUS,REGDATE,STORECODE,DESCRIPTION,ITEMCODE)
 		select  -(sc.price * #{snumber}) , SYSDATE(), 'outback001' , '재고구입', 'j001' FROM STOCKCODE SC
+		where  sc.stockname = #{stockName} -->
+		INSERT INTO BALANCE (PLUSMINUS,REGDATE,STORECODE, description,ITEMCODE)
+		select  -(sc.price * #{snumber}) , SYSDATE(), 'outback001' ,  concat(#{stockName}," ", #{snumber},' ea 구입') ,'j001' FROM STOCKCODE SC
 		where  sc.stockname = #{stockName}
 	</insert>
 	

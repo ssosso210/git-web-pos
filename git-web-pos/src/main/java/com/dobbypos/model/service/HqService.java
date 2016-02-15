@@ -12,62 +12,62 @@ public interface HqService {
 
 	Hq searchHqByHqId(String hqId);
 	
-	List<Store> getAllStore();
+	List<Store> getAllStore(String hqCode);
 	
-	List<Customer2> getAllCustomer();
+	List<Customer2> getAllCustomer(String hqCode);
 
-	List<Client> getAllClient();
+	List<Client> getAllClient(String hqCode);
 
-	int getCurrentMonthRevenue();
+	int getCurrentMonthRevenue(String hqCode);
 
-	int getLastMonthRevenue();
+	int getLastMonthRevenue(String hqCode);
 
-	int getLastMonth2Revenue();
+	int getLastMonth2Revenue(String hqCode);
 
-	int getLastMonth3Revenue();
+	int getLastMonth3Revenue(String hqCode);
 
-	int getLastMonth4Revenue();
+	int getLastMonth4Revenue(String hqCode);
 
-	int getLastMonth5Revenue();
+	int getLastMonth5Revenue(String hqCode);
 
-	int getLastMonth6Revenue();
+	int getLastMonth6Revenue(String hqCode);
 
-	int getLastMonth7Revenue();
+	int getLastMonth7Revenue(String hqCode);
 
-	int getLastMonth8Revenue();
+	int getLastMonth8Revenue(String hqCode);
 
-	int getLastMonth9Revenue();
+	int getLastMonth9Revenue(String hqCode);
 
-	int getLastMont10hRevenue();
+	int getLastMont10hRevenue(String hqCode);
 
-	int getLastMonth11Revenue();
+	int getLastMonth11Revenue(String hqCode);
 
-	int getCurrentMonthPurchases();
+	int getCurrentMonthPurchases(String hqCode);
 
-	int getLastMonth1Purchases();
+	int getLastMonth1Purchases(String hqCode);
 
-	int getLastMonth2Purchases();
+	int getLastMonth2Purchases(String hqCode);
 
-	int getLastMonth3Purchases();
+	int getLastMonth3Purchases(String hqCode);
 
-	int getLastMonth4Purchases();
+	int getLastMonth4Purchases(String hqCode);
 
-	int getLastMonth5Purchases();
+	int getLastMonth5Purchases(String hqCode);
 
-	int getLastMonth6Purchases();
+	int getLastMonth6Purchases(String hqCode);
 
-	int getLastMonth7Purchases();
+	int getLastMonth7Purchases(String hqCode);
 
-	int getLastMonth8Purchases();
+	int getLastMonth8Purchases(String hqCode);
 
-	int getLastMonth9Purchases();
+	int getLastMonth9Purchases(String hqCode);
 
-	int getLastMonth10Purchases();
+	int getLastMonth10Purchases(String hqCode);
 
-	int getLastMonth11Purchases();
+	int getLastMonth11Purchases(String hqCode);
 
-	int getLastYearRevenues();
+	int getLastYearRevenues(String hqCode);
 
-	int getLastYearPurchases();
+	int getLastYearPurchases(String hqCode);
 
 }

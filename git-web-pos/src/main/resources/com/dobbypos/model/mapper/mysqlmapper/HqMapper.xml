@@ -32,9 +32,10 @@
 		WHERE hqId = #{id}
 	</select>
 	
-	<select id="selectStoreList" resultType="Store">
+	<select id="selectStoreList" parameterType="String" resultType="Store">
 		SELECT storecode, storename, managername, email, phoneno, address
 		FROM store 
+		WHERE hqCode = #{id}
 	</select>
 	
 	<resultMap type="Store" id="storeMap">
@@ -57,145 +58,146 @@
 		<result column="c_level" property="customerLevel" />
 		<association column="storecode" property="store" resultMap="storeMap" />
 	</resultMap>
-	<select id="selectCustomerList" resultMap="customerMap">
-		SELECT c.customerno, c.c_name, c.c_phoneno, c.c_age, c.c_gender, c.c_point, c.c_level, s.storename
+	<select id="selectCustomerList" parameterType="String" resultMap="customerMap">
+		SELECT c.customerno, c.c_name, c.c_phoneno, c.c_age, c.c_gender, c.c_point, c.c_level, s.storecode
 		FROM customer c, store s
-		WHERE c.storecode = s.storecode 
+		WHERE s.hqcode = #{id}
 	</select>
 	
-	<select id="selectClientList" resultType="Client">
+	<select id="selectClientList" parameterType="String" resultType="Client">
 		SELECT clientname, businessregistrationnumber, clientphoneno, email, address, regdate
 		FROM client
+		WHERE hqCode = #{id}
 	</select>
 	
-	<select id="selectCurrentMonthRevenue" resultType="Integer">		
-		SELECT ifnull(SUM(plusMinus), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(current_timestamp))	
+	<select id="selectCurrentMonthRevenue" parameterType="String" resultType="Integer">		
+		SELECT ifnull(SUM(b.plusMinus), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(current_timestamp)) and s.hqcode = #{id}	
 	</select>
 	
-	<select id="selectLastMonthRevenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0)
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -1 month)))	
+	<select id="selectLastMonthRevenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -1 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth2Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0)
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -2 month)))
+	<select id="selectLastMonth2Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -2 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth3Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0)
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -3 month)))
+	<select id="selectLastMonth3Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -3 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth4Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -4 month)))
+	<select id="selectLastMonth4Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -4 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth5Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0)
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -5 month)))
+	<select id="selectLastMonth5Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -5 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth6Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -6 month)))
+	<select id="selectLastMonth6Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -6 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth7Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -7 month)))
+	<select id="selectLastMonth7Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -7 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth8Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -8 month)))
+	<select id="selectLastMonth8Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -8 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth9Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0)
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -9 month)))
+	<select id="selectLastMonth9Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -9 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth10Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0)
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -10 month)))
+	<select id="selectLastMonth10Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -10 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth11Revenue" resultType="Integer">
-		SELECT ifnull(SUM(plusMinus), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -11 month)))
+	<select id="selectLastMonth11Revenue" parameterType="String" resultType="Integer">
+		SELECT ifnull(SUM(b.plusMinus), 0)
+		FROM balance b, store s WHERE b.storecode = s.storecode and b.plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%m') in (month(date_add(now(), interval -11 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectCurrentMonthPurchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(current_timestamp))	
+	<select id="selectCurrentMonthPurchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(current_timestamp)) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth1Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -1 month)))
+	<select id="selectLastMonth1Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -1 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth2Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0)
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -2 month)))
+	<select id="selectLastMonth2Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -2 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth3Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0)
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -3 month)))
+	<select id="selectLastMonth3Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -3 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth4Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -4 month)))
+	<select id="selectLastMonth4Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -4 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth5Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -5 month)))
+	<select id="selectLastMonth5Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -5 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth6Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -6 month)))
+	<select id="selectLastMonth6Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -6 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth7Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -7 month)))
+	<select id="selectLastMonth7Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -7 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth8Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -8 month)))
+	<select id="selectLastMonth8Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -8 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth9Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -9 month)))
+	<select id="selectLastMonth9Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -9 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth10Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0)
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -10 month)))
+	<select id="selectLastMonth10Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -10 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastMonth11Purchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -11 month)))
+	<select id="selectLastMonth11Purchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%m') in (month(date_add(now(), interval -11 month))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastYearRevenues" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &gt; 0 and DATE_FORMAT(regDate,'%Y') in (year(date_add(now(), interval -1 year)))
+	<select id="selectLastYearRevenues" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &gt; 0 and DATE_FORMAT(b.regDate,'%Y') in (year(date_add(now(), interval -1 year))) and s.hqcode = #{id}
 	</select>
 	
-	<select id="selectLastYearPurchases" resultType="Integer">
-		SELECT ifnull(ABS(SUM(plusMinus)), 0) 
-		FROM balance WHERE plusMinus &lt; 0 and DATE_FORMAT(regDate,'%Y') in (year(date_add(now(), interval -1 year)))
+	<select id="selectLastYearPurchases" parameterType="String" resultType="Integer">
+		SELECT ifnull(ABS(SUM(b.plusMinus)), 0) 
+		FROM balance b, store s WHERE b.storecode = s.storecode and plusMinus &lt; 0 and DATE_FORMAT(regDate,'%Y') in (year(date_add(now(), interval -1 year))) and s.hqcode = #{id}
 	</select>	
 
 </mapper>

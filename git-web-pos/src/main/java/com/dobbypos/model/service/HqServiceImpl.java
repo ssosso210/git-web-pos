@@ -30,177 +30,177 @@ public class HqServiceImpl implements HqService {
 	}
 
 	@Override
-	public List<Store> getAllStore() {
+	public List<Store> getAllStore(String hqCode) {
 		
-		return hqDao.getStoreList();
+		return hqDao.getStoreList(hqCode);
 	}
 
 	@Override
-	public List<Customer2> getAllCustomer() {
+	public List<Customer2> getAllCustomer(String hqCode) {
 		
-		return hqDao.getCustomerList();
+		return hqDao.getCustomerList(hqCode);
 	}
 
 	@Override
-	public List<Client> getAllClient() {
+	public List<Client> getAllClient(String hqCode) {
 		
-		return hqDao.getClientList();
+		return hqDao.getClientList(hqCode);
 	}
 
 	@Override
-	public int getCurrentMonthRevenue() {
+	public int getCurrentMonthRevenue(String hqCode) {
 		
-		return hqDao.getCurrentMonthRevenue();
+		return hqDao.getCurrentMonthRevenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonthRevenue() {
+	public int getLastMonthRevenue(String hqCode) {
 		
-		return hqDao.LastMonthRevenue();
+		return hqDao.LastMonthRevenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth2Revenue() {
+	public int getLastMonth2Revenue(String hqCode) {
 		
-		return hqDao.LastMonth2Revenue();
+		return hqDao.LastMonth2Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth3Revenue() {
+	public int getLastMonth3Revenue(String hqCode) {
 		
-		return hqDao.LastMonth3Revenue();
+		return hqDao.LastMonth3Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth4Revenue() {
+	public int getLastMonth4Revenue(String hqCode) {
 		
-		return hqDao.LastMonth4Revenue();
+		return hqDao.LastMonth4Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth5Revenue() {
+	public int getLastMonth5Revenue(String hqCode) {
 		
-		return hqDao.LastMonth5Revenue();
+		return hqDao.LastMonth5Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth6Revenue() {
+	public int getLastMonth6Revenue(String hqCode) {
 		
-		return hqDao.LastMonth6Revenue();
+		return hqDao.LastMonth6Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth7Revenue() {
+	public int getLastMonth7Revenue(String hqCode) {
 		
-		return hqDao.LastMont7Revenue();
+		return hqDao.LastMont7Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth8Revenue() {
+	public int getLastMonth8Revenue(String hqCode) {
 		
-		return hqDao.LastMonth8Revenue();
+		return hqDao.LastMonth8Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth9Revenue() {
+	public int getLastMonth9Revenue(String hqCode) {
 		
-		return hqDao.LastMonth9Revenue();
+		return hqDao.LastMonth9Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMont10hRevenue() {
+	public int getLastMont10hRevenue(String hqCode) {
 		
-		return hqDao.LastMonth10Revenue();
+		return hqDao.LastMonth10Revenue(hqCode);
 	}
 
 	@Override
-	public int getLastMonth11Revenue() {
+	public int getLastMonth11Revenue(String hqCode) {
 		
-		return hqDao.LastMonth11Revenue();
+		return hqDao.LastMonth11Revenue(hqCode);
 	}
 
 	@Override
-	public int getCurrentMonthPurchases() {
+	public int getCurrentMonthPurchases(String hqCode) {
 		
-		return hqDao.getCurrentMonthPurchases();
+		return hqDao.getCurrentMonthPurchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth1Purchases() {
+	public int getLastMonth1Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth1Purchases();
+		return hqDao.getLastMonth1Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth2Purchases() {
+	public int getLastMonth2Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth2Purchases();
+		return hqDao.getLastMonth2Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth3Purchases() {
+	public int getLastMonth3Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth3Purchases();
+		return hqDao.getLastMonth3Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth4Purchases() {
+	public int getLastMonth4Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth4Purchases();
+		return hqDao.getLastMonth4Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth5Purchases() {
+	public int getLastMonth5Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth5Purchases();
+		return hqDao.getLastMonth5Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth6Purchases() {
+	public int getLastMonth6Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth6Purchases();
+		return hqDao.getLastMonth6Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth7Purchases() {
+	public int getLastMonth7Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth7Purchases();
+		return hqDao.getLastMonth7Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth8Purchases() {
+	public int getLastMonth8Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth8Purchases();
+		return hqDao.getLastMonth8Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth9Purchases() {
+	public int getLastMonth9Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth9Purchases();
+		return hqDao.getLastMonth9Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth10Purchases() {
+	public int getLastMonth10Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth10Purchases();
+		return hqDao.getLastMonth10Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastMonth11Purchases() {
+	public int getLastMonth11Purchases(String hqCode) {
 		
-		return hqDao.getLastMonth11Purchases();
+		return hqDao.getLastMonth11Purchases(hqCode);
 	}
 
 	@Override
-	public int getLastYearRevenues() {
+	public int getLastYearRevenues(String hqCode) {
 		
-		return hqDao.getLastYearRevenues();
+		return hqDao.getLastYearRevenues(hqCode);
 	}
 
 	@Override
-	public int getLastYearPurchases() {
+	public int getLastYearPurchases(String hqCode) {
 		
-		return hqDao.getLastYearPurchases();
+		return hqDao.getLastYearPurchases(hqCode);
 	}
 	
 }

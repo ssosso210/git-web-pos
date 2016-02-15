@@ -79,13 +79,23 @@
               		<i class="shortcut-icon icon-cogs" ></i>
               		<span class="shortcut-label" >설정</span> 
               	</a>
-              	<!-- <a href="javascript:;" class="shortcut" style="background: #7da51c; "> --> 
-              	<a href="/dobbywebpos/account/menulist.action" class="shortcut" style="background: #7da51c; ">
-              	<i class="shortcut-icon"></i>
-              		<span class="shortcut-label" ></span> 
-              		<!-- <i class="shortcut-icon icon-list-alt"></i>
-              		<span class="shortcut-label" >관리자 페이지</span>  -->
-              	</a>
+              	
+              	<c:choose>
+              		<c:when test="${sessionScope.loginuser.employeeType eq 'admin'}">
+              		  <a href="/dobbywebpos/adminpos/homechart.action" class="shortcut" style="background: #7da51c; ">
+              			<i class="shortcut-icon icon-list-alt"></i>
+              			<span class="shortcut-label" >관리자 페이지</span> 
+              		  </a>
+              		</c:when>
+              		<c:otherwise>
+              		  <a href="javascript:;" class="shortcut" style="background: #7da51c; ">
+              			<i class="shortcut-icon "></i>
+              			<span class="shortcut-label" ></span>
+              		   </a> 
+              		</c:otherwise>
+              	</c:choose>
+              		
+              	
               </div>
               <!-- /shortcuts --> 
             </div>
@@ -104,7 +114,7 @@
 <!-- /main -->	
 		   
 		    
-		   
+		   <a href="/dobbywebpos/account/menulist.action" > select 메뉴 리스트</a>
 			 
 	</div>
 		<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>

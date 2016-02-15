@@ -39,7 +39,9 @@
 						<a class="btn btn-navbar" data-toggle="collapse"
 							data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 							class="icon-bar"></span> <span class="icon-bar"></span>
-						</a> <a class="brand" href="index.html"> Dobby web pos </a>
+						</a> <a class="brand" href="index.html">
+						<img src="/dobbywebpos/resources/img/icon/icon-pos.png" style="height:18px ;" />
+						 Dobby web pos </a>
 						<div class="nav-collapse">
 							<ul class="nav pull-right">
 								<!-- <li class=""><a href="signup.html" class=""> Don't have an account? </a></li> -->
@@ -99,6 +101,9 @@
 							<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
 							<label class="choice" for="Field">Keep me signed in</label>
 						</span> -->
+						<span class="login-checkbox">
+							<label class="choice" for="Field" style="color : red;">${ empty failMessage ? "" : failMessage}</label>
+						</span>
 											
 						<button class="button btn btn-success btn-large" type="submit" >Sign In</button>
 						

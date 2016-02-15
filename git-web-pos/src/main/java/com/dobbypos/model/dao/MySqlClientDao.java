@@ -1,5 +1,6 @@
 package com.dobbypos.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,11 @@ public class MySqlClientDao implements ClientDao {
 	private ClientMapper clientMapper;
 	
 	@Override
-	public List<String> getClientListByClientName(String clientName) {
-		
-		List<String> clients = clientMapper.selectClientListByClientName(clientName);
+	public List<String> getClientListByClientName(String clientName, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("clientName", clientName);
+		params.put("hqCode", hqCode);
+		List<String> clients = clientMapper.selectClientListByClientName(params);
 		
 		return clients;
 	}
@@ -40,9 +43,11 @@ public class MySqlClientDao implements ClientDao {
 	}
 
 	@Override
-	public Client getClientByClientName(String clientName) {
-		
-		Client client = clientMapper.selectClientByClientName(clientName);
+	public Client getClientByClientName(String clientName, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("clientName", clientName);
+		params.put("hqCode", hqCode);
+		Client client = clientMapper.selectClientByClientName(params);
 		
 		return client;
 	}

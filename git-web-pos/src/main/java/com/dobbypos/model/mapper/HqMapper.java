@@ -9,64 +9,64 @@ import com.dobbypos.model.dto.Store;
 
 public interface HqMapper {
 
-	List<Customer2> selectCustomerList();
+	List<Customer2> selectCustomerList(String hqCode);
 
-	List<Client> selectClientList();
+	List<Client> selectClientList(String hqCode);
 
-	int selectCurrentMonthRevenue();
+	int selectCurrentMonthRevenue(String hqCode);
 
 	Hq selectHqByHqId(String hqId);
 	
-	List<Store> selectStoreList();
+	List<Store> selectStoreList(String hqCode);
 
-	int selectLastMonthRevenue();
+	int selectLastMonthRevenue(String hqCode);
 
-	int selectLastMonth2Revenue();
+	int selectLastMonth2Revenue(String hqCode);
 
-	int selectLastMonth3Revenue();
+	int selectLastMonth3Revenue(String hqCode);
 
-	int selectLastMonth4Revenue();
+	int selectLastMonth4Revenue(String hqCode);
 
-	int selectLastMonth5Revenue();
+	int selectLastMonth5Revenue(String hqCode);
 
-	int selectLastMonth6Revenue();
+	int selectLastMonth6Revenue(String hqCode);
 
-	int selectLastMonth7Revenue();
+	int selectLastMonth7Revenue(String hqCode);
 
-	int selectLastMonth8Revenue();
+	int selectLastMonth8Revenue(String hqCode);
 
-	int selectLastMonth9Revenue();
+	int selectLastMonth9Revenue(String hqCode);
 
-	int selectLastMonth10Revenue();
+	int selectLastMonth10Revenue(String hqCode);
 
-	int selectLastMonth11Revenue();
+	int selectLastMonth11Revenue(String hqCode);
 
-	int selectCurrentMonthPurchases();
+	int selectCurrentMonthPurchases(String hqCode);
 
-	int selectLastMonth1Purchases();
+	int selectLastMonth1Purchases(String hqCode);
 
-	int selectLastMonth2Purchases();
+	int selectLastMonth2Purchases(String hqCode);
 	
-	int selectLastMonth3Purchases();
+	int selectLastMonth3Purchases(String hqCode);
 
-	int selectLastMonth4Purchases();
+	int selectLastMonth4Purchases(String hqCode);
 	
-	int selectLastMonth5Purchases();
+	int selectLastMonth5Purchases(String hqCode);
 
-	int selectLastMonth6Purchases();
+	int selectLastMonth6Purchases(String hqCode);
 
-	int selectLastMonth7Purchases();
+	int selectLastMonth7Purchases(String hqCode);
 
-	int selectLastMonth8Purchases();
+	int selectLastMonth8Purchases(String hqCode);
 
-	int selectLastMonth9Purchases();
+	int selectLastMonth9Purchases(String hqCode);
 
-	int selectLastMonth10Purchases();
+	int selectLastMonth10Purchases(String hqCode);
 
-	int selectLastMonth11Purchases();
+	int selectLastMonth11Purchases(String hqCode);
 
-	int selectLastYearRevenues();
+	int selectLastYearRevenues(String hqCode);
 
-	int selectLastYearPurchases();
+	int selectLastYearPurchases(String hqCode);
 	
 }
