@@ -17,8 +17,8 @@ public class MysqlCustomerDao implements CustomerDao {
 	private CustomerMapper customerMapper;
 	
 	@Override
-	public int countTotalCustomers(String hqCode) {
-		int totalCustomers = customerMapper.countTotalCustomers(hqCode);
+	public int countTotalCustomers() {
+		int totalCustomers = customerMapper.countTotalCustomers();
 		
 		return totalCustomers;
 	}
