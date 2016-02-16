@@ -44,6 +44,7 @@
     <link href="/dobbywebpos/resources/styles/input2.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/default.css" rel="stylesheet" type="text/css" />
 	<link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/css/style.css" rel="stylesheet">
     <style type="text/css">
 
           </style>
@@ -424,55 +425,61 @@ function map(streetTarget) {
 			
 		
 		<div class="right-side" style="padding-top:25px;text-align:center">
-		<div class="inputsubtitle"><spring:message code="hq.storeInfo" /></div>
+		<div class="widget widget-table action-table">
+		<div class="widget-header" style="font-size: 15pt"><spring:message code="hq.storeInfo" /></div>
 		<br /><br />
+			<div class="widget-content">
+				<div class="tab-content">
 		        <form action="storeregister.action" method="post"><!-- 상대경로표시 -->
-		        <table style="margin: 0 auto;border: solid;">
-		             <tr>
-		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.code" /></th>
-		                <td>		                    
-		                    <input type="text" id="storeCode" name="storeCode" style="width:280px" />		                    
+		        <table class="table table-striped table-bordered" style="margin: 0 auto;border: 1px grey;font-size: 20pt;width: 60%;border-radius: 4px">
+		             <tr style="border-radius: 4px">
+		                <th style="background-color: #999999;font-size: 20pt;border-radius: 4px"><spring:message code="hq.storemanagement.code" /></th>
+		                <td style="border-radius: 4px">		                    
+		                    <input type="text" id="storeCode" name="storeCode" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />		                    
 		                </td>
 		            </tr>
 		            <tr>
-		                <th style="background-color: #999999"><spring:message code="hq.storemanagement.name" /></th>
+		                <th style="background-color: #999999;font-size: 20pt"><spring:message code="hq.storemanagement.name" /></th>
 		                <td>
 		                    
-		                    <input type="text" id="storeName" name="storeName" style="width:280px" />
+		                    <input type="text" id="storeName" name="storeName" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
 		                    
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.managerName" /></th>
+		                <th class="thh" style="font-size: 20pt"><spring:message code="hq.storemanagement.managerName" /></th>
 		                <td>
-		                	<input type="text" name="managerName" style="width:280px" />
+		                	<input type="text" name="managerName" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.phoneNo" /></th>
+		                <th class="thh" style="font-size: 20pt"><spring:message code="hq.storemanagement.phoneNo" /></th>
 		                <td>
-		                    <input type="text" name="phoneNo" style="width:280px" />
+		                    <input type="text" name="phoneNo" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.email" /></th>
+		                <th class="thh" style="font-size: 20pt"><spring:message code="hq.storemanagement.email" /></th>
 		                <td>
-		                	<input type="text" name="email" style="width:280px" />
+		                	<input type="text" name="email" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh"><spring:message code="hq.storemanagement.address" /></th>
+		                <th class="thh" style="font-size: 20pt"><spring:message code="hq.storemanagement.address" /></th>
 		                <td>
-		                	<input type="search" id="storeregisteraddress" name="address" style="width:280px" />		                	
+		                	<input type="search" id="storeregisteraddress" name="address" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />		                	
 		                </td>
 		            </tr>		            
 		        </table>
 		        <div class="buttons">
-		        	<input type="submit" value="등록" style="height:25px" />
-		        	<input type="button" value="취소" style="height:25px"
+		        	<input type="submit" value="등록" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" />
+		        	<input type="button" value="취소" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px"
 		        		onclick="location.href='/dobbywebpos/hq/storemanagement.action';" />
 		        </div>
 		        </form>
+		        </div>
+		        </div>
+		        </div>
 		    </div>
 		
 			
