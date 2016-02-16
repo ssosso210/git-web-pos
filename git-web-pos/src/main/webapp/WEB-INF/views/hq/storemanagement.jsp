@@ -124,6 +124,21 @@
 </script>
 <script type="text/javascript">
            // Chart.defaults.global.responsive = true;
+         
+    $(function() {
+    	
+    	var hqCode = '${ hqCode }';
+    	if  ( hqCode == 'outback'){
+    		var savedFileName = "/dobbywebpos/resources/images/" + hqCode + ".gif";
+    		$("#myPhoto").attr("src", savedFileName);
+    	}
+    	
+    	if  ( hqCode == 'ashley'){
+    		var savedFileName = "/dobbywebpos/resources/images/" + hqCode + ".jpg";
+    		$("#myPhoto").attr("src", savedFileName);
+    	}
+    });
+    	
             
             
             

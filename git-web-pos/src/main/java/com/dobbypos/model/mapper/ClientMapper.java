@@ -9,13 +9,13 @@ public interface ClientMapper {
 	
 	List<String> selectClientListByClientName(HashMap<String, Object> params);
 
-	List<String> selectClientBusinessNumberByBusinessNumber(String businessNumber);
+	List<String> selectClientBusinessNumberByBusinessNumber(HashMap<String, Object> params);
 
 	void insertClient(Client client);
 
 	Client selectClientByClientName(HashMap<String, Object> params);
 
-	void deleteClientByClientName(String clientName);
+	void deleteClientByClientName(HashMap<String, Object> params);
 
 	void editClientInfo(Client client);
 

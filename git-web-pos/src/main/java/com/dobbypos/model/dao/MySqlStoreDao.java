@@ -84,4 +84,11 @@ public class MySqlStoreDao implements StoreDao {
 		return storeMapper.selectHqByStoreCode(storeCode);
 	}
 
+	@Override
+	public int countTotalStores(String hqCode) {
+		int totalStores = storeMapper.countTotalStores(hqCode);
+		
+		return totalStores;
+	}
+
 }

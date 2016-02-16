@@ -56,6 +56,12 @@
 		from hq join store on hq.hqCode = store.hqCode
 		where store.storeCode = #{id}
 	</select>
+	
+	<select id="countTotalStores" parameterType="String" resultType="int">
+		select ifnull(count(*) , 0) from store
+		where hqcode = #{id}				
+	</select>
+	
 </mapper>
 
 

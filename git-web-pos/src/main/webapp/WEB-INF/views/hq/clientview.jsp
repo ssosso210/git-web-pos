@@ -44,6 +44,7 @@
     <link href="/dobbywebpos/resources/styles/input2.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/default.css" rel="stylesheet" type="text/css" />
 	<link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/css/style.css" rel="stylesheet">
     <style type="text/css">
 
           </style>
@@ -351,53 +352,60 @@ function map(streetTarget) {
 			
 		
 		<div class="right-side" style="padding-top:25px;text-align:center">
-		<div class="inputsubtitle"><spring:message code="hq.clientInfo" /></div>
+		<div class="widget widget-table action-table">
+		<div class="widget-header" style="font-size: 15pt"><spring:message code="hq.clientInfo" /></div>
 		<br /><br />
+		<div class="widget-content">
+				<div class="tab-content">
 		        <form id="clienteditinfo" action="clientregister.action" method="post"><!-- 상대경로표시 -->
-		        <table style="margin: 0 auto;border: solid;width: 900px">
-		             <tr>
-		                <th style="font-size: 20pt; fonbackground-color: #999999"><spring:message code="hq.clientmanagement.name" /></th>
-		                <td>		                    
-		                    <input type="text" id="clientName" class="clientedit" name="clientName" value="${ client.clientName }" style="width:700px; font-size: 20pt;" />		                    
+		        <table class="table table-striped table-bordered" style="margin: 0 auto;border: 1px grey;font-size: 20pt;width: 60%;border-radius: 4px">
+		             <tr style="border-radius: 4px">
+		                <th style="background-color: #999999;font-size: 20pt;border-radius: 4px"><spring:message code="hq.clientmanagement.name" /></th>
+		                <td style="border-radius: 4px">		                    
+		                    <input type="text" id="clientName" class="clientedit" name="clientName" value="${ client.clientName }" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />		                    
 		                </td>
 		            </tr>
 		            <tr>
-		                <th style="font-size: 20pt; background-color: #999999"><spring:message code="hq.clientmanagement.number" /></th>
+		                <th style="background-color: #999999;font-size: 20pt"><spring:message code="hq.clientmanagement.number" /></th>
 		                <td>
 		                    
-		                    <input type="text" id="businessRegistrationNumber" class="clientedit" name="businessRegistrationNumber" value="${ client.businessRegistrationNumber }" style="width:700px; font-size: 20pt;" />
+		                    <input type="text" id="businessRegistrationNumber" class="clientedit" name="businessRegistrationNumber" value="${ client.businessRegistrationNumber }" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
 		                    <div id="businessnumberchecked" style="font-size: 20pt;width: 0;overflow: visible;float: right;word-break: keep-all"></div>
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.clientmanagement.phoneNo" /></th>
+		                <th style="background-color: #999999;font-size: 20pt"><spring:message code="hq.clientmanagement.phoneNo" /></th>
 		                <td>
-		                	<input type="text" id="clientPhoneNo" class="clientedit" name="clientPhoneNo" value="${ client.clientPhoneNo }" style="width:700px; font-size: 20pt;" />
+		                	<input type="text" id="clientPhoneNo" class="clientedit" name="clientPhoneNo" value="${ client.clientPhoneNo }" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
 		                </td>
 		            </tr>		           
 		            <tr>
-		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.clientmanagement.email" /></th>
+		                <th style="background-color: #999999;font-size: 20pt"><spring:message code="hq.clientmanagement.email" /></th>
 		                <td>
-		                	<input type="text" id="email" class="clientedit" name="email" value="${ client.email }" style="width:700px; font-size: 20pt;" />
+		                	<input type="text" id="email" class="clientedit" name="email" value="${ client.email }" style="width:450px;font-size: 20pt;float: left;border-radius: 4px"" />
 		                </td>
 		            </tr>
 		            <tr>
-		                <th class="thh" style="font-size: 20pt;"><spring:message code="hq.clientmanagement.address" /></th>
+		                <th style="background-color: #999999;font-size: 20pt"><spring:message code="hq.clientmanagement.address" /></th>
 		                <td>
-		                	<input type="search" class="clientedit" id="address" value="${ client.address }" name="address" style="width:700px; font-size: 20pt;" />		                	
+		                	<input type="search" class="clientedit" id="address" value="${ client.address }" name="address" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />		                	
 		                </td>
 		            </tr>		            
 		        </table>
 		        <div class="buttons">
-		        	<input type="button" value="수정" id="edit" style="height:25px" />
-		        	<input type="button" value="수정확인" id="editconfirm" style="height:25px" />
-		        	<input type="button" value="삭제" id="delete" style="height: 25px" />
-		        	<input type="button" value="취소" id="cancel2" style="height: 25px" />
-		        	<input type="button" value="취소" id="cancel" style="height:25px"
+		        	<input type="button" value="수정" id="edit" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" />
+		        	<input type="button" value="수정확인" id="editconfirm" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" />
+		        	<input type="button" value="삭제" id="delete" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" />
+		        	<input type="button" value="취소" id="cancel2" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" />
+		        	<input type="button" value="취소" id="cancel" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px"
 		        		onclick="location.href='/dobbywebpos/hq/clientmanagement.action';" />
 		        </div>
 		        </form>
 		    </div>
+		    </div>
+		    </div>
+		    </div>
+		    
 		
 			
 	</div>

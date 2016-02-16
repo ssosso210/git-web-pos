@@ -12,10 +12,10 @@
 		WHERE clientname LIKE concat(#{ clientName }, '%') AND hqcode = #{ hqCode } 
 	</select>
 	
-	<select id="selectClientBusinessNumberByBusinessNumber" parameterType="String" resultType="String">
+	<select id="selectClientBusinessNumberByBusinessNumber" parameterType="HashMap" resultType="String">
 		SELECT businessRegistrationNumber
 		FROM client
-		WHERE businessRegistrationNumber LIKE concat(#{ id }, '%')
+		WHERE businessRegistrationNumber LIKE concat(#{ businessNumber }, '%') AND hqcode = #{ hqCode }
 	</select>
 	
 	<insert id="insertClient" parameterType="Client">
@@ -29,8 +29,8 @@
 		WHERE clientname = #{clientName} AND hqCode = #{hqCode}
 	</select>
 	
-	<delete id="deleteClientByClientName" parameterType="String">
-		DELETE FROM client WHERE clientName = #{id}
+	<delete id="deleteClientByClientName" parameterType="HashMap">
+		DELETE FROM client WHERE clientName = #{clientName} AND hqCode = #{ hqCode}
 	</delete>
 	
 	<update id="editClientInfo" parameterType="Client">

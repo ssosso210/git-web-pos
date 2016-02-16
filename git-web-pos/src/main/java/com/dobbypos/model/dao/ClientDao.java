@@ -8,13 +8,13 @@ public interface ClientDao {
 	
 	List<String> getClientListByClientName(String clientName, String hqCode);
 
-	List<String> getClientBusinessNumberByBusinessNumber(String businessNumber);
+	List<String> getClientBusinessNumberByBusinessNumber(String businessNumber, String hqCode);
 
 	void insertClient(Client client);
 
 	Client getClientByClientName(String clientName, String hqCode);
 
-	void deleteClientByClientName(String clientName);
+	void deleteClientByClientName(String clientName, String hqCode);
 
 	void editClientInfo(Client client);
 

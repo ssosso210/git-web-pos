@@ -44,6 +44,7 @@
     <link href="/dobbywebpos/resources/styles/input2.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/default.css" rel="stylesheet" type="text/css" /> -->
 	<link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/dobbywebpos/resources/css/style.css" rel="stylesheet">
     <style type="text/css">
 
           </style>
@@ -252,45 +253,52 @@ function map(streetTarget) {
 			 -->
 		
 		<div class="right-side" style="padding-top:25px;text-align:center">
-		<div class="account-container register">
-	<div class="account-container register">
-	
-	<div class="content clearfix">
+		<div class="widget widget-table action-table">
+		<div class="widget-header" style="font-size: 15pt"></div>
 		
+		<div class="widget-content">
+				<div class="tab-content">
 		<form action="salemenuregister.action" method="post" enctype="multipart/form-data">
 		
 			<h1>메뉴 등록</h1>			
 			
 			<div class="login-fields">
+							
 				
-				<p>메뉴 생성:</p>
+				<table class="table table-striped table-bordered" style="margin: 0 auto;border: 1px grey;font-size: 20pt;width: 60%;border-radius: 4px">
+		             <tr style="border-radius: 4px">
+		                <th style="background-color: #999999;font-size: 20pt;border-radius: 4px">
+					<label for="foodCode" style="font-size: 20pt;border-radius: 4px">코드:</label></th>
+					<td style="border-radius: 4px">
+					<input type="text" id="foodCode" name="foodCode" value="" placeholder="메뉴 이름" class="login" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
+				<!-- </div> /field -->
 				
-				<div class="field">
-					<label for="foodCode">코드:</label>
-					<input type="text" id="foodCode" name="foodCode" value="" placeholder="메뉴 이름" class="login" />
-				</div> <!-- /field -->
+					<tr>
+		                <th style="background-color: #999999;font-size: 20pt"><label for="foodName">이름:</label></th>
+		                <td style="border-radius: 4px">
+							<input type="text" id="foodName" name="foodName" value="" placeholder="메뉴 이름" class="login" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
+						</td>
+					</tr>
+					<tr>
+		                <th style="background-color: #999999;font-size: 20pt"><label for="menuGroups">분류:</label></th>
+		                <td>	
+							<input type="text" id="menuGroups" name="menuGroups" value="" placeholder="분류" class="login" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
+						</td>	
+					</tr>
+					<tr>
+		                <th style="background-color: #999999;font-size: 20pt"><label for="foodPrice">가격:</label></th>
+		                <td>
+							<input type="number" id="foodPrice" name="foodPrice" value="" placeholder="...원" class="login" min="500" step="100" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
+						</td>
+					</tr>				
+					<tr>
+		                <th style="background-color: #999999;font-size: 20pt"><label for="password" style="display: inline;">메뉴 사진:</label></th>
+		                <td>
+							<input type="file" id="photoFile" name="photoFile" class="login" style="display: inline;" style="width:450px;font-size: 20pt;float: left;border-radius: 4px" />
+						</td>	
+					</tr>
 				
-				<div class="field">
-					<label for="foodName">이름:</label>
-					<input type="text" id="foodName" name="foodName" value="" placeholder="메뉴 이름" class="login" />
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<label for="menuGroups">분류:</label>	
-					<input type="text" id="menuGroups" name="menuGroups" value="" placeholder="분류" class="login" />
-				</div> <!-- /field -->
-				
-				
-				<div class="field">
-					<label for="foodPrice">가격:</label>
-					<input type="number" id="foodPrice" name="foodPrice" value="" placeholder="...원" class="login" min="500" step="100" />
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<label for="password" style="display: inline;">메뉴 사진:</label>
-					<input type="file" id="photoFile" name="photoFile" class="login" style="display: inline;" />
-				</div> <!-- /field -->
-				
+				</table>
 								
 			</div> <!-- /login-fields -->
 			
@@ -298,8 +306,8 @@ function map(streetTarget) {
 				
 				<br /><br />
 				<div class="buttons">
-		        	<input type="submit" value="자료등록" style="height:25px" onclick="document.forms[0].submit();" />
-		        	<input type="button" value="취소" style="height:25px" onclick="location.href='list.action';" />
+		        	<input type="submit" value="자료등록" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" onclick="document.forms[0].submit();" />
+		        	<input type="button" value="취소" style="height:40px;font-size: 20pt;margin-top: 15px;border-radius: 4px" onclick="location.href='list.action';" />
 		        </div>
 				
 			</div> <!-- .actions -->

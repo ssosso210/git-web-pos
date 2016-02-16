@@ -16,5 +16,6 @@ public interface StoreService {
 	Store getStoreByStoreCode(String storeCode);
 	String getStoreNameByStoreCode(String storeCode);
 	Hq getHqByStoreCode(String storeCode);
+	int countTotalStroes(String hqCode);
 		
 }

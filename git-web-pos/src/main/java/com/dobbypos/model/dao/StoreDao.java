@@ -24,4 +24,6 @@ public interface StoreDao {
 	String selectStoreNameByStoreCode(String storeCode);
 
 	Hq selectHqByStoreCode(String storeCode);
+
+	int countTotalStores(String hqCode);
 }
