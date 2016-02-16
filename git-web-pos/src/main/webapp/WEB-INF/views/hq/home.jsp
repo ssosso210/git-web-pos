@@ -112,6 +112,18 @@
 </script>
 <script type="text/javascript">
     $(function() {
+    	
+    	var hqCode = '${ hqCode }';
+    	if  ( hqCode == 'outback'){
+    		var savedFileName = "/dobbywebpos/resources/images/" + hqCode + ".gif";
+    		$("#myPhoto").attr("src", savedFileName);
+    	}
+    	
+    	if  ( hqCode == 'ashley'){
+    		var savedFileName = "/dobbywebpos/resources/images/" + hqCode + ".jpg";
+    		$("#myPhoto").attr("src", savedFileName);
+    	}
+    	
     	var currentMonthSales = ${ revenue };
     	var lastMonthSales = ${ lastRevenue };
     	var lastMonthSales2 = ${ lastRevenue2 };
@@ -145,6 +157,10 @@
     	var totalCustomers = ${ totalCustomers };
     	var totalCustomersWithComma = $.number(totalCustomers) + "명";
     	$("#totalCustomers").html(totalCustomersWithComma);
+    	
+    	var totalStores = ${ totalStores };
+    	var totalStoresWithComma = $.number(totalStores) + "점";
+    	$("#totalStores").html(totalStoresWithComma);
     	
     	var d = new Date();
     	var month = d.getMonth() + 1;
@@ -316,12 +332,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style="width: 300px">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
-                                <div class="sm-st-info">
-                                    <span>4567</span>
-                                    Total Documents
+                                <div class="sm-st-info" style="font-size: 15pt">
+                                    <span id="totalStores"></span>
+                                    총 가맹점 수
                                 </div>
                             </div>
                         </div>
@@ -378,25 +394,25 @@
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                                        <strong>3월!</strong> K-프랜차이즈 중국 연길 진출의 건
                                                     </div>
                                                     <div class="alert alert-success">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                        <strong>Well done!</strong> You successfully read this important alert message.
+                                                        <strong>2월 22일 ~ 3월 4일!</strong> 프랜차이즈 아카데미 교육신청 안내
                                                     </div>
                                                     <div class="alert alert-info">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+                                                        <strong>2016년!</strong> 프랜차이즈 사업 연매출 230억목표
                                                     </div>
                                                     <div class="alert alert-warning">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                                                        <strong>Warning!</strong> 레드 오션 생존 전략
                                                     </div>
 
 
@@ -404,15 +420,15 @@
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                                        <strong>NEW!</strong> 2월 신메뉴 출시 !!!
                                                     </div>
                                                     <div class="alert alert-success">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
-                                                        <strong>Well done!</strong> You successfully read this important alert message.
+                                                        <strong>NOTICE!</strong> 명절 매장 운영 안내
                                                     </div>
-                                                    <div class="alert alert-info">
+                                                    <!-- <div class="alert alert-info">
                                                         <button data-dismiss="alert" class="close close-sm" type="button">
                                                             <i class="fa fa-times"></i>
                                                         </button>
@@ -424,7 +440,7 @@
                                                         </button>
                                                         <strong>Warning!</strong> Best check yo self, you're not looking too good.
                                                     </div>
-
+ -->
 
 
                                                 </div>
@@ -436,12 +452,12 @@
 
 
                   </div>
-                    <div class="row">
+                     <div class="row">
 
                         <div class="col-md-8">
                             <section class="panel">
                               <header class="panel-heading">
-                                  Work Progress
+                                  신규매장 개업 진행상황
                             </header>
                             <div class="panel-body table-responsive">
                                 <table class="table table-hover">
@@ -460,8 +476,8 @@
                               <tbody>
                                 <tr>
                                   <td>1</td>
-                                  <td>Facebook</td>
-                                  <td>Mark</td>
+                                  <td>강남점</td>
+                                  <td>박은영</td>
                                   <!-- <td>Steve</td> -->
                                   <td>10/10/2014</td>
                                   <!-- <td>$1500</td> -->
@@ -470,8 +486,8 @@
                               </tr>
                               <tr>
                                   <td>2</td>
-                                  <td>Twitter</td>
-                                  <td>Evan</td>
+                                  <td>역삼점</td>
+                                  <td>윤준혁</td>
                                   <!-- <td>Darren</td> -->
                                   <td>10/8/2014</td>
                                   <!-- <td>$1500</td> -->
@@ -480,8 +496,8 @@
                               </tr>
                               <tr>
                                   <td>3</td>
-                                  <td>Google</td>
-                                  <td>Larry</td>
+                                  <td>동대문점</td>
+                                  <td>심은호</td>
                                   <!-- <td>Nick</td> -->
                                   <td>10/12/2014</td>
                                   <!-- <td>$2000</td> -->
@@ -490,8 +506,8 @@
                               </tr>
                               <tr>
                                   <td>4</td>
-                                  <td>LinkedIn</td>
-                                  <td>Allen</td>
+                                  <td>서울대점</td>
+                                  <td>김윤수</td>
                                   <!-- <td>Rock</td> -->
                                   <td>10/01/2015</td>
                                   <!-- <td>$2000</td> -->
@@ -500,8 +516,8 @@
                               </tr>
                               <tr>
                                   <td>5</td>
-                                  <td>Tumblr</td>
-                                  <td>David</td>
+                                  <td>잠원점</td>
+                                  <td>남소진</td>
                                   <!-- <td>HHH</td> -->
                                   <td>01/11/2014</td>
                                   <!-- <td>$2000</td> -->
@@ -510,31 +526,31 @@
                               </tr>
                               <tr>
                                   <td>6</td>
-                                  <td>Tesla</td>
-                                  <td>Musk</td>
+                                  <td>수유점</td>
+                                  <td>김상훈</td>
                                   <!-- <td>HHH</td> -->
                                   <td>01/11/2014</td>
                                   <!-- <td>$2000</td> -->
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-success">95%</span></td>
                               </tr>
-                              <tr>
+                              <!-- <tr>
                                   <td>7</td>
                                   <td>Ghost</td>
                                   <td>XXX</td>
-                                  <!-- <td>HHH</td> -->
+                                  <td>HHH</td>
                                   <td>01/11/2014</td>
-                                  <!-- <td>$2000</td> -->
+                                  <td>$2000</td>
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-success">95%</span></td>
-                              </tr>
+                              </tr> -->
                           </tbody>
                       </table>
                   </div>
               </section>
 
 
-          </div><!--end col-6 -->
+          <!-- </div>end col-6
           <div class="col-md-4">
             <section class="panel">
                 <header class="panel-heading">
@@ -637,15 +653,15 @@
                                     </li>
                                 </ul>
                                 <div class="panel-footer bg-white">
-                                    <!-- <span class="pull-right badge badge-info">32</span> -->
+                                    <span class="pull-right badge badge-info">32</span>
                                     <button class="btn btn-primary btn-addon btn-sm">
                                         <i class="fa fa-plus"></i>
                                         Add Teammate
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-7">
+                        </div> -->
+                        <!-- <div class="col-md-7">
                           <section class="panel tasks-widget">
                               <header class="panel-heading">
                                   Todo list
@@ -657,9 +673,9 @@
                                   <ul class="task-list">
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey list-child"/>
-                                              <!-- <input type="checkbox" class="square-grey"/> -->
+                                              <input type="checkbox" class="square-grey"/>
                                           </div>
                                           <div class="task-title">
                                               <span class="task-title-sp">Director is Modern Dashboard</span>
@@ -673,7 +689,7 @@
                                       </li>
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey"/>
                                           </div>
                                           <div class="task-title">
@@ -688,7 +704,7 @@
                                       </li>
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey"/>
                                           </div>
                                           <div class="task-title">
@@ -703,7 +719,7 @@
                                       </li>
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey"/>
                                           </div>
                                           <div class="task-title">
@@ -718,7 +734,7 @@
                                       </li>
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey"/>
                                           </div>
                                           <div class="task-title">
@@ -733,7 +749,7 @@
                                       </li>
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey"/>
                                           </div>
                                           <div class="task-title">
@@ -748,7 +764,7 @@
                                       </li>
                                       <li>
                                           <div class="task-checkbox">
-                                              <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                              <input type="checkbox" class="list-child" value=""  />
                                               <input type="checkbox" class="flat-grey"/>
                                           </div>
                                           <div class="task-title">
@@ -772,7 +788,7 @@
                           </div>
                       </section>
                   </div>
-              </div>
+              </div> -->
               <!-- row end -->
                 </section><!-- /.content -->
                 <div class="footer-main">

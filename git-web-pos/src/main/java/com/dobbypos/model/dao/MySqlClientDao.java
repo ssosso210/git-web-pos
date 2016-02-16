@@ -29,9 +29,11 @@ public class MySqlClientDao implements ClientDao {
 	}
 
 	@Override
-	public List<String> getClientBusinessNumberByBusinessNumber(String businessNumber) {
-		
-		List<String> businessNumbers = clientMapper.selectClientBusinessNumberByBusinessNumber(businessNumber);
+	public List<String> getClientBusinessNumberByBusinessNumber(String businessNumber, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("businessNumber", businessNumber);
+		params.put("hqCode", hqCode);
+		List<String> businessNumbers = clientMapper.selectClientBusinessNumberByBusinessNumber(params);
 		return businessNumbers;
 	}
 
@@ -53,9 +55,11 @@ public class MySqlClientDao implements ClientDao {
 	}
 
 	@Override
-	public void deleteClientByClientName(String clientName) {
-		
-		clientMapper.deleteClientByClientName(clientName);
+	public void deleteClientByClientName(String clientName, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("clientName", clientName);
+		params.put("hqCode", hqCode);
+		clientMapper.deleteClientByClientName(params);
 		
 	}
 

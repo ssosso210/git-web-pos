@@ -68,6 +68,7 @@ public class HqController {
 		String path = req.getRequestURI();
 		Date date = new Date();
 		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		
 				
 		int revenue = hqService.getCurrentMonthRevenue(hq.getHqCode());
 		int lastRevenue1 = hqService.getLastMonthRevenue(hq.getHqCode());
@@ -101,7 +102,9 @@ public class HqController {
 		int lastYearProfits = lastYearRevenues - lastYearPurchases;
 		
 		int totalCustomers = customerService.countTotalCustomers(hq.getHqCode());
+		int totalStores = storeService.countTotalStroes(hq.getHqCode());
 		model.addAttribute("totalCustomers", totalCustomers);
+		model.addAttribute("totalStores", totalStores);
 		model.addAttribute("path", path);
 		model.addAttribute("date", date);
 		model.addAttribute("revenue", revenue);
@@ -129,6 +132,7 @@ public class HqController {
 		model.addAttribute("lastMonthPurchases10", lastMonthPurchases10);
 		model.addAttribute("lastMonthPurchases11", lastMonthPurchases11);
 		model.addAttribute("lastYearProfits", lastYearProfits);
+		model.addAttribute("hqCode", hq.getHqCode());
 		return "hq/home";
 		//return "hq/salemenumanagement";
 	}
@@ -140,6 +144,7 @@ public class HqController {
 		List<Store> stores = hqService.getAllStore(hq.getHqCode());
 		model.addAttribute("stores", stores);
 		model.addAttribute("path", path);
+		model.addAttribute("hqCode", hq.getHqCode());
 		return "hq/storemanagement";
 	}
 	
@@ -150,6 +155,7 @@ public class HqController {
 		List<Customer2> customers = hqService.getAllCustomer(hq.getHqCode());
 		model.addAttribute("customers", customers);
 		model.addAttribute("path", path);
+		model.addAttribute("hqCode", hq.getHqCode());
 		return "hq/customermanagement";
 	}
 	
@@ -160,6 +166,7 @@ public class HqController {
 		List<Client> clients = hqService.getAllClient(hq.getHqCode());		
 		model.addAttribute("clients", clients);
 		model.addAttribute("path", path);
+		model.addAttribute("hqCode", hq.getHqCode());
 		return "hq/clientmanagement";		
 	}
 	
@@ -289,9 +296,9 @@ public class HqController {
 	
 	@RequestMapping(value = "/clientbusinessnumber.action", method = RequestMethod.GET)
 	@ResponseBody
-	public String clientBusinessNumber(HttpServletResponse resp, @RequestParam("businessnumber") String businessNumber) {
-		
-		List<String> businessNumbers = clientService.getClientBusinessNumberByBusinessNumber(businessNumber);
+	public String clientBusinessNumber(HttpServletRequest req, HttpServletResponse resp, @RequestParam("businessnumber") String businessNumber) {
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		List<String> businessNumbers = clientService.getClientBusinessNumberByBusinessNumber(businessNumber, hq.getHqCode());
 		String result1 = null;
 		for (int i = 0; i < businessNumbers.size(); i++) {
 			if (businessNumber.equals(businessNumbers.get(i))) {
@@ -329,7 +336,7 @@ public class HqController {
 	public String clientDelete(@RequestParam("clientname") String clientName, HttpServletRequest req) {
 		System.out.println(clientName);
 		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
-		clientService.deleteClientByClientName(clientName);
+		clientService.deleteClientByClientName(clientName, hq.getHqCode());
 		
 		return "redirect:/hq/clientmanagement.action";
 	}
@@ -361,6 +368,7 @@ public class HqController {
 		String path = req.getRequestURI();
 				
 		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
+		System.out.println(hq.getHqCode());
 		List<Menu> menus = menuService.getAllMenus(hq.getHqCode());
 		model.addAttribute("path", path);
 		System.out.println(path);
@@ -381,7 +389,7 @@ public class HqController {
 		menu.setHqCode(hq.getHqCode());
 		String path = req.getSession().getServletContext().getRealPath("/WEB-INF/uploadfiles");
 		String path1 = req.getSession().getServletContext().getRealPath("/resources/uploadfiles");
-		System.out.println(path);
+		//System.out.println(path);
 		Iterator<String> iterator = req.getFileNames();
 		while(iterator.hasNext()) {
 			String fileName = iterator.next();
@@ -392,7 +400,7 @@ public class HqController {
 				//menu.setFoodName(menu.getFoodName());
 				menu.setSavedFileName(savedName);
 				menu.setUserFileName(file.getOriginalFilename());
-					
+				System.out.println(menu);	
 				try {
 				//Disk에 파일 저장
 				FileOutputStream ostream = new FileOutputStream(path1 + "/" + savedName);
@@ -496,8 +504,9 @@ public class HqController {
 	}
 	
 	@RequestMapping(value = "/salemenudelete.acton", method = RequestMethod.GET)	
-	public String saleMenuDelete(@RequestParam("foodcode") String foodCode) {
-		System.out.println(foodCode);
+	public String saleMenuDelete(@RequestParam("foodcode") String foodCode, HttpServletRequest req) {
+		/*System.out.println(foodCode);
+		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");*/
 		menuService.deleteSaleMenuByFoodCode(foodCode);
 		
 		return "redirect:/hq/salemenumanagement.action";

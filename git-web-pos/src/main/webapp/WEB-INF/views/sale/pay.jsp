@@ -63,18 +63,18 @@
 							case ("basic"):
 								$("#discount_rate").val("5");
 								$("#leveldiscount").val(
-										$("#foodtotalcost").val() * (0.05));
+										Math.floor($(("#foodtotalcost").val() * (0.05))));
 								break;
 							case ("vip"):
 								$("#discount_rate").val("10");
 								$("#leveldiscount").val(
-										$("#foodtotalcost").val() * (0.1));
+										Math.floor($("#foodtotalcost").val() * (0.1)));
 
 								break;
 							case ("vvip"):
 								$("#discount_rate").val("15");
 								$("#leveldiscount").val(
-										$("#foodtotalcost").val() * (0.15));
+										Math.floor($("#foodtotalcost").val() * (0.15)));
 								break;
 							}
 						},
@@ -251,8 +251,7 @@
 														<input type="number" id="writtenno" style="width: 140px" />
 														<input type="button" id="customerinfo" value="고객정보조회" />
 														&nbsp;&nbsp;
-														<!-- <input name="notregistered" type="radio" id="notregistered" value="notregistered">비회원</input>
-														 -->
+														
 														<br />
 													</div>
 													</label>
@@ -319,7 +318,7 @@
 												<div class="control-group">
 													<label class="control-label">금액:</label>
 													<div class="controls">
-														<input value=20000 type="number" id="foodtotalcost"
+														<input value="${price}" type="number" id="foodtotalcost"
 															style="width: 280px"><br />
 													</div>
 													</label>

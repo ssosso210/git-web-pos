@@ -25,9 +25,9 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public List<String> getClientBusinessNumberByBusinessNumber(String businessNumber) {
+	public List<String> getClientBusinessNumberByBusinessNumber(String businessNumber, String hqCode) {
 		
-		return clientDao.getClientBusinessNumberByBusinessNumber(businessNumber);
+		return clientDao.getClientBusinessNumberByBusinessNumber(businessNumber, hqCode);
 	}
 
 	@Override
@@ -44,9 +44,9 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public void deleteClientByClientName(String clientName) {
+	public void deleteClientByClientName(String clientName, String hqCode) {
 		
-		clientDao.deleteClientByClientName(clientName);
+		clientDao.deleteClientByClientName(clientName, hqCode);
 		
 	}
 

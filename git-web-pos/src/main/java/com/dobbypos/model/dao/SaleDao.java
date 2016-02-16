@@ -24,3 +24,4 @@ public interface SaleDao {
 	void deleteOrderDetailByOrderDetailNo(int orderDetailNo);
 
 }
+

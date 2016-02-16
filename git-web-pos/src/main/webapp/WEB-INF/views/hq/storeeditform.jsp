@@ -39,7 +39,7 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-
+	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -138,8 +138,8 @@
 			<c:url var="writeform" value="/hq/storeregisterform.action" />
 			[ <a href="${ writeform }"><spring:message code="hq.storemanagement.join" /></a> ]
 			<br /><br />
-
-			<table border="1" style="width:1000px" align="center">
+		<div class="widget widget-table action-table">
+			<table class="table table-striped table-bordered" border="1" style="width:1000px" align="center">
 				<tr style="background-color:#999999;height:30px">
 					<th style="width:40px;text-align:center"><spring:message code="hq.storemanagement.code" /></th>
 					<th style="width:70px;text-align:center"><spring:message code="hq.storemanagement.name" /></th>
@@ -166,6 +166,7 @@
 				</c:forEach>
 				
 			</table>
+			</div>
 			<br /><br /><br /><br />
 		
 		</div>

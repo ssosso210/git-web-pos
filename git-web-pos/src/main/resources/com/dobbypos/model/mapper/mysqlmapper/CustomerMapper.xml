@@ -10,7 +10,7 @@
 		select ifnull(count(*) , 0) from customer c, store s
 		where c.storecode = s.storecode
 		and  s.hqcode = #{id}
-		group by s.hqCode;		
+		group by s.hqCode	
 	</select>
 <insert id="insertCustomer" parameterType="Customer">
         insert into Customer
@@ -24,6 +24,7 @@
 		SELECT customerNo, c_name, c_phoneNo, c_gender, c_age, c_point, c_level
 		FROM customer
 		WHERE storeCode = #{id}
+		AND customerNo > 0
 	</select>
 	
 	<select id="selectCustomersByCustomerNo" parameterType="int" resultType="Customer">

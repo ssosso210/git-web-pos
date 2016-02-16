@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.dobbypos.model.dao.CheckDao;
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 
 
 @Service("checkService")
@@ -112,6 +113,12 @@ public class CheckServiceImpl implements CheckService {
 	public Balance getBalanceByNo(int balanceNo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Orders> getOrdersByPayType(String startday, String endday, String storeCode) {
+		// TODO Auto-generated method stub
+		return checkDao.selectOrdersByPayType(startday, endday, storeCode);
 	}
 	
 //	public List<Balance> getBalances() {

@@ -26,4 +26,6 @@ public interface StoreMapper {
 
 	Hq selectHqByStoreCode(String storeCode);
 
+	int countTotalStores(String hqCode);
+
 }

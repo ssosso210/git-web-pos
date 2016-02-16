@@ -71,6 +71,12 @@ public class StoreServiceImpl implements StoreService {
 		// TODO Auto-generated method stub
 		return storeDao.selectHqByStoreCode(storeCode);
 	}
+
+	@Override
+	public int countTotalStroes(String hqCode) {
+				
+		return storeDao.countTotalStores(hqCode);
+	}
 	
 	
 

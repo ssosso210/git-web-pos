@@ -32,46 +32,112 @@
 
 <body>
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
-
-
-	<div>
-		<br /> <br />
-		<div style='text-align: center'>
-			<div class="widget widget-plain">
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row">
+	    <div class="span12">
+       		<div class="widget widget-plain">
 				<div class="widget-content">
+				<br/>
 					<a href="employeeregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">직원등록</a>
-				</div>
-				<br />
-				<br />
-				<div class="widget-content">
 					<a href="tableregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">테이블등록</a>
-				</div>
-				<br />
-				<br />
-				
-				<div class="widget-content">
 					<a href="customeregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">고객등록</a>
-				</div>
-				<br />
-				<br />
-				
-				<div class="widget-content">
-					<a href="menuregisterform.action"
-						class="btn btn-large btn-success btn-support-ask">메뉴등록</a>
-				</div>
+					<!-- <a href="menuregisterform.action"
+						class="btn btn-large btn-success btn-support-ask">메뉴등록</a> -->
+				</div> <!-- /widget-content -->
+			</div> <!-- /widget -->
+			
+			<div class="widget-header">
+								<i class="icon-user"></i>
+								<h3>고객 등록</h3>
+							</div>
+							<!-- /widget-header -->
+
+							<div class="widget-content">
+			
+			
+			<div class="tab-content">
+										<div >
+											<form  class="form-horizontal" action="customeregister.action" method="post">
+												<fieldset>
+
+													<div class="control-group">
+														<label class="control-label" for="username">고객이름</label>
+														<div class="controls">
+															<input type="text" class="span6 disabled" name="c_name" >
+
+														</div>
+														<!-- /controls -->
+													</div>
+													<!-- /control-group -->
+
+
+													<div class="control-group">
+														<label class="control-label" for="firstname">전화번호</label>
+														<div class="controls">
+															<input type="text" class="span6" name="c_phoneNo">
+														</div>
+														<!-- /controls -->
+													</div>
+													<!-- /control-group -->
+
+
+													<div class="control-group">
+														<label class="control-label" for="lastname">나이</label>
+														<div class="controls">
+															<input type="number" class="span6" name="c_age">
+														</div>
+														<!-- /controls -->
+													</div>
+													
+													<div class="control-group">
+														<label class="control-label">성별</label>
+
+
+														<div class="controls">
+															<label class="radio inline"> <input type="radio"
+																name="c_gender" value="male"> 남
+															</label> <label class="radio inline"> <input type="radio"
+																name="c_gender" value="female"> 여
+															</label>
+														</div>
+														<!-- /controls -->
+													</div>
+													<!-- /control-group -->
+													<div class="control-group">
+														<label class="control-label" for="email">가게코드</label>
+														<div class="controls">
+															<input type="text" class="span4"  name="storeCode"value="${storeCode}" >
+														</div>
+														<!-- /controls -->
+													</div>
+													<br />
+
+
+													<div class="form-actions">
+														<button type="submit" class="btn btn-primary">등록</button>
+														
+													</div>
+													<!-- /form-actions -->
+												</fieldset>
+											</form>
+										</div>
+
+
+
+									</div>
+			
 			</div>
-			<!-- /widget -->
-
-
-
-
-		</div>
-
-		<br /> <br />
+	
 	</div>
+	</div>
+	</div>
+</div>
+
 
 </body>
 </html>
