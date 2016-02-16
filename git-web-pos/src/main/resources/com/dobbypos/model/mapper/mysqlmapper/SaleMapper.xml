@@ -35,6 +35,17 @@
 		insert into orderDetail (foodCode, orderNo, quantity, price) 
 		values (#{foodCode}, #{orderNo}, #{quantity}, #{price} );
 	</insert>
+	
+	<update id="updateOrderDetail" parameterType="OrderDetail">
+		update orderdetail 
+		set quantity = #{quantity}, price = #{price} 
+		where orderDetailNo = #{orderDetailNo}
+	</update>
+	
+	<select id="selectOrderDetailCountByOrderNo" resultType="int" parameterType="int">
+      SELECT count(*) from orderdetail where orderno = #{id}
+    </select>
+	
 
 
 </mapper>
