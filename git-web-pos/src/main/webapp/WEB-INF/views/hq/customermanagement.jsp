@@ -40,7 +40,7 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-
+	<link href="/dobbywebpos/resources/css/style.css" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -132,11 +132,11 @@
          
       
       <div class="right-side" style="padding-top:25px;text-align:center">
-         <c:url var="writeform" value="/upload/write.action" />
-         [ <a href="${ writeform }"><spring:message code="hq.customermanagement.join" /></a> ]
+         <%-- <c:url var="writeform" value="/hq/write.action" />
+         [ <a href="${ writeform }"><spring:message code="hq.customermanagement.join" /></a> ] --%>
          <br /><br />
-
-         <table border="1" style="width:1000px" align="center">
+<div class="widget widget-table action-table">
+         <table class="table table-striped table-bordered" border="1" style="width:1000px" align="center">         
             <tr style="background-color:#999999;height:30px">
                <th style="width:40px;text-align:center"><spring:message code="hq.customermanagement.no" /></th>
                <th style="width:70px;text-align:center"><spring:message code="hq.customermanagement.name" /></th>
@@ -155,7 +155,8 @@
                   <c:url var="view" value="view.action">
                      <c:param name="customername" value="${ customer.customerName }" />
                   </c:url>
-                  <a href='${ view }'>${ customer.customerName }</a>
+                  <%-- <a href='${ view }'>${ customer.customerName }</a> --%>
+                  <a href='#'>${ customer.customerName }</a>
                </td>
                <td>${ customer.customerPhoneNo }</td>
                <td>${ customer.customerGender }</td>
@@ -167,6 +168,7 @@
             </c:forEach>
             
          </table>
+         </div>
          <br /><br /><br /><br />
       
       </div>

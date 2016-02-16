@@ -15,7 +15,8 @@ public interface SaleService {
 
 	List<Orders> getOnProcessingOrderByTotalTableNo(int totalTableNo);
 	
-	void createOrUpdateOrder(Orders order);
+	void createOrder(Orders order);
+	void updateOrder(Orders order);
 	
 	
 

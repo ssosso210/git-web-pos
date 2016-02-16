@@ -32,46 +32,33 @@
 
 <body>
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
-
-
-	<div>
-		<br /> <br />
-		<div style='text-align: center'>
-			<div class="widget widget-plain">
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row">
+	    <div class="span12">
+       		<div class="widget widget-plain">
 				<div class="widget-content">
+				<br/>
 					<a href="employeeregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">직원등록</a>
-				</div>
-				<br />
-				<br />
-				<div class="widget-content">
 					<a href="tableregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">테이블등록</a>
-				</div>
-				<br />
-				<br />
-				
-				<div class="widget-content">
 					<a href="customeregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">고객등록</a>
-				</div>
-				<br />
-				<br />
-				
-				<div class="widget-content">
 					<a href="menuregisterform.action"
 						class="btn btn-large btn-success btn-support-ask">메뉴등록</a>
-				</div>
+				</div> <!-- /widget-content -->
+			</div> <!-- /widget -->
+			
+			
 			</div>
-			<!-- /widget -->
-
-
-
-
-		</div>
-
-		<br /> <br />
+	
 	</div>
+	</div>
+	</div>
+</div>
+
 
 </body>
 </html>

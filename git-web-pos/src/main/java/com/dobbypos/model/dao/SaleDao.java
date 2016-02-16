@@ -1,3 +1,4 @@
+
 package com.dobbypos.model.dao;
 
 import java.util.List;
@@ -16,5 +17,9 @@ public interface SaleDao {
 	void insertOrder(Orders order);
 	
 	void insertOrderDetail(OrderDetail orderDetail);
+	
+	int selectOrderDetailCountByOrderNo(int id);
+	
+	void updateOrderDetail(OrderDetail orderDetail);
 
 }
