@@ -73,13 +73,20 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public void createOrUpdateOrder(Orders order) {
+	public void createOrder(Orders order) {
 		
-		
+		saleDao.insertOrder(order);
+		for(OrderDetail od : order.getOrderDetails()) {
+			od.setOrderNo(order.getOrderNo());
+			saleDao.insertOrderDetail(od);
+		}
 	}
 	
 	
-	
+	@Override
+	public void updateOrder(Orders order) {
+		
+	}
 
 	
 }
