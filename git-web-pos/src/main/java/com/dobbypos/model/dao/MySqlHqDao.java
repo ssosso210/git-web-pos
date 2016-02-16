@@ -34,196 +34,196 @@ public class MySqlHqDao implements HqDao {
 	}
 
 	@Override
-	public List<Store> getStoreList() {
+	public List<Store> getStoreList(String hqCode) {
 		
-		List<Store> stores = hqMapper.selectStoreList();
+		List<Store> stores = hqMapper.selectStoreList(hqCode);
 		
 		return stores;
 	}
 
 	@Override
-	public List<Customer2> getCustomerList() {
+	public List<Customer2> getCustomerList(String hqCode) {
 
-		List<Customer2> customers = hqMapper.selectCustomerList();
+		List<Customer2> customers = hqMapper.selectCustomerList(hqCode);
 		
 		return customers;
 	}
 
 	@Override
-	public List<Client> getClientList() {
+	public List<Client> getClientList(String hqCode) {
 
-		List<Client> clients = hqMapper.selectClientList();
+		List<Client> clients = hqMapper.selectClientList(hqCode);
 		
 		return clients;
 	}
 
 	@Override
-	public int getCurrentMonthRevenue() {
-		int revenue = hqMapper.selectCurrentMonthRevenue();
+	public int getCurrentMonthRevenue(String hqCode) {
+		int revenue = hqMapper.selectCurrentMonthRevenue(hqCode);
 		return revenue;
 	}
 
 	@Override
-	public int LastMonthRevenue() {
-		int lastRevenue = hqMapper.selectLastMonthRevenue();
+	public int LastMonthRevenue(String hqCode) {
+		int lastRevenue = hqMapper.selectLastMonthRevenue(hqCode);
 		return lastRevenue;
 	}
 
 	@Override
-	public int LastMonth2Revenue() {
-		int lastRevenue2 = hqMapper.selectLastMonth2Revenue();
+	public int LastMonth2Revenue(String hqCode) {
+		int lastRevenue2 = hqMapper.selectLastMonth2Revenue(hqCode);
 		return lastRevenue2;
 	}
 
 	@Override
-	public int LastMonth3Revenue() {
-		int lastRevenue3 = hqMapper.selectLastMonth3Revenue();
+	public int LastMonth3Revenue(String hqCode) {
+		int lastRevenue3 = hqMapper.selectLastMonth3Revenue(hqCode);
 		return lastRevenue3;
 	}
 
 	@Override
-	public int LastMonth4Revenue() {
-		int lastRevenue4 = hqMapper.selectLastMonth4Revenue();
+	public int LastMonth4Revenue(String hqCode) {
+		int lastRevenue4 = hqMapper.selectLastMonth4Revenue(hqCode);
 		return lastRevenue4;
 	}
 
 	@Override
-	public int LastMonth5Revenue() {
-		int lastRevenue5 = hqMapper.selectLastMonth5Revenue();
+	public int LastMonth5Revenue(String hqCode) {
+		int lastRevenue5 = hqMapper.selectLastMonth5Revenue(hqCode);
 		return lastRevenue5;
 	}
 
 	@Override
-	public int LastMonth6Revenue() {
-		int lastRevenue6 = hqMapper.selectLastMonth6Revenue();
+	public int LastMonth6Revenue(String hqCode) {
+		int lastRevenue6 = hqMapper.selectLastMonth6Revenue(hqCode);
 		return lastRevenue6;
 	}
 
 	@Override
-	public int LastMont7Revenue() {
-		int lastRevenue7 = hqMapper.selectLastMonth7Revenue();
+	public int LastMont7Revenue(String hqCode) {
+		int lastRevenue7 = hqMapper.selectLastMonth7Revenue(hqCode);
 		return lastRevenue7;
 	}
 
 	@Override
-	public int LastMonth8Revenue() {
-		int lastRevenue8 = hqMapper.selectLastMonth8Revenue();
+	public int LastMonth8Revenue(String hqCode) {
+		int lastRevenue8 = hqMapper.selectLastMonth8Revenue(hqCode);
 		return lastRevenue8;
 	}
 
 	@Override
-	public int LastMonth9Revenue() {
-		int lastRevenue9 = hqMapper.selectLastMonth9Revenue();
+	public int LastMonth9Revenue(String hqCode) {
+		int lastRevenue9 = hqMapper.selectLastMonth9Revenue(hqCode);
 		return lastRevenue9;
 	}
 
 	@Override
-	public int LastMonth10Revenue() {
-		int lastRevenue10 = hqMapper.selectLastMonth10Revenue();
+	public int LastMonth10Revenue(String hqCode) {
+		int lastRevenue10 = hqMapper.selectLastMonth10Revenue(hqCode);
 		return lastRevenue10;
 	}
 
 	@Override
-	public int LastMonth11Revenue() {
-		int lastRevenue11 = hqMapper.selectLastMonth11Revenue();
+	public int LastMonth11Revenue(String hqCode) {
+		int lastRevenue11 = hqMapper.selectLastMonth11Revenue(hqCode);
 		return lastRevenue11;
 	}
 
 	@Override
-	public int getCurrentMonthPurchases() {
+	public int getCurrentMonthPurchases(String hqCode) {
 		
-		int purchases = hqMapper.selectCurrentMonthPurchases();
+		int purchases = hqMapper.selectCurrentMonthPurchases(hqCode);
 		return purchases;
 	}
 
 	@Override
-	public int getLastMonth1Purchases() {
+	public int getLastMonth1Purchases(String hqCode) {
 
-		int purchases1 = hqMapper.selectLastMonth1Purchases();
+		int purchases1 = hqMapper.selectLastMonth1Purchases(hqCode);
 		return purchases1;
 	}
 
 	@Override
-	public int getLastMonth2Purchases() {
+	public int getLastMonth2Purchases(String hqCode) {
 
-		int purchases2 = hqMapper.selectLastMonth2Purchases();
+		int purchases2 = hqMapper.selectLastMonth2Purchases(hqCode);
 		return purchases2;
 	}
 
 	@Override
-	public int getLastMonth3Purchases() {
+	public int getLastMonth3Purchases(String hqCode) {
 		
-		int purchases3 = hqMapper.selectLastMonth3Purchases();
+		int purchases3 = hqMapper.selectLastMonth3Purchases(hqCode);
 		return purchases3;
 	}
 
 	@Override
-	public int getLastMonth4Purchases() {
+	public int getLastMonth4Purchases(String hqCode) {
 
-		int purchases4 = hqMapper.selectLastMonth4Purchases();
+		int purchases4 = hqMapper.selectLastMonth4Purchases(hqCode);
 		return purchases4;
 	}
 
 	@Override
-	public int getLastMonth5Purchases() {
+	public int getLastMonth5Purchases(String hqCode) {
 
-		int purchases5 = hqMapper.selectLastMonth5Purchases();
+		int purchases5 = hqMapper.selectLastMonth5Purchases(hqCode);
 		return purchases5;
 	}
 
 	@Override
-	public int getLastMonth6Purchases() {
+	public int getLastMonth6Purchases(String hqCode) {
 		
-		int purchases6 = hqMapper.selectLastMonth6Purchases();
+		int purchases6 = hqMapper.selectLastMonth6Purchases(hqCode);
 		return purchases6;
 	}
 
 	@Override
-	public int getLastMonth7Purchases() {
+	public int getLastMonth7Purchases(String hqCode) {
 		
-		int purchases7 = hqMapper.selectLastMonth7Purchases();
+		int purchases7 = hqMapper.selectLastMonth7Purchases(hqCode);
 		return purchases7;
 	}
 
 	@Override
-	public int getLastMonth8Purchases() {
+	public int getLastMonth8Purchases(String hqCode) {
 		
-		int purchases8 = hqMapper.selectLastMonth8Purchases();
+		int purchases8 = hqMapper.selectLastMonth8Purchases(hqCode);
 		return purchases8;
 	}
 
 	@Override
-	public int getLastMonth9Purchases() {
+	public int getLastMonth9Purchases(String hqCode) {
 		
-		int purchases9 = hqMapper.selectLastMonth9Purchases();
+		int purchases9 = hqMapper.selectLastMonth9Purchases(hqCode);
 		return purchases9;
 	}
 
 	@Override
-	public int getLastMonth10Purchases() {
+	public int getLastMonth10Purchases(String hqCode) {
 		
-		int purchases10 = hqMapper.selectLastMonth10Purchases();
+		int purchases10 = hqMapper.selectLastMonth10Purchases(hqCode);
 		return purchases10;
 	}
 
 	@Override
-	public int getLastMonth11Purchases() {
+	public int getLastMonth11Purchases(String hqCode) {
 		
-		int purchases11 = hqMapper.selectLastMonth11Purchases();
+		int purchases11 = hqMapper.selectLastMonth11Purchases(hqCode);
 		return purchases11;
 	}
 
 	@Override
-	public int getLastYearRevenues() {
+	public int getLastYearRevenues(String hqCode) {
 		
-		int lastYearRevenus = hqMapper.selectLastYearRevenues();
+		int lastYearRevenus = hqMapper.selectLastYearRevenues(hqCode);
 		return lastYearRevenus;
 	}
 
 	@Override
-	public int getLastYearPurchases() {
+	public int getLastYearPurchases(String hqCode) {
 		
-		int lastYearPurchases = hqMapper.selectLastYearPurchases();
+		int lastYearPurchases = hqMapper.selectLastYearPurchases(hqCode);
 		return lastYearPurchases;
 	}
 

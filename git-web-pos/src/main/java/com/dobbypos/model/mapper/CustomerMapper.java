@@ -6,7 +6,7 @@ import com.dobbypos.model.dto.Customer;
 
 public interface CustomerMapper {
 	
-	int countTotalCustomers();
+	int countTotalCustomers(String hqCode);
     void insertCustomer(Customer customer);
 	
     List<Customer> getCustomers(String storeCode);

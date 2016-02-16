@@ -5,6 +5,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dobbypos.model.mapper.SaleMapper">
+
+
    <!-- <resultMap type="com.dobbypos.model.dto.Menu" id="menuMap" /> -->
 
 
@@ -25,7 +27,7 @@
       WHERE foodName = #{ id }
     </select> 
     
-    <insert id="insertOrder" parameterType="Orders">
+    <insert id="insertOrder" parameterType="Orders" useGeneratedKeys="true" keyColumn="orderNo" keyProperty="orderNo">
 		insert into orders (storeCode, orderStatus, totalTableNo)
 		values (#{storeCode}, 'processing', #{totalTableNo});
 	</insert>

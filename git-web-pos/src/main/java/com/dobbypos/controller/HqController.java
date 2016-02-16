@@ -5,14 +5,12 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dobbypos.common.Util;
 import com.dobbypos.model.dto.Client;
-import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Customer2;
 import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Menu;
@@ -72,38 +69,38 @@ public class HqController {
 		Date date = new Date();
 		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
 				
-		int revenue = hqService.getCurrentMonthRevenue();
-		int lastRevenue1 = hqService.getLastMonthRevenue();
-		int lastRevenue2 = hqService.getLastMonth2Revenue();
-		int lastRevenue3 = hqService.getLastMonth3Revenue();
-		int lastRevenue4 = hqService.getLastMonth4Revenue();
-		int lastRevenue5 = hqService.getLastMonth5Revenue();
-		int lastRevenue6 = hqService.getLastMonth6Revenue();
-		int lastRevenue7 = hqService.getLastMonth7Revenue();
-		int lastRevenue8 = hqService.getLastMonth8Revenue();
-		int lastRevenue9 = hqService.getLastMonth9Revenue();
-		int lastRevenue10 = hqService.getLastMont10hRevenue();
-		int lastRevenue11 = hqService.getLastMonth11Revenue();
+		int revenue = hqService.getCurrentMonthRevenue(hq.getHqCode());
+		int lastRevenue1 = hqService.getLastMonthRevenue(hq.getHqCode());
+		int lastRevenue2 = hqService.getLastMonth2Revenue(hq.getHqCode());
+		int lastRevenue3 = hqService.getLastMonth3Revenue(hq.getHqCode());
+		int lastRevenue4 = hqService.getLastMonth4Revenue(hq.getHqCode());
+		int lastRevenue5 = hqService.getLastMonth5Revenue(hq.getHqCode());
+		int lastRevenue6 = hqService.getLastMonth6Revenue(hq.getHqCode());
+		int lastRevenue7 = hqService.getLastMonth7Revenue(hq.getHqCode());
+		int lastRevenue8 = hqService.getLastMonth8Revenue(hq.getHqCode());
+		int lastRevenue9 = hqService.getLastMonth9Revenue(hq.getHqCode());
+		int lastRevenue10 = hqService.getLastMont10hRevenue(hq.getHqCode());
+		int lastRevenue11 = hqService.getLastMonth11Revenue(hq.getHqCode());
 		
-		int currentPurchases = hqService.getCurrentMonthPurchases();
-		int lastMonthPurchases1 = hqService.getLastMonth1Purchases();
-		int lastMonthPurchases2 = hqService.getLastMonth2Purchases();
-		int lastMonthPurchases3 = hqService.getLastMonth3Purchases();
-		int lastMonthPurchases4 = hqService.getLastMonth4Purchases();
-		int lastMonthPurchases5 = hqService.getLastMonth5Purchases();
-		int lastMonthPurchases6 = hqService.getLastMonth6Purchases();
-		int lastMonthPurchases7 = hqService.getLastMonth7Purchases();
-		int lastMonthPurchases8 = hqService.getLastMonth8Purchases();
-		int lastMonthPurchases9 = hqService.getLastMonth9Purchases();
-		int lastMonthPurchases10 = hqService.getLastMonth10Purchases();
-		int lastMonthPurchases11 = hqService.getLastMonth11Purchases();		
+		int currentPurchases = hqService.getCurrentMonthPurchases(hq.getHqCode());
+		int lastMonthPurchases1 = hqService.getLastMonth1Purchases(hq.getHqCode());
+		int lastMonthPurchases2 = hqService.getLastMonth2Purchases(hq.getHqCode());
+		int lastMonthPurchases3 = hqService.getLastMonth3Purchases(hq.getHqCode());
+		int lastMonthPurchases4 = hqService.getLastMonth4Purchases(hq.getHqCode());
+		int lastMonthPurchases5 = hqService.getLastMonth5Purchases(hq.getHqCode());
+		int lastMonthPurchases6 = hqService.getLastMonth6Purchases(hq.getHqCode());
+		int lastMonthPurchases7 = hqService.getLastMonth7Purchases(hq.getHqCode());
+		int lastMonthPurchases8 = hqService.getLastMonth8Purchases(hq.getHqCode());
+		int lastMonthPurchases9 = hqService.getLastMonth9Purchases(hq.getHqCode());
+		int lastMonthPurchases10 = hqService.getLastMonth10Purchases(hq.getHqCode());
+		int lastMonthPurchases11 = hqService.getLastMonth11Purchases(hq.getHqCode());		
 		
-		int lastYearRevenues = hqService.getLastYearRevenues();
-		int lastYearPurchases = hqService.getLastYearPurchases();
+		int lastYearRevenues = hqService.getLastYearRevenues(hq.getHqCode());
+		int lastYearPurchases = hqService.getLastYearPurchases(hq.getHqCode());
 		
 		int lastYearProfits = lastYearRevenues - lastYearPurchases;
 		
-		int totalCustomers = customerService.countTotalCustomers();
+		int totalCustomers = customerService.countTotalCustomers(hq.getHqCode());
 		model.addAttribute("totalCustomers", totalCustomers);
 		model.addAttribute("path", path);
 		model.addAttribute("date", date);
@@ -139,7 +136,8 @@ public class HqController {
 	@RequestMapping(value = "/storemanagement.action", method = RequestMethod.GET)
 	public String storeManagementHome(HttpServletRequest req, Model model) {
 		String path = req.getRequestURI();		
-		List<Store> stores = hqService.getAllStore();
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		List<Store> stores = hqService.getAllStore(hq.getHqCode());
 		model.addAttribute("stores", stores);
 		model.addAttribute("path", path);
 		return "hq/storemanagement";
@@ -148,7 +146,8 @@ public class HqController {
 	@RequestMapping(value = "/customermanagement.action", method = RequestMethod.GET)
 	public String customerManagementHome(HttpServletRequest req, Model model) {
 		String path = req.getRequestURI();		
-		List<Customer2> customers = hqService.getAllCustomer();
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		List<Customer2> customers = hqService.getAllCustomer(hq.getHqCode());
 		model.addAttribute("customers", customers);
 		model.addAttribute("path", path);
 		return "hq/customermanagement";
@@ -157,7 +156,8 @@ public class HqController {
 	@RequestMapping(value = "/clientmanagement.action", method = RequestMethod.GET)
 	public String clientManagementHome(HttpServletRequest req, Model model) { 
 		String path = req.getRequestURI();		
-		List<Client> clients = hqService.getAllClient();		
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		List<Client> clients = hqService.getAllClient(hq.getHqCode());		
 		model.addAttribute("clients", clients);
 		model.addAttribute("path", path);
 		return "hq/clientmanagement";		
@@ -181,9 +181,9 @@ public class HqController {
 	
 	@RequestMapping(value = "/storenamelist.action", method = RequestMethod.GET)
 	@ResponseBody
-	public String storeNameList(HttpServletResponse resp, @RequestParam("storename") String storeName) {
-		
-		List<String> stores = storeService.getStoreNameListById(storeName);
+	public String storeNameList(HttpServletRequest req, HttpServletResponse resp, @RequestParam("storename") String storeName) {
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		List<String> stores = storeService.getStoreNameListById(storeName, hq.getHqCode());
 		for (int i = 0; i < stores.size(); i++) {
 			try {
 				stores.set(i, URLEncoder.encode(stores.get(i), "utf-8"));
@@ -211,9 +211,9 @@ public class HqController {
 	
 	@RequestMapping(value = "/storecodelist.action", method = RequestMethod.GET)
 	@ResponseBody
-	public String storeCodeList(HttpServletResponse resp, @RequestParam("storecode") String storeCode) {
-				
-		List<String> storeCodes = storeService.getStoreCodeListByStoreCode(storeCode);
+	public String storeCodeList(HttpServletRequest req, HttpServletResponse resp, @RequestParam("storecode") String storeCode) {
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");		
+		List<String> storeCodes = storeService.getStoreCodeListByStoreCode(storeCode, hq.getHqCode());
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		System.out.println(storeCodes);
 		String result = gson.toJson(storeCodes);		
@@ -225,8 +225,10 @@ public class HqController {
 	
 	@RequestMapping(value = "/storeedit.action", method = RequestMethod.POST)
 	@ResponseBody
-	public String storeEdit(Store store, HttpServletResponse resp) {
+	public String storeEdit(Store store, HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println(store.getAddress());
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		store.setHqCode(hq.getHqCode());
 		storeService.editStoreInfo(store);		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		System.out.println(store);
@@ -249,25 +251,27 @@ public class HqController {
 	}
 	
 	@RequestMapping(value = "/storeview.action", method = RequestMethod.GET)
-	public String storeView(@RequestParam("storename") String storeName, Model model) {
-		Store store = storeService.getStoreByStoreName(storeName);
+	public String storeView(@RequestParam("storename") String storeName, Model model, HttpServletRequest req) {
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		Store store = storeService.getStoreByStoreName(storeName, hq.getHqCode());
 		model.addAttribute(store);
 		return "/hq/storeview";
 				
 	}
 	
 	@RequestMapping(value = "/storedelete.action", method = RequestMethod.GET)	
-	public String storeDelete(@RequestParam("storecode") String storeCode) {
+	public String storeDelete(@RequestParam("storecode") String storeCode, HttpServletRequest req) {
 		System.out.println(storeCode);
-		storeService.deleteStoreByStoreCode(storeCode);
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		storeService.deleteStoreByStoreCode(storeCode, hq.getHqCode());
 		
 		return "redirect:/hq/storemanagement.action";
 	}
 	@RequestMapping(value = "/clientnamelist.action", method = RequestMethod.GET)
 	@ResponseBody
-	public String clientNameList(HttpServletResponse resp, @RequestParam("clientname") String clientName) {
-		
-		List<String> clients = clientService.getClientListByClientName(clientName);
+	public String clientNameList(HttpServletResponse resp, @RequestParam("clientname") String clientName, HttpServletRequest req) {
+		Hq hq = (Hq) req.getSession().getAttribute("hqloginuser");
+		List<String> clients = clientService.getClientListByClientName(clientName, hq.getHqCode());
 		for (int i = 0; i < clients.size(); i++) {
 			try {
 				clients.set(i, URLEncoder.encode(clients.get(i), "utf-8"));
@@ -313,17 +317,18 @@ public class HqController {
 	}
 	
 	@RequestMapping(value = "clientview.action", method = RequestMethod.GET)
-	public String clientView(@RequestParam("clientname") String clientName, Model model) {
-		
-		Client client = clientService.getClientByClientName(clientName);
+	public String clientView(@RequestParam("clientname") String clientName, Model model, HttpServletRequest req) {
+		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
+		Client client = clientService.getClientByClientName(clientName, hq.getHqCode());
 		model.addAttribute(client);
 		
 		return "hq/clientview";
 	}
 	
 	@RequestMapping(value = "/clientdelete.action", method = RequestMethod.GET)	
-	public String clientDelete(@RequestParam("clientname") String clientName) {
+	public String clientDelete(@RequestParam("clientname") String clientName, HttpServletRequest req) {
 		System.out.println(clientName);
+		Hq hq = (Hq)req.getSession().getAttribute("hqloginuser");
 		clientService.deleteClientByClientName(clientName);
 		
 		return "redirect:/hq/clientmanagement.action";

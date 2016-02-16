@@ -6,10 +6,10 @@
 
 <mapper namespace="com.dobbypos.model.mapper.ClientMapper"><!-- 클래스 또는 인터페이스 역할 -->
 	
-	<select id="selectClientListByClientName" parameterType="String" resultType="String">
+	<select id="selectClientListByClientName" parameterType="HashMap" resultType="String">
 		SELECT clientname
 		FROM client
-		WHERE clientname LIKE concat(#{ id }, '%')
+		WHERE clientname LIKE concat(#{ clientName }, '%') AND hqcode = #{ hqCode } 
 	</select>
 	
 	<select id="selectClientBusinessNumberByBusinessNumber" parameterType="String" resultType="String">
@@ -23,10 +23,10 @@
 		VALUES (#{hqCode}, #{clientName}, #{clientPhoneNo}, current_timestamp(), #{businessRegistrationNumber}, #{email}, #{address})
 	</insert>
 	
-	<select id="selectClientByClientName" parameterType="String" resultType="Client">
+	<select id="selectClientByClientName" parameterType="HashMap" resultType="Client">
 		SELECT clientname, businessregistrationnumber, clientphoneno, email, address
 		FROM client
-		WHERE clientname = #{id}
+		WHERE clientname = #{clientName} AND hqCode = #{hqCode}
 	</select>
 	
 	<delete id="deleteClientByClientName" parameterType="String">

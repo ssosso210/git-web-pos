@@ -1,11 +1,13 @@
 package com.dobbypos.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.dobbypos.model.dto.Hq;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.mapper.StoreMapper;
 
@@ -17,14 +19,20 @@ public class MySqlStoreDao implements StoreDao {
 	private StoreMapper storeMapper;
 	
 	@Override
-	public List<String> getStoreNameListByid(String storeName) {
-		List<String> stores = storeMapper.selectStoreNameListById(storeName);
+	public List<String> getStoreNameListByid(String storeName, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("storeName", storeName);
+		params.put("hqCode", hqCode);
+		List<String> stores = storeMapper.selectStoreNameListById(params);
 		return stores;
 	}
 
 	@Override
-	public List<String> getStoreCodeListByStoreCode(String storeCode) {
-		List<String> storeCodes = storeMapper.selectStoreCodeListByStoreCode(storeCode);
+	public List<String> getStoreCodeListByStoreCode(String storeCode, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("storeCode", storeCode);
+		params.put("hqCode", hqCode);
+		List<String> storeCodes = storeMapper.selectStoreCodeListByStoreCode(params);
 		return storeCodes;
 	}
 
@@ -35,8 +43,11 @@ public class MySqlStoreDao implements StoreDao {
 	}
 
 	@Override
-	public Store getStoreByStoreName(String storeName) {
-		Store store = storeMapper.selectStoreByStoreName(storeName);
+	public Store getStoreByStoreName(String storeName, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("storeName", storeName);
+		params.put("hqCode", hqCode);
+		Store store = storeMapper.selectStoreByStoreName(params);
 		return store;
 	}
 
@@ -47,8 +58,11 @@ public class MySqlStoreDao implements StoreDao {
 	}
 
 	@Override
-	public void deleteStoreByStoreCode(String storeCode) {
-		storeMapper.deleteStoreByStoreCode(storeCode);
+	public void deleteStoreByStoreCode(String storeCode, String hqCode) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("storeCode", storeCode);
+		params.put("hqCode", hqCode);
+		storeMapper.deleteStoreByStoreCode(params);
 		
 	}
 
@@ -62,6 +76,12 @@ public class MySqlStoreDao implements StoreDao {
 	public String selectStoreNameByStoreCode(String storeCode) {
 		// TODO Auto-generated method stub
 		return storeMapper.selectStoreNameByStoreCode(storeCode);
+	}
+
+	@Override
+	public Hq selectHqByStoreCode(String storeCode) {
+		// TODO Auto-generated method stub
+		return storeMapper.selectHqByStoreCode(storeCode);
 	}
 
 }

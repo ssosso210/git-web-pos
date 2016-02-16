@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -170,11 +171,18 @@ public class SaleController {
 	}
 	
 	
-	@RequestMapping(value = "/insertOrder.action", method = RequestMethod.GET)
-	public String InsertOrder() {
+	@RequestMapping(value = "/insertOrder.action", method = RequestMethod.POST)
+	@ResponseBody
+	public String InsertOrder(@RequestParam("order") String order) {
+	//public String InsertOrder(@RequestBody Orders order) {
+	
+		Gson gson = new Gson();
+		Orders orders = gson.fromJson(order, Orders.class);
+		
+		saleService.createOrder(orders);
 		
 		
-		return "sale/salehome_test2_eunyoung"; 
+		return String.valueOf(orders.getOrderNo()); 
 	}	
 	
 	
