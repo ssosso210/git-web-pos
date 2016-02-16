@@ -15,7 +15,14 @@ public class Menu implements Serializable {
 	private String savedFileName;
 	private String userFileName;
 	private int isDeleted;
+	private String paytype;
 	
+	public String getPaytype() {
+		return paytype;
+	}
+	public void setPaytype(String paytype) {
+		this.paytype = paytype;
+	}
 	/**
 	 * 계산된 가격의 함계
 	 */

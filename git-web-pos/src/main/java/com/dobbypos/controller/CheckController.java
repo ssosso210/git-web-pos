@@ -20,6 +20,7 @@ import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Customer;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.service.CheckService;
 import com.dobbypos.model.service.CustomerService;
 
@@ -47,22 +48,22 @@ public class CheckController {
 		String todayDate = Util.getTodayDate();
 		//List<Balance> balances2 = checkService.getBalancesbyPeriod(todayDate, todayDate);
 		
-		List<Balance> balances = checkService.getBalancesbyPeriod2(todayDate, todayDate, employeeSession.getStoreCode());
+//		List<Balance> balances = checkService.getBalancesbyPeriod2(todayDate, todayDate, employeeSession.getStoreCode());
 		
-		List<Balance> balances2 = checkService.getBalancesbyPeriodAndPlus2(todayDate, todayDate, employeeSession.getStoreCode());
+//		List<Balance> balances2 = checkService.getBalancesbyPeriodAndPlus2(todayDate, todayDate, employeeSession.getStoreCode());
 		
 		//menu 별 메출 오늘 
 		List<Menu> menus = checkService.getMenuByDaySell(todayDate, employeeSession.getStoreCode());
+	//	System.out.println("pay type0000000000"+menus.get(0).getPaytype());
 		
-		for (Menu menu : menus) {
-			System.out.println(menu.toString());
-		}
+//		for (Menu menu : menus) {
+//			System.out.println(menu.toString());
+//		}
 		
-		int sum = 0;
-		for(int i=0;i<balances.size();i++){
-			sum += balances.get(i).getPlusMinus();
-		}
-		
+//		int sum = 0;
+//		for(int i=0;i<balances.size();i++){
+//			sum += balances.get(i).getPlusMinus();
+//		}
 		
 		int total = 0;
 		for(int i=0;i<menus.size();i++){
@@ -74,29 +75,62 @@ public class CheckController {
 			all += menus.get(i).getOrderDetailPrice() * menus.get(i).getTotalcount();
 		}
 		
-		System.out.println(total);
-		System.out.println(all);
-		System.out.println("안나옴?");
+		int cash = 0;
+		int credit = 0;
+		int j = 0;
+
+//		if (menus.get(j).getPaytype() == "cash" ) {
+//		for (int i=0; i<menus.size(); i++) {
+//			cash += menus.get(i).getTotalprice();
+//		}
+//			} else if(menus.get(j).getPaytype() == "credit") {
+//				for (int i=0; i<menus.size(); i++) {
+//					credit += menus.get(i).getTotalprice();
+//			}
+//		}
+		
+	
+			
+		
+			
+		// 오늘 날짜의 결재 타입에 따른 총 합 가져오기 
+		List<Orders> orderPayTypes = checkService.getOrdersByPayType(Util.getTodayDate(), Util.getTodayDate(),employeeSession.getStoreCode() );
+		
+		
+		for (Orders orderPayType : orderPayTypes) {
+			System.out.println(orderPayType.getPayType());
+			if ("cash".equals(orderPayType.getPayType())) {
+				cash += orderPayType.getFinalPrice(); 
+			} else if (orderPayType.getPayType().equals("credit")) {
+				credit += orderPayType.getFinalPrice();
+			}
+		}
+		
+		double cashrate = 0;
+		cashrate = ((double)cash/(double)(cash+credit))*100;
+		
+		double creditrate = 0;
+		creditrate = ((double)credit/(double)(cash+credit))*100;
+		
+		
 		
 		int discountPrice = all - total;
 		
-		System.out.println(discountPrice);
-		
-		
-		
-		
-		model.addAttribute("balances", balances);	
+//		model.addAttribute("balances", balances);	
 		model.addAttribute("startday",todayDate);
 		model.addAttribute("endday",todayDate);
 		model.addAttribute("menus",menus);
 		model.addAttribute("todayStr", Util.getTodayDate());
-		model.addAttribute("sum", sum);
+//		model.addAttribute("sum", sum);
 		model.addAttribute("total",total);
 		model.addAttribute("all",all);
 		model.addAttribute("discountPrice", discountPrice);
+		model.addAttribute("cash",(int)cash);
+		model.addAttribute("credit", (int)credit);
+		model.addAttribute("creditrate",String.format("%.2f", creditrate));
+		model.addAttribute("cashrate", String.format("%.2f", cashrate));
 		
-		
-		System.out.println(balances);
+	
 		
 		return "check/checkmain"; 
 	}
@@ -406,8 +440,8 @@ public class CheckController {
 			return "check/viewsellbycustomerdetail";
 		} else {
 			return "redirect:/check/viewsellbymember.action";
-		}
 		
+		}
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
