@@ -46,7 +46,11 @@
 	<select id="selectOrderDetailCountByOrderNo" resultType="int" parameterType="int">
       SELECT count(*) from orderdetail where orderno = #{id}
     </select>
-	
+
+    
+    <delete id="deleteOrderDetailByOrderDetailNo" parameterType="int">
+    	DELETE FROM orderdetail WHERE orderdetailno = #{ id }
+    </delete>
 
 
 </mapper>

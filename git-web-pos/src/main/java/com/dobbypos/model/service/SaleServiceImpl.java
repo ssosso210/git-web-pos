@@ -77,14 +77,35 @@ public class SaleServiceImpl implements SaleService {
 		
 		saleDao.insertOrder(order);
 		for(OrderDetail od : order.getOrderDetails()) {
-			od.setOrderNo(order.getOrderNo());
-			saleDao.insertOrderDetail(od);
+			if (od.getQuantity() > 0) {
+				od.setOrderNo(order.getOrderNo());
+				saleDao.insertOrderDetail(od);
+			}
 		}
 	}
 	
 	
 	@Override
 	public void updateOrder(Orders order) {
+		List<OrderDetail> details = order.getOrderDetails();
+		for (OrderDetail detail : details) {
+			
+			int count = saleDao.selectOrderDetailCountByOrderNo(detail.getOrderDetailNo());
+			if (count == 0) {//insert
+				if(detail.getQuantity() > 0) {
+					detail.setOrderNo(order.getOrderNo());
+					saleDao.insertOrderDetail(detail);
+				}
+			} else {//update
+				if (detail.getQuantity() > 0) {
+					saleDao.updateOrderDetail(detail);
+				} else {
+					saleDao.deleteOrderDetailByOrderDetailNo(detail.getOrderDetailNo());
+				}
+			}
+		}
+		
+		
 		
 	}
 

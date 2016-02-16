@@ -1,4 +1,3 @@
-
 package com.dobbypos.model.dao;
 
 import java.util.List;
@@ -70,9 +69,13 @@ public class MySqlSaleDao implements SaleDao {
 		int count = saleMapper.selectOrderDetailCountByOrderNo(id);
 		return count;
 	}
+	
+	@Override
+	public void deleteOrderDetailByOrderDetailNo(int orderDetailNo) {
+		saleMapper.deleteOrderDetailByOrderDetailNo(orderDetailNo);
+	}
 
 
 
 }
-
 

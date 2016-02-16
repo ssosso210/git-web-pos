@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.OrderDetail;
 import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.dto.Store;
 import com.dobbypos.model.dto.StoreTable;
@@ -123,6 +124,15 @@ public class SaleController {
 		
 
 	    List<Orders> orders = saleService.getOnProcessingOrderByTotalTableNo(totaltableno);
+	    
+	    for (Orders order : orders) {
+	    	for (OrderDetail detail : order.getOrderDetails()) {
+	    		try {
+	    			detail.setFoodName(URLEncoder.encode(detail.getFoodName(), "utf-8"));
+	    		} catch (Exception ex) {}
+	    	}
+	    }
+	    
 	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	    
 	    String json = gson.toJson(orders);
@@ -173,8 +183,7 @@ public class SaleController {
 	
 	@RequestMapping(value = "/insertOrder.action", method = RequestMethod.POST)
 	@ResponseBody
-	public String InsertOrder(@RequestParam("order") String order) {
-	//public String InsertOrder(@RequestBody Orders order) {
+	public String insertOrder(@RequestParam("order") String order) {
 	
 		Gson gson = new Gson();
 		Orders orders = gson.fromJson(order, Orders.class);
@@ -185,6 +194,18 @@ public class SaleController {
 		return String.valueOf(orders.getOrderNo()); 
 	}	
 	
+	@RequestMapping(value = "/updateOrder.action", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateOrder(@RequestParam("order") String order) {
+	
+		Gson gson = new Gson();
+		Orders orders = gson.fromJson(order, Orders.class);
+		
+		saleService.updateOrder(orders);
+		
+		
+		return String.valueOf(orders.getOrderNo()); 
+	}	
 	
 	
 	

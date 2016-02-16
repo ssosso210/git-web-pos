@@ -1,4 +1,3 @@
-
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -86,28 +85,6 @@ div#table-form table td, div#table-form table th {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
-
-
-
-
-/*-----------------------------------------------------edit size*/
-@media (min-width: 1500px) {
-  .container {
-    max-width: 1500px;
-  }
-}
-/* @media (min-width: 1500px)
-.container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
-    width: 1500px;
-}
-@media (min-width: 1500px)
-.row {
-    margin-left: -00px;
-}
-@media (min-width: 1500px)
-.span12 {
-    width: 1500px;
-} */
 </style>
 
 
@@ -122,6 +99,10 @@ $(function() {
 		var td2 = $("#count"+foodCodeval);
 		var count = td2.text().trim();
 		count = parseInt(count);
+		if (count == 0) {
+			$(this).parents('tr').css('display', '');
+		}
+		
 		td2.text(count+1);
 		var td3 = $("#price"+foodCodeval);
 		var price = parseInt(td3.text().trim())/count;
@@ -137,13 +118,14 @@ $(function() {
 		
 		count = parseInt(count);
 		if(count == 1) {
-			$(this).parents('tr').remove();
-		} else {
-			td2.text(count-1);
-			var td3 = $("#price"+foodCodeval);
-			var price = parseInt(td3.text().trim())/count;
-			td3.text((count-1)*parseInt(price));	
-		}
+			$(this).parents('tr').css('display', 'none');
+		} 
+		
+		td2.text(count-1);
+		var td3 = $("#price"+foodCodeval);
+		var price = parseInt(td3.text().trim())/count;
+		td3.text((count-1)*parseInt(price));	
+		
 	}
 	
     var dialog, form,
@@ -193,14 +175,14 @@ $(function() {
 							var details = orders[0].orderDetails;
 							for(var i = 0; i <details.length; i++) {
 								var detail = details[i];
-								var tr = $("<tr></tr>");
+								var tr = $("<tr></tr>").attr('data', detail.orderDetailNo);
 								var td1 = $("<td></td>").html(detail.foodCode).attr("id","code"+detail.foodCode);
-								var td2 = $("<td></td>").html(detail.foodCode).attr("id","name"+detail.foodCode);
+								var td2 = $("<td></td>").html(decodeURIComponent(detail.foodName)).attr("id","name"+detail.foodCode);
 								var td3 = $("<td></td>").html(detail.quantity).attr("id","count"+detail.foodCode);
 								var td4 = $("<td></td>").html(detail.price).attr("id","price"+detail.foodCode);
 								var td5 = $("<td></td>").attr("id","plusminus"+detail.foodCode);
-								var plus = $("<input/>").attr({id:"plus"+detail.foodCode, type:'button',value:'추가'});
-								var minus = $("<input/>").attr({id:"minus"+detail.foodCode, type:'button', value:'감소'});
+								var plus = $('<input style="float: left; margin: 10px;"/>').attr({id:"plus"+detail.foodCode, type:'button',value:'추가'});
+								var minus = $('<input style="margin: 10px;"/>').attr({id:"minus"+detail.foodCode, type:'button', value:'감소'});
 								plus.on('click', increaseOrderCount);
 								minus.on('click', decreaseOrderCount);
 								td5.append([plus,minus]);
@@ -236,22 +218,23 @@ $(function() {
 			var foodpriceval= data[2];			
 			
 			var td = $("#code"+foodCodeval);
-			if(td.length > 0){
+			if(td.length > 0){				
 				var td2 = $("#count"+foodCodeval);
+				td2.parents('tr').css('display', '');				
 				var count = td2.text().trim();
 				count = parseInt(count)+1;
 				td2.text(count);
 				var td3 = $("#price"+foodCodeval);
 				td3.text(count*parseInt(foodpriceval));
 			}else {
-				var tr = $("<tr></tr>");
+				var tr = $("<tr></tr>").attr('data', -1);
 				var td1 = $("<td></td>").html(foodCodeval).attr("id","code"+foodCodeval);
 				var td2 = $("<td></td>").html(foodnameval).attr("id","name"+foodCodeval);
 				var td3 = $("<td></td>").html('1').attr("id","count"+foodCodeval);
 				var td4 = $("<td></td>").html(foodpriceval).attr("id","price"+foodCodeval);
 				var td5 = $("<td></td>").attr("id","plusminus"+foodCodeval);
-				var plus = $("<input/>").attr({id:"plus"+foodCodeval,type:'button',value:'추가'});
-				var minus = $("<input/>").attr({id:"minus"+foodCodeval,type:'button', value:'감소'});
+				var plus = $('<input style="float: left; margin: 10px;"/>').attr({id:"plus"+foodCodeval,type:'button',value:'추가'});
+				var minus = $('<input style="margin: 10px;"/>').attr({id:"minus"+foodCodeval,type:'button', value:'감소'});
 				plus.on('click', increaseOrderCount);
 				minus.on('click', decreaseOrderCount);
 				td5.append([plus,minus]);
@@ -280,6 +263,7 @@ $(function() {
 		   
 		 //0. 테이블에있는 주문내역데이터 읽기(json배열)
 			var order = {
+			 orderNo : orderNo,
 			 storeCode : '${ param.storeCode1 }',
 			 totalTableNo : totalTableNo,
 			 orderDetails : []
@@ -291,7 +275,7 @@ $(function() {
 				//alert('주문 항목이 없습니다.');
 			} else {
 				trs.each(function(index, data) {
-					var order_detail = {foodCode:-1, quantity:-1, price:-1};
+					var order_detail = {foodCode:-1, quantity:-1, price:-1, orderDetailNo: $(this).attr('data')};
 					$(this).find('td').each(function(index2, data2) {
 						if (index2 != 1 && index2 < 4) {
 							order_detail[names[index2]] = data2.innerText.trim();
@@ -392,16 +376,16 @@ $(function() {
 	
 		
 <div class="main">
-  <div class="main-inner">
-    <div class="container" style="width:1500px;">
-      <div class="row" style="width:1500px;margin-left: 0px;">			
-        <div class="span12" style="width:1500px;">
-          <div class="widget" style="width:1500px;">
- 		<div class="widget-content" style="border:0px;width: 1500px;">
-              <div class="shortcuts" style="width: 1500px;"> 
+  <div class="main-inner" style="height: 700px;">
+    <div class="container">
+      <div class="row" >			
+        <div class="span12">
+          <div class="widget">
+ 		<div class="widget-content" style="border:0px;">
+              <div class="shortcuts" style="width: 1200px;"> 
 		<c:forEach varStatus="status" var="table" items="${st}">
 
-			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; height:50px; width:15%;cursor: pointer; "> 
+			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; height:70px; width:16%;cursor: pointer; "> 
 				<span id="totalno${ table.totalTableNo }">고유값: ${table.totalTableNo }</span> <br/>
 				<c:choose>
 				<c:when test="${ empty table.orders }">				
@@ -450,16 +434,11 @@ $(function() {
 				style="width: 500px; margin: 20px 20px 0px 20px" id="orderMenuList">
 				<thead>
 					<tr class="ui-widget-header " style="height: 40px">
-						<th style="text-align: center; font-size: 10pt;">No
-						</td>
-						<th style="text-align: center; font-size: 10pt;">OrderName
-						</td>
-						<th style="text-align: center; font-size: 10pt;">Volume
-						</td>
-						<th style="text-align: center; font-size: 10pt;">Price
-						</td>
-						<th style="text-align: center; font-size: 10pt;">Vigo
-						</td>
+						<th style="width:60px; text-align: center; font-size: 10pt;">No</th>
+						<th style="width:180px; text-align: center; font-size: 10pt;">메  뉴</th>
+						<th style="width:60px; text-align: center; font-size: 10pt;">수 량</th>
+						<th style="width:100px; text-align: center; font-size: 10pt;">가격</th>
+						<th style="width:100px; text-align: center; font-size: 10pt;">비고</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -470,28 +449,23 @@ $(function() {
 		</div>
 
 		<!-- 메뉴리스트 뿌려주는데 -->
-		<div style="float: right; width: 400px; border: 1px solid;   height: 500px; margin: 0 auto">				
+		<div style="float: right; width: 400px;  height: 460px; margin: 0 auto">				
 			<c:forEach var="menu" items="${ menus }">
             	<input type="button" id="menu${menu.foodCode}"
-            		value="${ menu.foodName }" style="width:120px; height:40px; float:left; margin: 10px" data="${ menu.foodCode }/${ menu.foodName }/${ menu.foodPrice }">
+            		value="${ menu.foodName }" style="width:180px; height:40px; float:left; margin: 10px 10px 0px 0px " data="${ menu.foodCode }/${ menu.foodName }/${ menu.foodPrice }">
 			</c:forEach>
 			
 			
 			
 
 		</div>
-		<button id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" ></button>
-      	<button id="paymentbutton" value="계산하기" style="width:80px; height:60px">계산하기</button>
+		<input type="button" id="paymentbutton" value="계산하기" style="margin: 10px 25px 10px 5px; float:right; width:180px; height:60px">
+		<input type="button" id="orderbutton" value="주문하기" style="margin: 10px 8px 10px 0px; float:right; width:180px; height:60px" >
+      	
 		
 	</div>
 
-	<!-- 부모창 -->
-	<!-- <button id="clicktable">table</button> -->
-	<input type="button" value="Table1" id="clicktable"
-		style="clear:both; margin: 10px 5px 10px 25px; width: 100px; height: 50px">
-
-
-
+	
 </body>
 
 </html>
