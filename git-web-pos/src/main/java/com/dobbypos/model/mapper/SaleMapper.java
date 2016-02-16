@@ -1,3 +1,4 @@
+
 package com.dobbypos.model.mapper;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public interface SaleMapper {
 	void insertOrder(Orders order);
 	
 	void insertOrderDetail(OrderDetail orderDetail);
+	
+	void updateOrderDetail(OrderDetail orderDetail);
+	
+	int selectOrderDetailCountByOrderNo(int id);
 	
 
 }

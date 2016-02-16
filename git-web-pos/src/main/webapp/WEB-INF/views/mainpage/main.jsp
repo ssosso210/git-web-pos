@@ -114,7 +114,7 @@
 <!-- /main -->	
 		   
 		    
-		   <a href="/dobbywebpos/account/menulist.action" > select 메뉴 리스트</a>
+		 <!--   <a href="/dobbywebpos/account/menulist.action" > select 메뉴 리스트</a> -->
 			 
 	</div>
 		<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>

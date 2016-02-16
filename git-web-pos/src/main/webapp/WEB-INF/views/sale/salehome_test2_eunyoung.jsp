@@ -1,3 +1,4 @@
+
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -150,9 +151,10 @@ $(function() {
         
 	   $("div[id^=choosetable]").each(function(index,value) {
 		   
-		   $(this).on("click", function() {
+		   $(this).on("click", function(event) {
 			   
-			   var totalno = $("#totalno"+index).text().split(':')[1].trim();
+			   var totalno = $(this).find('span[id^=totalno]').text().split(':')[1].trim();
+			   //var totalno = $("#totalno"+index).text().split(':')[1].trim();
 			   
 			   $.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
 					url : "/dobbywebpos/sale/pos_popup.action",
@@ -377,19 +379,25 @@ $(function() {
               <div class="shortcuts" style="width: 1200px;"> 
 		<c:forEach varStatus="status" var="table" items="${st}">
 
-			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; width:15%;cursor: pointer; "> 
-				<span id="totalno${ table.totalTableNo }">고유값: ${table.totalTableNo }</span> <br/>				
+			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; height:50px; width:15%;cursor: pointer; "> 
+				<span id="totalno${ table.totalTableNo }">고유값: ${table.totalTableNo }</span> <br/>
+				<c:choose>
+				<c:when test="${ empty table.orders }">				
+					<span class='orderno'></span><br />
+					<span class="totalprice"></span><br/>
+				</c:when>
+				<c:otherwise>
 				<c:forEach var="orders" items="${ table.orders }">
 					<span class='orderno' data='${ orders.orderNo }'>주문번호: ${ orders.orderNo }</span><br />
 					<c:set var="total" value="0" />
 					<c:forEach var="orderDetails" items="${ orders.orderDetails }">
 						<c:set var="total" value="${ total + orderDetails.price }" />
 					</c:forEach>
-					
 				<%-- <span>테이블번호: ${st.getTableNo() }</span><br/> --%>
 				<span class="totalprice">가  격: ${ total }</span><br/>
 				</c:forEach>
-
+				</c:otherwise>
+				</c:choose>
 			</div> 
 
 		</c:forEach>

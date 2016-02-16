@@ -24,6 +24,7 @@
 		SELECT customerNo, c_name, c_phoneNo, c_gender, c_age, c_point, c_level
 		FROM customer
 		WHERE storeCode = #{id}
+		AND customerNo > 0
 	</select>
 	
 	<select id="selectCustomersByCustomerNo" parameterType="int" resultType="Customer">

@@ -44,14 +44,14 @@
 							<!-- <label for="username">Username</label> -->
 							<!-- <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /> -->
 							<spring:message code="account.input.hqcode"/>
-							<input type="text" id="hqCode" name="hqCode" value="outback" placeholder="Username" class="login username-field" />
+							<input type="text" id="hqCode" name="hqCode" value="" placeholder="본사 코드" class="login username-field" />
 						</div> <!-- /field -->
 						
 						<div class="field">
 							<!-- <label for="username">Username</label> -->
 							<!-- <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /> -->
 							<spring:message code="account.input.storecode"/>
-							<input type="text" id="storeCode" name="storeCode" value="outback001" placeholder="Username" class="login username-field" />
+							<input type="text" id="storeCode" name="storeCode" value="" placeholder="매장 코드" class="login username-field" />
 							<input type="hidden" id="storeCode1" name="storeCode1" value="outback001"/> 
 						</div> <!-- /field -->
 						
@@ -59,12 +59,12 @@
 							<!-- <label for="username">Username</label> -->
 							<!-- <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /> -->
 							<spring:message code="account.input.id"/>
-							<input type="text" id="employeeId" name="employeeId" value="outbacktao" placeholder="Username" class="login username-field" />
+							<input type="text" id="employeeId" name="employeeId" value="" placeholder="Id" class="login username-field" />
 						</div> <!-- /field -->
 						
 						<div class="field">
 							<spring:message code="account.input.passwd"/>
-							<input type="password" id="passwd" name="passwd" value="123" placeholder="Password" class="login password-field"/>
+							<input type="password" id="passwd" name="passwd" value="" placeholder="Password" class="login password-field"/>
 						</div> <!-- /password -->
 						
 					</div> <!-- /login-fields -->
