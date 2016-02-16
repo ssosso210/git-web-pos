@@ -175,6 +175,7 @@
     	group by me.foodname; 
 	</select>
 	 -->
+	 	
 	 
 	 
 	<select id="selectMenuByCustomer" parameterType="AttendanceSearch" resultMap="menuMap">
@@ -198,5 +199,12 @@
 	</select>
 	
 	<!-- where regDate &gt;= date(#{startdaystr}) and regDate &lt; date(#{enddaystr}) + interval 1 day -->
-	 
+	 <select id="selectOrdersByPayType" parameterType="hashMap" resultType="Orders">
+	 	select od.orderNo, od.paytype,  sum((odt.price *(1-(od.discountRate/100))) *odt.quantity) as finalPrice
+		from orders od, orderdetail odt
+		where odt.orderNo = od.orderNo 
+		and	od.orderDate &gt;= date(#{startday}) and od.orderDate &lt; date(#{endday}) + interval 1 day 
+		and od.storeCode = #{storeCode}
+		group by od.orderNo
+	 </select>
 </mapper>

@@ -12,6 +12,7 @@ import com.dobbypos.model.dto.AttendanceSearch;
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Employee;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 import com.dobbypos.model.mapper.CheckMapper;
 
 @Repository("checkDao")
@@ -185,6 +186,16 @@ public class MysqlCheckDao implements CheckDao {
 	public Balance getBalanceByNo(int balanceNo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public List<Orders> selectOrdersByPayType(String startday, String endday, String storeCode) {
+		HashMap<String, String> params = new HashMap<>();
+		params.put("startday", startday);
+		params.put("endday", endday);
+		params.put("storeCode", storeCode);
+		return checkMapper.selectOrdersByPayType(params);
 	}
 
 }

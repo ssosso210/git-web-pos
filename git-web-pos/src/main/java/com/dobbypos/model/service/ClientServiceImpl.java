@@ -17,9 +17,9 @@ public class ClientServiceImpl implements ClientService {
 	private ClientDao clientDao;
 	
 	@Override
-	public List<String> getClientListByClientName(String clientName) {
+	public List<String> getClientListByClientName(String clientName, String hqCode) {
 		
-		return clientDao.getClientListByClientName(clientName);
+		return clientDao.getClientListByClientName(clientName, hqCode);
 		
 		
 	}
@@ -38,9 +38,9 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Client getClientByClientName(String clientName) {
+	public Client getClientByClientName(String clientName, String hqCode) {
 		
-		return clientDao.getClientByClientName(clientName);
+		return clientDao.getClientByClientName(clientName, hqCode);
 	}
 
 	@Override

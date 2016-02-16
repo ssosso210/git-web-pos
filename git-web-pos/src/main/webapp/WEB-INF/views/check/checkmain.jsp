@@ -62,7 +62,7 @@
 								<%-- <c:forEach var="menu" items="${ menus }"> --%>
 									<tbody>
 										<tr style="height: 30px; text-align: center">
-											<td style="width: 200px">총매출액</td>
+											<td style="width: 200px">총 매출액</td>
 											<td >  ${all} 원</td>
 											<%-- <td style="width: 100px">${ menu.foodName }</td> --%>
 										</tr>
@@ -71,7 +71,7 @@
 											<td> ${discountPrice} 원</td>
 										</tr>
 										<tr>
-											<td style="width: 200px">실매출액</td>
+											<td style="width: 200px">실 매출액</td>
 											<td> ${total} 원</td>
 										</tr>
 							<%-- 	</c:forEach> --%>
@@ -110,19 +110,19 @@
 										<tr style="height: 30px; text-align: center">
 											<td style="width: 100px">현금결제</td>
 											<td style="width: 100px">${ cash }원</td>
-											<td style="width: 100px">${ menu.foodName }%</td>
+											<td style="width: 100px">${ cashrate }%</td>
 										</tr>
 										
 										<tr style="height: 30px; text-align: center">
 											<td style="width: 100px">카드결제</td>
 											<td style="width: 100px">${ credit }원</td>
-											<td style="width: 100px">${ menu.foodName }%</td>
+											<td style="width: 100px">${ creditrate }%</td>
 										
 										</tr>
 										<tr style="height: 30px; text-align: center">
-											<td style="width: 100px">할인</td>
-											<td style="width: 100px">${discountPrice}원</td>
-											<td style="width: 100px">${ menu.foodName }</td>
+											<td style="width: 100px">합계</td>
+											<td style="width: 100px">${cash + credit}원</td>
+											<td style="width: 100px"> 100%</td>
 										</tr>
 								<%-- </c:forEach> --%>
 								</tbody>

@@ -33,7 +33,7 @@
 				<!-- input type="hidden" : 사용자에게 보이지 않지만 서버로 전송되는 입력 요소 -->
 		        <input type="hidden" name="returnurl" value='${ empty requestScope.returnurl ? "" : requestScope.returnurl }' />
 				
-					<h1>Dobby pos</h1>		
+					<h1>Dobby Web Pos</h1>		
 				
 					
 					<div class="login-fields">
@@ -75,6 +75,10 @@
 							<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
 							<label class="choice" for="Field">Keep me signed in</label>
 						</span> -->
+						
+						<span class="login-checkbox">
+							<label class="choice" for="Field" style="color : red;">${ empty failMessage ? "" : failMessage}</label>
+						</span>
 											
 						<button class="button btn btn-success btn-large" type="submit" ><spring:message code="account.login"/></button>
 						

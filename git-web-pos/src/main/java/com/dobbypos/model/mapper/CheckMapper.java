@@ -6,6 +6,7 @@ import java.util.List;
 import com.dobbypos.model.dto.AttendanceSearch;
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 
 public interface CheckMapper {
 	
@@ -38,6 +39,8 @@ public interface CheckMapper {
 	List<Balance> getBalancebyPeriodAndMinus2(HashMap<String, String> params);
 
 	Balance getBalanceByNo2(Balance balance3);
+
+	List<Orders> selectOrdersByPayType(HashMap<String, String> params);
 
 	
 

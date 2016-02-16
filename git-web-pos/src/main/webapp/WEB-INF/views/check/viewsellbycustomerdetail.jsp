@@ -1,6 +1,8 @@
 <%@page import="com.dobbypos.model.dto.Balance"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dobbypos.model.dao.CheckDao"%>
+<%@page import="com.dobbypos.model.dto.Menu"%>
+<%@page import="java.util.List"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -30,7 +32,28 @@
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-</head>
+	<!-- chart  -->
+<script src="/dobbywebpos/resources/jsui/amcharts/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+
+
+<style type="text/css">
+#chartdiv {
+	width		: 100%;
+	height		: 500px;
+	font-size	: 11px;
+}					
+</style>
+
+<%
+List<Menu> menus = (List<Menu>)request.getAttribute("menus");
+
+
+%>
+
+
 
 <script type="text/javascript">
 	$(function() {
@@ -53,8 +76,37 @@
 		frm.submit(); 
 		
 	}
+	
+/*---------------------------------------- chart  */
+	
+	var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "pie",
+  "theme": "light",
+  
+  "dataProvider": [
+  <%
+	  for (Menu menu : menus) { 
+		  
+	  %>
+ {
+    "country": "<%= menu.getFoodName()%>",
+    "litres": <%= menu.getTotalcount()%>
+  }, 
+  <% 
+	  }
+  %>
+  ],
+  "valueField": "litres",
+  "titleField": "country",
+   "balloon":{
+   "fixedPosition":true
+  },
+  "export": {
+    "enabled": true
+  }
+} );
 </script>
-
+</head>
 <body>
 	<c:import url="/WEB-INF/views/include/posheader.jsp" />
 
@@ -187,8 +239,11 @@
 								</c:forEach>
 								</tbody>
 							</table>
+							
+							
 						</div>
 						<!-- /span -->
+						<div id="chartdiv"></div>	
 					</div>
 					<!-- /row -->
 				</div>

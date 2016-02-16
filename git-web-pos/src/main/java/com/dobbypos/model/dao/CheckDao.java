@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dobbypos.model.dto.Balance;
 import com.dobbypos.model.dto.Menu;
+import com.dobbypos.model.dto.Orders;
 
 public interface CheckDao {
 
@@ -36,6 +37,8 @@ public interface CheckDao {
 	List<Balance> getBalancebyPeriodAndMinus2(String startday, String endday, String storeCode);
 
 	Balance getBalanceByNo2(Balance balance3);
+
+	List<Orders> selectOrdersByPayType(String startday, String endday, String storeCode);
 
 	
 	

@@ -16,6 +16,9 @@ public class Orders implements Serializable {
 	private String storeCode;
 	private int customerNo;
 	
+	
+	private int finalPrice;
+	
 	private List<OrderDetail> orderDetails;
 	
 	public List<OrderDetail> getOrderDetails() {
@@ -73,6 +76,21 @@ public class Orders implements Serializable {
 	public void setCustomerNo(int customerNo) {
 		this.customerNo = customerNo;
 	}
+	public int getFinalPrice() {
+		return finalPrice;
+	}
+	public void setFinalPrice(int finalPrice) {
+		this.finalPrice = finalPrice;
+	}
+	@Override
+	public String toString() {
+		return "Orders [orderNo=" + orderNo + ", orderDate=" + orderDate + ", payType=" + payType + ", discountRate="
+				+ discountRate + ", orderStatus=" + orderStatus + ", totalTableNo=" + totalTableNo + ", storeCode="
+				+ storeCode + ", customerNo=" + customerNo + ", finalPrice=" + finalPrice + ", orderDetails="
+				+ orderDetails + "]";
+	}
+	
+	
 	
 
 }

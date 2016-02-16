@@ -65,6 +65,7 @@ public class AccountController {
 		
 
 		boolean resultValue= false;
+		String failMessage = "아이디 또는 비밀번호가 맞지 않습니다. ";
 		
 		passwd = Util.getHashedString(passwd, "SHA-1");
 		
@@ -73,12 +74,16 @@ public class AccountController {
 
 		Employee employee = employeeService.searchEmployeeByLogin(hqCode,storeCode, employeeId, passwd);
 
+		
 		//조회 결과에 따라 이동 처리
 		if (employee != null) {
 			if(employee.getPasswd().equals(passwd)){
 				resultValue = true;
 			}
+			
 		}
+		
+		
 	
 		//조회 결과에 따라 이동 처리
 		if (resultValue) {
@@ -96,6 +101,7 @@ public class AccountController {
 			
 			//request객체에 데이터 저장
 			req.setAttribute("loginid", employeeId);
+			req.setAttribute("failMessage", failMessage);
 			return "index";
 		}
 		
@@ -125,6 +131,7 @@ public class AccountController {
 		
 		
 		boolean resultValue= false;
+		String failMessage = "아이디 또는 비밀번호가 맞지 않습니다. ";
 		
 		hqpasswd = Util.getHashedString(hqpasswd, "SHA-1");
 		
@@ -153,6 +160,7 @@ public class AccountController {
 			
 			//request객체에 데이터 저장
 			req.setAttribute("hqloginid", hq);
+			req.setAttribute("failMessage", failMessage);
 			return "account/hqloginform";
 		}
 		

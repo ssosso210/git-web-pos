@@ -47,5 +47,12 @@ public class Hq implements Serializable {
 	public void setHqPasswd(String hqPasswd) {
 		this.hqPasswd = hqPasswd;
 	}
+	@Override
+	public String toString() {
+		return "Hq [hqCode=" + hqCode + ", hqName=" + hqName + ", phoneNo=" + phoneNo + ", address=" + address
+				+ ", hqId=" + hqId + ", hqPasswd=" + hqPasswd + "]";
+	}
+	
+	
 
 }
