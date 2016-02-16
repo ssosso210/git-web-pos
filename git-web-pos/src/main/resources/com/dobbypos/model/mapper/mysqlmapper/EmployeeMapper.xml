@@ -99,7 +99,7 @@
 		SELECT  at.attendanceNo , at.startWork, at.endWork,
 				em.employeeNo, em.employeeName, em.phoneNo, em.passwd, em.storeCode, em.wage, em.employeeType, em.employeeId
 		from employee em left outer join attendance at on em.employeeNo = at.employeeNo
-		WHERE em.storeCode = #{id} AND em.employeeType = 'user' 
+		WHERE em.storeCode = #{id} AND em.employeeType = 'user'  
 		AND curdate() = (DATE_FORMAT(startWork, '%Y-%m-%d'))) a right outer join employee B on A.employeeNo = B.employeeNo
 		WHERE B.employeeType = 'user' 
 	</select>
