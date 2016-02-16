@@ -86,6 +86,28 @@ div#table-form table td, div#table-form table th {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
+
+
+
+
+/*-----------------------------------------------------edit size*/
+@media (min-width: 1500px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+/* @media (min-width: 1500px)
+.container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 1500px;
+}
+@media (min-width: 1500px)
+.row {
+    margin-left: -00px;
+}
+@media (min-width: 1500px)
+.span12 {
+    width: 1500px;
+} */
 </style>
 
 
@@ -371,12 +393,12 @@ $(function() {
 		
 <div class="main">
   <div class="main-inner">
-    <div class="container">
-      <div class="row">			
-        <div class="span12">
-          <div class="widget">
- 		<div class="widget-content" style="border:0px;">
-              <div class="shortcuts" style="width: 1200px;"> 
+    <div class="container" style="width:1500px;">
+      <div class="row" style="width:1500px;margin-left: 0px;">			
+        <div class="span12" style="width:1500px;">
+          <div class="widget" style="width:1500px;">
+ 		<div class="widget-content" style="border:0px;width: 1500px;">
+              <div class="shortcuts" style="width: 1500px;"> 
 		<c:forEach varStatus="status" var="table" items="${st}">
 
 			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; height:50px; width:15%;cursor: pointer; "> 
