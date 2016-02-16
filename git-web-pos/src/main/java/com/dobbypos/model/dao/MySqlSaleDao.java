@@ -1,3 +1,4 @@
+
 package com.dobbypos.model.dao;
 
 import java.util.List;
@@ -73,6 +74,5 @@ public class MySqlSaleDao implements SaleDao {
 
 
 }
-
 
 

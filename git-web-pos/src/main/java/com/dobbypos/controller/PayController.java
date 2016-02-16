@@ -43,8 +43,11 @@ public class PayController {
    private BalanceService balanceService;
          
    @RequestMapping(value="/payform.action", method=RequestMethod.GET)
-   public String PayForm(Model model, @RequestParam("totaltableno")int totaltableno){
+   public String PayForm(Model model, @RequestParam("totaltableno")int totaltableno, @RequestParam("price")int price){
       model.addAttribute("totaltableno", totaltableno);
+      model.addAttribute("price", price);
+     
+      
       return "sale/pay";
    }
    
