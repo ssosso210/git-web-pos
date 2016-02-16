@@ -1,3 +1,4 @@
+
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -150,11 +151,12 @@ $(function() {
         
 	   $("div[id^=choosetable]").each(function(index,value) {
 		   
-		   $(this).on("click", function() {
+		   $(this).on("click", function(event) {
 			   
-			   var totalno = $("#totalno"+index).text().split(':')[1].trim();
+			   var totalno = $(this).find('span[id^=totalno]').text().split(':')[1].trim();
+			   //var totalno = $("#totalno"+index).text().split(':')[1].trim();
 			   
-			   $.ajax({								// jqueryê° ì ê³µíë í¬í¼í¨ìë $. ì¼ë¡
+			   $.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
 					url : "/dobbywebpos/sale/pos_popup.action",
 					type : "GET",
 					async : true,
@@ -175,8 +177,8 @@ $(function() {
 								var td3 = $("<td></td>").html(detail.quantity).attr("id","count"+detail.foodCode);
 								var td4 = $("<td></td>").html(detail.price).attr("id","price"+detail.foodCode);
 								var td5 = $("<td></td>").attr("id","plusminus"+detail.foodCode);
-								var plus = $("<input/>").attr({id:"plus"+detail.foodCode, type:'button',value:'ì¶ê°'});
-								var minus = $("<input/>").attr({id:"minus"+detail.foodCode, type:'button', value:'ê°ì'});
+								var plus = $("<input/>").attr({id:"plus"+detail.foodCode, type:'button',value:'추가'});
+								var minus = $("<input/>").attr({id:"minus"+detail.foodCode, type:'button', value:'감소'});
 								plus.on('click', increaseOrderCount);
 								minus.on('click', decreaseOrderCount);
 								td5.append([plus,minus]);
@@ -226,8 +228,8 @@ $(function() {
 				var td3 = $("<td></td>").html('1').attr("id","count"+foodCodeval);
 				var td4 = $("<td></td>").html(foodpriceval).attr("id","price"+foodCodeval);
 				var td5 = $("<td></td>").attr("id","plusminus"+foodCodeval);
-				var plus = $("<input/>").attr({id:"plus"+foodCodeval,type:'button',value:'ì¶ê°'});
-				var minus = $("<input/>").attr({id:"minus"+foodCodeval,type:'button', value:'ê°ì'});
+				var plus = $("<input/>").attr({id:"plus"+foodCodeval,type:'button',value:'추가'});
+				var minus = $("<input/>").attr({id:"minus"+foodCodeval,type:'button', value:'감소'});
 				plus.on('click', increaseOrderCount);
 				minus.on('click', decreaseOrderCount);
 				td5.append([plus,minus]);
@@ -245,8 +247,8 @@ $(function() {
 			for (var i = 0; i < details.length; i++) {
 				totalPrice += details[i].price * details[i].quantity;
 			}
-			d2.html("ì£¼ë¬¸ë²í¸: " + order.orderNo);
-			d.html("ê°  ê²©: " + totalPrice);
+			d2.html("주문번호: " + order.orderNo);
+			d.html("가  격: " + totalPrice);
 		}
 	   
 	   $('#orderbutton').on('click', function(event){
@@ -254,7 +256,7 @@ $(function() {
 		   var orderNo = $(this).attr('data');
 		   var totalTableNo = $(this).attr('data2');
 		   
-		 //0. íì´ë¸ììë ì£¼ë¬¸ë´ì­ë°ì´í° ì½ê¸°(jsonë°°ì´)
+		 //0. 테이블에있는 주문내역데이터 읽기(json배열)
 			var order = {
 			 storeCode : '${ param.storeCode1 }',
 			 totalTableNo : totalTableNo,
@@ -264,7 +266,7 @@ $(function() {
 			var names = ['foodCode', 'name', 'quantity', 'price'];
 			var trs = $('#orderMenuList tbody tr');
 			if (trs.length == 0) {
-				//alert('ì£¼ë¬¸ í­ëª©ì´ ììµëë¤.');
+				//alert('주문 항목이 없습니다.');
 			} else {
 				trs.each(function(index, data) {
 					var order_detail = {foodCode:-1, quantity:-1, price:-1};
@@ -288,8 +290,8 @@ $(function() {
 			
 		   var order2 = JSON.stringify(order);
 			
-			//1. dbì ë°ì´í°ì ì¥(ì ê· ëë ìì ) - jQuery + ajax
-			$.ajax({								// jqueryê° ì ê³µíë í¬í¼í¨ìë $. ì¼ë¡
+			//1. db에 데이터저장(신규 또는 수정) - jQuery + ajax
+			$.ajax({								// jquery가 제공하는 헬퍼함수는 $. 으로
 				url : sUrl,
 				
 				type : "POST",
@@ -299,7 +301,7 @@ $(function() {
 					order.orderNo = parseInt(data);
 					setOrder($('#orderbutton').attr('data2'), order);
 					
-					//ì°½ë«ê¸°
+					//창닫기
 					dialog.dialog('close');
 					
 				},
@@ -341,14 +343,14 @@ $(function() {
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/dobbywebpos/main.action">í ë§¤  </a>
+				</a> <a class="brand" href="/dobbywebpos/main.action">판 매  </a>
 				<div class="nav-collapse">
 					<ul class="nav pull-right">
 					
 	            			
 				         <li class="">
 								<a href="/dobbywebpos/main.action" class=""> 
-									<i class="icon-chevron-left"></i> ì·¨ì
+									<i class="icon-chevron-left"></i> 취소
 								</a>
 							</li>
             			
@@ -377,19 +379,25 @@ $(function() {
               <div class="shortcuts" style="width: 1200px;"> 
 		<c:forEach varStatus="status" var="table" items="${st}">
 
-			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; width:15%;cursor: pointer; "> 
-				<span id="totalno${ table.totalTableNo }">ê³ ì ê°: ${table.totalTableNo }</span> <br/>				
+			<div id="choosetable${ table.totalTableNo }" class="shortcut" style="background: #f9f6f1; height:50px; width:15%;cursor: pointer; "> 
+				<span id="totalno${ table.totalTableNo }">고유값: ${table.totalTableNo }</span> <br/>
+				<c:choose>
+				<c:when test="${ empty table.orders }">				
+					<span class='orderno'></span><br />
+					<span class="totalprice"></span><br/>
+				</c:when>
+				<c:otherwise>
 				<c:forEach var="orders" items="${ table.orders }">
-					<span class='orderno' data='${ orders.orderNo }'>ì£¼ë¬¸ë²í¸: ${ orders.orderNo }</span><br />
+					<span class='orderno' data='${ orders.orderNo }'>주문번호: ${ orders.orderNo }</span><br />
 					<c:set var="total" value="0" />
 					<c:forEach var="orderDetails" items="${ orders.orderDetails }">
 						<c:set var="total" value="${ total + orderDetails.price }" />
 					</c:forEach>
-					
-				<%-- <span>íì´ë¸ë²í¸: ${st.getTableNo() }</span><br/> --%>
-				<span class="totalprice">ê°  ê²©: ${ total }</span><br/>
+				<%-- <span>테이블번호: ${st.getTableNo() }</span><br/> --%>
+				<span class="totalprice">가  격: ${ total }</span><br/>
 				</c:forEach>
-
+				</c:otherwise>
+				</c:choose>
 			</div> 
 
 		</c:forEach>
@@ -410,9 +418,9 @@ $(function() {
 
 
 
-	<!-- ììì°½ -->
+	<!-- 자식창 -->
 	<div id="pos-form" title="Pos System">
-		<!-- ì íí ë©ë´ëì¬ë¶ë¶ -->
+		<!-- 선택한 메뉴나올부분 -->
 		<div id="table-form" class="ui-widget"
 			style="float: left; width: 550px; height: 500px; margin: 0 auto">
 
@@ -439,7 +447,7 @@ $(function() {
 			</table>
 		</div>
 
-		<!-- ë©ë´ë¦¬ì¤í¸ ë¿ë ¤ì£¼ëë° -->
+		<!-- 메뉴리스트 뿌려주는데 -->
 		<div style="float: right; width: 400px; border: 1px solid;   height: 500px; margin: 0 auto">				
 			<c:forEach var="menu" items="${ menus }">
             	<input type="button" id="menu${menu.foodCode}"
@@ -450,12 +458,12 @@ $(function() {
 			
 
 		</div>
-		<button id="orderbutton" value="ì£¼ë¬¸íê¸°" style="margin: 10px 5px 10px 25px; width:100px; height:60px" ></button>
-      	<button id="paymentbutton" value="ê³ì°íê¸°" style="width:80px; height:60px">ê³ì°íê¸°</button>
+		<button id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" ></button>
+      	<button id="paymentbutton" value="계산하기" style="width:80px; height:60px">계산하기</button>
 		
 	</div>
 
-	<!-- ë¶ëª¨ì°½ -->
+	<!-- 부모창 -->
 	<!-- <button id="clicktable">table</button> -->
 	<input type="button" value="Table1" id="clicktable"
 		style="clear:both; margin: 10px 5px 10px 25px; width: 100px; height: 50px">

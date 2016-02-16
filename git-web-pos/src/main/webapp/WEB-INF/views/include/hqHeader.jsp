@@ -18,8 +18,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <span id="customMenu1">
-                <span id="customMenu2">
+                <span id="customMenu1" style="background-color: white;font-size: 15pt;margin-top: 5px;padding-top: 10px">
+               <!--  <span id="customMenu2"> -->
                 <ul id="menu3">
                 	<li><spring:message code="hq.menu1" /></li>                	
                 	<spring:message code="hq.menu2Path" var="i18nMenu2Path" />
@@ -32,7 +32,7 @@
                 	<li><a href="${ i18nMenu5Path }"><spring:message code="hq.menu5" /></a></li>
                 	
                 </ul>
-                </span>
+                <!-- </span> -->
                 </span>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
@@ -191,7 +191,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-user"></i>
                                 <c:set var="hqName" value="${ sessionScope.hqloginuser.hqName }"></c:set>
-                                <span>${ hqName }<i class="caret"></i></span>
+                                <span style="color: black;">${ hqName }<i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                                 <li class="dropdown-header text-center"><spring:message code="hq.account" /></li>
@@ -241,7 +241,7 @@
                             <!-- Sidebar user panel -->
                             <div class="user-panel">
                                 <div class="pull-left image">
-                                    <img src="/dobbywebpos/resources/images/26115.jpg" class="img-circle" alt="User Image" />
+                                    <img src="/dobbywebpos/resources/images/outback.gif" class="img-circle" alt="User Image" />
                                 </div>
                                 <div class="pull-left info">
                                 

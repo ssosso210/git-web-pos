@@ -63,18 +63,18 @@
 							case ("basic"):
 								$("#discount_rate").val("5");
 								$("#leveldiscount").val(
-										$("#foodtotalcost").val() * (0.05));
+										Math.floor($(("#foodtotalcost").val() * (0.05))));
 								break;
 							case ("vip"):
 								$("#discount_rate").val("10");
 								$("#leveldiscount").val(
-										$("#foodtotalcost").val() * (0.1));
+										Math.floor($("#foodtotalcost").val() * (0.1)));
 
 								break;
 							case ("vvip"):
 								$("#discount_rate").val("15");
 								$("#leveldiscount").val(
-										$("#foodtotalcost").val() * (0.15));
+										Math.floor($("#foodtotalcost").val() * (0.15)));
 								break;
 							}
 						},
