@@ -1,3 +1,4 @@
+
 <%@ page language="java" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -220,6 +221,7 @@
          </tr>
          
          <%-- <c:forEach var="menuIndex" begin="0" end="7" step="1" varStatus="stat">
+
          <tr>
 			<c:choose>
 				<c:when test="${ stat.index < fn:length(menus) }">
@@ -273,3 +275,44 @@
       
       <!-- 잡다 -->
       <table style="width:300px; float:left; margin: 20px 0px 20px 20px" cellspacing='5' cellpadding='1'>
+         
+         <tr>
+            <td><input type="button" value="1" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="2" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="3" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="지움" name="name" style="width:70px; height:30px"></td>
+         </tr>
+         <tr>
+            <td><input type="button" value="4" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="5" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="6" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="내나" name="name" style="width:70px; height:30px"></td>
+         </tr>
+         <tr>
+            <td><input type="button" value="7" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="8" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="9" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="돈돈" name="name" style="width:70px; height:30px"></td>
+         </tr>
+         <tr>
+            <td><input type="button" value="0" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="확인" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="취소" name="name" style="width:70px; height:30px"></td>
+            <td><input type="button" value="계산" name="name" style="width:70px; height:30px"></td>
+         </tr>
+         
+      </table>
+  
+      <input type="button" id="orderbutton" value="주문하기" style="margin: 10px 5px 10px 25px; width:100px; height:60px" >
+      <button onclick="javascript:pagechange()" value="계산하기" style="width:80px; height:60px">계산하기</button>
+
+
+   </div>
+
+
+	<!-- ------------------------------------------------------------- -->
+
+
+
+</body>
+</html>
