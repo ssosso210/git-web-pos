@@ -85,12 +85,12 @@
 							<!-- <label for="username">Username</label> -->
 							<!-- <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /> -->
 							아이디
-							<input type="text" id="hqId" name="hqId" value="outbackadmin" placeholder="Username" class="login username-field" />
+							<input type="text" id="hqId" name="hqId" value="" placeholder="Username" class="login username-field" />
 						</div> <!-- /field -->
 						
 						<div class="field">
 							Password
-							<input type="password" id="hqpasswd" name="hqpasswd" value="123" placeholder="Password" class="login password-field"/>
+							<input type="password" id="hqpasswd" name="hqpasswd" value="" placeholder="Password" class="login password-field"/>
 						</div> <!-- /password -->
 						
 					</div> <!-- /login-fields -->

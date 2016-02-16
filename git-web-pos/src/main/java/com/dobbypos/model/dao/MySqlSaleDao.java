@@ -50,15 +50,24 @@ public class MySqlSaleDao implements SaleDao {
 
 	@Override
 	public void insertOrder(Orders order) {
-		saleMapper.insertOrder(order);
-		
+		saleMapper.insertOrder(order);		
 	}
 
 	@Override
 	public void insertOrderDetail(OrderDetail orderDetail) {
 		saleMapper.insertOrderDetail(orderDetail);
-		
-		
+	}
+	
+	
+	@Override
+	public void updateOrderDetail(OrderDetail orderDetail) {
+		saleMapper.updateOrderDetail(orderDetail);
+	}
+
+	@Override
+	public int selectOrderDetailCountByOrderNo(int id) {
+		int count = saleMapper.selectOrderDetailCountByOrderNo(id);
+		return count;
 	}
 
 

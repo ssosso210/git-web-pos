@@ -16,5 +16,9 @@ public interface SaleDao {
 	void insertOrder(Orders order);
 	
 	void insertOrderDetail(OrderDetail orderDetail);
+	
+	int selectOrderDetailCountByOrderNo(int id);
+	
+	void updateOrderDetail(OrderDetail orderDetail);
 
 }

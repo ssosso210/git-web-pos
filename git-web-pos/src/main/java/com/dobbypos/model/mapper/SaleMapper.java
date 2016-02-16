@@ -18,5 +18,9 @@ public interface SaleMapper {
 	
 	void insertOrderDetail(OrderDetail orderDetail);
 	
+	void updateOrderDetail(OrderDetail orderDetail);
+	
+	int selectOrderDetailCountByOrderNo(int id);
+	
 
 }
