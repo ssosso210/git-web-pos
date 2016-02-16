@@ -53,8 +53,10 @@
 	</select>
 	
 	<select id="selectOrdering" resultType="OrderDetail">
-		select * 
-		from orderDetail 
+		select od.*, m.foodName
+		from orderDetail od
+		inner join menu m 
+		on od.foodCode = m.foodCode
 		where orderNo = #{id};
 	</select>
 	

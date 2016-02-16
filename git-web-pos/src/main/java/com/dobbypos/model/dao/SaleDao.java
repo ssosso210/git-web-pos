@@ -20,5 +20,7 @@ public interface SaleDao {
 	int selectOrderDetailCountByOrderNo(int id);
 	
 	void updateOrderDetail(OrderDetail orderDetail);
+	
+	void deleteOrderDetailByOrderDetailNo(int orderDetailNo);
 
 }

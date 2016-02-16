@@ -22,5 +22,7 @@ public interface SaleMapper {
 	
 	int selectOrderDetailCountByOrderNo(int id);
 	
+	void deleteOrderDetailByOrderDetailNo(int id);
+	
 
 }

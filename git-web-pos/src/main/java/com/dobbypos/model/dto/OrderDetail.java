@@ -10,6 +10,7 @@ public class OrderDetail implements Serializable {
 	private int price;
 	private String foodCode;
 	private int totalTableNo;
+	private String foodName;
 	
 	public int getTotalTableNo() {
 		return totalTableNo;
@@ -46,6 +47,12 @@ public class OrderDetail implements Serializable {
 	}
 	public void setFoodCode(String foodCode) {
 		this.foodCode = foodCode;
+	}
+	public String getFoodName() {
+		return foodName;
+	}
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
 	}
 
 }
