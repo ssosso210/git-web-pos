@@ -190,13 +190,18 @@
 
 	
 	
-	function pagechange(){
-		
-		opener.location.href="../pay/payform.action?totaltableno="+${totaltableno};
-		close();
-		
-	}
-	
+	  function pageChange(totalTableNo, totalPrice) {
+	         location.href='../pay/payform.action?totaltableno=' + totalTableNo + '&price=' + totalPrice   
+	      }
+	      
+	      $('#paymentbutton').on('click', function(event) {
+	         var totalTableNo = $('#orderbutton').attr('data2');
+	         var totalPrice = 0;
+	         $('td[id^=price]').each(function(index, value) {
+	            totalPrice += parseInt(td.innerText.trim());
+	         })
+	         pagechange(totalTableNo, totalPrice)
+	      });
 	
 	
 </script>

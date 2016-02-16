@@ -1,4 +1,3 @@
-
 package com.dobbypos.model.service;
 
 import java.util.List;
@@ -18,6 +17,7 @@ public interface SaleService {
 	
 	void createOrder(Orders order);
 	void updateOrder(Orders order);
+	
 	
 
 }
