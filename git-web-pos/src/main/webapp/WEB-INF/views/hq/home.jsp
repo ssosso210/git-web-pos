@@ -292,13 +292,13 @@
                         <div class="col-md-3">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
-                                <div class="sm-st-info">
+                                <div class="sm-st-info" style="font-size: 15pt">
                                     <span id="totalCustomers"></span>
                                     <spring:message code="hq.totalCustomer" />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <!-- <div class="col-md-3">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
                                 <div class="sm-st-info">
@@ -306,11 +306,11 @@
                                     Total Messages
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
+                        </div> -->
+                        <div class="col-md-3" style="width: 300px">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
-                                <div class="sm-st-info">
+                                <div class="sm-st-info" style="font-size: 15pt">
                                     <span id="profits"></span>
                                     <spring:message code="hq.profit" />
                                 </div>
