@@ -479,7 +479,7 @@
                                   <td>강남점</td>
                                   <td>박은영</td>
                                   <!-- <td>Steve</td> -->
-                                  <td>10/10/2014</td>
+                                  <td>2016년 1월 2일</td>
                                   <!-- <td>$1500</td> -->
                                   <td><span class="label label-danger">in progress</span></td>
                                   <td><span class="badge badge-info">50%</span></td>
@@ -489,7 +489,7 @@
                                   <td>역삼점</td>
                                   <td>윤준혁</td>
                                   <!-- <td>Darren</td> -->
-                                  <td>10/8/2014</td>
+                                  <td>2016년 1월 26일</td>
                                   <!-- <td>$1500</td> -->
                                   <td><span class="label label-success">completed</span></td>
                                   <td><span class="badge badge-success">100%</span></td>
@@ -499,7 +499,7 @@
                                   <td>동대문점</td>
                                   <td>심은호</td>
                                   <!-- <td>Nick</td> -->
-                                  <td>10/12/2014</td>
+                                  <td>2016년 2월 3일</td>
                                   <!-- <td>$2000</td> -->
                                   <td><span class="label label-warning">in progress</span></td>
                                   <td><span class="badge badge-warning">75%</span></td>
@@ -509,7 +509,7 @@
                                   <td>서울대점</td>
                                   <td>김윤수</td>
                                   <!-- <td>Rock</td> -->
-                                  <td>10/01/2015</td>
+                                  <td>2016년 2월 1일</td>
                                   <!-- <td>$2000</td> -->
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-info">65%</span></td>
@@ -519,7 +519,7 @@
                                   <td>잠원점</td>
                                   <td>남소진</td>
                                   <!-- <td>HHH</td> -->
-                                  <td>01/11/2014</td>
+                                  <td>2016년 2월 10일</td>
                                   <!-- <td>$2000</td> -->
                                   <td><span class="label label-warning">in progress</span></td>
                                   <td><span class="badge badge-danger">95%</span></td>
@@ -529,7 +529,7 @@
                                   <td>수유점</td>
                                   <td>김상훈</td>
                                   <!-- <td>HHH</td> -->
-                                  <td>01/11/2014</td>
+                                  <td>2016년 2월 14일</td>
                                   <!-- <td>$2000</td> -->
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-success">95%</span></td>
