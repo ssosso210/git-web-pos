@@ -85,7 +85,7 @@
 							<!-- <label for="username">Username</label> -->
 							<!-- <input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /> -->
 							아이디
-							<input type="text" id="hqId" name="hqId" value="superadmin" placeholder="Username" class="login username-field" />
+							<input type="text" id="hqId" name="hqId" value="outbackadmin" placeholder="Username" class="login username-field" />
 						</div> <!-- /field -->
 						
 						<div class="field">
