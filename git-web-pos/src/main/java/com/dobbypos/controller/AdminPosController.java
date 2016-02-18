@@ -78,7 +78,9 @@ public class AdminPosController {
 		int lastYearProfits = lastYearRevenues - lastYearPurchases;
 		
 		int totalCustomers = customerService.countTotalCustomers(hq.getHqCode());
+		int totalStores = storeService.countTotalStroes(hq.getHqCode());
 		model.addAttribute("totalCustomers", totalCustomers);
+		model.addAttribute("totalStores", totalStores);
 		model.addAttribute("path", path);
 		model.addAttribute("date", date);
 		model.addAttribute("revenue", revenue);
@@ -106,6 +108,7 @@ public class AdminPosController {
 		model.addAttribute("lastMonthPurchases10", lastMonthPurchases10);
 		model.addAttribute("lastMonthPurchases11", lastMonthPurchases11);
 		model.addAttribute("lastYearProfits", lastYearProfits);
+		model.addAttribute("hqCode", hq.getHqCode());
 		
 		return urlstr+"homechart";
 	}	

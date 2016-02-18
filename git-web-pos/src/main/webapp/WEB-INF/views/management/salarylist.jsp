@@ -29,7 +29,7 @@
 	rel="stylesheet" type="text/css">
 <link href="/dobbywebpos/resources/css/pages/dashboard.css"
 	rel="stylesheet">
-
+<script src="/dobbywebpos/resources/jsui/jquery-1.7.2.min.js"></script>
 </head>
 
 <body>
