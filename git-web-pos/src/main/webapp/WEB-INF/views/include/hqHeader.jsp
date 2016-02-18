@@ -12,16 +12,16 @@
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a id="sidebarToggleButton" href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <span id="customMenu1" style="background-color: white;font-size: 15pt;margin-top: 5px;padding-top: 10px">
+                <%--<span id="customMenu1" style=" width:100px; background-color: white;font-size: 13pt;margin-top: 5px;padding-top: 10px">
                <!--  <span id="customMenu2"> -->
                 <ul id="menu3">
-                	<li><spring:message code="hq.menu1" /></li>                	
+                	 <li><spring:message code="hq.menu1" /></li>              	
                 	<spring:message code="hq.menu2Path" var="i18nMenu2Path" />
                 	<li><a id="store" href="${ i18nMenu2Path }"><spring:message code="hq.menu2" /></a></li>
                 	<spring:message code="hq.menu3Path" var="i18nMenu3Path" />                	
@@ -29,17 +29,36 @@
                 	<spring:message code="hq.menu4Path" var="i18nMenu4Path" />
                 	<li><a href="${ i18nMenu4Path }"><spring:message code="hq.menu4" /></a></li>
                 	<spring:message code="hq.menu5Path" var="i18nMenu5Path" />
-                	<li><a href="${ i18nMenu5Path }"><spring:message code="hq.menu5" /></a></li>
+                	<li><a href="${ i18nMenu5Path }"><spring:message code="hq.menu5" /></a></li>   
                 	
                 </ul>
                 <!-- </span> -->
-                </span>
+                </span>--%>
                 <div class="navbar-right">
-                    <ul class="nav navbar-nav">
+                    <ul id="test" class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
+                        <li>
+                        <spring:message code="hq.menu2Path" var="i18nMenu2Path" />              		
+                		<a id="store" href="${ i18nMenu2Path }"><span class="menuFontColor"><spring:message code="hq.menu2" /></span></a>
+                		
+                        </li>
+                        <li>
+                        <spring:message code="hq.menu3Path" var="i18nMenu3Path" />                	
+                		<a id="salemenu" href="${ i18nMenu3Path }"><span class="menuFontColor"><spring:message code="hq.menu3" /></span></a>
+                        </li>
+                        <li>
+                        <spring:message code="hq.menu4Path" var="i18nMenu4Path" />
+                		<a href="${ i18nMenu4Path }"><span class="menuFontColor">고객</span>관리</a>
+                        </li>
+                        <li>
+                        <spring:message code="hq.menu5Path" var="i18nMenu5Path" />
+                		<a href="${ i18nMenu5Path }"><spring:message code="hq.menu5" /></a>
+                        </li>
+                        
                         <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope"></i>
+                                <i id="mailIcon" class="fa fa-envelope"></i>
+                                <img class="iconImg" style="width:19px;height: 17px" alt="" src="/dobbywebpos/resources/images/mail.png">
                                 <span class="label label-success">3</span>
                             </a>
                             <ul class="dropdown-menu">
@@ -119,10 +138,11 @@
                         </li>
                         <li class="dropdown tasks-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-tasks"></i>
+                                <i id="taskIcon" class="fa fa-tasks"></i>
+                                <img class="iconImg" style="width:16px;height: 14px" alt="" src="/dobbywebpos/resources/images/task1.png">
                                 <span class="label label-danger">9</span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul id="taskDropdown" class="dropdown-menu">
                                 <li class="header">You have 9 tasks</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
@@ -189,13 +209,14 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user"></i>
+                                <i id="userIcon" class="fa fa-user" style="background-image: url('');"></i>
+                                <img class="iconImg" style="width:14px;height: 14px" alt="" src="/dobbywebpos/resources/images/user2.png">
                                 <c:set var="hqName" value="${ sessionScope.hqloginuser.hqName }"></c:set>
-                                <span style="color: black;">${ hqName }<i class="caret"></i></span>
+                                <span class="menuFontColor">${ hqName }<i class="caret"></i></span>
                             </a>
-                            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                            <ul id="accountDropdown" class="dropdown-menu dropdown-custom dropdown-menu-right">
                                 <li class="dropdown-header text-center"><spring:message code="hq.account" /></li>
-
+									
                                 <li>
                                     <a href="#">
                                     <i class="fa fa-clock-o fa-fw pull-right"></i>
@@ -243,6 +264,7 @@
                                 <div class="pull-left image">
                                     <!-- <img id="myPhoto" src="" class="img-circle" alt="User Image" /> -->
                                 </div>
+                                <div id="blank"></div>
                                 <div class="pull-left info">
                                 
                                     

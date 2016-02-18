@@ -51,7 +51,9 @@
           <![endif]-->
 
           <style type="text/css">
-
+			#test {
+			color : black;
+			}
           </style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -128,7 +130,7 @@
 
       <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
 
-      <div id="pageContainer">   
+      <!-- <div id="pageContainer">    -->
          
       
       <div class="right-side" style="padding-top:25px;text-align:center">

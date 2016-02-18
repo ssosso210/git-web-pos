@@ -88,6 +88,8 @@ body > .header {
     margin-left: 0;
   }
 }
+
+
 /*
     By default the layout is not fixed but if you add the class .fixed to the body element
     the sidebar and the navbar will automatically become poisitioned fixed

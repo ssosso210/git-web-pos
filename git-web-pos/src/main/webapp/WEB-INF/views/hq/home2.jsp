@@ -8,15 +8,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title><spring:message code="hq.title" /></title>
+    <title><spring:message code="hq.storeManagementTitle" /></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
     <!-- bootstrap 3.0.2 -->
-
     <link href="/dobbywebpos/resources/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- font Awesome -->
-
     <link href="/dobbywebpos/resources/styles/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="/dobbywebpos/resources/styles/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -38,9 +36,9 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-    <link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet" type="text/css" />
-
+	<link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet" type="text/css" />
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -49,20 +47,20 @@
           <![endif]-->
 
           <style type="text/css">
-			 @media screen and (max-width: 400px) {
+          @media screen and (max-width: 400px) {
                 #blank { height : 85px }
                 #blank0 { height : 0px }
                 #accountDropdown { left : 0px}
                 .navbar-nav > .user-menu > .dropdown-menu:after { border : none }
                 #taskDropdown { left : 0px }
-                #progressDiv {width: 365px}
+                #progressDiv {width: 420px}
                 .col-md-3 {width: 365px}
                 #menuFontColor {color: white}
                 
                 
             }
-            
-            /* body { font-size: 62.5%; } */
+          
+          	/* body { font-size: 62.5%; } */
 		    label, input { display:block; }
 		    input.text { margin-bottom:12px; width:95%; padding: .4em; }
 		    fieldset { padding:0; border:0; margin-top:25px; }
@@ -72,10 +70,69 @@
 		    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
 		    .ui-dialog .ui-state-error { padding: .3em; }
 		    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-          </style>
+          
+          
+          
+
+			* { margin : 0px; padding : 0px; }
+        body { background-color : White/* #525252; */ }
+        .item {
+            margin : 5px;
+            width : 100px; height : 100px;
+			border: solid;
+            background-color : White; border-radius : 10px;
+            float : left;
+        }
+        
+        .item2 {
+            margin : 5px;
+            width : 100px; height : 100px;
+			border: solid;
+            background-color : White; border-radius : 10px;
+        }
+
+        .big { width : 210px; height : 500px; }
+        .normal { width : 210px; height : 210px; }
+        .small { width : 100px; height : 100px; }
+        
+       div[id^=big] {
+			position: absolute;
+			background: #88b7d5;
+			border: 4px solid #c2e1f5;
+			z-index: 100;
+		}
+		div[id^=menus] {
+			background-size: cover;
+		}
+		/* div[id^=big]:after, #big:before {
+			right: 100%;
+			top: 20%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		
+		div[id^=big]:after {
+			border-color: rgba(136, 183, 213, 0);
+			border-right-color: #88b7d5;
+			border-width: 30px;
+			margin-top: -30px;
+		}
+		div[id^=big]:before {
+			border-color: rgba(194, 225, 245, 0);
+			border-right-color: #c2e1f5;
+			border-width: 36px;
+			margin-top: -36px;
+		}
+ */
+        </style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
+		 <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
+		<script src="/dobbywebpos/resources/js/jquery.leanModal.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->
         <script src="/dobbywebpos/resources/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
@@ -102,8 +159,8 @@
         <!-- Director dashboard demo (This is only for demo purposes) -->
         <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
 
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>		
 		<script src="/dobbywebpos/resources/js/jquery.number.js"></script>
-
         <!-- Director for demo purposes -->
         <script type="text/javascript">
             $('input').on('ifChecked', function(event) {
@@ -118,10 +175,7 @@
                 $(this).parents('li').removeClass("task-done");
                 console.log('not');
             });
-            
-            
-			
-          
+
         </script>
         <script>
             $('#noti-box').slimScroll({
@@ -134,7 +188,9 @@
                 checkboxClass: 'icheckbox_flat-grey',
                 radioClass: 'iradio_flat-grey'
             });
+                                              
 </script>
+
 <script type="text/javascript">
     $(function() {
     	$(".iconImg").hide();
@@ -343,20 +399,19 @@
       </head>
       <body class="skin-black">
 
-
-                <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
-                    <aside class="right-side"  style="padding-top:25px;text-align:center;">
-				
-				<div id="blank0"></div>
-				
-				
-                <!-- Main content -->
-                <section class="content">
+      <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
+      
+		
+		
+		<aside class="right-side" style="padding-top:25px;text-align:center;">
+			<%-- <c:url var="writeform" value="/hq/storeregisterform.action" />
+			[ <a href="${ writeform }"><spring:message code="hq.storemanagement.join" /></a> ] --%>
+			<br /><br />
+			<section class="content">
 
                     <div class="row" style="margin-bottom:5px;">
-
-
-                        <div class="col-md-3" style="width: 370px">
+		<div class="widget widget-table action-table" align="center">
+		<div class="col-md-3" style="width: 370px">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
                                 <div class="sm-st-info" style="font-size: 15pt">
@@ -515,13 +570,13 @@
                                   <thead>
                                     <tr>
                                       <th>#</th>
-                                      <th>Project</th>
-                                      <th>Manager</th>
+                                      <th>매장명</th>
+                                      <th>점주명</th>
                                       <!-- <th>Client</th> -->
-                                      <th>Deadline</th>
+                                      <th>착공일</th>
                                       <!-- <th>Price</th> -->
-                                      <th>Status</th>
-                                      <th>Progress</th>
+                                      <th>상태</th>
+                                      <th>상황</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -839,17 +894,10 @@
                           </div>
                       </section>
                   </div>
-              </div> 
-              <!-- row end -->
-                </section><!-- /.content -->
-                <div class="footer-main">
-                    Copyright &copy Director, 2014
-                </div>
-            </aside><!-- /.right-side -->
-
-        
-
-
+			<br /><br /><br /><br />
+			</div>
+			</section>
+		</aside>
 
 </body>
 </html>

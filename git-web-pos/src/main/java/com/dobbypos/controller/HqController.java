@@ -133,7 +133,7 @@ public class HqController {
 		model.addAttribute("lastMonthPurchases11", lastMonthPurchases11);
 		model.addAttribute("lastYearProfits", lastYearProfits);
 		model.addAttribute("hqCode", hq.getHqCode());
-		return "hq/home";
+		return "hq/home2";
 		//return "hq/salemenumanagement";
 	}
 	

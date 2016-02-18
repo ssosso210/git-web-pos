@@ -40,8 +40,8 @@
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
 	<link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<link href="/dobbywebpos/resources/css/pages/dashboard.css" rel="stylesheet" type="text/css" />
-	
+	<!-- <link href="/dobbywebpos/resources/css/style.css" rel="stylesheet"> -->
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -50,93 +50,41 @@
           <![endif]-->
 
           <style type="text/css">
-          @media screen and (max-width: 400px) {
+          @media (max-width: 400px) {
                 #blank { height : 85px }
-                #blank0 { height : 0px }
+                
                 #accountDropdown { left : 0px}
                 .navbar-nav > .user-menu > .dropdown-menu:after { border : none }
                 #taskDropdown { left : 0px }
                 #progressDiv {width: 365px}
                 .col-md-3 {width: 365px}
-                #menuFontColor {color: white}
-                .thTable { width: 0px; height: 20px; font-size: 8pt}
-                #sstoreTable { width: 100%}
-                
-                
-            }
+           		#sstoreTable { width: 100px}     
+          }      
+          #storeTable {
+			background: #F0F9FF; /* Old browsers */
+			background: -moz-linear-gradient(top, #F0F9FF 0%, #A1DBFF 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F0F9FF), color-stop(100%,#A1DBFF)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, grey 0%,white 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #F0F9FF 0%,#A1DBFF 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #F0F9FF 0%,#A1DBFF 100%); /* IE10+ */
+			background: linear-gradient(top, #F0F9FF 0%,#A1DBFF 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F0F9FF', endColorstr='#A1DBFF',GradientType=0 ); /* IE6-9 */
+			}
+			
+			.thTable {
+		    background: #d9d9d9; /* For browsers that do not support gradients */
+		    background: -webkit-linear-gradient(#d9d9d9, white); /* For Safari 5.1 to 6.0 */
+		    background: -o-linear-gradient(#d9d9d9, white); /* For Opera 11.1 to 12.0 */
+		    background: -moz-linear-gradient(#d9d9d9, white); /* For Firefox 3.6 to 15 */
+		    background: linear-gradient(#d9d9d9, white); /* Standard syntax */
+		    
+		    
+		}
           
-          	/* body { font-size: 62.5%; } */
-		    label, input { display:block; }
-		    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-		    fieldset { padding:0; border:0; margin-top:25px; }
-		    h1 { font-size: 1.2em; margin: .6em 0; }
-		    div#users-contain { width: 350px; margin: 20px 0; }
-		    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-		    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-		    .ui-dialog .ui-state-error { padding: .3em; }
-		    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-          
-          
-          
-
-			* { margin : 0px; padding : 0px; }
-        body { background-color : White/* #525252; */ }
-        .item {
-            margin : 5px;
-            width : 100px; height : 100px;
-			border: solid;
-            background-color : White; border-radius : 10px;
-            float : left;
-        }
-        
-        .item2 {
-            margin : 5px;
-            width : 100px; height : 100px;
-			border: solid;
-            background-color : White; border-radius : 10px;
-        }
-
-        .big { width : 210px; height : 500px; }
-        .normal { width : 210px; height : 210px; }
-        .small { width : 100px; height : 100px; }
-        
-       div[id^=big] {
-			position: absolute;
-			background: #88b7d5;
-			border: 4px solid #c2e1f5;
-			z-index: 100;
-		}
-		div[id^=menus] {
-			background-size: cover;
-		}
-		/* div[id^=big]:after, #big:before {
-			right: 100%;
-			top: 20%;
-			border: solid transparent;
-			content: " ";
-			height: 0;
-			width: 0;
-			position: absolute;
-			pointer-events: none;
-		}
-		
-		div[id^=big]:after {
-			border-color: rgba(136, 183, 213, 0);
-			border-right-color: #88b7d5;
-			border-width: 30px;
-			margin-top: -30px;
-		}
-		div[id^=big]:before {
-			border-color: rgba(194, 225, 245, 0);
-			border-right-color: #c2e1f5;
-			border-width: 36px;
-			margin-top: -36px;
-		}
- */
         </style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		 <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
+
 		<script src="/dobbywebpos/resources/js/jquery.leanModal.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->
@@ -165,7 +113,7 @@
         <script src="/dobbywebpos/resources/js/Director/dashboard.js" type="text/javascript"></script>
 
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>		
-		<script src="/dobbywebpos/resources/js/jquery.number.js"></script>
+
         <!-- Director for demo purposes -->
         <script type="text/javascript">
             $('input').on('ifChecked', function(event) {
@@ -200,9 +148,7 @@
 
 $(function() {
 	
-///////////////////////////////////////////////////////
-	
-$(".iconImg").hide();
+	$(".iconImg").hide();
 	
 	var hqCode = '${ hqCode }';
 	if  ( hqCode == 'outback'){
@@ -232,10 +178,6 @@ $(".iconImg").hide();
 	    		$("#taskIcon").show();
 	    		$(".iconImg").hide();
 	    	 	});    	 
-	    	}  else if ( screen.width >= 400) {
-	    		$("#sidebarToggleButton").on("click", function(event) {
-	        		$(".menuFontColor").css('color', 'black');
-	    		});
 	    	} 
 
 });
@@ -246,15 +188,13 @@ $(".iconImg").hide();
 
       <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
       
-		
+		<!--  <div id="pageContainer">	 -->	
 		
 		<aside class="right-side" style="padding-top:25px;text-align:center;">
+			
 			<c:url var="writeform" value="/hq/storeregisterform.action" />
 			[ <a href="${ writeform }"><spring:message code="hq.storemanagement.join" /></a> ]
 			<br /><br />
-			<section class="content">
-
-                    <div class="row" style="margin-bottom:5px;">
 		<div class="widget widget-table action-table" align="center">
 		<!-- <div class="widget-header" style="font-size: 15pt">
 		<div class="widget-content">
@@ -271,17 +211,17 @@ $(".iconImg").hide();
 				
 				<c:forEach var="store" items="${ stores }">
 				<tr style="height:30px">
-					<td class="thTable">${ store.storeCode }</td>
-					<td class="thTable" style="text-align:left;padding-left:10px">
+					<td>${ store.storeCode }</td>
+					<td style="text-align:left;padding-left:10px">
 						<c:url var="view" value="storeview.action">
 							<c:param name="storename" value="${ store.storeName }" />
 						</c:url>
 						<a href='${ view }'>${ store.storeName }</a>
 					</td>
-					<td class="thTable">${ store.managerName }</td>
-					<td class="thTable">${ store.phoneNo }</td>
-					<td class="thTable">${ store.email }</td>
-					<td class="thTable">${ store.address }</td>					
+					<td>${ store.managerName }</td>
+					<td>${ store.phoneNo }</td>
+					<td>${ store.email }</td>
+					<td>${ store.address }</td>					
 				</tr>
 				</c:forEach>
 				
@@ -291,9 +231,15 @@ $(".iconImg").hide();
 			</div>
 			</div> -->
 			<br /><br /><br /><br />
-			</div>
-			</section>
+		
 		</aside>
+	 
+	           
+	 
+
+		
+		
+
 
 </body>
 </html>
