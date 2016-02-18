@@ -38,11 +38,6 @@
     <!-- Theme style -->
     <link href="/dobbywebpos/resources/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="/dobbywebpos/resources/styles/style2.css" rel="stylesheet" type="text/css" />
-    
-    
-    <!--  main title bar -->
-    	<link href="/dobbywebpos/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,29 +46,9 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
           <![endif]-->
 
-<style type="text/css">
+          <style type="text/css">
 
-.navbar-inner {
-    padding: 7px 0;
-    background: #00ba8b !important;
-    }
-    .navbar .nav>li>a {
-    color: #fff !important;
-}
-.navbar .nav>li>a:hover {
-    background-color: transparent;
-    color: #ffffff;
-    text-decoration: none;
-}
-.navbar .nav>li>a {
-    float: none;
-    padding: 10px 10px 11px;
-    line-height: 19px;
-    color: #999999;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-</style>
+          </style>
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="/dobbywebpos/resources/js/jquery.min.js" type="text/javascript"></script>
@@ -317,44 +292,15 @@
             });
             // Chart.defaults.global.responsive = true;
 </script>
- </head>
-<body class="skin-black">
-<div id="header">
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/dobbywebpos/main.action">admin page  </a>
-				<div class="nav-collapse">
-					<ul class="nav pull-right">
-					
-	            			
-				         <li class="">
-								<a href="/dobbywebpos/main.action" class=""> 
-									<i class="icon-chevron-left"></i> 취소
-								</a>
-							</li>
-            			
-            	
-						
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /navbar-inner -->
-	</div>
-	<!-- /navbar -->			
-</div>   
+      </head>
+      <body class="skin-black">
 
-               <%--  <c:import url="/WEB-INF/views/include/hqHeader.jsp" /> --%>
-                   <!--  <aside class="right-side"> -->
+
+                <c:import url="/WEB-INF/views/include/hqHeader.jsp" />
+                    <aside class="right-side">
 
                 <!-- Main content -->
-                <section class="content" style="padding: 70px 15px;">
+                <section class="content">
 
                     <div class="row" style="margin-bottom:5px;">
 
@@ -386,7 +332,7 @@
                                 </div>
                             </div>
                         </div>
-                       <!--  <div class="col-md-3" style="width: 300px">
+                        <div class="col-md-3" style="width: 300px">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
                                 <div class="sm-st-info" style="font-size: 15pt">
@@ -394,7 +340,7 @@
                                     총 가맹점 수
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
 
                     <!-- Main row -->
@@ -508,7 +454,7 @@
                   </div>
                      <div class="row">
 
-                       <!--  <div class="col-md-8">
+                        <div class="col-md-8">
                             <section class="panel">
                               <header class="panel-heading">
                                   신규매장 개업 진행상황
@@ -520,9 +466,9 @@
                                       <th>#</th>
                                       <th>Project</th>
                                       <th>Manager</th>
-                                      <th>Client</th>
+                                      <!-- <th>Client</th> -->
                                       <th>Deadline</th>
-                                      <th>Price</th>
+                                      <!-- <th>Price</th> -->
                                       <th>Status</th>
                                       <th>Progress</th>
                                   </tr>
@@ -532,9 +478,9 @@
                                   <td>1</td>
                                   <td>강남점</td>
                                   <td>박은영</td>
-                                  <td>Steve</td>
+                                  <!-- <td>Steve</td> -->
                                   <td>2016년 1월 2일</td>
-                                  <td>$1500</td>
+                                  <!-- <td>$1500</td> -->
                                   <td><span class="label label-danger">in progress</span></td>
                                   <td><span class="badge badge-info">50%</span></td>
                               </tr>
@@ -542,9 +488,9 @@
                                   <td>2</td>
                                   <td>역삼점</td>
                                   <td>윤준혁</td>
-                                  <td>Darren</td>
+                                  <!-- <td>Darren</td> -->
                                   <td>2016년 1월 26일</td>
-                                  <td>$1500</td>
+                                  <!-- <td>$1500</td> -->
                                   <td><span class="label label-success">completed</span></td>
                                   <td><span class="badge badge-success">100%</span></td>
                               </tr>
@@ -552,9 +498,9 @@
                                   <td>3</td>
                                   <td>동대문점</td>
                                   <td>심은호</td>
-                                  <td>Nick</td>
+                                  <!-- <td>Nick</td> -->
                                   <td>2016년 2월 3일</td>
-                                  <td>$2000</td>
+                                  <!-- <td>$2000</td> -->
                                   <td><span class="label label-warning">in progress</span></td>
                                   <td><span class="badge badge-warning">75%</span></td>
                               </tr>
@@ -562,9 +508,9 @@
                                   <td>4</td>
                                   <td>서울대점</td>
                                   <td>김윤수</td>
-                                  <td>Rock</td>
+                                  <!-- <td>Rock</td> -->
                                   <td>2016년 2월 1일</td>
-                                  <td>$2000</td>
+                                  <!-- <td>$2000</td> -->
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-info">65%</span></td>
                               </tr>
@@ -572,9 +518,9 @@
                                   <td>5</td>
                                   <td>잠원점</td>
                                   <td>남소진</td>
-                                  <td>HHH</td>
+                                  <!-- <td>HHH</td> -->
                                   <td>2016년 2월 10일</td>
-                                  <td>$2000</td>
+                                  <!-- <td>$2000</td> -->
                                   <td><span class="label label-warning">in progress</span></td>
                                   <td><span class="badge badge-danger">95%</span></td>
                               </tr>
@@ -582,13 +528,13 @@
                                   <td>6</td>
                                   <td>수유점</td>
                                   <td>김상훈</td>
-                                  <td>HHH</td>
+                                  <!-- <td>HHH</td> -->
                                   <td>2016년 2월 14일</td>
-                                  <td>$2000</td>
+                                  <!-- <td>$2000</td> -->
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-success">95%</span></td>
                               </tr>
-                              <tr>
+                              <!-- <tr>
                                   <td>7</td>
                                   <td>Ghost</td>
                                   <td>XXX</td>
@@ -597,13 +543,13 @@
                                   <td>$2000</td>
                                   <td><span class="label label-info">in progress</span></td>
                                   <td><span class="badge badge-success">95%</span></td>
-                              </tr>
+                              </tr> -->
                           </tbody>
                       </table>
                   </div>
               </section>
 
- -->
+
           <!-- </div>end col-6
           <div class="col-md-4">
             <section class="panel">
